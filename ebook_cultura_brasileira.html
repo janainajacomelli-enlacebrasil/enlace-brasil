@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos de Cultura Brasileira — Enlace Brasil</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+  :root {
+    --verde:   #1A6B3C;
+    --teal:    #0D7A6B;
+    --laranja: #C45E00;
+    --amarelo: #F5C518;
+    --bg:      #FFFDF7;
+    --cinza:   #F0EDE6;
+    --texto:   #1a1a1a;
+    --sombra:  rgba(0,0,0,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', 'Trebuchet MS', sans-serif;
+    background: #e8e0d0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(26,107,60,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(196,94,0,0.08) 0%, transparent 60%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 40px;
+    overflow-x: hidden;
+  }
+
+  /* ── TOPO ──────────────────────────────────────────────── */
+  .top-bar {
+    width: 100%;
+    max-width: 780px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    color: var(--verde);
+    letter-spacing: 0.03em;
+  }
+  .page-counter {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 600;
+  }
+
+  /* ── LIVRO ─────────────────────────────────────────────── */
+  .book-wrap {
+    width: 100%;
+    max-width: 780px;
+    position: relative;
+  }
+
+  .book {
+    background: var(--bg);
+    border-radius: 4px 16px 16px 4px;
+    box-shadow:
+      -6px 0 0 #c8b89a,
+      -10px 0 0 #b8a88a,
+      0 8px 40px var(--sombra),
+      0 2px 8px rgba(0,0,0,0.1);
+    min-height: 560px;
+    position: relative;
+    overflow: hidden;
+    border-left: 8px solid var(--amarelo);
+  }
+
+  /* ── PÁGINAS ───────────────────────────────────────────── */
+  .page {
+    display: none;
+    padding: 44px 48px 60px;
+    animation: fadeIn 0.35s ease;
+    min-height: 560px;
+  }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(18px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeBack {
+    from { opacity: 0; transform: translateX(-18px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .page.going-back { animation: fadeBack 0.35s ease; }
+
+  /* ── CAPA ──────────────────────────────────────────────── */
+  .capa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    min-height: 520px;
+  }
+  .capa-flag { font-size: 3rem; }
+  .capa h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.4rem;
+    color: var(--verde);
+    line-height: 1.15;
+  }
+  .capa .sub {
+    font-size: 1rem;
+    color: #888;
+    font-style: italic;
+    font-weight: 600;
+  }
+  .capa .cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .cat-pill {
+    background: var(--cinza);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #555;
+  }
+  .publicos {
+    display: flex;
+    gap: 24px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pub-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 10px 18px;
+    border-radius: 12px;
+    transition: background 0.2s, transform 0.2s;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .pub-card:hover { transform: translateY(-3px); background: var(--cinza); }
+  .pub-card .emoji { font-size: 2rem; }
+  .pub-card.adulto  { color: var(--verde); }
+  .pub-card.adol    { color: var(--teal); }
+  .pub-card.crianca { color: var(--laranja); }
+  .capa-hint { font-size: 0.78rem; color: #aaa; margin-top: 8px; }
+
+  /* ── SEPARADORES DE PÚBLICO ────────────────────────────── */
+  .sep-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    text-align: center;
+    gap: 16px;
+  }
+  .sep-emoji { font-size: 5rem; }
+  .sep-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  .sep-sub { font-size: 0.95rem; color: #888; font-style: italic; font-weight: 600; }
+  .sep-line {
+    width: 80px; height: 5px; border-radius: 3px;
+    margin: 4px auto;
+  }
+
+  /* ── CONTEÚDO ──────────────────────────────────────────── */
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid currentColor;
+  }
+  .sec-header .ico { font-size: 1.4rem; }
+  .sec-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .pub-badge {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: currentColor;
+    opacity: 0.12;
+  }
+
+  ul.lista {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  ul.lista li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--texto);
+  }
+  ul.lista li::before {
+    content: "•";
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  ul.lista li strong {
+    font-weight: 800;
+  }
+
+  /* Podcasts em grade 2 colunas */
+  .pod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  .pod-item {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  a { color: inherit; text-decoration: underline; text-decoration-color: rgba(0,0,0,0.25); }
+  a:hover { text-decoration-color: currentColor; opacity: 0.8; }
+  .pod-item a { color: var(--texto); font-weight: 600; }
+  ul.lista a { color: var(--texto); }
+  .pod-num {
+    font-weight: 800;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 2px;
+    opacity: 0.6;
+  }
+
+  /* ── NAVEGAÇÃO ─────────────────────────────────────────── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .nav-btn {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .nav-btn:hover:not(:disabled) { transform: scale(1.1); border-color: #aaa; }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 320px;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    padding: 0;
+  }
+  .dot.active { width: 22px; border-radius: 4px; }
+  .dot.adulto  { background: var(--verde); }
+  .dot.adol    { background: var(--teal); }
+  .dot.crianca { background: var(--laranja); }
+  .dot.capa    { background: var(--amarelo); }
+  .dot:not(.active) { background: #ccc !important; }
+
+  /* ── ÍNDICE LATERAL ────────────────────────────────────── */
+  .index-strip {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 28px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 0 14px 14px 0;
+  }
+  .index-tab {
+    flex: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: white;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .index-tab:hover { opacity: 1; }
+  .index-tab.adulto  { background: var(--verde); }
+  .index-tab.adol    { background: var(--teal); }
+  .index-tab.crianca { background: var(--laranja); }
+
+  /* ── CORES POR PÚBLICO ─────────────────────────────────── */
+  .c-adulto  { color: var(--verde); }
+  .c-adol    { color: var(--teal); }
+  .c-crianca { color: var(--laranja); }
+
+  /* responsivo */
+  @media (max-width: 600px) {
+    .page { padding: 28px 24px 50px; }
+    .capa h1 { font-size: 1.8rem; }
+    .pod-grid { grid-template-columns: 1fr; }
+    .sep-title { font-size: 2.2rem; }
+    .index-strip { width: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="brand">🇧🇷 Enlace Brasil</span>
+  <span class="page-counter" id="pageCounter">Página 1 de 22</span>
+</div>
+
+<div class="book-wrap">
+  <div class="book" id="book">
+
+    <!-- ÍNDICE LATERAL -->
+    <div class="index-strip">
+      <div class="index-tab adulto"  onclick="goToPage(1)"  title="Adultos">ADULTOS</div>
+      <div class="index-tab adol"    onclick="goToPage(8)"  title="Adolescentes">ADOLESC.</div>
+      <div class="index-tab crianca" onclick="goToPage(15)" title="Crianças">CRIANÇAS</div>
+    </div>
+
+    <!-- ══ PÁGINA 0: CAPA ══════════════════════════════════ -->
+    <div class="page active" id="p0">
+      <div class="capa">
+        <div class="capa-flag">🇧🇷</div>
+        <h1>Recursos de<br>Cultura Brasileira</h1>
+        <p class="sub">para estudantes de português</p>
+        <div class="cats">
+          <span class="cat-pill">🎙️ Podcasts</span>
+          <span class="cat-pill">📚 Livros</span>
+          <span class="cat-pill">🎵 Músicas</span>
+          <span class="cat-pill">📺 Séries</span>
+          <span class="cat-pill">🎬 Filmes</span>
+          <span class="cat-pill">📰 Revistas</span>
+          <span class="cat-pill">🌐 Sites</span>
+        </div>
+        <div class="publicos">
+          <div class="pub-card adulto"  onclick="goToPage(1)"><span class="emoji">👨‍💼</span>Adultos</div>
+          <div class="pub-card adol"    onclick="goToPage(8)"><span class="emoji">🎒</span>Adolescentes</div>
+          <div class="pub-card crianca" onclick="goToPage(15)"><span class="emoji">🧒</span>Crianças</div>
+        </div>
+        <p class="capa-hint">Clique nas setas ou nos públicos para navegar →</p>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 1: SEP ADULTOS ═══════════════════════════ -->
+    <div class="page" id="p1">
+      <div class="sep-page">
+        <div class="sep-emoji">👨‍💼</div>
+        <div class="sep-line" style="background:var(--verde)"></div>
+        <div class="sep-title c-adulto">ADULTOS</div>
+        <p class="sep-sub">Podcasts · Livros · Músicas · Séries · Filmes · Revistas · Sites</p>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 2: PODCASTS ADULTOS ═════════════════════ -->
+    <div class="page" id="p2">
+      <div class="sec-header c-adulto">
+        <span class="ico">🎙️</span>
+        <h2>PODCASTS</h2>
+      </div>
+      <div class="pod-grid">
+                <div class="pod-item"><span class="pod-num">01</span><a href="https://open.spotify.com/show/2AnGMCxN70vMQOcfpmoSUm" target="_blank" rel="noopener">História do Brasil — Podcast</a></div>
+        <div class="pod-item"><span class="pod-num">02</span><a href="https://open.spotify.com/search/A%20Mulher%20da%20Casa%20Abandonada%20Chico%20Felitti" target="_blank" rel="noopener">A Mulher da Casa Abandonada</a></div>
+        <div class="pod-item"><span class="pod-num">03</span><a href="https://open.spotify.com/show/6WRTzGhq3uFxMrxHrHh1lo" target="_blank" rel="noopener">Café da Manhã (Folha de S.Paulo)</a></div>
+        <div class="pod-item"><span class="pod-num">04</span><a href="https://open.spotify.com/search/R%C3%A1dio%20Agora%20podcast%20jornalismo" target="_blank" rel="noopener">Rádio Agora</a></div>
+        <div class="pod-item"><span class="pod-num">05</span><a href="https://open.spotify.com/show/4gkKyFdZzkv1eDnlTVrguk" target="_blank" rel="noopener">O Assunto (G1 / Globo)</a></div>
+        <div class="pod-item"><span class="pod-num">06</span><a href="https://open.spotify.com/show/6uscSyqp0q7Cb0uoEujgL8" target="_blank" rel="noopener">História em Meia Hora</a></div>
+        <div class="pod-item"><span class="pod-num">07</span><a href="https://open.spotify.com/show/66XCLKbi33MubYTZX2G2jW" target="_blank" rel="noopener">Não Inviabilize — Picolé de Limão</a></div>
+        <div class="pod-item"><span class="pod-num">08</span><a href="https://open.spotify.com/show/3a1WyamVPbkOTzGdcWFBv9" target="_blank" rel="noopener">Donos da Razão</a></div>
+        <div class="pod-item"><span class="pod-num">09</span><a href="https://open.spotify.com/show/6miZuZA049DQ2c6Ar9aYex" target="_blank" rel="noopener">Para Tudo — Lorelay Fox</a></div>
+        <div class="pod-item"><span class="pod-num">10</span><a href="https://open.spotify.com/search/Politicamente%20Incorretos%20podcast" target="_blank" rel="noopener">Politicamente Incorretos</a></div>
+        <div class="pod-item"><span class="pod-num">11</span><a href="https://open.spotify.com/search/Universo%20Feminista%20podcast%20brasileiro" target="_blank" rel="noopener">Universo Feminista</a></div>
+        <div class="pod-item"><span class="pod-num">12</span><a href="https://open.spotify.com/search/%C3%89%20N%C3%B3ia%20Minha%20podcast%20Camila%20Fremder" target="_blank" rel="noopener">É Noia Minha?</a></div>
+        <div class="pod-item"><span class="pod-num">13</span><a href="https://open.spotify.com/show/0GnKiYeK11476CfoQEYlEd" target="_blank" rel="noopener">Mano a Mano — Mano Brown</a></div>
+        <div class="pod-item"><span class="pod-num">14</span><a href="https://open.spotify.com/show/1GLSDdk9CDEwziGNIlnb8a" target="_blank" rel="noopener">Podpah</a></div>
+        <div class="pod-item"><span class="pod-num">15</span><a href="https://open.spotify.com/search/Boa%20Forma%20podcast%20sa%C3%BAde%20nutri%C3%A7%C3%A3o" target="_blank" rel="noopener">Boa Forma Podcast</a></div>
+        <div class="pod-item"><span class="pod-num">16</span><a href="https://open.spotify.com/show/2gCj9YG9tjMexhS4pIlRHo" target="_blank" rel="noopener">Primo Rico / PrimoCast</a></div>
+        <div class="pod-item"><span class="pod-num">17</span><a href="https://open.spotify.com/search/PodCast%20S%C3%B3cio%20empreendedorismo" target="_blank" rel="noopener">PodCast Sócio</a></div>
+        <div class="pod-item"><span class="pod-num">18</span><a href="https://open.spotify.com/show/7fMN1tfd9XGieL9y002lHQ" target="_blank" rel="noopener">Fala Gringo — A Brazilian Podcast</a></div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 3: LIVROS + MÚSICAS ADULTOS ══════════════ -->
+    <div class="page" id="p3">
+      <div class="sec-header c-adulto"><span class="ico">📚</span><h2>LIVROS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.amazon.com.br/s?k=o+pequeno+pr%C3%ADncipe" target="_blank" rel="noopener">O Pequeno Príncipe</a> — Antoine de Saint-Exupéry</li>
+        <li><a href="https://www.amazon.com.br/s?k=vidas+secas+graciliano+ramos" target="_blank" rel="noopener">Vidas Secas / Alexandre e Outros Heróis</a> — Graciliano Ramos</li>
+        <li><a href="https://www.amazon.com.br/s?k=capitaes+da+areia+jorge+amado" target="_blank" rel="noopener">Capitães da Areia</a> — Jorge Amado</li>
+        <li><a href="https://www.amazon.com.br/s?k=cidade+de+deus+paulo+lins" target="_blank" rel="noopener">Cidade de Deus</a> — Paulo Lins</li>
+        <li><a href="https://www.amazon.com.br/s?k=a+hora+da+estrela+clarice+lispector" target="_blank" rel="noopener">A Hora da Estrela</a> — Clarice Lispector</li>
+        <li><a href="https://www.amazon.com.br/s?k=memorias+postumas+bras+cubas" target="_blank" rel="noopener">Memórias Póstumas de Brás Cubas / Dom Casmurro</a> — Machado de Assis</li>
+        <li><a href="https://www.amazon.com.br/s?k=quarto+de+despejo+carolina" target="_blank" rel="noopener">Quarto de Despejo</a> — Carolina Maria de Jesus</li>
+        <li><a href="https://www.amazon.com.br/s?k=torto+arado+itamar+vieira" target="_blank" rel="noopener">Torto Arado</a> — Itamar Vieira Junior</li>
+        <li><a href="https://www.amazon.com.br/s?k=besouro+marco+haurelio+capoeira" target="_blank" rel="noopener">Besouro</a> — Marco Haurélio</li>
+      </ul>
+      <br>
+      <div class="sec-header c-adulto"><span class="ico">🎵</span><h2>MÚSICAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Aquarela+Toquinho+musica" target="_blank" rel="noopener">Aquarela — Toquinho</a> · <a href="https://www.youtube.com/results?search_query=Evidencias+Chitaozinho+Xororo" target="_blank" rel="noopener">Evidências — Chitãozinho e Xororó</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Terra+Caetano+Veloso+musica" target="_blank" rel="noopener">Terra — Caetano Veloso</a> · <a href="https://www.youtube.com/results?search_query=O+Leaozinho+Caetano+Veloso" target="_blank" rel="noopener">O Leãozinho — Caetano Veloso</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Calice+Chico+Buarque+Milton+Nascimento" target="_blank" rel="noopener">Cálice — Chico Buarque &amp; Milton Nascimento</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Garota+de+Ipanema+Tom+Jobim" target="_blank" rel="noopener">Garota de Ipanema — Tom Jobim &amp; Vinícius de Moraes</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Pais+e+Filhos+Legiao+Urbana" target="_blank" rel="noopener">Pais e Filhos — Legião Urbana</a> · <a href="https://www.youtube.com/results?search_query=Asa+Branca+Luiz+Gonzaga" target="_blank" rel="noopener">Asa Branca — Luiz Gonzaga</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Pais+Tropical+Jorge+Ben+Jor" target="_blank" rel="noopener">País Tropical — Jorge Ben Jor</a> · <a href="https://www.youtube.com/results?search_query=O+Que+e+o+Que+e+Gonzaguinha" target="_blank" rel="noopener">O Que É o Que É — Gonzaguinha</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Ai+Se+Eu+Te+Pego+Michel+Telo" target="_blank" rel="noopener">Ai Se Eu Te Pego — Michel Teló</a> · <a href="https://www.youtube.com/results?search_query=Fugidinha+Michel+Telo" target="_blank" rel="noopener">Fugidinha — Michel Teló</a></li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 4: SÉRIES ADULTOS ════════════════════════ -->
+    <div class="page" id="p4">
+      <div class="sec-header c-adulto"><span class="ico">📺</span><h2>SÉRIES, NOVELAS &amp; PROGRAMAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Avenida+Brasil+novela+2012" target="_blank" rel="noopener"><strong>Avenida Brasil</strong></a> (2012) — Globoplay | Maior sucesso da teledramaturgia brasileira</li>
+        <li><a href="https://www.youtube.com/results?search_query=O+Clone+novela+Globo" target="_blank" rel="noopener"><strong>O Clone</strong></a> (2001) — Globoplay | Tema cultural árabe-brasileiro</li>
+        <li><a href="https://www.youtube.com/results?search_query=Senhora+do+Destino+novela+Globo" target="_blank" rel="noopener"><strong>Senhora do Destino</strong></a> · <a href="https://www.youtube.com/results?search_query=O+Rei+do+Gado+novela+Globo" target="_blank" rel="noopener"><strong>O Rei do Gado</strong></a> — Globoplay</li>
+        <li><a href="https://www.youtube.com/results?search_query=Roque+Santeiro+novela+Globo" target="_blank" rel="noopener"><strong>Roque Santeiro</strong></a> (1985) — Sátira política de Dias Gomes</li>
+        <li><a href="https://www.youtube.com/results?search_query=Renascer+novela+Globo+2024" target="_blank" rel="noopener"><strong>Renascer</strong></a> (2024) · <a href="https://www.youtube.com/results?search_query=Pantanal+novela+Globo+2022" target="_blank" rel="noopener"><strong>Pantanal</strong></a> (2022) — Globoplay</li>
+        <li><a href="https://www.youtube.com/results?search_query=Tieta+novela+Globo" target="_blank" rel="noopener"><strong>Tieta</strong></a> · <a href="https://www.youtube.com/results?search_query=Gabriela+novela+Globo+Jorge+Amado" target="_blank" rel="noopener"><strong>Gabriela</strong></a> — baseadas em Jorge Amado</li>
+        <li><a href="https://www.netflix.com/search?q=3%25+brasil" target="_blank" rel="noopener"><strong>3%</strong></a> (Netflix) · <a href="https://www.netflix.com/search?q=bom+dia+veronica" target="_blank" rel="noopener"><strong>Bom Dia, Verônica</strong></a> (Netflix) · <a href="https://www.primevideo.com/search/ref=atv_nb_sr?phrase=dom+serie+brasil" target="_blank" rel="noopener"><strong>Dom</strong></a> (Prime Video)</li>
+        <li><a href="https://www.netflix.com/search?q=o+mecanismo" target="_blank" rel="noopener"><strong>O Mecanismo</strong></a> (Netflix) · <a href="https://www.netflix.com/search?q=cidade+invisivel" target="_blank" rel="noopener"><strong>Cidade Invisível</strong></a> (Netflix)</li>
+        <li><a href="https://www.netflix.com/search?q=democracia+em+vertigem" target="_blank" rel="noopener"><strong>Democracia em Vertigem</strong></a> (Netflix) — Indicado ao Oscar</li>
+        <li><a href="https://www.youtube.com/results?search_query=Chaves+El+Chavo+del+8+dublado+portugues" target="_blank" rel="noopener"><strong>Chaves (El Chavo del 8)</strong></a> — série mexicana dublada em português brasileiro, clássico absoluto no Brasil</li>
+        <li><a href="https://www.youtube.com/results?search_query=Fantastico+Rede+Globo+programa" target="_blank" rel="noopener"><strong>Fantástico</strong></a> · <a href="https://www.youtube.com/results?search_query=Profissao+Reporter+TV+Globo" target="_blank" rel="noopener"><strong>Profissão Repórter</strong></a> · <a href="https://www.youtube.com/results?search_query=Roda+Viva+TV+Cultura+entrevistas" target="_blank" rel="noopener"><strong>Roda Viva</strong></a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Chaves+El+Chavo+del+8+dublado+portugues" target="_blank" rel="noopener"><strong>Chaves (El Chavo del 8)</strong></a> — série mexicana dublada em português, clássico absoluto da TV brasileira</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 5: FILMES ADULTOS ════════════════════════ -->
+    <div class="page" id="p5">
+      <div class="sec-header c-adulto"><span class="ico">🎬</span><h2>FILMES BRASILEIROS</h2></div>
+      <ul class="lista">
+        <li><strong><a href="https://www.youtube.com/results?search_query=Central+do+Brasil+1998+filme+completo" target="_blank" rel="noopener">Central do Brasil</a></strong> (1998) — Walter Salles | Oscar: Melhor Filme Estrangeiro</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=O+Quatrilho+1995+filme+brasileiro" target="_blank" rel="noopener">O Quatrilho</a></strong> (1995) — Indicado ao Oscar</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Cidade+de+Deus+2002+filme+brasileiro" target="_blank" rel="noopener">Cidade de Deus</a></strong> (2002) — Fernando Meirelles | Oscar em 4 categorias</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Tropa+de+Elite+2007+filme" target="_blank" rel="noopener">Tropa de Elite</a></strong> (2007) — José Padilha | Urso de Ouro em Berlim</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Tropa+de+Elite+2+filme+brasileiro" target="_blank" rel="noopener">Tropa de Elite 2</a></strong> (2010) — Maior bilheteria do cinema brasileiro</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Bacurau+2019+filme" target="_blank" rel="noopener">Bacurau</a></strong> (2019) — Kleber Mendonça Filho | Prêmio do Júri em Cannes</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Caramelo+2022+filme" target="_blank" rel="noopener">Caramelo</a></strong> (2022) · <strong><a href="https://www.youtube.com/results?search_query=Casa+Grande+2014+filme" target="_blank" rel="noopener">Casa Grande</a></strong> (2014)</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Ainda+Estou+Aqui+2024+filme" target="_blank" rel="noopener">Ainda Estou Aqui</a></strong> (2024) — Walter Salles | Oscar 2025</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=O+Auto+da+Compadecida+filme" target="_blank" rel="noopener">O Auto da Compadecida</a></strong> (2000) — Clássico do humor nordestino</li>
+        <li><strong><a href="https://www.youtube.com/results?search_query=Dois+Filhos+de+Francisco+filme" target="_blank" rel="noopener">Dois Filhos de Francisco</a></strong> (2005) — Biopic sertanejo</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 6: REVISTAS + SITES ADULTOS ══════════════ -->
+    <div class="page" id="p6">
+      <div class="sec-header c-adulto"><span class="ico">📰</span><h2>REVISTAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://veja.abril.com.br" target="_blank" rel="noopener">Veja</a> — principal revista semanal de atualidades do Brasil</li>
+        <li><a href="https://epoca.globo.com" target="_blank" rel="noopener">Época</a> — jornalismo e política (Grupo Globo)</li>
+        <li><a href="https://piaui.folha.uol.com.br" target="_blank" rel="noopener">Piauí</a> — jornalismo literário e reportagens longas</li>
+        <li><a href="https://super.abril.com.br" target="_blank" rel="noopener">Superinteressante</a> — ciência, história e cultura pop</li>
+        <li><a href="https://galileu.globo.com" target="_blank" rel="noopener">Galileu</a> — ciência, tecnologia e comportamento</li>
+        <li><a href="https://www.nationalgeographicbrasil.com" target="_blank" rel="noopener">National Geographic Brasil</a> — natureza, ciência e cultura</li>
+        <li><a href="https://www.cartacapital.com.br" target="_blank" rel="noopener">Carta Capital</a> — jornalismo crítico e político</li>
+      </ul>
+      <br>
+      <div class="sec-header c-adulto"><span class="ico">🌐</span><h2>PÁGINAS DA INTERNET</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.bbc.com/portuguese" target="_blank" rel="noopener">www.bbc.com/portuguese</a> — notícias em português do Brasil</li>
+        <li><a href="https://www.uol.com.br" target="_blank" rel="noopener">www.uol.com.br</a> — portal de notícias e entretenimento</li>
+        <li><a href="https://www.globo.com" target="_blank" rel="noopener">www.globo.com</a> — TV, notícias, novelas e programas</li>
+        <li><a href="https://www.folha.uol.com.br" target="_blank" rel="noopener">www.folha.uol.com.br</a> — jornal Folha de S.Paulo</li>
+        <li><a href="https://www.brasildefato.com.br" target="_blank" rel="noopener">www.brasildefato.com.br</a> — jornalismo popular</li>
+        <li><a href="https://www.geledes.org.br" target="_blank" rel="noopener">www.geledes.org.br</a> — cultura afro-brasileira, direitos, sociedade</li>
+        <li><a href="https://www.pensador.com" target="_blank" rel="noopener">www.pensador.com</a> — frases e pensamentos em português</li>
+        <li><a href="https://www.cplp.org" target="_blank" rel="noopener">www.cplp.org</a> — Comunidade dos Países de Língua Portuguesa</li>
+        <li><a href="https://www.cnnbrasil.com.br" target="_blank" rel="noopener">www.cnnbrasil.com.br</a> — CNN Brasil: notícias, política, economia e cultura</li>
+        <li><a href="https://forbes.com.br" target="_blank" rel="noopener">forbes.com.br</a> — Forbes Brasil: negócios, empreendedorismo e finanças</li>
+        <li><a href="https://www.infomoney.com.br" target="_blank" rel="noopener">www.infomoney.com.br</a> — InfoMoney: o maior jornal de negócios e finanças do Brasil</li>
+        <li><a href="https://caras.com.br" target="_blank" rel="noopener">caras.com.br</a> — Caras: celebridades, cultura e estilo de vida brasileiro</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 7: SEP ADOLESCENTES ═════════════════════ -->
+    <div class="page" id="p7">
+      <div class="sep-page">
+        <div class="sep-emoji">🎒</div>
+        <div class="sep-line" style="background:var(--teal)"></div>
+        <div class="sep-title c-adol">ADOLESCENTES</div>
+        <p class="sep-sub">13 a 17 anos · Podcasts · Livros · Músicas · Séries · Filmes · Revistas · Sites</p>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 8: PODCASTS + LIVROS ADOLESCENTES ════════ -->
+    <div class="page" id="p8">
+      <div class="sec-header c-adol"><span class="ico">🎙️</span><h2>PODCASTS</h2></div>
+      <div class="pod-grid">
+        <div class="pod-item"><span class="pod-num">01</span><a href="https://open.spotify.com/show/39IqvZCSC52QAehb4b4aaR" target="_blank" rel="noopener">Mamilos</a></div>
+        <div class="pod-item"><span class="pod-num">02</span><a href="https://open.spotify.com/search/Nunca%20Vi%201%20Meteorito" target="_blank" rel="noopener">Nunca Vi 1 Meteorito</a></div>
+        <div class="pod-item"><span class="pod-num">03</span><a href="https://open.spotify.com/search/Papagaio%20Falante%20podcast" target="_blank" rel="noopener">Papagaio Falante</a></div>
+        <div class="pod-item"><span class="pod-num">04</span><a href="https://open.spotify.com/search/%C3%89%20Isso%20A%C3%AD%20podcast" target="_blank" rel="noopener">É Isso Aí!</a></div>
+        <div class="pod-item"><span class="pod-num">05</span><a href="https://open.spotify.com/show/7fMN1tfd9XGieL9y002lHQ" target="_blank" rel="noopener">Fala Gringo — A Brazilian Podcast</a></div>
+      </div>
+      <br>
+      <div class="sec-header c-adol"><span class="ico">📚</span><h2>LIVROS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.amazon.com.br/s?k=o+alquimista+paulo+coelho" target="_blank" rel="noopener">O Alquimista</a> — Paulo Coelho</li>
+        <li><a href="https://www.amazon.com.br/s?k=turma+da+monica+jovem" target="_blank" rel="noopener">Turma da Mônica Jovem (HQ)</a> — Mauricio de Sousa</li>
+        <li><a href="https://www.amazon.com.br/s?k=chiquititas+livro" target="_blank" rel="noopener">Chiquititas</a> — baseado na versão brasileira</li>
+        <li><a href="https://www.amazon.com.br/s?k=o+menino+do+dedo+verde" target="_blank" rel="noopener">O Menino do Dedo Verde</a> — Maurice Druon</li>
+        <li><a href="https://www.amazon.com.br/s?k=harry+potter+portugues+brasil" target="_blank" rel="noopener">Harry Potter</a> — J.K. Rowling (edição em português do Brasil)</li>
+        <li><a href="https://www.amazon.com.br/s?k=diario+de+um+banana+portugues" target="_blank" rel="noopener">Diário de um Banana</a> — Jeff Kinney (versão em português)</li>
+        <li><a href="https://www.amazon.com.br/s?k=extraordinario+rj+palacio+portugues" target="_blank" rel="noopener">Extraordinário</a> — R.J. Palacio (versão em português)</li>
+        <li><a href="https://www.amazon.com.br/s?k=a+ilha+perdida+maria+jose+dupre" target="_blank" rel="noopener">A Ilha Perdida</a> — Maria José Dupré</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 9: MÚSICAS + SÉRIES ADOLESCENTES ═════════ -->
+    <div class="page" id="p9">
+      <div class="sec-header c-adol"><span class="ico">🎵</span><h2>MÚSICAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Parabens+pra+Voce+musica+brasileira" target="_blank" rel="noopener">Parabéns pra Você — versão tradicional</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Nao+Chora+Menina+Tim+Maia" target="_blank" rel="noopener">Não Chora, Menina — Tim Maia</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Balada+Boa+Gusttavo+Lima" target="_blank" rel="noopener">Balada Boa — Gusttavo Lima</a> · <a href="https://www.youtube.com/results?search_query=Nossa+Nossa+Avioes+do+Forro" target="_blank" rel="noopener">Nossa, Nossa — Aviões do Forró</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Beija+Eu+Mariana+Rios" target="_blank" rel="noopener">Beija Eu — Mariana Rios</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=abertura+Chiquititas+versao+brasileira" target="_blank" rel="noopener">Tema de abertura de Chiquititas</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Desejo+de+Amar+Malta" target="_blank" rel="noopener">Desejo de Amar — Malta</a> · <a href="https://www.youtube.com/results?search_query=Coracao+de+Estudante+Milton+Nascimento" target="_blank" rel="noopener">Coração de Estudante — Milton Nascimento</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Vem+Morena+Ivete+Sangalo" target="_blank" rel="noopener">Vem, Morena — Ivete Sangalo</a></li>
+      </ul>
+      <br>
+      <div class="sec-header c-adol"><span class="ico">📺</span><h2>SÉRIES &amp; PROGRAMAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Chaves+El+Chavo+del+8+dublado+portugues" target="_blank" rel="noopener">Chaves (El Chavo del 8)</a> — clássico mexicano dublado em português brasileiro</li>
+        <li><a href="https://www.youtube.com/results?search_query=Turma+da+Monica+animacao+episodios" target="_blank" rel="noopener">Turma da Mônica Jovem</a> — HQ e animação (YouTube)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Chiquititas+novela+brasileira+SBT" target="_blank" rel="noopener">Chiquititas</a> — versão brasileira (Globoplay) · <a href="https://www.youtube.com/results?search_query=Chiquititas+novela+brasileira+SBT+episódios" target="_blank" rel="noopener">ou YouTube</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Malhacao+Viva+a+Diferenca+Globo" target="_blank" rel="noopener">Malhação: Viva a Diferença</a> — diversidade e juventude</li>
+        <li><a href="https://www.netflix.com/search?q=3+porcento+brasil" target="_blank" rel="noopener">3%</a> — série brasileira de ficção científica (Netflix)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Chaves+serie+completo+dublado+portugues" target="_blank" rel="noopener">Chaves (El Chavo del 8)</a> — clássico mexicano dublado em português, sucesso absoluto no Brasil</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 10: FILMES + REVISTAS + SITES ADOL ════════ -->
+    <div class="page" id="p10">
+      <div class="sec-header c-adol"><span class="ico">🎬</span><h2>FILMES BRASILEIROS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=De+Pernas+pro+Ar+2010+filme" target="_blank" rel="noopener">De Pernas pro Ar</a> (2010) · <a href="https://www.youtube.com/results?search_query=Até+que+a+Sorte+nos+Separe+2012+filme" target="_blank" rel="noopener">Até que a Sorte nos Separe</a> (2012)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Chiquititas+O+Filme+2013+novela+brasileira+SBT" target="_blank" rel="noopener">Chiquititas — O Filme</a> · <a href="https://www.youtube.com/results?search_query=Besouro+2009+capoeira+filme" target="_blank" rel="noopener">Besouro</a> (2009) — capoeira e cultura afro-brasileira</li>
+        <li><a href="https://www.youtube.com/results?search_query=Mutum+2007+filme+brasileiro" target="_blank" rel="noopener">Mutum</a> (2007) — Adaptação de Guimarães Rosa</li>
+        <li><a href="https://www.youtube.com/results?search_query=O+Palhaço+2011+Selton+Mello" target="_blank" rel="noopener">O Palhaço</a> (2011) — Selton Mello</li>
+        <li><a href="https://www.youtube.com/results?search_query=Minha+Mãe+é+uma+Peça+2013+filme" target="_blank" rel="noopener">Minha Mãe é uma Peça</a> (2013) · <a href="https://www.youtube.com/results?search_query=Se+Eu+Fosse+Você+2006+filme" target="_blank" rel="noopener">Se Eu Fosse Você</a> (2006)</li>
+      </ul>
+      <br>
+      <div class="sec-header c-adol"><span class="ico">📰</span><h2>REVISTAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://super.abril.com.br" target="_blank" rel="noopener">Superinteressante</a> — acessível para jovens curiosos a partir de 14 anos</li>
+        <li><a href="https://galileu.globo.com" target="_blank" rel="noopener">Galileu</a> — tecnologia, comportamento e ciência para jovens</li>
+        <li><a href="https://cienciahoje.org.br" target="_blank" rel="noopener">Ciência Hoje</a> — versão adulta da CHC, ideal para 16+</li>
+      </ul>
+      <br>
+      <div class="sec-header c-adol"><span class="ico">🌐</span><h2>PÁGINAS DA INTERNET</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.chc.org.br" target="_blank" rel="noopener">www.chc.org.br</a> — Ciência Hoje das Crianças (online)</li>
+        <li><a href="https://www.historiadomundo.com.br" target="_blank" rel="noopener">www.historiadomundo.com.br</a> — história do Brasil e do mundo</li>
+        <li><a href="https://www.todamateria.com.br" target="_blank" rel="noopener">www.todamateria.com.br</a> — conteúdos educativos completos</li>
+        <li><a href="https://www.portalsaofrancisco.com.br" target="_blank" rel="noopener">www.portalsaofrancisco.com.br</a> — cultura e conhecimento geral</li>
+        <li><a href="https://pt.khanacademy.org" target="_blank" rel="noopener">pt.khanacademy.org</a> — Khan Academy em português: exercícios, vídeos e gramática</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 11: SEP CRIANÇAS ═════════════════════════ -->
+    <div class="page" id="p11">
+      <div class="sep-page">
+        <div class="sep-emoji">🧒</div>
+        <div class="sep-line" style="background:var(--laranja)"></div>
+        <div class="sep-title c-crianca">CRIANÇAS</div>
+        <p class="sep-sub">4 a 12 anos · Podcasts · Livros · Músicas · Séries · Filmes · Revistas · Sites</p>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 12: PODCASTS + LIVROS CRIANÇAS ═══════════ -->
+    <div class="page" id="p12">
+      <div class="sec-header c-crianca"><span class="ico">🎙️</span><h2>PODCASTS</h2></div>
+      <div class="pod-grid">
+        <div class="pod-item"><span class="pod-num">01</span><a href="https://open.spotify.com/search/Conta%20Outra%20Vez%20podcast%20historias" target="_blank" rel="noopener">Conta Outra Vez</a></div>
+        <div class="pod-item"><span class="pod-num">02</span><a href="https://open.spotify.com/search/hist%C3%B3rias%20para%20dormir%20crian%C3%A7as" target="_blank" rel="noopener">Histórias para Dormir</a></div>
+        <div class="pod-item"><span class="pod-num">03</span><a href="https://open.spotify.com/search/bichos%20do%20brasil%20podcast" target="_blank" rel="noopener">Bichos do Brasil</a></div>
+        <div class="pod-item"><span class="pod-num">04</span><a href="https://open.spotify.com/search/Scikids+criancas+cientistas+respondem" target="_blank" rel="noopener">Scikids — Crianças perguntam, cientistas respondem!</a></div>
+        <div class="pod-item"><span class="pod-num">05</span><a href="https://open.spotify.com/search/Deixa+que+eu+te+Conto+UNICEF" target="_blank" rel="noopener">Deixa que eu te Conto — UNICEF</a></div>
+      </div>
+      <br>
+      <div class="sec-header c-crianca"><span class="ico">📚</span><h2>LIVROS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.amazon.com.br/s?k=sitio+picapau+amarelo+monteiro+lobato" target="_blank" rel="noopener">O Sítio do Picapau Amarelo</a> — Monteiro Lobato (série completa)</li>
+        <li><a href="https://www.amazon.com.br/s?k=reinacoes+de+narizinho" target="_blank" rel="noopener">Reinações de Narizinho</a> · <a href="https://www.amazon.com.br/s?k=cacadas+de+pedrinho" target="_blank" rel="noopener">Caçadas de Pedrinho</a> · <a href="https://www.amazon.com.br/s?k=emilia+no+pais+da+gramatica" target="_blank" rel="noopener">Emília no País da Gramática</a></li>
+        <li><a href="https://www.amazon.com.br/s?k=historias+de+alexandre+graciliano+ramos" target="_blank" rel="noopener">Histórias de Alexandre</a> — Graciliano Ramos</li>
+        <li><a href="https://www.amazon.com.br/s?k=o+pequeno+principe" target="_blank" rel="noopener">O Pequeno Príncipe</a> — Antoine de Saint-Exupéry</li>
+        <li><a href="https://www.amazon.com.br/s?k=lendas+folclore+brasileiro+cascudo" target="_blank" rel="noopener">Lendas do Folclore Brasileiro</a> — Câmara Cascudo (adaptado)</li>
+        <li><a href="https://www.amazon.com.br/s?k=a+bolsa+amarela+lygia+bojunga" target="_blank" rel="noopener">A Bolsa Amarela</a> — Lygia Bojunga</li>
+        <li><a href="https://www.amazon.com.br/s?k=meu+pe+de+laranja+lima" target="_blank" rel="noopener">O Meu Pé de Laranja Lima</a> — José Mauro de Vasconcelos</li>
+        <li><a href="https://www.amazon.com.br/s?k=turma+da+monica+quadrinhos" target="_blank" rel="noopener">Turma da Mônica (HQ)</a> — Mauricio de Sousa</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 13: MÚSICAS + SÉRIES CRIANÇAS ════════════ -->
+    <div class="page" id="p13">
+      <div class="sec-header c-crianca"><span class="ico">🎵</span><h2>MÚSICAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Aquarela+Toquinho" target="_blank" rel="noopener">Aquarela — Toquinho</a> (ideal para iniciantes)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Parabens+pra+Voce+musica+brasileira" target="_blank" rel="noopener">Parabéns pra Você</a> — com contexto cultural</li>
+        <li><a href="https://www.youtube.com/results?search_query=Atirei+o+Pau+no+Gato+musica+infantil" target="_blank" rel="noopener">Atirei o Pau no Gato</a> · <a href="https://www.youtube.com/results?search_query=Escravos+de+Jo+cantiga" target="_blank" rel="noopener">Escravos de Jó</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Borboleta+Xuxa" target="_blank" rel="noopener">Borboleta — Xuxa</a> · <a href="https://www.youtube.com/results?search_query=Ilarie+Xuxa" target="_blank" rel="noopener">Ilariê — Xuxa</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=O+Cravo+Brigou+com+a+Rosa+cantiga" target="_blank" rel="noopener">O Cravo Brigou com a Rosa</a> · <a href="https://www.youtube.com/results?search_query=Alecrim+Dourado+cantiga" target="_blank" rel="noopener">Alecrim Dourado</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=A+Barata+Diz+que+Tem+musica" target="_blank" rel="noopener">A Barata Diz que Tem</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=tema+Sitio+do+Picapau+Amarelo" target="_blank" rel="noopener">Tema do Sítio do Picapau Amarelo</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Galinha+Pintadinha+musicas" target="_blank" rel="noopener">Músicas de Galinha Pintadinha</a></li>
+      </ul>
+      <br>
+      <div class="sec-header c-crianca"><span class="ico">📺</span><h2>SÉRIES &amp; PROGRAMAS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Sitio+do+Picapau+Amarelo+episodios" target="_blank" rel="noopener">Sítio do Picapau Amarelo</a> — versão TV Globo</li>
+        <li><a href="https://www.youtube.com/results?search_query=turma+da+monica+animacao" target="_blank" rel="noopener">Turma da Mônica</a> — animação clássica (YouTube)</li>
+        <li><a href="https://www.youtube.com/results?search_query=cocorico+programa+infantil" target="_blank" rel="noopener">Cocoricó</a> — programa infantil Globo</li>
+        <li><a href="https://www.youtube.com/results?search_query=show+da+luna+ciencia+criancas" target="_blank" rel="noopener">Show da Luna!</a> — ciência para crianças (YouTube)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Galinha+Pintadinha+musicas+animacao" target="_blank" rel="noopener">Galinha Pintadinha</a> — canal oficial YouTube</li>
+        <li><a href="https://www.youtube.com/results?search_query=xou+da+xuxa+programa" target="_blank" rel="noopener">Xou da Xuxa</a> — contexto cultural dos anos 80-90</li>
+        <li><a href="https://www.youtube.com/results?search_query=Chaves+El+Chavo+del+8+dublado+portugues" target="_blank" rel="noopener">Chaves (El Chavo del 8)</a> — série mexicana dublada em português, adorada por crianças no Brasil</li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 14: FILMES + REVISTAS + SITES CRIANÇAS ═══ -->
+    <div class="page" id="p14">
+      <div class="sec-header c-crianca"><span class="ico">🎬</span><h2>FILMES BRASILEIROS</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.youtube.com/results?search_query=Carrossel+O+Filme+2015" target="_blank" rel="noopener">Carrossel — O Filme</a> (2015)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Turma+da+Monica+Lacos+filme+2019" target="_blank" rel="noopener">Turma da Mônica — Laços</a> (2019) · <a href="https://www.youtube.com/results?search_query=Turma+da+Monica+Licoes+2021" target="_blank" rel="noopener">Lições</a> (2021)</li>
+        <li><a href="https://www.youtube.com/results?search_query=O+Menino+e+o+Mundo+animacao+brasileira" target="_blank" rel="noopener">O Menino e o Mundo</a> (2013) — Alê Abreu | Indicado ao Oscar</li>
+        <li><a href="https://www.youtube.com/results?search_query=Sitio+do+Picapau+Amarelo+filme+2001" target="_blank" rel="noopener">Sítio do Picapau Amarelo — O Filme</a> (2001)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Xuxa+e+os+Duendes+filme" target="_blank" rel="noopener">Xuxa e os Duendes</a> (2001)</li>
+        <li><a href="https://www.youtube.com/results?search_query=Rio+2011+animacao" target="_blank" rel="noopener">Rio</a> (2011) · <a href="https://www.youtube.com/results?search_query=Rio+2+2014+animacao" target="_blank" rel="noopener">Rio 2</a> (2014) — animações no Rio de Janeiro</li>
+      </ul>
+      <br>
+      <div class="sec-header c-crianca"><span class="ico">📰</span><h2>REVISTAS</h2></div>
+      <ul class="lista">
+        <li><strong><a href="https://www.chc.org.br" target="_blank" rel="noopener">Revista CHC</a></strong> — Ciência Hoje das Crianças | Para 7–14 anos</li>
+        <li><a href="https://recreio.com.br" target="_blank" rel="noopener">Recreio</a> — histórias, jogos e curiosidades</li>
+        <li><a href="https://www.panini.com.br/turma-da-monica" target="_blank" rel="noopener">Turma da Mônica</a> — revista em quadrinhos clássica</li>
+        <li><a href="https://mundoestranho.abril.com.br" target="_blank" rel="noopener">Mundo Estranho</a> — ciência e curiosidades</li>
+      </ul>
+      <br>
+      <div class="sec-header c-crianca"><span class="ico">🌐</span><h2>PÁGINAS DA INTERNET</h2></div>
+      <ul class="lista">
+        <li><a href="https://www.chc.org.br" target="_blank" rel="noopener">www.chc.org.br</a> — site + Revista CHC impressa e digital</li>
+        <li><a href="https://www.brasilescola.uol.com.br" target="_blank" rel="noopener">www.brasilescola.uol.com.br</a> — conteúdo educativo para crianças</li>
+        <li><a href="https://www.youtube.com/results?search_query=Sitio+do+Picapau+Amarelo+episodios" target="_blank" rel="noopener">YouTube: Sítio do Picapau Amarelo</a> — episódios do Sítio do Picapau Amarelo</li>
+        <li><a href="https://www.youtube.com/results?search_query=Galinha+Pintadinha+musicas+animacao" target="_blank" rel="noopener">youtube.com/@GalinhaPintadinha</a> · <a href="https://www.youtube.com/results?search_query=Sitio+do+Picapau+Amarelo+episodios" target="_blank" rel="noopener">YouTube: Sítio do Picapau Amarelo</a></li>
+      </ul>
+    </div>
+
+    <!-- ══ PÁGINA 15: CONTRACAPA ════════════════════════════ -->
+    <div class="page" id="p15">
+      <div class="capa" style="gap:16px">
+        <div style="font-size:2.5rem">🇧🇷</div>
+        <h1 style="font-size:1.8rem">Bons estudos!</h1>
+        <p class="sub">Que a cultura brasileira te inspire cada dia mais</p>
+        <div style="margin-top:12px;padding:20px 28px;background:var(--cinza);border-radius:16px;text-align:left;max-width:420px">
+          <p style="font-weight:800;color:var(--verde);font-size:0.95rem;margin-bottom:8px">Enlace Brasil</p>
+          <p style="font-size:0.85rem;color:#666;line-height:1.6">Instituto de Língua e Cultura Brasileira<br>
+          Aulas de português para falantes de espanhol<br>
+          📍 Cidade do México</p>
+        </div>
+        <p class="capa-hint" style="margin-top:8px; cursor:pointer;" onclick="goToPage(0)">← Clique para voltar ao início</p>
+      </div>
+    </div>
+
+  </div><!-- /book -->
+</div><!-- /book-wrap -->
+
+<!-- NAVEGAÇÃO -->
+<div class="nav">
+  <button class="nav-btn" id="btnPrev" onclick="changePage(-1)" title="Anterior">←</button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" id="btnNext" onclick="changePage(1)"  title="Próxima">→</button>
+</div>
+
+<script>
+  const TOTAL = 16;
+  let current = 0;
+  let goingBack = false;
+
+  // Grupos de páginas por cor
+  const pageColor = {
+    0:'capa', 1:'adulto', 2:'adulto', 3:'adulto', 4:'adulto', 5:'adulto', 6:'adulto',
+    7:'adol', 8:'adol', 9:'adol', 10:'adol',
+    11:'crianca', 12:'crianca', 13:'crianca', 14:'crianca', 15:'capa'
+  };
+
+  function buildDots() {
+    const wrap = document.getElementById('dots');
+    wrap.innerHTML = '';
+    for (let i = 0; i < TOTAL; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot ' + (pageColor[i] || 'capa');
+      if (i === current) d.classList.add('active');
+      d.onclick = () => goToPage(i);
+      d.title = 'Página ' + (i+1);
+      wrap.appendChild(d);
+    }
+  }
+
+  function goToPage(n, back = false) {
+    if (n < 0 || n >= TOTAL || n === current) return;
+    goingBack = n < current;
+    document.getElementById('p' + current).classList.remove('active');
+    current = n;
+    const pg = document.getElementById('p' + current);
+    pg.classList.remove('going-back');
+    if (goingBack) pg.classList.add('going-back');
+    pg.classList.add('active');
+    document.getElementById('btnPrev').disabled = current === 0;
+    document.getElementById('btnNext').disabled = current === TOTAL - 1;
+    document.getElementById('pageCounter').textContent = 'Página ' + (current+1) + ' de ' + TOTAL;
+    buildDots();
+    // scroll suave ao topo do livro
+    document.querySelector('.book-wrap').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function changePage(dir) { goToPage(current + dir); }
+
+  // Teclado
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  // Swipe touch
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) changePage(dx < 0 ? 1 : -1);
+  });
+
+  // Init
+  buildDots();
+  document.getElementById('btnPrev').disabled = true;
+  document.getElementById('pageCounter').textContent = 'Página 1 de ' + TOTAL;
+</script>
+</body>
+</html>
