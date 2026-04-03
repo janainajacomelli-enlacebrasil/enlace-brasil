@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Enlace Brasil — Aula 2 · Sons da Letra X</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--vd:#009C3B;--am:#F5C518;--az:#002776;--rs:#e8336d;--bg:#eaf5f0;--text:#1a1a1a;--muted:#888;--radius:14px}
+html,body{font-family:Nunito,sans-serif;background:var(--bg);color:var(--text);-webkit-overflow-scrolling:touch}
+.topbar{background:var(--az);color:#fff;padding:14px 16px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;padding-top:max(14px,env(safe-area-inset-top,14px))}
+.tb-logo{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.4);object-fit:cover;flex-shrink:0}
+.tb-text{flex:1}.tb-title{font-family:"Baloo 2",sans-serif;font-size:15px;font-weight:800;line-height:1.1}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:1px}
+.tb-pts{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:4px 10px;font-size:12px;font-weight:700}
+.idx-bar{background:#fff;border-bottom:2px solid #eee;display:flex;overflow-x:auto;position:sticky;top:62px;z-index:99}
+.idx-bar::-webkit-scrollbar{display:none}
+.idx-btn{flex-shrink:0;padding:10px 14px;font-size:11px;font-weight:700;color:var(--muted);border:none;background:none;font-family:Nunito,sans-serif;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.idx-btn.active{color:var(--az);border-bottom-color:var(--az)}
+.section{padding:16px 14px 8px}
+.section-title{font-family:"Baloo 2",sans-serif;font-size:20px;font-weight:800;color:var(--az);margin-bottom:14px}
+.hero{background:linear-gradient(135deg,var(--az),#1a4fa0);border-radius:16px;padding:20px;color:#fff;margin:14px 14px 0}
+.hero-tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:10px;font-weight:700;padding:3px 10px;border-radius:14px;display:inline-block;margin-bottom:10px;letter-spacing:.5px}
+.hero-title{font-family:"Baloo 2",sans-serif;font-size:24px;font-weight:800;line-height:1.1;margin-bottom:6px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px}
+.card.vd{border-left:4px solid var(--vd)}.card.az{border-left:4px solid var(--az)}
+.card.am{border-left:4px solid var(--am)}.card.rs{border-left:4px solid var(--rs)}
+.card-title{font-size:11px;font-weight:700;color:var(--az);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.x-card{border-radius:12px;padding:14px;margin-bottom:10px}
+.x-card.sh{background:linear-gradient(135deg,var(--az),#1a4fa0);color:#fff}
+.x-card.s{background:linear-gradient(135deg,#007a2e,var(--vd));color:#fff}
+.x-card.ks{background:linear-gradient(135deg,#856404,#a07808);color:#fff}
+.x-card.z{background:linear-gradient(135deg,#72243E,var(--rs));color:#fff}
+.xc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.xc-sym{font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800}
+.xc-badge{background:rgba(255,255,255,.2);font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px}
+.xc-rule{font-size:11px;opacity:.8;margin-bottom:8px;line-height:1.4}
+.xc-play{background:rgba(255,255,255,.25);border:none;border-radius:50%;width:36px;height:36px;color:#fff;font-size:14px;cursor:pointer;flex-shrink:0}
+.xc-exs{display:flex;flex-wrap:wrap;gap:6px}
+.xc-ex{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:700;cursor:pointer}
+.xc-ex:active{background:rgba(255,255,255,.35)}
+.tip{background:#E1F5EE;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.tip.am{background:#FFF3CD}.tip.rs{background:#FBEAF0}
+.tip-lbl{font-size:10px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
+.tip.am .tip-lbl{color:#856404}.tip.rs .tip-lbl{color:#72243E}
+.tip-txt{font-size:12px;color:#333;line-height:1.5}
+.tip-txt em{color:var(--az);font-style:normal;font-weight:700}
+.trava-card{background:linear-gradient(135deg,var(--az),#1a4fa0);border-radius:14px;padding:16px;color:#fff;margin-bottom:10px}
+.trava-text{font-family:"Baloo 2",sans-serif;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:12px}
+.trava-text em{color:var(--am);font-style:normal}
+.play-btn{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:12px;padding:10px;color:#fff;font-size:13px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.play-btn.playing{background:var(--am);color:#333;border-color:var(--am)}
+.score-banner{background:linear-gradient(135deg,var(--vd),#007a2e);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;color:#fff;margin-bottom:10px}
+.sb-label{font-size:11px;opacity:.8;font-weight:600}
+.sb-score{font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800;line-height:1}
+.sb-stars{font-size:13px;margin-top:1px}
+.blank-card{background:#fff;border-radius:14px;padding:14px;border-left:4px solid var(--vd);margin-bottom:10px}
+.blank-q{font-size:13px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:10px}
+.blank-q .gap{display:inline-block;min-width:60px;border-bottom:2px dashed var(--vd);color:var(--vd);text-align:center;padding:0 4px}
+.blank-q .gap.correct{color:#0F6E56;border-bottom:2px solid #0F6E56;font-weight:700}
+.options-row{display:flex;flex-wrap:wrap;gap:6px}
+.opt{background:#f6fbf8;border:2px solid #ddd;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;color:#444;cursor:pointer;transition:all .15s}
+.opt:active{transform:scale(.95)}
+.opt.selected{background:#E1F5EE;border-color:var(--vd);color:#0F6E56}
+.opt.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D;animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.btn{width:100%;padding:13px;border-radius:12px;border:none;font-size:14px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.btn-verde{background:var(--vd);color:#fff}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,39,118,.9);color:#fff;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;z-index:200}
+.toast.show{opacity:1}
+@media(min-width:768px){
+  .section,.hero{max-width:860px;margin-left:auto;margin-right:auto}
+  .hero{padding:28px 32px;margin-top:16px}
+  .section{padding:20px 24px 12px}
+  .section-title{font-size:24px}
+  .tip-txt{font-size:14px}
+  .blank-q{font-size:15px}
+  .opt{font-size:14px;padding:10px 18px}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <img class="tb-logo" src="data:image/jpeg;base64,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" alt="EB">
+  <div class="tb-text">
+    <div class="tb-title">Enlace Brasil</div>
+    <div class="tb-sub">Aula 2 — Sons da Letra X</div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="scrollTo_('s-intro',this)">🏠 Início</button>
+  <button class="idx-btn" onclick="scrollTo_('s-sons',this)">🔤 4 Sons</button>
+  <button class="idx-btn" onclick="scrollTo_('s-especiais',this)">⚡ Especiais</button>
+  <button class="idx-btn" onclick="scrollTo_('s-trava',this)">👅 Trava-língua</button>
+  <button class="idx-btn" onclick="scrollTo_('s-ativ',this)">✏️ Atividades</button>
+</div>
+<div class="hero">
+  <div class="hero-tag">AULA 2 · NÍVEL A1</div>
+  <div class="hero-title">Os Sons da Letra <span>X</span></div>
+  <div class="hero-desc">A letra X tem 4 sons diferentes em português! Toque nas palavras para ouvir.</div>
+  <div class="pill-row">
+    <span class="pill">X = SH</span><span class="pill">X = S</span>
+    <span class="pill">X = KS</span><span class="pill">X = Z</span>
+  </div>
+</div>
+<div class="section" id="s-intro">
+  <div class="tip am"><div class="tip-lbl">⚠️ Atenção</div>
+  <div class="tip-txt">O X brasileiro é muito diferente do espanhol! Em espanhol X quase sempre soa como <em>KS</em>. Em português tem <em>4 sons</em> diferentes.</div></div>
+  <div class="card az"><div class="card-title">Como aprender</div>
+  <div class="tip-txt" style="color:#333">1. Aprenda cada som · 2. Toque para ouvir · 3. Repita em voz alta · 4. Faça as atividades</div></div>
+</div>
+<div class="section" id="s-sons">
+  <div class="section-title">🔤 Os 4 Sons do X</div>
+  <div class="x-card sh">
+    <div class="xc-top">
+      <div><div class="xc-sym">X = /SH/</div><div class="xc-badge">Mais comum!</div></div>
+      <button class="xc-play" onclick="speakList(['xícara','xale','roxo','caixa','peixe'])">▶</button>
+    </div>
+    <div class="xc-rule">Início da palavra ou após ditongo (ai, ei, ou...)</div>
+    <div class="xc-exs">
+      <span class="xc-ex" onclick="spk('xícara')">xícara ☕</span>
+      <span class="xc-ex" onclick="spk('xale')">xale 🧣</span>
+      <span class="xc-ex" onclick="spk('roxo')">roxo 🟣</span>
+      <span class="xc-ex" onclick="spk('caixa')">caixa 📦</span>
+      <span class="xc-ex" onclick="spk('peixe')">peixe 🐟</span>
+      <span class="xc-ex" onclick="spk('embaixo')">embaixo ⬇️</span>
+    </div>
+  </div>
+  <div class="x-card s">
+    <div class="xc-top">
+      <div><div class="xc-sym">X = /S/</div><div class="xc-badge">Muito frequente</div></div>
+      <button class="xc-play" onclick="speakList(['máximo','próximo','trouxe','texto'])">▶</button>
+    </div>
+    <div class="xc-rule">Prefixo "ex-" antes de consoante, e algumas outras</div>
+    <div class="xc-exs">
+      <span class="xc-ex" onclick="spk('máximo')">máximo</span>
+      <span class="xc-ex" onclick="spk('próximo')">próximo</span>
+      <span class="xc-ex" onclick="spk('trouxe')">trouxe</span>
+      <span class="xc-ex" onclick="spk('texto')">texto</span>
+      <span class="xc-ex" onclick="spk('extensão')">extensão</span>
+    </div>
+  </div>
+  <div class="x-card ks">
+    <div class="xc-top">
+      <div><div class="xc-sym">X = /KS/</div><div class="xc-badge">Como espanhol</div></div>
+      <button class="xc-play" onclick="speakList(['táxi','fixo','tórax','reflexo'])">▶</button>
+    </div>
+    <div class="xc-rule">Palavras de origem grega ou latina</div>
+    <div class="xc-exs">
+      <span class="xc-ex" onclick="spk('táxi')">táxi 🚕</span>
+      <span class="xc-ex" onclick="spk('fixo')">fixo</span>
+      <span class="xc-ex" onclick="spk('tórax')">tórax</span>
+      <span class="xc-ex" onclick="spk('reflexo')">reflexo</span>
+    </div>
+  </div>
+  <div class="x-card z">
+    <div class="xc-top">
+      <div><div class="xc-sym">X = /Z/</div><div class="xc-badge">Cuidado!</div></div>
+      <button class="xc-play" onclick="speakList(['exame','exemplo','exato','exagero'])">▶</button>
+    </div>
+    <div class="xc-rule">Prefixo "ex-" antes de vogal: exa-, exe-, exi-...</div>
+    <div class="xc-exs">
+      <span class="xc-ex" onclick="spk('exame')">exame 📋</span>
+      <span class="xc-ex" onclick="spk('exemplo')">exemplo</span>
+      <span class="xc-ex" onclick="spk('exato')">exato</span>
+      <span class="xc-ex" onclick="spk('exagero')">exagero</span>
+    </div>
+  </div>
+</div>
+<div class="section" id="s-especiais">
+  <div class="section-title">⚡ Casos Especiais</div>
+  <div class="card vd"><div class="card-title">Depois de ditongo → sempre /SH/</div>
+    <div class="xc-exs" style="gap:8px">
+      <span class="xc-ex" style="background:#E1F5EE;color:#0F6E56;border:1px solid #b2e0c8" onclick="spk('caixa')">caixa</span>
+      <span class="xc-ex" style="background:#E1F5EE;color:#0F6E56;border:1px solid #b2e0c8" onclick="spk('peixe')">peixe</span>
+      <span class="xc-ex" style="background:#E1F5EE;color:#0F6E56;border:1px solid #b2e0c8" onclick="spk('frouxo')">frouxo</span>
+      <span class="xc-ex" style="background:#E1F5EE;color:#0F6E56;border:1px solid #b2e0c8" onclick="spk('faixa')">faixa</span>
+    </div>
+  </div>
+  <div class="card am"><div class="card-title">CH = /SH/ — mesmo som!</div>
+    <div class="tip-txt" style="color:#333;margin-bottom:8px">Em português, <em style="color:var(--az)">ch</em> soa igual a X=/SH/</div>
+    <div class="xc-exs" style="gap:8px">
+      <span class="xc-ex" style="background:#FFF3CD;color:#856404;border:1px solid #e8d060" onclick="spk('chave')">chave 🔑</span>
+      <span class="xc-ex" style="background:#FFF3CD;color:#856404;border:1px solid #e8d060" onclick="spk('chocolate')">chocolate 🍫</span>
+      <span class="xc-ex" style="background:#FFF3CD;color:#856404;border:1px solid #e8d060" onclick="spk('chuva')">chuva 🌧️</span>
+    </div>
+  </div>
+  <div class="tip rs"><div class="tip-lbl">💡 Dica rápida</div>
+    <div class="tip-txt">X no início → quase sempre <em>/SH/</em> · "ex-" + vogal → <em>/Z/</em> · Para o resto, aprenda palavra por palavra!</div>
+  </div>
+</div>
+<div class="section" id="s-trava">
+  <div class="section-title">👅 Trava-língua</div>
+  <div class="trava-card">
+    <div class="trava-text">O <em>X</em>ico <em>x</em>ingou o <em>ch</em>ico,<br>o <em>ch</em>ico <em>ch</em>orou.<br>A <em>x</em>ícara de <em>ch</em>á <em>ch</em>egou,<br>o <em>X</em>ico se animou.</div>
+    <button class="play-btn" id="trava-btn" onclick="playTrava()">▶ Ouvir trava-língua</button>
+  </div>
+  <div class="tip"><div class="tip-lbl">Como praticar</div>
+    <div class="tip-txt">1. Ouça · 2. Repita devagar · 3. Acelere · Todas as letras destacadas são <em>/SH/</em></div>
+  </div>
+</div>
+<div class="section" id="s-ativ">
+  <div class="section-title">✏️ Atividades</div>
+  <div class="score-banner">
+    <div><div class="sb-label">Pontuação</div><div class="sb-stars" id="stars">☆☆☆☆☆☆</div></div>
+    <div class="sb-score" id="score-disp">0/6</div>
+  </div>
+  <div class="blank-card" id="bq-0"><div class="blank-q">A palavra <em style="color:var(--az)">xícara</em> tem o som <span class="gap" id="gap-0">_____</span>.</div>
+    <div class="options-row" id="opts-0"><div class="opt" onclick="check(0,this,'/SH/','/SH/')">/SH/</div><div class="opt" onclick="check(0,this,'/S/','/SH/')">/S/</div><div class="opt" onclick="check(0,this,'/KS/','/SH/')">/KS/</div><div class="opt" onclick="check(0,this,'/Z/','/SH/')">/Z/</div></div></div>
+  <div class="blank-card" id="bq-1"><div class="blank-q">A palavra <em style="color:var(--az)">exame</em> tem o som <span class="gap" id="gap-1">_____</span>.</div>
+    <div class="options-row" id="opts-1"><div class="opt" onclick="check(1,this,'/Z/','/Z/')">/Z/</div><div class="opt" onclick="check(1,this,'/SH/','/Z/')">/SH/</div><div class="opt" onclick="check(1,this,'/KS/','/Z/')">/KS/</div><div class="opt" onclick="check(1,this,'/S/','/Z/')">/S/</div></div></div>
+  <div class="blank-card" id="bq-2"><div class="blank-q">A palavra <em style="color:var(--az)">táxi</em> tem o som <span class="gap" id="gap-2">_____</span>.</div>
+    <div class="options-row" id="opts-2"><div class="opt" onclick="check(2,this,'/KS/','/KS/')">/KS/</div><div class="opt" onclick="check(2,this,'/SH/','/KS/')">/SH/</div><div class="opt" onclick="check(2,this,'/Z/','/KS/')">/Z/</div><div class="opt" onclick="check(2,this,'/S/','/KS/')">/S/</div></div></div>
+  <div class="blank-card" id="bq-3"><div class="blank-q">A palavra <em style="color:var(--az)">máximo</em> tem o som <span class="gap" id="gap-3">_____</span>.</div>
+    <div class="options-row" id="opts-3"><div class="opt" onclick="check(3,this,'/S/','/S/')">/S/</div><div class="opt" onclick="check(3,this,'/SH/','/S/')">/SH/</div><div class="opt" onclick="check(3,this,'/Z/','/S/')">/Z/</div><div class="opt" onclick="check(3,this,'/KS/','/S/')">/KS/</div></div></div>
+  <div class="blank-card" id="bq-4"><div class="blank-q">A palavra <em style="color:var(--az)">caixa</em> tem o som <span class="gap" id="gap-4">_____</span>.</div>
+    <div class="options-row" id="opts-4"><div class="opt" onclick="check(4,this,'/SH/','/SH/')">/SH/</div><div class="opt" onclick="check(4,this,'/KS/','/SH/')">/KS/</div><div class="opt" onclick="check(4,this,'/Z/','/SH/')">/Z/</div><div class="opt" onclick="check(4,this,'/S/','/SH/')">/S/</div></div></div>
+  <div class="blank-card" id="bq-5"><div class="blank-q">A palavra <em style="color:var(--az)">exemplo</em> tem o som <span class="gap" id="gap-5">_____</span>.</div>
+    <div class="options-row" id="opts-5"><div class="opt" onclick="check(5,this,'/Z/','/Z/')">/Z/</div><div class="opt" onclick="check(5,this,'/SH/','/Z/')">/SH/</div><div class="opt" onclick="check(5,this,'/KS/','/Z/')">/KS/</div><div class="opt" onclick="check(5,this,'/S/','/Z/')">/S/</div></div></div>
+  <button class="btn btn-verde" onclick="resetAct()">🔄 Recomeçar</button>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var points=0,score=0,total=6,done=new Array(6).fill(false);
+function scrollTo_(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
+function spk(txt){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=0.9;var v=speechSynthesis.getVoices().find(function(x){return x.lang==='pt-BR';});if(v)u.voice=v;speechSynthesis.speak(u);}
+function speakList(words){speechSynthesis.cancel();var i=0;function next(){if(i>=words.length)return;var u=new SpeechSynthesisUtterance(words[i]);u.lang='pt-BR';u.rate=0.85;var v=speechSynthesis.getVoices().find(function(x){return x.lang==='pt-BR';});if(v)u.voice=v;u.onend=function(){i++;setTimeout(next,400);};speechSynthesis.speak(u);}speechSynthesis.getVoices();setTimeout(next,100);}
+function playTrava(){var btn=document.getElementById('trava-btn');if(btn.classList.contains('playing')){speechSynthesis.cancel();btn.classList.remove('playing');btn.innerHTML='▶ Ouvir trava-língua';return;}btn.classList.add('playing');btn.innerHTML='■ Parar';var u=new SpeechSynthesisUtterance('O Xico xingou o Chico, o Chico chorou. A xícara de chá chegou, o Xico se animou.');u.lang='pt-BR';u.rate=0.82;var v=speechSynthesis.getVoices().find(function(x){return x.lang==='pt-BR';});if(v)u.voice=v;u.onend=function(){btn.classList.remove('playing');btn.innerHTML='▶ Ouvir trava-língua';};speechSynthesis.getVoices();setTimeout(function(){speechSynthesis.speak(u);},100);}
+var toastT;function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('show');},1800);}
+function check(idx,el,chosen,correct){if(done[idx])return;if(chosen===correct){el.classList.add('selected');document.getElementById('gap-'+idx).textContent=correct;document.getElementById('gap-'+idx).classList.add('correct');document.getElementById('opts-'+idx).querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});done[idx]=true;score++;points+=10;document.getElementById('tb-pts').textContent='⭐ '+points+' pts';document.getElementById('score-disp').textContent=score+'/'+total;document.getElementById('stars').textContent='⭐'.repeat(score)+'☆'.repeat(total-score);toast('✅ Correto! +10 pts');if(score===total)setTimeout(function(){toast('🏆 Perfeito! Parabéns!');},400);}else{el.classList.add('wrong');setTimeout(function(){el.classList.remove('wrong');},500);toast('❌ Tente novamente!');}}
+function resetAct(){score=0;points=0;done.fill(false);for(var i=0;i<total;i++){document.getElementById('gap-'+i).textContent='_____';document.getElementById('gap-'+i).className='gap';document.getElementById('opts-'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';o.style.pointerEvents='';});}document.getElementById('score-disp').textContent='0/'+total;document.getElementById('stars').textContent='☆'.repeat(total);document.getElementById('tb-pts').textContent='⭐ 0 pts';}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};document.addEventListener('touchstart',function iosUnlock(){var u=new SpeechSynthesisUtterance('');u.volume=0;speechSynthesis.speak(u);document.removeEventListener('touchstart',iosUnlock);},{once:true});}
+</script>
+</body>
+</html>
