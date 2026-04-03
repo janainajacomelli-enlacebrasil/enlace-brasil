@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Aula 1C — Sons do Ç, SS e S | Enlace Brasil | Professor</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--verde:#009C3B;--amarelo:#F5C518;--azul:#002776;--bg:#eaf5f0;--text:#1a1a1a;--muted:#666}
+html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--bg);-webkit-overflow-scrolling:touch;}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:900px;margin:0 auto;padding:10px 12px 6px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-shrink:0}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);object-fit:cover}
+.logo-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:13px;color:var(--azul);line-height:1.1}
+.logo-sub{font-size:10px;color:var(--muted);font-weight:600}
+.prog-wrap{display:flex;align-items:center;gap:8px}
+.pbar{width:120px;height:5px;background:#d0e8d8;border-radius:10px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--verde),var(--amarelo));transition:width .35s}
+.pcnt{font-size:11px;color:var(--muted);font-weight:700;min-width:44px;text-align:right}
+.stage{flex:1;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 6px 28px rgba(0,39,118,.14);min-height:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+.cover{background:linear-gradient(140deg,#002776 0%,#0a3d8f 55%,#145cb5 100%);color:#fff;justify-content:center;align-items:center;text-align:center;padding:6% 8%;gap:2%}
+.cover-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.3vw,12px);font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1.2px}
+.cover-logo{width:clamp(50px,7vw,76px);height:clamp(50px,7vw,76px);border-radius:50%;border:3px solid rgba(255,255,255,.35);object-fit:cover}
+.cover-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(20px,4.5vw,46px);font-weight:800;line-height:1.1}
+.cover-h1 span{color:var(--amarelo)}
+.cover-desc{font-size:clamp(9px,1.3vw,13px);color:rgba(255,255,255,.72)}
+.cover-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:clamp(8px,1.1vw,11px);padding:3px 11px;border-radius:20px}
+.cover-foot{font-size:clamp(9px,1.1vw,11px);color:rgba(255,255,255,.42);margin-top:auto}
+.content{background:#fff;color:var(--text);padding:4% 5% 3%}
+.shdr{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-bottom:2.5%}
+.stag{font-size:clamp(8px,1.1vw,11px);font-weight:700;letter-spacing:.8px;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.tg-fon{background:#FFF3CD;color:#856404}
+.tg-voc{background:#E6F1FB;color:#0C447C}
+.tg-act{background:#FAEEDA;color:#633806}
+.tg-cul{background:#EAF3DE;color:#27500A}
+.stitle{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2.8vw,26px);font-weight:800;color:var(--azul);line-height:1.1}
+.sbody{flex:1;display:flex;flex-direction:column;gap:2%;overflow:hidden;min-height:0}
+.sfoot{font-size:clamp(8px,1vw,10px);color:var(--muted);flex-shrink:0;display:flex;align-items:center;gap:6px;padding-top:1.5%;border-top:1px solid #f0f0f0;margin-top:1.5%;font-style:italic}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2%;flex:1;min-height:0}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2%;flex:1;min-height:0}
+.box{background:#F6FBF8;border-radius:10px;padding:3% 4%;border-left:4px solid var(--verde);min-height:0;overflow:hidden}
+.box.az{border-left-color:var(--azul);background:#F0F4FB}
+.box.am{border-left-color:var(--amarelo);background:#FFFCF0}
+.box.rs{border-left-color:#e8336d;background:#FDF0F5}
+.box-title{font-size:clamp(9px,1.3vw,12px);font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--azul);margin-bottom:5%}
+.box-title.vd{color:#0F6E56}
+.word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(80px,12vw,140px),1fr));gap:2%;flex:1;min-height:0}
+.word-card{background:linear-gradient(135deg,var(--azul),#1a4fa0);border-radius:8px;padding:3%;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.word-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(11px,1.8vw,18px);font-weight:800;line-height:1}
+.word-em{font-size:clamp(8px,1.1vw,11px);opacity:.75;margin-top:2%}
+.word-grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(80px,12vw,140px),1fr));gap:2%;flex:1;min-height:0}
+.word-card2{background:linear-gradient(135deg,#007a2e,var(--verde));border-radius:8px;padding:3%;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.word-card3{background:linear-gradient(135deg,#856404,#a07808);border-radius:8px;padding:3%;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.word-card4{background:linear-gradient(135deg,#72243E,#e8336d);border-radius:8px;padding:3%;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.rule-box{background:linear-gradient(135deg,var(--azul),#1a4fa0);border-radius:12px;padding:4% 5%;color:#fff;display:flex;flex-direction:column;gap:3%;flex:1;justify-content:center}
+.rule-row{display:flex;align-items:center;gap:3%;font-size:clamp(10px,1.5vw,15px)}
+.rule-sym{background:rgba(255,255,255,.2);border-radius:8px;padding:2% 4%;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(12px,2vw,20px);flex-shrink:0;min-width:clamp(40px,7vw,70px);text-align:center}
+.rule-desc{font-size:clamp(9px,1.3vw,13px);opacity:.85}
+.ex-list{display:flex;flex-direction:column;gap:3%;flex:1;justify-content:center}
+.ex-item{display:flex;align-items:baseline;gap:2%;font-size:clamp(10px,1.6vw,16px);padding:2% 0;border-bottom:1px solid #f0f0f0}
+.ex-pt{font-weight:700;color:var(--azul);font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.8vw,18px)}
+.ex-em{color:var(--muted);font-size:clamp(9px,1.3vw,13px)}
+.alert{background:#FFF3CD;border:2px solid var(--amarelo);border-radius:10px;padding:3% 4%;font-size:clamp(10px,1.4vw,14px);color:#633806;line-height:1.5}
+.alert strong{display:block;font-size:clamp(11px,1.6vw,16px);margin-bottom:3%;color:#856404;font-family:'Baloo 2',sans-serif}
+.info{background:#E6F1FB;border-radius:10px;padding:3% 4%;font-size:clamp(9px,1.3vw,13px);color:#0C447C;line-height:1.5}
+.marcas-table{width:100%;border-collapse:collapse;font-size:clamp(9px,1.3vw,13px)}
+.marcas-table th{background:var(--azul);color:#fff;padding:4px 8px;text-align:left;font-size:clamp(8px,1.1vw,11px);font-weight:700}
+.marcas-table td{padding:4px 8px;border-bottom:1px solid #eee}
+.marcas-table tr:nth-child(even) td{background:#F6FBF8}
+.marcas-table .orig{font-weight:700;color:var(--azul)}
+.marcas-table .pron{color:#0F6E56;font-weight:700}
+.navrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:6px;flex-shrink:0}
+.nbtn{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);background:#fff;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.nbtn:hover:not(:disabled){background:var(--azul);color:#fff}
+.nbtn:disabled{opacity:.3;cursor:default}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:320px}
+.dot{width:9px;height:9px;border-radius:50%;background:#ccc;cursor:pointer;transition:background .2s}
+.dot.active{background:var(--azul)}
+.stype{text-align:center;font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.5px;min-height:14px;margin-top:2px}
+@media(max-width:600px){
+  .app{padding:6px 8px 4px}
+  .two-col,.three-col{grid-template-columns:1fr;gap:6px}
+  .content{padding:4% 4% 2%}
+  .box{padding:4% 4%}
+  .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .sbody{overflow:visible;min-height:unset}
+  .stage{border-radius:10px}
+  .navrow{gap:8px;margin-top:4px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo-wrap">
+      <img class="logo-img" src="data:image/jpeg;base64,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" alt="Enlace Brasil">
+      <div>
+        <div class="logo-name">Enlace Brasil</div>
+        <div class="logo-sub">Curso Regular A1</div>
+      </div>
+    </div>
+    <div class="prog-wrap">
+      <div class="pbar"><div class="pfill" id="prog" style="width:8%"></div></div>
+      <div class="pcnt" id="counter">1 / 12</div>
+    </div>
+  </div>
+
+  <div class="stage">
+
+    <!-- SLIDE 1: CAPA -->
+    <div class="slide cover active" data-type="Capa">
+      <div class="cover-tag">AULA 1C · NÍVEL A1</div>
+      <img class="cover-logo" src="data:image/jpeg;base64,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" alt="Enlace Brasil">
+      <div class="cover-h1">Sons do <span>Ç, SS e S</span></div>
+      <div class="cover-desc">Como pronunciar o som /s/ em diferentes contextos no português brasileiro</div>
+      <div class="cover-pills">
+        <span class="pill">Ç = /s/</span>
+        <span class="pill">SS = /s/ forte</span>
+        <span class="pill">S início = /s/</span>
+        <span class="pill">S entre vogais = /z/</span>
+        <span class="pill">Marcas em português</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+    <!-- SLIDE 2: REGRAS -->
+    <div class="slide content" data-type="Fonética">
+      <div class="shdr"><span class="stag tg-fon">Fonética</span><span class="stitle">Os 4 Contextos do Som /s/</span></div>
+      <div class="sbody">
+        <div class="rule-box">
+          <div class="rule-row"><span class="rule-sym">Ç</span><span class="rule-desc">→ sempre /s/ antes de A, O, U — <strong>cabeça, coração, braço</strong></span></div>
+          <div class="rule-row"><span class="rule-sym">SS</span><span class="rule-desc">→ /s/ forte entre vogais — <strong>pessoa, sucesso, classe</strong></span></div>
+          <div class="rule-row"><span class="rule-sym">S início</span><span class="rule-desc">→ /s/ forte — <strong>sapato, semana, sorriso</strong></span></div>
+          <div class="rule-row"><span class="rule-sym">S vogal_vogal</span><span class="rule-desc">→ /z/ sonoro — <strong>casa, mesa, música</strong></span></div>
+        </div>
+        <div class="alert"><strong>⚠️ Diferença importante!</strong>S entre vogais = /z/ · SS entre vogais = /s/ · Exemplo: <strong>ca-sa</strong> (z) vs <strong>mas-sa</strong> (s)</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: CEDILHA -->
+    <div class="slide content" data-type="Fonética">
+      <div class="shdr"><span class="stag tg-fon">Fonética</span><span class="stitle">Ç — A Cedilha</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Ç antes de A, O, U</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">cabeça</span><span class="ex-em">cabeza</span></div>
+              <div class="ex-item"><span class="ex-pt">coração</span><span class="ex-em">corazón</span></div>
+              <div class="ex-item"><span class="ex-pt">braço</span><span class="ex-em">brazo</span></div>
+              <div class="ex-item"><span class="ex-pt">criança</span><span class="ex-em">niño/a</span></div>
+              <div class="ex-item"><span class="ex-pt">almoço</span><span class="ex-em">almuerzo</span></div>
+              <div class="ex-item"><span class="ex-pt">esperança</span><span class="ex-em">esperanza</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Sufixo -ção = -ción</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">lição</span><span class="ex-em">lección</span></div>
+              <div class="ex-item"><span class="ex-pt">atenção</span><span class="ex-em">atención</span></div>
+              <div class="ex-item"><span class="ex-pt">direção</span><span class="ex-em">dirección</span></div>
+              <div class="ex-item"><span class="ex-pt">informação</span><span class="ex-em">información</span></div>
+              <div class="ex-item"><span class="ex-pt">organização</span><span class="ex-em">organización</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info">💡 Ç nunca aparece antes de E ou I — nesses casos usa-se simplesmente C (ce, ci)</div>
+      </div>
+      <div class="sfoot">📌 Ç = sempre /s/ · Equivale a -ción em espanhol</div>
+    </div>
+
+    <!-- SLIDE 4: SS -->
+    <div class="slide content" data-type="Fonética">
+      <div class="shdr"><span class="stag tg-fon">Fonética</span><span class="stitle">SS — S Duplo entre Vogais</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">SS = /s/ forte</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">passado</span><span class="ex-em">pasado</span></div>
+              <div class="ex-item"><span class="ex-pt">pessoa</span><span class="ex-em">persona</span></div>
+              <div class="ex-item"><span class="ex-pt">sucesso</span><span class="ex-em">éxito</span></div>
+              <div class="ex-item"><span class="ex-pt">professor</span><span class="ex-em">profesor</span></div>
+              <div class="ex-item"><span class="ex-pt">possível</span><span class="ex-em">posible</span></div>
+              <div class="ex-item"><span class="ex-pt">necessário</span><span class="ex-em">necesario</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Mais exemplos</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">assunto</span><span class="ex-em">asunto</span></div>
+              <div class="ex-item"><span class="ex-pt">processo</span><span class="ex-em">proceso</span></div>
+              <div class="ex-item"><span class="ex-pt">acesso</span><span class="ex-em">acceso</span></div>
+              <div class="ex-item"><span class="ex-pt">interesse</span><span class="ex-em">interés</span></div>
+              <div class="ex-item"><span class="ex-pt">passeio</span><span class="ex-em">paseo</span></div>
+              <div class="ex-item"><span class="ex-pt">missão</span><span class="ex-em">misión</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert"><strong>casa (z) vs massa (s)</strong> O SS existe para manter o som /s/ entre vogais, onde S sozinho soaria /z/!</div>
+      </div>
+      <div class="sfoot">📌 SS = sempre /s/ forte · Só aparece entre vogais</div>
+    </div>
+
+    <!-- SLIDE 5: S INÍCIO -->
+    <div class="slide content" data-type="Fonética">
+      <div class="shdr"><span class="stag tg-fon">Fonética</span><span class="stitle">S no Início = /s/ Forte</span></div>
+      <div class="sbody">
+        <div class="word-grid">
+          <div class="word-card2"><div class="word-pt">sapato</div><div class="word-em">👟</div></div>
+          <div class="word-card2"><div class="word-pt">semana</div><div class="word-em">📅</div></div>
+          <div class="word-card2"><div class="word-pt">sala</div><div class="word-em">🏫</div></div>
+          <div class="word-card2"><div class="word-pt">simples</div><div class="word-em">simple</div></div>
+          <div class="word-card2"><div class="word-pt">saúde</div><div class="word-em">💚</div></div>
+          <div class="word-card2"><div class="word-pt">sorriso</div><div class="word-em">😊</div></div>
+          <div class="word-card2"><div class="word-pt">saber</div><div class="word-em">saber</div></div>
+          <div class="word-card2"><div class="word-pt">sistema</div><div class="word-em">sistema</div></div>
+          <div class="word-card2"><div class="word-pt">silêncio</div><div class="word-em">🤫</div></div>
+          <div class="word-card2"><div class="word-pt">sociedade</div><div class="word-em">sociedad</div></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 S no início da palavra → sempre /s/ forte</div>
+    </div>
+
+    <!-- SLIDE 6: S ENTRE VOGAIS -->
+    <div class="slide content" data-type="Fonética">
+      <div class="shdr"><span class="stag tg-fon">Fonética</span><span class="stitle">S entre Vogais = /z/ Sonoro</span></div>
+      <div class="sbody">
+        <div class="word-grid">
+          <div class="word-card4"><div class="word-pt">ca<span style="color:var(--amarelo)">s</span>a</div><div class="word-em">🏠 /z/</div></div>
+          <div class="word-card4"><div class="word-pt">me<span style="color:var(--amarelo)">s</span>a</div><div class="word-em">🪑 /z/</div></div>
+          <div class="word-card4"><div class="word-pt">cami<span style="color:var(--amarelo)">s</span>a</div><div class="word-em">👕 /z/</div></div>
+          <div class="word-card4"><div class="word-pt">ami<span style="color:var(--amarelo)">s</span>ade</div><div class="word-em">🤝 /z/</div></div>
+          <div class="word-card4"><div class="word-pt">coi<span style="color:var(--amarelo)">s</span>a</div><div class="word-em">/z/</div></div>
+          <div class="word-card4"><div class="word-pt">fra<span style="color:var(--amarelo)">s</span>e</div><div class="word-em">/z/</div></div>
+          <div class="word-card4"><div class="word-pt">mú<span style="color:var(--amarelo)">s</span>ica</div><div class="word-em">🎵 /z/</div></div>
+          <div class="word-card4"><div class="word-pt">vi<span style="color:var(--amarelo)">s</span>ita</div><div class="word-em">/z/</div></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 S em amarelo = som /z/ sonoro entre vogais</div>
+    </div>
+
+    <!-- SLIDE 7: CONTRASTE -->
+    <div class="slide content" data-type="Fonética">
+      <div class="shdr"><span class="stag tg-fon">Fonética</span><span class="stitle">Contraste S vs SS</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box rs">
+            <div class="box-title rs">S entre vogais = /z/</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">ca<b>s</b>a</span><span class="ex-em">/z/</span></div>
+              <div class="ex-item"><span class="ex-pt">vi<b>s</b>ita</span><span class="ex-em">/z/</span></div>
+              <div class="ex-item"><span class="ex-pt">u<b>s</b>ar</span><span class="ex-em">/z/</span></div>
+              <div class="ex-item"><span class="ex-pt">preci<b>s</b>a</span><span class="ex-em">/z/</span></div>
+              <div class="ex-item"><span class="ex-pt">bra<b>s</b>ileiro</span><span class="ex-em">/z/</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">SS entre vogais = /s/</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">ma<b>ss</b>a</span><span class="ex-em">/s/</span></div>
+              <div class="ex-item"><span class="ex-pt">vi<b>ss</b>e</span><span class="ex-em">/s/</span></div>
+              <div class="ex-item"><span class="ex-pt">a<b>ss</b>unto</span><span class="ex-em">/s/</span></div>
+              <div class="ex-item"><span class="ex-pt">ne<b>ss</b>e</span><span class="ex-em">/s/</span></div>
+              <div class="ex-item"><span class="ex-pt">pa<b>ss</b>ado</span><span class="ex-em">/s/</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert"><strong>Regra prática:</strong> 1 S entre vogais → /z/ · 2 S (SS) entre vogais → /s/</div>
+      </div>
+      <div class="sfoot">📌 S = /z/ · SS = /s/ — entre vogais!</div>
+    </div>
+
+    <!-- SLIDE 8: MARCAS -->
+    <div class="slide content" data-type="Cultura">
+      <div class="shdr"><span class="stag tg-cul">Cultura</span><span class="stitle">Marcas Famosas em Português</span></div>
+      <div class="sbody">
+        <div class="box">
+          <div class="box-title vd">Como o brasileiro pronuncia</div>
+          <table class="marcas-table">
+            <thead><tr><th>Marca</th><th>Português BR</th><th>Repita 3x</th></tr></thead>
+            <tbody>
+              <tr><td class="orig">Facebook</td><td class="pron">Feisibuki</td><td>□ □ □</td></tr>
+              <tr><td class="orig">WhatsApp</td><td class="pron">Uachizapi</td><td>□ □ □</td></tr>
+              <tr><td class="orig">TikTok</td><td class="pron">Chikitoki</td><td>□ □ □</td></tr>
+              <tr><td class="orig">Netflix</td><td class="pron">Nechiflix</td><td>□ □ □</td></tr>
+              <tr><td class="orig">YouTube</td><td class="pron">Yutubi</td><td>□ □ □</td></tr>
+              <tr><td class="orig">iPhone</td><td class="pron">Aifoni</td><td>□ □ □</td></tr>
+              <tr><td class="orig">Samsung</td><td class="pron">Samsungui</td><td>□ □ □</td></tr>
+              <tr><td class="orig">Red Bull</td><td class="pron">Jechibu</td><td>□ □ □</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="sfoot">📌 O português adapta estrangeirismos: vogal no final, sons mais abertos</div>
+    </div>
+
+    <!-- SLIDE 9: DITADO -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Ditado</span><span class="stitle">Ditado — Ouça e Escreva</span></div>
+      <div class="sbody">
+        <div class="box">
+          <div class="box-title vd">Texto do ditado</div>
+          <div class="ex-list" style="font-size:clamp(10px,1.4vw,13px);gap:2%">
+            <div>A professora <b>começou</b> a aula falando sobre a importância da <b>organização</b>.</div>
+            <div>Ela disse que o <b>sucesso</b> depende de dedicação e esforço.</div>
+            <div>Na <b>casa</b> da Ana, a <b>mesa</b> estava cheia de frutas e suco de maçã.</div>
+            <div>O irmão dela <b>precisava</b> fazer um exercício difícil para a próxima <b>semana</b>.</div>
+            <div>No sábado, eles fizeram um <b>passeio</b> pelo centro da cidade.</div>
+            <div><b>Passaram</b> pela <b>praça</b>, pelo comércio e pelo endereço antigo da família.</div>
+            <div>A mãe preparou arroz, feijão e uma deliciosa <b>sobremesa</b> de maracujá.</div>
+            <div>Foi um momento <b>simples</b>, mas cheio de emoção e <b>esperança</b>.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Palavras em negrito — identificar Ç, SS ou S</div>
+    </div>
+
+    <!-- SLIDE 10: ATIVIDADE MARCAS -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Atividade 2</span><span class="stitle">Qual é a Marca?</span></div>
+      <div class="sbody">
+        <div class="box">
+          <div class="box-title vd">Leia as pistas e complete</div>
+          <table class="marcas-table">
+            <thead><tr><th>Pista</th><th>Letras</th><th>Resposta</th></tr></thead>
+            <tbody>
+              <tr><td>Rede social com o 'f' azul</td><td>F _ _ _ b _ _ k</td><td>___________</td></tr>
+              <tr><td>App de mensagens verde</td><td>W _ _ _ _ _ _ p</td><td>___________</td></tr>
+              <tr><td>Vídeos curtos, popular</td><td>T _ _ T _ k</td><td>___________</td></tr>
+              <tr><td>Séries e filmes em casa</td><td>N _ _ f _ _ x</td><td>___________</td></tr>
+              <tr><td>Vídeos de tudo</td><td>Y _ _ T _ _ e</td><td>___________</td></tr>
+              <tr><td>Celular com maçã 🍎</td><td>i P _ _ _ e</td><td>___________</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="sfoot">📌 Atividade em pares — um diz em espanhol, o outro responde em português</div>
+    </div>
+
+    <!-- SLIDE 11: REFLEXÃO -->
+    <div class="slide content" data-type="Reflexão">
+      <div class="shdr"><span class="stag tg-voc">Reflexão</span><span class="stitle">Para Pensar Juntos</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box az">
+            <div class="box-title">Perguntas</div>
+            <div class="ex-list">
+              <div class="ex-item" style="flex-direction:column;gap:4%"><span>1. Qual nome de marca te parece mais engraçado? Por quê?</span></div>
+              <div class="ex-item" style="flex-direction:column;gap:4%"><span>2. Você percebe alguma regra em como o português adapta os sons?</span></div>
+              <div class="ex-item" style="flex-direction:column;gap:4%"><span>3. Em espanhol você também muda a pronúncia de marcas?</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">Resumo da aula</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Ç</span><span class="ex-em">→ /s/ antes de A, O, U ✓</span></div>
+              <div class="ex-item"><span class="ex-pt">SS</span><span class="ex-em">→ /s/ forte entre vogais ✓</span></div>
+              <div class="ex-item"><span class="ex-pt">S início</span><span class="ex-em">→ /s/ forte ✓</span></div>
+              <div class="ex-item"><span class="ex-pt">S vogais</span><span class="ex-em">→ /z/ sonoro ✓</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: FIM -->
+    <div class="slide cover" data-type="Fim">
+      <div class="cover-tag" style="background:rgba(255,255,255,.2)">FIM DA AULA 1C</div>
+      <div class="cover-logo">🎉</div>
+      <div class="cover-h1">Parabéns! <span>🎉</span></div>
+      <div class="cover-desc">Você aprendeu os sons do Ç, SS e S em português brasileiro!</div>
+      <div class="cover-pills">
+        <span class="pill">Ç = /s/ ✓</span>
+        <span class="pill">SS = /s/ ✓</span>
+        <span class="pill">S início = /s/ ✓</span>
+        <span class="pill">S entre vogais = /z/ ✓</span>
+        <span class="pill">Marcas em português ✓</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+  </div>
+
+  <div class="navrow">
+    <button class="nbtn" id="bp" onclick="go(-1)" disabled>&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="nbtn" id="bn" onclick="go(1)">&#8594;</button>
+  </div>
+  <div class="stype" id="stype"></div>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const N=slides.length;
+let cur=0;
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<N;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>show(i);
+  dotsEl.appendChild(d);
+}
+function show(n){
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  cur=Math.max(0,Math.min(N-1,n));
+  slides[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  document.getElementById('bp').disabled=cur===0;
+  document.getElementById('bn').disabled=cur===N-1;
+  document.getElementById('prog').style.width=((cur+1)/N*100)+'%';
+  document.getElementById('counter').textContent=(cur+1)+' / '+N;
+  document.getElementById('stype').textContent=slides[cur].dataset.type||'';
+}
+function go(d){show(cur+d);}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);
+});
+let tsX=0,tsY=0;
+document.querySelector('.stage').addEventListener('touchstart',e=>{tsX=e.changedTouches[0].clientX;tsY=e.changedTouches[0].clientY;},{passive:true});
+document.querySelector('.stage').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tsX;
+  const dy=e.changedTouches[0].clientY-tsY;
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){if(dx<0)go(1);else go(-1);}
+},{passive:true});
+show(0);
+</script>
+</body>
+</html>
