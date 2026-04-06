@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Aula 14.2 — Nacionalidades | Enlace Brasil | Professor</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--verde:#009C3B;--amarelo:#F5C518;--azul:#002776;--bg:#eaf5f0;--text:#1a1a1a;--muted:#666}
+html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--bg)}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:900px;margin:0 auto;padding:10px 12px 6px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-shrink:0}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);object-fit:cover}
+.logo-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:13px;color:var(--azul);line-height:1.1}
+.logo-sub{font-size:10px;color:var(--muted);font-weight:600}
+.prog-wrap{display:flex;align-items:center;gap:8px}
+.pbar{width:120px;height:5px;background:#d0e8d8;border-radius:10px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--verde),var(--amarelo));transition:width .35s}
+.pcnt{font-size:11px;color:var(--muted);font-weight:700;min-width:44px;text-align:right}
+.stage{flex:1;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 6px 28px rgba(0,39,118,.14);min-height:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+.cover{background:linear-gradient(140deg,#002776 0%,#0a3d8f 55%,#145cb5 100%);color:#fff;justify-content:center;align-items:center;text-align:center;padding:6% 8%;gap:2%}
+.cover-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.3vw,12px);font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1.2px}
+.cover-logo{width:clamp(50px,7vw,76px);height:clamp(50px,7vw,76px);border-radius:50%;border:3px solid rgba(255,255,255,.35);object-fit:cover}
+.cover-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,4vw,42px);font-weight:800;line-height:1.1}
+.cover-h1 span{color:var(--amarelo)}
+.cover-desc{font-size:clamp(9px,1.3vw,13px);color:rgba(255,255,255,.72)}
+.cover-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:clamp(8px,1.1vw,11px);padding:3px 11px;border-radius:20px}
+.cover-foot{font-size:clamp(9px,1.1vw,11px);color:rgba(255,255,255,.42);margin-top:auto}
+.content{background:#fff;color:var(--text);padding:4% 5% 3%}
+.shdr{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-bottom:2.5%}
+.stag{font-size:clamp(8px,1.1vw,11px);font-weight:700;letter-spacing:.8px;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.tg-gram{background:#E1F5EE;color:#0F6E56}
+.tg-voc{background:#E6F1FB;color:#0C447C}
+.tg-act{background:#FAEEDA;color:#633806}
+.tg-cul{background:#EAF3DE;color:#27500A}
+.stitle{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2.8vw,26px);font-weight:800;color:var(--azul);line-height:1.1}
+.sbody{flex:1;display:flex;flex-direction:column;gap:2%;overflow:hidden;min-height:0}
+.sfoot{font-size:clamp(8px,1vw,10px);color:var(--muted);flex-shrink:0;display:flex;align-items:center;gap:6px;padding-top:1.5%;border-top:1px solid #f0f0f0;margin-top:1.5%;font-style:italic}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2%;flex:1;min-height:0}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2%;flex:1;min-height:0}
+.box{background:#F6FBF8;border-radius:10px;padding:3% 4%;border-left:4px solid var(--verde);min-height:0;overflow:hidden}
+.box.az{border-left-color:var(--azul);background:#F0F4FB}
+.box.am{border-left-color:var(--amarelo);background:#FFFCF0}
+.box.rs{border-left-color:#e8336d;background:#FDF0F5}
+.box-title{font-size:clamp(9px,1.3vw,12px);font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--azul);margin-bottom:5%}
+.box-title.vd{color:#0F6E56}
+.ex-list{display:flex;flex-direction:column;gap:3%;flex:1;justify-content:center}
+.ex-item{display:flex;align-items:baseline;gap:2%;font-size:clamp(10px,1.6vw,16px);padding:2% 0;border-bottom:1px solid #f0f0f0}
+.ex-pt{font-weight:700;color:var(--azul);font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.8vw,18px)}
+.ex-es{color:var(--muted);font-size:clamp(9px,1.3vw,13px)}
+.alert{background:#FFF3CD;border:2px solid var(--amarelo);border-radius:10px;padding:3% 4%;font-size:clamp(10px,1.4vw,14px);color:#633806;line-height:1.5}
+.alert strong{display:block;font-size:clamp(11px,1.6vw,16px);margin-bottom:3%;color:#856404;font-family:'Baloo 2',sans-serif}
+.info{background:#E6F1FB;border-radius:10px;padding:3% 4%;font-size:clamp(9px,1.3vw,13px);color:#0C447C;line-height:1.5}
+.nat-table{width:100%;border-collapse:collapse;font-size:clamp(8px,1.2vw,12px);flex:1}
+.nat-table th{background:var(--azul);color:#fff;padding:2.5% 2%;font-size:clamp(7px,1vw,10px);font-weight:700;text-align:left}
+.nat-table td{padding:2.5% 2%;border-bottom:1px solid #eee}
+.nat-table tr:nth-child(even) td{background:#F6FBF8}
+.nat-table .pais{font-weight:700;color:var(--azul);font-family:'Baloo 2',sans-serif;font-size:clamp(10px,1.4vw,14px)}
+.nat-table .masc{color:#0F6E56;font-weight:700}
+.nat-table .fem{color:#e8336d;font-weight:700}
+.nat-table .idioma{color:var(--muted);font-size:clamp(7px,1vw,10px)}
+.dialog-box{background:#f6fbf8;border-radius:12px;padding:3% 4%;display:flex;flex-direction:column;gap:2%;flex:1;justify-content:center}
+.dline{display:flex;gap:2%;align-items:flex-start;padding:1.5% 0;border-bottom:1px solid #eee}
+.dline.f{background:rgba(232,51,109,.06);border-radius:6px;padding:1.5% 2%;margin:0 -2%}
+.dline.m{background:rgba(0,39,118,.06);border-radius:6px;padding:1.5% 2%;margin:0 -2%}
+.dwho{font-size:clamp(8px,1.1vw,11px);font-weight:700;min-width:clamp(40px,6vw,60px);flex-shrink:0}
+.dwho.f{color:#e8336d}.dwho.m{color:var(--azul)}
+.dtxt{font-size:clamp(11px,1.6vw,15px);flex:1;line-height:1.4}
+.navrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:6px;flex-shrink:0}
+.nbtn{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);background:#fff;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.nbtn:hover:not(:disabled){background:var(--azul);color:#fff}
+.nbtn:disabled{opacity:.3;cursor:default}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:320px}
+.dot{width:9px;height:9px;border-radius:50%;background:#ccc;cursor:pointer;transition:background .2s}
+.dot.active{background:var(--azul)}
+.stype{text-align:center;font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.5px;min-height:14px;margin-top:2px}
+@media(max-width:600px){
+  .app{padding:6px 8px 4px}
+  .two-col,.three-col{grid-template-columns:1fr;gap:6px}
+  .content{padding:4% 4% 2%}
+  .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .sbody{overflow:visible;min-height:unset}
+  .stage{border-radius:10px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo-wrap">
+      <img class="logo-img" src="data:image/jpeg;base64,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" alt="EB">
+      <div><div class="logo-name">Enlace Brasil</div><div class="logo-sub">Curso Regular A1</div></div>
+    </div>
+    <div class="prog-wrap">
+      <div class="pbar"><div class="pfill" id="prog" style="width:7%"></div></div>
+      <div class="pcnt" id="counter">1 / 14</div>
+    </div>
+  </div>
+  <div class="stage">
+
+    <!-- S1: CAPA -->
+    <div class="slide cover active" data-type="Capa">
+      <div class="cover-tag">AULA 14.2 · NÍVEL A1</div>
+      <img class="cover-logo" src="data:image/jpeg;base64,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" alt="EB">
+      <div class="cover-h1">Nacionalidades<br><span>em Português</span></div>
+      <div class="cover-desc">Países, gentílicos, idiomas e regras de concordância</div>
+      <div class="cover-pills">
+        <span class="pill">Gênero M/F</span>
+        <span class="pill">Maiúsculas vs minúsculas</span>
+        <span class="pill">no/na/em + país</span>
+        <span class="pill">Américas · Europa · Ásia</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+    <!-- S2: REGRAS GERAIS -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Regras Gerais</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">1. Gênero</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">brasileiro</span><span class="ex-es">♂ masculino</span></div>
+              <div class="ex-item"><span class="ex-pt">brasileira</span><span class="ex-es">♀ feminino</span></div>
+              <div class="ex-item"><span class="ex-pt">francês</span><span class="ex-es">♂ masculino</span></div>
+              <div class="ex-item"><span class="ex-pt">francesa</span><span class="ex-es">♀ feminino</span></div>
+              <div class="ex-item"><span class="ex-pt">alemão</span><span class="ex-es">♂ → alemã ♀</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">2. Maiúsculas vs Minúsculas</div>
+            <div class="ex-list">
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(11px,1.5vw,14px)">País/Cidade → MAIÚSCULA</span><span class="ex-es">Brasil, França, Nova York</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(11px,1.5vw,14px)">Nacionalidade/Idioma → minúscula</span><span class="ex-es">brasileiro, francês, inglês</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="box az" style="flex:none">
+          <div class="box-title">3. Preposições — no/na + país</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3%;font-size:clamp(9px,1.3vw,13px)">
+            <div><strong style="color:var(--azul)">no</strong> (masculino): no Brasil, no México, no Japão</div>
+            <div><strong style="color:#e8336d">na</strong> (feminino): na França, na China, na Índia</div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 País = maiúscula · nacionalidade/idioma = minúscula</div>
+    </div>
+
+    <!-- S3: AMÉRICAS -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">🌎 Américas</span></div>
+      <div class="sbody">
+        <table class="nat-table">
+          <thead><tr><th>País</th><th>♂ Masculino</th><th>♀ Feminino</th><th>Idioma</th></tr></thead>
+          <tbody>
+            <tr><td class="pais">🇧🇷 o Brasil</td><td class="masc">brasileiro</td><td class="fem">brasileira</td><td class="idioma">português</td></tr>
+            <tr><td class="pais">🇲🇽 o México</td><td class="masc">mexicano</td><td class="fem">mexicana</td><td class="idioma">espanhol</td></tr>
+            <tr><td class="pais">🇦🇷 a Argentina</td><td class="masc">argentino</td><td class="fem">argentina</td><td class="idioma">espanhol</td></tr>
+            <tr><td class="pais">🇨🇴 a Colômbia</td><td class="masc">colombiano</td><td class="fem">colombiana</td><td class="idioma">espanhol</td></tr>
+            <tr><td class="pais">🇨🇱 o Chile</td><td class="masc">chileno</td><td class="fem">chilena</td><td class="idioma">espanhol</td></tr>
+            <tr><td class="pais">🇵🇪 o Peru</td><td class="masc">peruano</td><td class="fem">peruana</td><td class="idioma">espanhol</td></tr>
+            <tr><td class="pais">🇺🇸 os Estados Unidos</td><td class="masc">americano</td><td class="fem">americana</td><td class="idioma">inglês</td></tr>
+            <tr><td class="pais">🇨🇦 o Canadá</td><td class="masc">canadense</td><td class="fem">canadense</td><td class="idioma">inglês/francês</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sfoot">📌 "os Estados Unidos" = plural → vai aos Estados Unidos</div>
+    </div>
+
+    <!-- S4: EUROPA OCIDENTAL -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">🌍 Europa Ocidental</span></div>
+      <div class="sbody">
+        <table class="nat-table">
+          <thead><tr><th>País</th><th>♂ Masculino</th><th>♀ Feminino</th><th>Idioma</th></tr></thead>
+          <tbody>
+            <tr><td class="pais">🇵🇹 Portugal</td><td class="masc">português</td><td class="fem">portuguesa</td><td class="idioma">português</td></tr>
+            <tr><td class="pais">🇪🇸 a Espanha</td><td class="masc">espanhol</td><td class="fem">espanhola</td><td class="idioma">espanhol</td></tr>
+            <tr><td class="pais">🇫🇷 a França</td><td class="masc">francês</td><td class="fem">francesa</td><td class="idioma">francês</td></tr>
+            <tr><td class="pais">🇮🇹 a Itália</td><td class="masc">italiano</td><td class="fem">italiana</td><td class="idioma">italiano</td></tr>
+            <tr><td class="pais">🇩🇪 a Alemanha</td><td class="masc">alemão</td><td class="fem">alemã</td><td class="idioma">alemão</td></tr>
+            <tr><td class="pais">🇬🇧 a Inglaterra</td><td class="masc">inglês</td><td class="fem">inglesa</td><td class="idioma">inglês</td></tr>
+            <tr><td class="pais">🇳🇱 a Holanda</td><td class="masc">holandês</td><td class="fem">holandesa</td><td class="idioma">holandês</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sfoot">📌 Alemanha: alemão/alemã — irregular! · Portugal: sem artigo → vou a Portugal</div>
+    </div>
+
+    <!-- S5: ÁSIA E OUTROS -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">🌏 Ásia e Outros</span></div>
+      <div class="sbody">
+        <table class="nat-table">
+          <thead><tr><th>País</th><th>♂ Masculino</th><th>♀ Feminino</th><th>Idioma</th></tr></thead>
+          <tbody>
+            <tr><td class="pais">🇯🇵 o Japão</td><td class="masc">japonês</td><td class="fem">japonesa</td><td class="idioma">japonês</td></tr>
+            <tr><td class="pais">🇨🇳 a China</td><td class="masc">chinês</td><td class="fem">chinesa</td><td class="idioma">chinês</td></tr>
+            <tr><td class="pais">🇰🇷 a Coreia do Sul</td><td class="masc">sul-coreano</td><td class="fem">sul-coreana</td><td class="idioma">coreano</td></tr>
+            <tr><td class="pais">🇮🇳 a Índia</td><td class="masc">indiano</td><td class="fem">indiana</td><td class="idioma">hindi/inglês</td></tr>
+            <tr><td class="pais">🇷🇺 a Rússia</td><td class="masc">russo</td><td class="fem">russa</td><td class="idioma">russo</td></tr>
+            <tr><td class="pais">🇦🇺 a Austrália</td><td class="masc">australiano</td><td class="fem">australiana</td><td class="idioma">inglês</td></tr>
+            <tr><td class="pais">🇿🇦 a África do Sul</td><td class="masc">sul-africano</td><td class="fem">sul-africana</td><td class="idioma">inglês</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sfoot">📌 Sul-coreano / Sul-africano — com hífen!</div>
+    </div>
+
+    <!-- S6: SUFIXOS DAS NACIONALIDADES -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Sufixos das Nacionalidades</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box">
+            <div class="box-title vd">-ano / -ana</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">mexicano/a</span></div>
+              <div class="ex-item"><span class="ex-pt">italiano/a</span></div>
+              <div class="ex-item"><span class="ex-pt">americano/a</span></div>
+              <div class="ex-item"><span class="ex-pt">colombiano/a</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">-ês / -esa</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">francês/esa</span></div>
+              <div class="ex-item"><span class="ex-pt">japonês/esa</span></div>
+              <div class="ex-item"><span class="ex-pt">português/esa</span></div>
+              <div class="ex-item"><span class="ex-pt">inglês/esa</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">-ão / -ã e outros</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">alemão/alemã</span></div>
+              <div class="ex-item"><span class="ex-pt">brasileiro/a</span></div>
+              <div class="ex-item"><span class="ex-pt">canadense</span></div>
+              <div class="ex-item"><span class="ex-pt">israelense</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert"><strong>⚠️ Casos irregulares</strong>Egito → egípcio/a · Reino Unido → britânico/a · Nova Zelândia → neozelandês/esa</div>
+      </div>
+    </div>
+
+    <!-- S7: PAÍSES LUSÓFONOS -->
+    <div class="slide content" data-type="Cultura">
+      <div class="shdr"><span class="stag tg-cul">Cultura</span><span class="stitle">🇧🇷 Países Lusófonos</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Países que falam português</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">🇧🇷 Brasil</span><span class="ex-es">América do Sul</span></div>
+              <div class="ex-item"><span class="ex-pt">🇵🇹 Portugal</span><span class="ex-es">Europa</span></div>
+              <div class="ex-item"><span class="ex-pt">🇦🇴 Angola</span><span class="ex-es">África</span></div>
+              <div class="ex-item"><span class="ex-pt">🇲🇿 Moçambique</span><span class="ex-es">África</span></div>
+              <div class="ex-item"><span class="ex-pt">🇨🇻 Cabo Verde</span><span class="ex-es">África</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Mais lusófonos</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">🇬🇼 Guiné-Bissau</span></div>
+              <div class="ex-item"><span class="ex-pt">🇸🇹 São Tomé e Príncipe</span></div>
+              <div class="ex-item"><span class="ex-pt">🇹🇱 Timor-Leste</span></div>
+              <div class="ex-item"><span class="ex-pt">🌍 + Guiné Equatorial</span></div>
+            </div>
+            <div class="info" style="margin-top:5%">Total: <strong>9 países</strong> + regiões!</div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 O português é falado em 4 continentes!</div>
+    </div>
+
+    <!-- S8: PAÍSES SEM ARTIGO -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Casos Especiais — Preposições</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box rs">
+            <div class="box-title rs">⚠️ Países SEM artigo</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Portugal</span><span class="ex-es">Vou a Portugal.</span></div>
+              <div class="ex-item"><span class="ex-pt">Angola</span><span class="ex-es">Estou em Angola.</span></div>
+              <div class="ex-item"><span class="ex-pt">Moçambique</span><span class="ex-es">Sou de Moçambique.</span></div>
+              <div class="ex-item"><span class="ex-pt">Cuba</span><span class="ex-es">Vou a Cuba.</span></div>
+              <div class="ex-item"><span class="ex-pt">Israel</span><span class="ex-es">Ele é de Israel.</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">✅ Países COM artigo</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o Brasil</span><span class="ex-es">Vou ao Brasil.</span></div>
+              <div class="ex-item"><span class="ex-pt">a França</span><span class="ex-es">Estou na França.</span></div>
+              <div class="ex-item"><span class="ex-pt">o Japão</span><span class="ex-es">Vou ao Japão.</span></div>
+              <div class="ex-item"><span class="ex-pt">os EUA</span><span class="ex-es">Vou aos Estados Unidos.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info">📌 No = a + o · Na = a + a · Aos = a + os · Às = a + as</div>
+      </div>
+      <div class="sfoot">📌 Portugal, Angola, Cuba, Israel — sem artigo!</div>
+    </div>
+
+    <!-- S9: DIÁLOGO -->
+    <div class="slide content" data-type="Prática">
+      <div class="shdr"><span class="stag tg-act">Prática</span><span class="stitle">Diálogo — De Onde Você É?</span></div>
+      <div class="sbody">
+        <div class="dialog-box">
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Carlos, você é mexicano, né?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Sou sim! Sou mexicano, de Guadalajara. E você?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Eu sou colombiana. Moro no México há dois anos.</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Que legal! A professora é brasileira, né?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">É! Ela é de São Paulo. A gente tem sorte!</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Verdade! E você fala espanhol, português... que idiomas você fala?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Espanhol, inglês e agora português! E você vai ao Brasil?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Vou no próximo ano! Primeiro ao Rio, depois a São Paulo!</span></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Pratique em pares!</div>
+    </div>
+
+    <!-- S10: ATIVIDADE -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Atividade</span><span class="stitle">Complete com a Nacionalidade</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Complete</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">1. Ela é da França. Ela é ________.</span></div>
+              <div class="ex-item"><span class="ex-pt">2. Eles são do Japão. Eles são ________.</span></div>
+              <div class="ex-item"><span class="ex-pt">3. Nós somos da Alemanha. Nós somos ________.</span></div>
+              <div class="ex-item"><span class="ex-pt">4. Ele é do Egito. Ele é ________.</span></div>
+              <div class="ex-item"><span class="ex-pt">5. Ela é da Coreia do Sul. Ela é ________.</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">Respostas</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">1. francesa</span><span class="ex-es">♀ -esa</span></div>
+              <div class="ex-item"><span class="ex-pt">2. japoneses</span><span class="ex-es">♂ plural</span></div>
+              <div class="ex-item"><span class="ex-pt">3. alemães/ãs</span><span class="ex-es">irregular!</span></div>
+              <div class="ex-item"><span class="ex-pt">4. egípcio</span><span class="ex-es">irregular!</span></div>
+              <div class="ex-item"><span class="ex-pt">5. sul-coreana</span><span class="ex-es">♀ hífen</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S11: RESUMO -->
+    <div class="slide content" data-type="Resumo">
+      <div class="shdr"><span class="stag tg-gram">Resumo</span><span class="stitle">Resumo — Nacionalidades</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box">
+            <div class="box-title vd">Regras</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">País → MAIÚSCULA</span></div>
+              <div class="ex-item"><span class="ex-pt">Gentílico → minúscula</span></div>
+              <div class="ex-item"><span class="ex-pt">Idioma → minúscula</span></div>
+              <div class="ex-item"><span class="ex-pt">Gênero M/F</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Preposições</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">no Brasil (♂)</span></div>
+              <div class="ex-item"><span class="ex-pt">na França (♀)</span></div>
+              <div class="ex-item"><span class="ex-pt">a Portugal (sem art.)</span></div>
+              <div class="ex-item"><span class="ex-pt">aos EUA (plural)</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">Sufixos</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">-ano/a</span></div>
+              <div class="ex-item"><span class="ex-pt">-ês/esa</span></div>
+              <div class="ex-item"><span class="ex-pt">-ense</span></div>
+              <div class="ex-item"><span class="ex-pt">-ão/ã (irregular)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S12: FIM -->
+    <div class="slide cover" data-type="Fim">
+      <div class="cover-tag" style="background:rgba(255,255,255,.2)">FIM DA AULA 14.2</div>
+      <div class="cover-logo">🎉</div>
+      <div class="cover-h1">Parabéns! <span>🎉</span></div>
+      <div class="cover-desc">Você domina as nacionalidades em português!</div>
+      <div class="cover-pills">
+        <span class="pill">Américas ✓</span>
+        <span class="pill">Europa ✓</span>
+        <span class="pill">Ásia ✓</span>
+        <span class="pill">Lusófonos ✓</span>
+        <span class="pill">Preposições ✓</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+  </div>
+  <div class="navrow">
+    <button class="nbtn" id="bp" onclick="go(-1)" disabled>&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="nbtn" id="bn" onclick="go(1)">&#8594;</button>
+  </div>
+  <div class="stype" id="stype"></div>
+</div>
+<script>
+const slides=document.querySelectorAll('.slide');
+const N=slides.length;
+let cur=0;
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<N;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>show(i);dotsEl.appendChild(d);}
+function show(n){slides[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));slides[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('bp').disabled=cur===0;document.getElementById('bn').disabled=cur===N-1;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';document.getElementById('counter').textContent=(cur+1)+' / '+N;document.getElementById('stype').textContent=slides[cur].dataset.type||'';}
+function go(d){show(cur+d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);});
+let tsX=0,tsY=0;
+document.querySelector('.stage').addEventListener('touchstart',e=>{tsX=e.changedTouches[0].clientX;tsY=e.changedTouches[0].clientY;},{passive:true});
+document.querySelector('.stage').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsX;const dy=e.changedTouches[0].clientY-tsY;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){if(dx<0)go(1);else go(-1);}},{passive:true});
+show(0);
+</script>
+</body>
+</html>
