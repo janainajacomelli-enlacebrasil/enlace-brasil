@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Enlace Brasil — Aula 14.2 · Nacionalidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--vd:#009C3B;--am:#F5C518;--az:#002776;--rs:#e8336d;--bg:#eaf5f0;--text:#1a1a1a;--muted:#888;--radius:14px}
+html,body{font-family:Nunito,sans-serif;background:var(--bg);color:var(--text);-webkit-overflow-scrolling:touch}
+.topbar{background:var(--az);color:#fff;padding:14px 16px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;padding-top:max(14px,env(safe-area-inset-top,14px))}
+.tb-logo{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.4);object-fit:cover;flex-shrink:0}
+.tb-text{flex:1}.tb-title{font-family:"Baloo 2",sans-serif;font-size:15px;font-weight:800;line-height:1.1}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:1px}
+.tb-pts{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:4px 10px;font-size:12px;font-weight:700}
+.idx-bar{background:#fff;border-bottom:2px solid #eee;display:flex;overflow-x:auto;position:sticky;top:62px;z-index:99}
+.idx-bar::-webkit-scrollbar{display:none}
+.idx-btn{flex-shrink:0;padding:10px 14px;font-size:11px;font-weight:700;color:var(--muted);border:none;background:none;font-family:Nunito,sans-serif;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.idx-btn.active{color:var(--az);border-bottom-color:var(--az)}
+.section{padding:16px 14px 8px}
+.section-title{font-family:"Baloo 2",sans-serif;font-size:20px;font-weight:800;color:var(--az);margin-bottom:14px}
+.hero{background:linear-gradient(135deg,var(--az),#1a4fa0);border-radius:16px;padding:20px;color:#fff;margin:14px 14px 0}
+.hero-tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:10px;font-weight:700;padding:3px 10px;border-radius:14px;display:inline-block;margin-bottom:10px;letter-spacing:.5px}
+.hero-title{font-family:"Baloo 2",sans-serif;font-size:24px;font-weight:800;line-height:1.1;margin-bottom:6px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px}
+.card.vd{border-left:4px solid var(--vd)}.card.az{border-left:4px solid var(--az)}
+.card-title{font-size:11px;font-weight:700;color:var(--az);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.rule-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #f0f0f0}
+.rule-sym{font-family:"Baloo 2",sans-serif;font-size:14px;font-weight:800;color:var(--az);min-width:90px}
+.rule-txt{font-size:12px;color:#444}
+.sound-card{border-radius:12px;padding:14px;margin-bottom:10px}
+.c1{background:linear-gradient(135deg,var(--az),#1a4fa0);color:#fff}
+.c2{background:linear-gradient(135deg,#007a2e,var(--vd));color:#fff}
+.c3{background:linear-gradient(135deg,#856404,#a07808);color:#fff}
+.c4{background:linear-gradient(135deg,#72243E,var(--rs));color:#fff}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.sc-sym{font-family:"Baloo 2",sans-serif;font-size:22px;font-weight:800}
+.sc-badge{background:rgba(255,255,255,.2);font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px}
+.sc-play{background:rgba(255,255,255,.25);border:none;border-radius:50%;width:36px;height:36px;color:#fff;font-size:14px;cursor:pointer;flex-shrink:0}
+.sc-rule{font-size:11px;opacity:.8;margin-bottom:8px;line-height:1.4}
+.sc-exs{display:flex;flex-wrap:wrap;gap:6px}
+.sc-ex{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:700;cursor:pointer}
+.sc-ex:active{background:rgba(255,255,255,.35)}
+.tip{background:#E1F5EE;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.tip.am{background:#FFF3CD}
+.tip-lbl{font-size:10px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
+.tip.am .tip-lbl{color:#856404}
+.tip-txt{font-size:12px;color:#333;line-height:1.5}
+.tip-txt em{color:var(--az);font-style:normal;font-weight:700}
+.marcas-grid{display:flex;flex-direction:column;gap:6px}
+.marca-item{display:flex;align-items:center;gap:10px;background:#f6fbf8;border-radius:10px;padding:10px 12px;cursor:pointer;transition:background .15s}
+.marca-item:active{background:#E1F5EE}
+.marca-orig{font-size:13px;font-weight:700;color:var(--az);min-width:80px}
+.marca-pt{font-size:13px;color:#444;flex:1;font-style:italic}
+.marca-play{background:var(--vd);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.ditado-list{display:flex;flex-direction:column;gap:8px}
+.ditado-item{display:flex;align-items:flex-start;gap:10px;background:#f6fbf8;border-radius:10px;padding:10px 12px;cursor:pointer;transition:background .15s}
+.ditado-item:active{background:#E1F5EE}
+.ditado-num{font-family:"Baloo 2",sans-serif;font-size:16px;font-weight:800;color:var(--az);min-width:22px;flex-shrink:0}
+.ditado-play{background:var(--vd);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+.ditado-txt{font-size:12px;color:#333;line-height:1.5;flex:1}
+.play-btn{background:rgba(0,39,118,.1);border:2px solid var(--az);border-radius:12px;padding:10px;color:var(--az);font-size:13px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.play-btn.playing{background:var(--am);color:#333;border-color:var(--am)}
+.score-banner{background:linear-gradient(135deg,var(--vd),#007a2e);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;color:#fff;margin-bottom:10px}
+.sb-label{font-size:11px;opacity:.8;font-weight:600}
+.sb-score{font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800;line-height:1}
+.sb-stars{font-size:13px;margin-top:1px}
+.blank-card{background:#fff;border-radius:14px;padding:14px;border-left:4px solid var(--vd);margin-bottom:10px}
+.blank-q{font-size:13px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:10px}
+.blank-q .gap{display:inline-block;min-width:60px;border-bottom:2px dashed var(--vd);color:var(--vd);text-align:center;padding:0 4px}
+.blank-q .gap.correct{color:#0F6E56;border-bottom:2px solid #0F6E56;font-weight:700}
+.options-row{display:flex;flex-wrap:wrap;gap:6px}
+.opt{background:#f6fbf8;border:2px solid #ddd;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;color:#444;cursor:pointer;transition:all .15s}
+.opt:active{transform:scale(.95)}
+.opt.selected{background:#E1F5EE;border-color:var(--vd);color:#0F6E56}
+.opt.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D;animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.btn{width:100%;padding:13px;border-radius:12px;border:none;font-size:14px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.btn-verde{background:var(--vd);color:#fff}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,39,118,.9);color:#fff;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;z-index:200}
+.toast.show{opacity:1}
+@media(min-width:768px){
+  .section,.hero{max-width:860px;margin-left:auto;margin-right:auto}
+  .hero{padding:28px 32px;margin-top:16px}
+  .section{padding:20px 24px 12px}
+  .section-title{font-size:24px}
+  .marcas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tip-txt{font-size:14px}
+  .blank-q{font-size:15px}
+  .opt{font-size:14px;padding:10px 18px}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <img class="tb-logo" src="data:image/jpeg;base64,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" alt="EB">
+  <div class="tb-text">
+    <div class="tb-title">Enlace Brasil</div>
+    <div class="tb-sub">Aula 14.2 — Nacionalidades</div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="scrollTo_('s-regras',this)">📌 Regras</button>
+  <button class="idx-btn" onclick="scrollTo_('s-americas',this)">🌎 Américas</button>
+  <button class="idx-btn" onclick="scrollTo_('s-europa',this)">🌍 Europa</button>
+  <button class="idx-btn" onclick="scrollTo_('s-asia',this)">🌏 Ásia</button>
+  <button class="idx-btn" onclick="scrollTo_('s-lusofono',this)">🇧🇷 Lusófonos</button>
+  <button class="idx-btn" onclick="scrollTo_('s-dialogo',this)">💬 Diálogo</button>
+  <button class="idx-btn" onclick="scrollTo_('s-ativ',this)">✏️ Atividades</button>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">AULA 14.2 · NÍVEL A1</div>
+  <div class="hero-title">Nacionalidades<br><span>em Português</span></div>
+  <div class="hero-desc">Países, gentílicos, idiomas. Toque para ouvir!</div>
+  <div class="pill-row">
+    <span class="pill">Gênero M/F</span>
+    <span class="pill">no/na + país</span>
+    <span class="pill">maiúscula/minúscula</span>
+  </div>
+</div>
+
+<!-- REGRAS -->
+<div class="section" id="s-regras">
+  <div class="section-title">📌 Regras Gerais</div>
+  <div class="card vd">
+    <div class="card-title">1. Gênero — toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Eu sou brasileiro.')"><span class="marca-orig">♂ brasileiro</span><span class="marca-pt">masculino</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu sou brasileira.')"><span class="marca-orig">♀ brasileira</span><span class="marca-pt">feminino</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu sou francês.')"><span class="marca-orig">♂ francês</span><span class="marca-pt">masculino</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu sou francesa.')"><span class="marca-orig">♀ francesa</span><span class="marca-pt">feminino</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+  <div class="card am" style="margin-top:8px">
+    <div class="card-title">2. Maiúscula vs Minúscula</div>
+    <div class="ditado-list">
+      <div class="ditado-item" onclick="spk('Eu moro no Brasil.')"><span class="ditado-num">▶</span><span class="ditado-play" style="display:none">x</span><span class="ditado-txt"><strong>Brasil</strong> (país) → MAIÚSCULA · <strong>brasileiro</strong> (gentílico) → minúscula</span></div>
+      <div class="ditado-item" onclick="spk('Eu falo português.')"><span class="ditado-num">▶</span><span class="ditado-play" style="display:none">x</span><span class="ditado-txt"><strong>português</strong> (idioma) → minúscula · <strong>Portugal</strong> (país) → MAIÚSCULA</span></div>
+    </div>
+  </div>
+  <div class="card az" style="margin-top:8px">
+    <div class="card-title">3. Preposições — no/na + país</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Eu moro no Brasil.')"><span class="marca-orig"><strong>no</strong> Brasil 🇧🇷</span><span class="marca-pt">masculino: no México, no Japão</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu moro na França.')"><span class="marca-orig"><strong>na</strong> França 🇫🇷</span><span class="marca-pt">feminino: na China, na Índia</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu vou a Portugal.')"><span class="marca-orig"><strong>a</strong> Portugal 🇵🇹</span><span class="marca-pt">sem artigo: Cuba, Angola, Israel</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu vou aos Estados Unidos.')"><span class="marca-orig"><strong>aos</strong> EUA 🇺🇸</span><span class="marca-pt">plural: aos Estados Unidos</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- AMÉRICAS -->
+<div class="section" id="s-americas">
+  <div class="section-title">🌎 Américas</div>
+  <div class="card vd">
+    <div class="card-title">Toque para ouvir a nacionalidade</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Sou brasileiro.')"><span class="marca-orig">🇧🇷 Brasil</span><span class="marca-pt">brasileiro/a · português</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou mexicano.')"><span class="marca-orig">🇲🇽 México</span><span class="marca-pt">mexicano/a · espanhol</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou argentino.')"><span class="marca-orig">🇦🇷 Argentina</span><span class="marca-pt">argentino/a · espanhol</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou colombiano.')"><span class="marca-orig">🇨🇴 Colômbia</span><span class="marca-pt">colombiano/a · espanhol</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou chileno.')"><span class="marca-orig">🇨🇱 Chile</span><span class="marca-pt">chileno/a · espanhol</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou americano.')"><span class="marca-orig">🇺🇸 Estados Unidos</span><span class="marca-pt">americano/a · inglês</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou canadense.')"><span class="marca-orig">🇨🇦 Canadá</span><span class="marca-pt">canadense · inglês/francês</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou peruano.')"><span class="marca-orig">🇵🇪 Peru</span><span class="marca-pt">peruano/a · espanhol</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- EUROPA -->
+<div class="section" id="s-europa">
+  <div class="section-title">🌍 Europa</div>
+  <div class="card vd">
+    <div class="card-title">Toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Sou português.')"><span class="marca-orig">🇵🇹 Portugal</span><span class="marca-pt">português/esa</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou espanhol.')"><span class="marca-orig">🇪🇸 Espanha</span><span class="marca-pt">espanhol/a</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou francês.')"><span class="marca-orig">🇫🇷 França</span><span class="marca-pt">francês/esa</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou italiano.')"><span class="marca-orig">🇮🇹 Itália</span><span class="marca-pt">italiano/a</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou alemão.')"><span class="marca-orig">🇩🇪 Alemanha</span><span class="marca-pt">alemão/ã ⚠️</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou inglês.')"><span class="marca-orig">🇬🇧 Inglaterra</span><span class="marca-pt">inglês/esa</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou russo.')"><span class="marca-orig">🇷🇺 Rússia</span><span class="marca-pt">russo/a</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou holandês.')"><span class="marca-orig">🇳🇱 Holanda</span><span class="marca-pt">holandês/esa</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+  <div class="tip rs" style="margin-top:8px">
+    <div class="tip-lbl">⚠️ Alemanha — irregular!</div>
+    <div class="tip-txt">alemão (♂) · alemã (♀) · alemães (♂ plural) · alemãs (♀ plural)</div>
+  </div>
+</div>
+
+<!-- ÁSIA -->
+<div class="section" id="s-asia">
+  <div class="section-title">🌏 Ásia e Outros</div>
+  <div class="card vd">
+    <div class="card-title">Toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Sou japonês.')"><span class="marca-orig">🇯🇵 Japão</span><span class="marca-pt">japonês/esa</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou chinês.')"><span class="marca-orig">🇨🇳 China</span><span class="marca-pt">chinês/esa</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou sul-coreano.')"><span class="marca-orig">🇰🇷 Coreia do Sul</span><span class="marca-pt">sul-coreano/a</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou indiano.')"><span class="marca-orig">🇮🇳 Índia</span><span class="marca-pt">indiano/a</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou australiano.')"><span class="marca-orig">🇦🇺 Austrália</span><span class="marca-pt">australiano/a</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou egípcio.')"><span class="marca-orig">🇪🇬 Egito</span><span class="marca-pt">egípcio/a ⚠️</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LUSÓFONOS -->
+<div class="section" id="s-lusofono">
+  <div class="section-title">🇧🇷 Países Lusófonos</div>
+  <div class="card vd">
+    <div class="card-title">Países que falam português — toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Sou brasileiro. Falo português.')"><span class="marca-orig">🇧🇷 Brasil</span><span class="marca-pt">América do Sul</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou português. Falo português.')"><span class="marca-orig">🇵🇹 Portugal</span><span class="marca-pt">Europa</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou angolano. Falo português.')"><span class="marca-orig">🇦🇴 Angola</span><span class="marca-pt">África</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou moçambicano. Falo português.')"><span class="marca-orig">🇲🇿 Moçambique</span><span class="marca-pt">África</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Sou cabo-verdiano. Falo português.')"><span class="marca-orig">🇨🇻 Cabo Verde</span><span class="marca-pt">África</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Falo português em Timor-Leste.')"><span class="marca-orig">🇹🇱 Timor-Leste</span><span class="marca-pt">Ásia</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+  <div class="tip" style="margin-top:8px">
+    <div class="tip-lbl">🌍 Curiosidade</div>
+    <div class="tip-txt">O português é falado em <em>4 continentes</em> — o 5º idioma mais falado no mundo!</div>
+  </div>
+</div>
+
+<!-- DIÁLOGO -->
+<div class="section" id="s-dialogo">
+  <div class="section-title">💬 Diálogo — De Onde Você É?</div>
+  <div class="card vd">
+    <div class="card-title">Toque em cada fala · ♀ Ana e ♂ Carlos</div>
+    <div class="ditado-list">
+      <div class="ditado-item" onclick="spkG('Carlos, você é mexicano, né?','F')">
+        <span class="ditado-num" style="color:#e8336d">♀</span>
+        <span class="ditado-play" style="background:#e8336d">▶</span>
+        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Carlos, você é mexicano, né?</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Sou sim! Sou mexicano, de Guadalajara. E você?','M')">
+        <span class="ditado-num" style="color:var(--az)">♂</span>
+        <span class="ditado-play" style="background:var(--az)">▶</span>
+        <span class="ditado-txt"><strong style="color:var(--az)">Carlos:</strong> Sou sim! Sou mexicano, de Guadalajara. E você?</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Eu sou colombiana. Moro no México há dois anos.','F')">
+        <span class="ditado-num" style="color:#e8336d">♀</span>
+        <span class="ditado-play" style="background:#e8336d">▶</span>
+        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Eu sou colombiana. Moro no México há dois anos.</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('A professora é brasileira, né? Ela é de São Paulo.','M')">
+        <span class="ditado-num" style="color:var(--az)">♂</span>
+        <span class="ditado-play" style="background:var(--az)">▶</span>
+        <span class="ditado-txt"><strong style="color:var(--az)">Carlos:</strong> A professora é brasileira, né? Ela é de São Paulo.</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('É! A gente tem sorte! Você vai ao Brasil?','F')">
+        <span class="ditado-num" style="color:#e8336d">♀</span>
+        <span class="ditado-play" style="background:#e8336d">▶</span>
+        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> É! A gente tem sorte! Você vai ao Brasil?</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Vou no próximo ano! Primeiro ao Rio, depois a São Paulo!','M')">
+        <span class="ditado-num" style="color:var(--az)">♂</span>
+        <span class="ditado-play" style="background:var(--az)">▶</span>
+        <span class="ditado-txt"><strong style="color:var(--az)">Carlos:</strong> Vou no próximo ano! Primeiro ao Rio, depois a São Paulo!</span>
+      </div>
+    </div>
+    <button class="play-btn" id="dialogo-btn" onclick="playDialogo()" style="margin-top:12px">▶ Ouvir diálogo completo ♀♂</button>
+  </div>
+</div>
+
+<!-- ATIVIDADES -->
+<div class="section" id="s-ativ">
+  <div class="section-title">✏️ Atividades</div>
+  <div class="score-banner">
+    <div><div class="sb-label">Pontuação</div><div class="sb-stars" id="stars">☆☆☆☆☆☆☆</div></div>
+    <div class="sb-score" id="score-disp">0/7</div>
+  </div>
+
+  <div class="blank-card" id="bq-0">
+    <div class="blank-q">Ela é da França. Ela é ___.</div>
+    <div class="options-row" id="opts-0">
+      <div class="opt" onclick="check(0,this,'francesa','francesa')">francesa</div>
+      <div class="opt" onclick="check(0,this,'francês','francesa')">francês</div>
+      <div class="opt" onclick="check(0,this,'França','francesa')">França</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-1">
+    <div class="blank-q">"Eu moro ___ Brasil."</div>
+    <div class="options-row" id="opts-1">
+      <div class="opt" onclick="check(1,this,'na','no')">na</div>
+      <div class="opt" onclick="check(1,this,'no','no')">no</div>
+      <div class="opt" onclick="check(1,this,'em','no')">em</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-2">
+    <div class="blank-q">Como se escreve a nacionalidade — maiúscula ou minúscula?</div>
+    <div class="options-row" id="opts-2">
+      <div class="opt" onclick="check(2,this,'Brasileiro','brasileiro')">Brasileiro</div>
+      <div class="opt" onclick="check(2,this,'brasileiro','brasileiro')">brasileiro</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-3">
+    <div class="blank-q">Qual é a forma feminina de "alemão"?</div>
+    <div class="options-row" id="opts-3">
+      <div class="opt" onclick="check(3,this,'alemãa','alemã')">alemãa</div>
+      <div class="opt" onclick="check(3,this,'alemana','alemã')">alemana</div>
+      <div class="opt" onclick="check(3,this,'alemã','alemã')">alemã</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-4">
+    <div class="blank-q">"Vou ___ Portugal." (sem artigo)</div>
+    <div class="options-row" id="opts-4">
+      <div class="opt" onclick="check(4,this,'ao','a')">ao</div>
+      <div class="opt" onclick="check(4,this,'a','a')">a</div>
+      <div class="opt" onclick="check(4,this,'no','a')">no</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-5">
+    <div class="blank-q">Qual país NÃO é lusófono?</div>
+    <div class="options-row" id="opts-5">
+      <div class="opt" onclick="check(5,this,'Angola','Espanha')">Angola</div>
+      <div class="opt" onclick="check(5,this,'Espanha','Espanha')">Espanha</div>
+      <div class="opt" onclick="check(5,this,'Cabo Verde','Espanha')">Cabo Verde</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-6">
+    <div class="blank-q">Ele é do Egito. Ele é ___.</div>
+    <div class="options-row" id="opts-6">
+      <div class="opt" onclick="check(6,this,'egitiano','egípcio')">egitiano</div>
+      <div class="opt" onclick="check(6,this,'egípcio','egípcio')">egípcio</div>
+      <div class="opt" onclick="check(6,this,'egito','egípcio')">egito</div>
+    </div>
+  </div>
+
+  <button class="btn btn-verde" onclick="resetAct()">🔄 Recomeçar</button>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var points=0,score=0,total=7,done=new Array(7).fill(false);
+function scrollTo_(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
+function spk(txt){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';u.rate=0.88;var v=speechSynthesis.getVoices().find(function(x){return x.lang==='pt-BR';});if(v)u.voice=v;speechSynthesis.speak(u);}
+function spkG(txt,gender){
+  if(!window.speechSynthesis)return;speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';
+  var voices=speechSynthesis.getVoices();var ptVoices=voices.filter(function(x){return x.lang==='pt-BR'||x.lang.startsWith('pt');});
+  if(gender==='F'){u.pitch=1.4;u.rate=1.05;var fv=ptVoices.find(function(x){return /female|woman|francisca/i.test(x.name);});if(!fv)fv=ptVoices.find(function(x){return !/male|masculin/i.test(x.name);});if(fv)u.voice=fv;else if(ptVoices.length)u.voice=ptVoices[0];}
+  else{u.pitch=0.95;u.rate=1.08;var mv=ptVoices.find(function(x){return /male|man|ricardo/i.test(x.name)&&!/female/i.test(x.name);});if(!mv)mv=ptVoices.find(function(x){return /male|masculin/i.test(x.name);});if(mv)u.voice=mv;else if(ptVoices.length>1)u.voice=ptVoices[1];else if(ptVoices.length)u.voice=ptVoices[0];}
+  speechSynthesis.speak(u);
+}
+var dialogoLines=[
+  {txt:'Carlos, você é mexicano, né?',g:'F'},
+  {txt:'Sou sim! Sou mexicano, de Guadalajara. E você?',g:'M'},
+  {txt:'Eu sou colombiana. Moro no México há dois anos.',g:'F'},
+  {txt:'A professora é brasileira, né? Ela é de São Paulo.',g:'M'},
+  {txt:'É! A gente tem sorte! Você vai ao Brasil?',g:'F'},
+  {txt:'Vou no próximo ano! Primeiro ao Rio, depois a São Paulo!',g:'M'}
+];
+function playDialogo(){
+  var btn=document.getElementById('dialogo-btn');
+  if(btn.classList.contains('playing')){speechSynthesis.cancel();btn.classList.remove('playing');btn.innerHTML='▶ Ouvir diálogo completo ♀♂';return;}
+  btn.classList.add('playing');btn.innerHTML='■ Parar';
+  var i=0;
+  function next(){
+    if(i>=dialogoLines.length){btn.classList.remove('playing');btn.innerHTML='▶ Ouvir diálogo completo ♀♂';return;}
+    var line=dialogoLines[i];var u=new SpeechSynthesisUtterance(line.txt);u.lang='pt-BR';
+    var voices=speechSynthesis.getVoices();var ptVoices=voices.filter(function(x){return x.lang==='pt-BR'||x.lang.startsWith('pt');});
+    if(line.g==='F'){u.pitch=1.4;u.rate=1.05;var fv=ptVoices.find(function(x){return /female|woman|francisca/i.test(x.name);});if(!fv)fv=ptVoices.find(function(x){return !/male|masculin/i.test(x.name);});if(fv)u.voice=fv;else if(ptVoices.length)u.voice=ptVoices[0];}
+    else{u.pitch=0.95;u.rate=1.08;var mv=ptVoices.find(function(x){return /male|man|ricardo/i.test(x.name)&&!/female/i.test(x.name);});if(!mv)mv=ptVoices.find(function(x){return /male|masculin/i.test(x.name);});if(mv)u.voice=mv;else if(ptVoices.length>1)u.voice=ptVoices[1];else if(ptVoices.length)u.voice=ptVoices[0];}
+    u.onend=function(){i++;setTimeout(next,450);};speechSynthesis.speak(u);
+  }
+  speechSynthesis.getVoices();setTimeout(next,100);
+}
+var toastT;function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('show');},1800);}
+function check(idx,el,chosen,correct){if(done[idx])return;if(chosen===correct){el.classList.add('selected');document.getElementById('opts-'+idx).querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});done[idx]=true;score++;points+=10;document.getElementById('tb-pts').textContent='⭐ '+points+' pts';document.getElementById('score-disp').textContent=score+'/'+total;document.getElementById('stars').textContent='⭐'.repeat(score)+'☆'.repeat(total-score);toast('✅ Correto! +10 pts');if(score===total)setTimeout(function(){toast('🏆 Perfeito! Parabéns!');},400);}else{el.classList.add('wrong');setTimeout(function(){el.classList.remove('wrong');},500);toast('❌ Tente novamente!');}}
+function resetAct(){score=0;points=0;done.fill(false);for(var i=0;i<total;i++){document.getElementById('opts-'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';o.style.pointerEvents='';});}document.getElementById('score-disp').textContent='0/'+total;document.getElementById('stars').textContent='☆'.repeat(total);document.getElementById('tb-pts').textContent='⭐ 0 pts';}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};document.addEventListener('touchstart',function iosUnlock(){var u=new SpeechSynthesisUtterance('');u.volume=0;speechSynthesis.speak(u);document.removeEventListener('touchstart',iosUnlock);},{once:true});}
+</script>
+</body>
+</html>
