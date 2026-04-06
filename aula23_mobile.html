@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 · Aula 23 · Crase — Aluno | Enlace Brasil</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --verde: #1B6B3A;
+    --verde-claro: #2E8B57;
+    --amarelo: #F5C842;
+    --azul: #1A3A5C;
+    --branco: #FFFFFF;
+    --cinza-claro: #F4F6F4;
+    --cinza-medio: #E0E6E0;
+    --texto: #1A2A1A;
+    --acerto: #1B6B3A;
+    --acerto-bg: #ECFBF0;
+    --erro: #C0392B;
+    --erro-bg: #FFECEC;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cinza-claro);
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--verde);
+    color: white;
+    padding: 18px 20px 14px;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .logo-circle {
+    width: 42px; height: 42px;
+    background: var(--amarelo);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--verde);
+    flex-shrink: 0;
+  }
+  .header-title { font-size: 13px; opacity: 0.85; }
+  .header-title strong { display: block; font-size: 16px; opacity: 1; }
+
+  .progress-wrap { margin-top: 6px; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 11px; opacity: 0.75; margin-bottom: 5px;
+  }
+  .progress-bar {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px; height: 6px;
+  }
+  .progress-fill {
+    height: 6px; border-radius: 10px;
+    background: var(--amarelo);
+    transition: width 0.5s;
+  }
+
+  /* SCORE */
+  .score-bar {
+    background: white;
+    padding: 12px 20px;
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 2px solid var(--cinza-medio);
+    position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  .score-label { font-size: 12px; color: #888; }
+  .score-num {
+    font-size: 20px; font-weight: 700;
+    color: var(--verde);
+  }
+  .score-total { font-size: 12px; color: #aaa; }
+  .score-bar .sep { flex: 1; }
+  .score-emoji { font-size: 22px; }
+
+  /* CONTAINER */
+  .container { max-width: 600px; margin: 0 auto; padding: 16px 14px 80px; }
+
+  /* CARD */
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .card-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .card-label.verde { color: var(--verde); }
+  .card-label.azul { color: var(--azul); }
+  .card-label.amarelo { color: #B8960A; }
+
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px; color: var(--verde);
+    margin-bottom: 10px;
+  }
+  .card h3 { font-size: 15px; font-weight: 600; color: var(--azul); margin-bottom: 8px; }
+
+  /* RESUMO VISUAL */
+  .resumo-item {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .resumo-item h4 { font-size: 13.5px; font-weight: 600; color: var(--azul); margin-bottom: 6px; }
+  .resumo-item p { font-size: 13px; color: #555; }
+  .resumo-item .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag {
+    background: white;
+    border: 1px solid var(--cinza-medio);
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-size: 13px;
+  }
+  .tag.sim { color: var(--acerto); border-color: #a3d9b5; }
+  .tag.nao { color: var(--erro); border-color: #f5b7b1; }
+
+  /* QUIZ */
+  .quiz-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px;
+    background: var(--amarelo); color: var(--texto);
+    border-radius: 50%; font-weight: 700; font-size: 13px;
+    margin-right: 8px; flex-shrink: 0;
+  }
+  .quiz-header { display: flex; align-items: center; margin-bottom: 12px; }
+  .quiz-section { margin-bottom: 22px; }
+
+  .frase-enunciado {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-size: 14.5px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .frase-enunciado em { font-style: normal; font-weight: 600; color: var(--azul); }
+
+  .opcoes { display: flex; flex-direction: column; gap: 8px; }
+  .opcao-btn {
+    background: white;
+    border: 2px solid var(--cinza-medio);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: 'Inter', sans-serif;
+    color: var(--texto);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .opcao-btn:hover { border-color: var(--verde-claro); background: #F0FAF4; }
+  .opcao-btn.correta { border-color: var(--acerto); background: var(--acerto-bg); color: var(--acerto); font-weight: 600; }
+  .opcao-btn.errada { border-color: var(--erro); background: var(--erro-bg); color: var(--erro); }
+  .opcao-btn.desabilitada { pointer-events: none; opacity: 0.55; }
+  .opcao-btn .icone { font-size: 16px; flex-shrink: 0; }
+
+  .feedback-box {
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    margin-top: 8px;
+    display: none;
+  }
+  .feedback-box.show { display: block; }
+  .feedback-box.ok { background: var(--acerto-bg); color: var(--acerto); border-left: 3px solid var(--acerto); }
+  .feedback-box.nok { background: var(--erro-bg); color: var(--erro); border-left: 3px solid var(--erro); }
+
+  /* LACUNAS */
+  .lacuna-frase {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14.5px;
+    line-height: 2;
+    margin-bottom: 10px;
+  }
+  .lacuna {
+    display: inline-block;
+    border-bottom: 2px solid var(--verde);
+    min-width: 50px;
+    text-align: center;
+    padding: 0 4px;
+    font-weight: 600;
+    color: var(--verde);
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    margin: 0 3px;
+  }
+  .lacuna-choices {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .choice-btn {
+    background: white;
+    border: 2px solid var(--cinza-medio);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Inter', sans-serif;
+    color: var(--azul);
+  }
+  .choice-btn:hover { border-color: var(--verde); background: #F0FAF4; }
+  .choice-btn.usada { opacity: 0.4; pointer-events: none; }
+
+  /* VERIFICAR */
+  .verificar-btn {
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .verificar-btn:hover { background: var(--verde-claro); }
+  .verificar-btn:disabled { background: #ccc; pointer-events: none; }
+
+  /* RESULTADO FINAL */
+  .resultado-card {
+    background: linear-gradient(135deg, var(--verde) 0%, #1a5c30 100%);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    color: white;
+    display: none;
+  }
+  .resultado-card.show { display: block; }
+  .resultado-emoji { font-size: 48px; margin-bottom: 10px; }
+  .resultado-num { font-size: 42px; font-weight: 700; font-family: 'Playfair Display', serif; }
+  .resultado-label { font-size: 14px; opacity: 0.85; margin-top: 4px; }
+  .resultado-msg { font-size: 15px; margin-top: 16px; line-height: 1.5; opacity: 0.9; }
+  .refazer-btn {
+    background: var(--amarelo);
+    color: var(--texto);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    margin-top: 18px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer {
+    text-align: center; padding: 20px;
+    font-size: 12px; color: #888;
+    border-top: 1px solid var(--cinza-medio);
+    margin-top: 20px;
+  }
+  .footer strong { color: var(--verde); }
+
+  .sep { height: 1px; background: var(--cinza-medio); margin: 14px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="logo-circle">EB</div>
+    <div class="header-title">
+      <span>Enlace Brasil · B2</span>
+      <strong>Aula 23 — Coesão e coerência: a crase</strong>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Aula 23 de 36</span>
+      <span>63%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:63%"></div></div>
+  </div>
+</div>
+
+<div class="score-bar">
+  <div>
+    <div class="score-label">Pontuação</div>
+    <div><span class="score-num" id="score">0</span> <span class="score-total">/ <span id="total">0</span></span></div>
+  </div>
+  <div class="sep"></div>
+  <div class="score-emoji" id="scoreEmoji">🇧🇷</div>
+</div>
+
+<div class="container">
+
+  <!-- RESUMO -->
+  <div class="card">
+    <div class="card-label verde">Resumo da Aula</div>
+    <h2>A Crase — o essencial</h2>
+
+    <div class="resumo-item">
+      <h4>✅ Use à / às quando...</h4>
+      <p>Substantivo feminino que aceita artigo <em>a</em> → teste com o masculino: se vira <em>ao</em>, usa crase.</p>
+      <div class="tags">
+        <span class="tag sim">à reunião</span>
+        <span class="tag sim">às 14h</span>
+        <span class="tag sim">à diretora</span>
+        <span class="tag sim">à Bahia</span>
+      </div>
+    </div>
+
+    <div class="resumo-item">
+      <h4>❌ Não use antes de...</h4>
+      <div class="tags">
+        <span class="tag nao">verbos → a trabalhar</span>
+        <span class="tag nao">pronomes → a ela</span>
+        <span class="tag nao">masculinos → a João</span>
+        <span class="tag nao">cidades sem artigo → a Paris</span>
+      </div>
+    </div>
+
+    <div class="resumo-item">
+      <h4>⚡ Locuções sempre com crase</h4>
+      <div class="tags">
+        <span class="tag sim">à noite</span>
+        <span class="tag sim">às vezes</span>
+        <span class="tag sim">à vontade</span>
+        <span class="tag sim">à toa</span>
+        <span class="tag sim">à medida que</span>
+        <span class="tag sim">à disposição</span>
+      </div>
+    </div>
+
+    <div class="resumo-item">
+      <h4>🔤 Pronomes demonstrativos</h4>
+      <div class="tags">
+        <span class="tag sim">àquela</span>
+        <span class="tag sim">àquele</span>
+        <span class="tag sim">àquilo</span>
+        <span class="tag sim">àquelas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ 1: SIM OU NÃO -->
+  <div class="card">
+    <div class="card-label amarelo">Atividade 1 — Quiz</div>
+    <h3>A frase está correta?</h3>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Escolha Correto ✓ ou Incorreto ✗ para cada frase.</p>
+
+    <div id="quiz1"></div>
+
+  </div>
+
+  <!-- QUIZ 2: LACUNAS -->
+  <div class="card">
+    <div class="card-label amarelo">Atividade 2 — Complete</div>
+    <h3>Escolha: <em>a</em>, <em>à</em> ou <em>às</em></h3>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Toque na opção correta para preencher cada lacuna.</p>
+
+    <div id="quiz2"></div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="resultado-card" id="resultado">
+    <div class="resultado-emoji" id="resultEmoji">🎉</div>
+    <div class="resultado-num" id="resultNum">0</div>
+    <div class="resultado-label">pontos de <span id="resultTotal">0</span></div>
+    <div class="resultado-msg" id="resultMsg"></div>
+    <button class="refazer-btn" onclick="refazer()">🔄 Refazer atividades</button>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Enlace Brasil</strong> · Instituto de Língua e Cultura Brasileira · Ciudad de México<br>
+  B2 · Aula 23 — Coesão e coerência: o uso da crase · Arquivo do Aluno
+</div>
+
+<script>
+// =====================
+// ESTADO GLOBAL
+// =====================
+let pontos = 0;
+let respondidas = 0;
+let totalQuestoes = 0;
+
+// =====================
+// QUIZ 1 — Correto/Incorreto
+// =====================
+const quiz1Data = [
+  { frase: "Ela foi <em>a</em> reunião sem avisar.", correta: false, feedback: "Falta crase: <strong>à reunião</strong>. Teste → <em>ao encontro</em> ✓" },
+  { frase: "O relatório foi enviado <em>à</em> diretora.", correta: true, feedback: "Correto! Substantivo feminino com artigo." },
+  { frase: "Chegamos <em>às</em> 9h em ponto.", correta: true, feedback: "Correto! Horas sempre levam crase." },
+  { frase: "Ele começou <em>à</em> trabalhar cedo.", correta: false, feedback: "Antes de verbo nunca há crase: <strong>a trabalhar</strong>." },
+  { frase: "Fui <em>à</em> Paris apresentar o projeto.", correta: false, feedback: "Paris não usa artigo → <strong>fui a Paris</strong>." },
+  { frase: "Estou <em>à</em> disposição para ajudar.", correta: true, feedback: "Correto! Locução adverbial → sempre crase." },
+  { frase: "Disse <em>à</em> ela que aprovamos.", correta: false, feedback: "Pronome pessoal nunca leva crase: <strong>disse a ela</strong>." },
+  { frase: "Refiro-me <em>àquelas</em> questões do contrato.", correta: true, feedback: "Correto! a + aquelas = àquelas." },
+];
+
+function buildQuiz1() {
+  const container = document.getElementById('quiz1');
+  container.innerHTML = '';
+  quiz1Data.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-section';
+    div.innerHTML = `
+      <div class="quiz-header">
+        <span class="quiz-num">${i+1}</span>
+        <span style="font-size:13px; color:#888; font-weight:600;">A frase está correta?</span>
+      </div>
+      <div class="frase-enunciado">${q.frase}</div>
+      <div class="opcoes">
+        <button class="opcao-btn" onclick="responderQ1(this, ${i}, true)">
+          <span class="icone">✓</span> Correto
+        </button>
+        <button class="opcao-btn" onclick="responderQ1(this, ${i}, false)">
+          <span class="icone">✗</span> Incorreto
+        </button>
+      </div>
+      <div class="feedback-box" id="fb1-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+  totalQuestoes += quiz1Data.length;
+  atualizarTotal();
+}
+
+function responderQ1(btn, idx, escolha) {
+  const q = quiz1Data[idx];
+  const secao = btn.closest('.quiz-section');
+  const btns = secao.querySelectorAll('.opcao-btn');
+  const fb = document.getElementById(`fb1-${idx}`);
+  const acertou = (escolha === q.correta);
+
+  btns.forEach(b => b.classList.add('desabilitada'));
+  btn.classList.add(acertou ? 'correta' : 'errada');
+
+  fb.textContent = '';
+  fb.innerHTML = (acertou ? '✅ ' : '❌ ') + q.feedback;
+  fb.className = 'feedback-box show ' + (acertou ? 'ok' : 'nok');
+
+  if (acertou) pontos++;
+  respondidas++;
+  atualizarScore();
+  verificarFim();
+}
+
+// =====================
+// QUIZ 2 — LACUNAS
+// =====================
+const quiz2Data = [
+  {
+    antes: "O gerente pediu adaptação",
+    lacuna: "às",
+    depois: "novas diretrizes.",
+    opcoes: ["a", "à", "às"],
+    feedback: "<strong>Às</strong> novas diretrizes — feminino plural com artigo."
+  },
+  {
+    antes: "A reunião foi remarcada",
+    lacuna: "para",
+    depois: "sexta",
+    extra: { antes2: "às", depois2: "14h." },
+    opcoes: ["a", "à", "às"],
+    isDouble: false,
+    feedback: "<strong>À</strong> sexta / <strong>às</strong> 14h — ambas levam crase."
+  },
+  {
+    antes: "Encaminhamos o documento",
+    lacuna: "à",
+    depois: "coordenadora responsável.",
+    opcoes: ["a", "à", "às"],
+    feedback: "<strong>À</strong> coordenadora — substantivo feminino + artigo."
+  },
+  {
+    antes: "",
+    lacuna: "À",
+    depois: "medida que avançamos, surgem desafios.",
+    opcoes: ["A", "À", "Às"],
+    feedback: "<strong>À medida que</strong> — locução conjuntiva, sempre com crase."
+  },
+  {
+    antes: "Caso tenha dúvidas, estou",
+    lacuna: "à",
+    depois: "disposição.",
+    opcoes: ["a", "à", "às"],
+    feedback: "<strong>À disposição</strong> — locução adverbial feminina."
+  },
+  {
+    antes: "O cliente não estava disposto",
+    lacuna: "a",
+    depois: "negociar os termos.",
+    opcoes: ["a", "à", "às"],
+    feedback: "<strong>a negociar</strong> — antes de verbo, nunca crase."
+  },
+];
+
+function buildQuiz2() {
+  const container = document.getElementById('quiz2');
+  container.innerHTML = '';
+  quiz2Data.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-section';
+    div.innerHTML = `
+      <div class="quiz-header">
+        <span class="quiz-num">${i+1}</span>
+      </div>
+      <div class="lacuna-frase" id="lf-${i}">
+        ${q.antes} <span class="lacuna" id="lac-${i}">___</span> ${q.depois}
+      </div>
+      <div class="lacuna-choices" id="lc-${i}">
+        ${q.opcoes.map(op => `<button class="choice-btn" onclick="escolherLacuna(this, ${i}, '${op}')">${op}</button>`).join('')}
+      </div>
+      <div class="feedback-box" id="fb2-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+  totalQuestoes += quiz2Data.length;
+  atualizarTotal();
+}
+
+function escolherLacuna(btn, idx, escolha) {
+  const q = quiz2Data[idx];
+  const lac = document.getElementById(`lac-${idx}`);
+  const choices = document.getElementById(`lc-${idx}`);
+  const fb = document.getElementById(`fb2-${idx}`);
+  const acertou = (escolha.toLowerCase() === q.lacuna.toLowerCase());
+
+  choices.querySelectorAll('.choice-btn').forEach(b => b.classList.add('usada'));
+  lac.textContent = escolha;
+  lac.style.color = acertou ? 'var(--acerto)' : 'var(--erro)';
+  lac.style.borderBottomColor = acertou ? 'var(--acerto)' : 'var(--erro)';
+
+  fb.innerHTML = (acertou ? '✅ ' : `❌ Resposta correta: <strong>${q.lacuna}</strong>. `) + q.feedback;
+  fb.className = 'feedback-box show ' + (acertou ? 'ok' : 'nok');
+
+  if (acertou) pontos++;
+  respondidas++;
+  atualizarScore();
+  verificarFim();
+}
+
+// =====================
+// SCORE
+// =====================
+function atualizarScore() {
+  document.getElementById('score').textContent = pontos;
+  const pct = totalQuestoes > 0 ? pontos / totalQuestoes : 0;
+  const emoji = pct >= 0.9 ? '🏆' : pct >= 0.7 ? '🌟' : pct >= 0.5 ? '💪' : '📚';
+  document.getElementById('scoreEmoji').textContent = emoji;
+}
+function atualizarTotal() {
+  document.getElementById('total').textContent = totalQuestoes;
+}
+
+function verificarFim() {
+  if (respondidas >= totalQuestoes) {
+    setTimeout(mostrarResultado, 600);
+  }
+}
+
+function mostrarResultado() {
+  const card = document.getElementById('resultado');
+  const pct = pontos / totalQuestoes;
+  card.classList.add('show');
+  document.getElementById('resultNum').textContent = pontos;
+  document.getElementById('resultTotal').textContent = totalQuestoes;
+  document.getElementById('resultEmoji').textContent = pct >= 0.9 ? '🏆' : pct >= 0.7 ? '🌟' : pct >= 0.5 ? '💪' : '📖';
+  const msgs = {
+    alto: 'Excelente! Você domina o uso da crase. Continue assim! 🇧🇷',
+    medio: 'Muito bem! Revise os casos especiais e você estará perfeito.',
+    baixo: 'Bom começo! Releia o resumo acima e tente novamente — você consegue! 💚'
+  };
+  document.getElementById('resultMsg').textContent = pct >= 0.8 ? msgs.alto : pct >= 0.5 ? msgs.medio : msgs.baixo;
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function refazer() {
+  pontos = 0; respondidas = 0; totalQuestoes = 0;
+  document.getElementById('resultado').classList.remove('show');
+  document.getElementById('score').textContent = '0';
+  document.getElementById('scoreEmoji').textContent = '🇧🇷';
+  buildQuiz1();
+  buildQuiz2();
+  atualizarTotal();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// INIT
+buildQuiz1();
+buildQuiz2();
+</script>
+</body>
+</html>
