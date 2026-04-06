@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 · Aula 23 · Crase — Professor | Enlace Brasil</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --verde: #1B6B3A;
+    --verde-claro: #2E8B57;
+    --amarelo: #F5C842;
+    --azul: #1A3A5C;
+    --branco: #FFFFFF;
+    --cinza-claro: #F4F6F4;
+    --cinza-medio: #E0E6E0;
+    --texto: #1A2A1A;
+    --professor: #7B2D8B;
+    --professor-light: #F3E8F7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cinza-claro);
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--verde);
+    color: white;
+    padding: 18px 24px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .logo-circle {
+    width: 44px; height: 44px;
+    background: var(--amarelo);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--verde);
+    flex-shrink: 0;
+  }
+  .header-title { font-size: 13px; opacity: 0.85; }
+  .header-title strong { display: block; font-size: 17px; opacity: 1; }
+  .badge-prof {
+    background: var(--professor);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    background: var(--verde-claro);
+    height: 4px;
+  }
+  .progress-fill {
+    height: 4px;
+    background: var(--amarelo);
+    width: 63%; /* aula 23 de 36 */
+    transition: width 0.5s;
+  }
+
+  /* MAIN CONTENT */
+  .container { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+  /* SECTION CARD */
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 5px solid var(--verde);
+  }
+  .card.professor { border-left-color: var(--professor); }
+  .card.atividade { border-left-color: var(--amarelo); }
+  .card.dica { border-left-color: #E07B39; background: #FFF8F4; }
+  .card.regra { border-left-color: var(--azul); }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .card-label.verde { color: var(--verde); }
+  .card-label.roxo { color: var(--professor); }
+  .card-label.laranja { color: #E07B39; }
+  .card-label.azul { color: var(--azul); }
+  .card-label.amarelo { color: #B8960A; }
+
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--verde);
+    margin-bottom: 10px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+
+  /* NOTA DO PROFESSOR */
+  .nota-prof {
+    background: var(--professor-light);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    border-left: 3px solid var(--professor);
+    font-size: 13.5px;
+  }
+  .nota-prof strong { color: var(--professor); }
+
+  /* OBJETIVO */
+  .objetivo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .objetivo-item {
+    background: var(--cinza-claro);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .objetivo-item span { font-size: 16px; }
+  @media (max-width: 500px) { .objetivo-grid { grid-template-columns: 1fr; } }
+
+  /* TIMELINE DA AULA */
+  .timeline { margin-top: 10px; }
+  .timeline-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .tempo-badge {
+    background: var(--verde);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 52px;
+    text-align: center;
+  }
+  .timeline-item.ativ .tempo-badge { background: var(--amarelo); color: var(--texto); }
+  .timeline-item.prof .tempo-badge { background: var(--professor); }
+  .timeline-content strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .timeline-content p { font-size: 13px; color: #555; }
+
+  /* REGRAS */
+  .regra-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .regra-item {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .regra-item h4 { font-size: 13.5px; font-weight: 600; color: var(--azul); margin-bottom: 6px; }
+  .regra-item p { font-size: 13px; color: #444; }
+  .regra-item .exemplo {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ex-tag {
+    background: white;
+    border: 1px solid var(--cinza-medio);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+  .ex-tag .crase { color: var(--verde); font-weight: 700; }
+  .ex-tag .sem { color: #c0392b; }
+  .ex-tag .esp { color: #888; font-size: 11px; margin-left: 4px; }
+
+  /* ATIVIDADE */
+  .atividade-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    background: var(--amarelo);
+    color: var(--texto);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .atividade-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .instrucao {
+    font-size: 13.5px;
+    color: #444;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .frases-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .frases-list li {
+    background: var(--cinza-claro);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+  }
+  .frases-list li .num { color: var(--verde); font-weight: 600; flex-shrink: 0; }
+  .frases-list li .gabarito {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--professor);
+    font-weight: 600;
+    display: block;
+  }
+
+  /* GABARITO TOGGLE */
+  .gabarito-btn {
+    background: var(--professor);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+  .gabarito-btn:hover { background: #5a1a6a; }
+  .gabarito-box {
+    display: none;
+    margin-top: 12px;
+    background: var(--professor-light);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--professor);
+  }
+  .gabarito-box.open { display: block; }
+  .gabarito-box ol { padding-left: 20px; }
+  .gabarito-box ol li { font-size: 13.5px; margin-bottom: 5px; }
+  .gabarito-box ol li strong { color: var(--professor); }
+
+  /* DEBATE */
+  .debate-card {
+    background: linear-gradient(135deg, var(--azul) 0%, #2a5298 100%);
+    border-radius: 12px;
+    padding: 18px;
+    color: white;
+    margin-top: 10px;
+  }
+  .debate-card h4 { font-size: 15px; margin-bottom: 10px; opacity: 0.9; }
+  .debate-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 13.5px;
+    margin-bottom: 8px;
+  }
+
+  /* ERROS COMUNS */
+  .erro-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .erro-item {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+  .errado {
+    background: #FFECEC;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #c0392b;
+  }
+  .certo {
+    background: #ECFBF0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--verde);
+    font-weight: 500;
+  }
+  .seta { text-align: center; font-size: 14px; color: #888; }
+  @media (max-width: 500px) {
+    .erro-item { grid-template-columns: 1fr; }
+    .seta { display: none; }
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid var(--cinza-medio);
+    margin-top: 30px;
+  }
+  .footer strong { color: var(--verde); }
+
+  /* CHIP NIVEL */
+  .nivel-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--azul);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  /* SEPARADOR */
+  .sep { height: 1px; background: var(--cinza-medio); margin: 16px 0; }
+
+  ul.lista { padding-left: 18px; }
+  ul.lista li { margin-bottom: 5px; font-size: 14px; }
+
+  .highlight {
+    background: #FFF9E3;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-weight: 600;
+    color: #8B6914;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo-circle">EB</div>
+    <div class="header-title">
+      <span>Enlace Brasil · B2</span>
+      <strong>Aula 23 — Coesão e coerência: o uso da crase</strong>
+    </div>
+  </div>
+  <span class="badge-prof">👩‍🏫 Professor</span>
+</div>
+<div class="progress-bar"><div class="progress-fill"></div></div>
+
+<div class="container">
+
+  <!-- NIVEL + OBJETIVO -->
+  <div class="card">
+    <div class="nivel-chip">📘 Intermediário B2 · Aula 23 de 36</div>
+    <div class="card-label verde">Objetivos da aula</div>
+    <div class="objetivo-grid">
+      <div class="objetivo-item"><span>✍️</span> Compreender as regras da crase</div>
+      <div class="objetivo-item"><span>🔍</span> Identificar contextos de uso e omissão</div>
+      <div class="objetivo-item"><span>⚠️</span> Reconhecer os casos especiais e polêmicos</div>
+      <div class="objetivo-item"><span>🗣️</span> Aplicar em textos formais escritos</div>
+    </div>
+    <div class="nota-prof" style="margin-top:14px">
+      <strong>📌 Nota pedagógica:</strong> O aluno hispanofalante tende a confundir crase com acento agudo ou simplesmente ignorá-la. No B2, o foco é a escrita formal — e-mails profissionais, textos argumentativos, relatórios. Mostre que o erro de crase, nesse contexto, soa descuidado para um falante nativo.
+    </div>
+  </div>
+
+  <!-- PLANEJAMENTO -->
+  <div class="card professor">
+    <div class="card-label roxo">Planejamento — 60 min</div>
+    <h2>Roteiro da Aula</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tempo-badge">0–10'</div>
+        <div class="timeline-content">
+          <strong>Aquecimento: diagnóstico rápido</strong>
+          <p>Escreva as frases abaixo no quadro (ou projete). Peça que identifiquem o que está errado. <em>Não corrija ainda</em> — apenas observe o que já sabem.</p>
+        </div>
+      </div>
+
+  </div><!-- fecha timeline -->
+  </div><!-- fecha card professor -->
+
+  <!-- DIAGNÓSTICO -->
+  <div class="card" style="border-left-color: #E07B39; background: #FFFBF7;">
+    <div class="card-label" style="color:#E07B39;">🔎 Diagnóstico — frases para o quadro (0–10')</div>
+    <p style="font-size:13px; color:#666; margin-bottom:14px;">Escreva as 5 frases no quadro exatamente como estão. Peça aos alunos que identifiquem o que parece errado. Não corrija ainda — use o gabarito só depois da discussão.</p>
+
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+
+      <div style="background:white; border-radius:10px; padding:13px 16px; border:1px solid #E0E6E0; display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;">
+        <span style="font-weight:700; color:#E07B39;">1</span>
+        <div>
+          <div style="font-size:15px; margin-bottom:4px;">Fui <em>a</em> reunião ontem de manhã.</div>
+          <div style="font-size:12px; color:#888;">→ erro intencional | erro comum: omissão da crase antes de substantivo feminino</div>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:13px 16px; border:1px solid #E0E6E0; display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;">
+        <span style="font-weight:700; color:#E07B39;">2</span>
+        <div>
+          <div style="font-size:15px; margin-bottom:4px;">Ela foi <em>à</em> Paris para um congresso.</div>
+          <div style="font-size:12px; color:#888;">→ erro intencional | erro comum: usar crase em nome de cidade sem artigo</div>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:13px 16px; border:1px solid #E0E6E0; display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;">
+        <span style="font-weight:700; color:#E07B39;">3</span>
+        <div>
+          <div style="font-size:15px; margin-bottom:4px;">Começou <em>à</em> chover quando saímos.</div>
+          <div style="font-size:12px; color:#888;">→ erro intencional | erro comum: usar crase antes de verbo</div>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:13px 16px; border:1px solid #E0E6E0; display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;">
+        <span style="font-weight:700; color:#E07B39;">4</span>
+        <div>
+          <div style="font-size:15px; margin-bottom:4px;">Estou <em>a</em> disposição para o que precisar.</div>
+          <div style="font-size:12px; color:#888;">→ erro intencional | erro comum: omissão em locução adverbial feminina</div>
+        </div>
+      </div>
+
+      <div style="background:white; border-radius:10px; padding:13px 16px; border:1px solid #E0E6E0; display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;">
+        <span style="font-weight:700; color:#E07B39;">5</span>
+        <div>
+          <div style="font-size:15px; margin-bottom:4px;">Entregamos o relatório <em>à</em> ela pessoalmente.</div>
+          <div style="font-size:12px; color:#888;">→ erro intencional | erro comum: usar crase antes de pronome pessoal</div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="gabarito-btn" style="background:#E07B39;" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.textContent.includes('Ver') ? '🔒 Ocultar gabarito' : '🔑 Ver gabarito do diagnóstico'">🔑 Ver gabarito do diagnóstico</button>
+    <div class="gabarito-box open" style="border-left-color:#E07B39; background:#FFF3EC;">
+      <ol>
+        <li>✗ — <strong>à reunião</strong> (preposição + artigo "a reunião" → teste: <em>ao encontro</em> ✓)</li>
+        <li>✗ — <strong>a Paris</strong> (Paris não usa artigo definido)</li>
+        <li>✗ — <strong>a chover</strong> (antes de verbo, nunca há crase)</li>
+        <li>✗ — <strong>à disposição</strong> (locução adverbial feminina → crase obrigatória)</li>
+        <li>✗ — <strong>a ela</strong> (pronomes pessoais nunca levam crase)</li>
+      </ol>
+      <p style="margin-top:10px; font-size:12px; color:#888;">💡 Todas as 5 frases têm erro. Isso garante que o diagnóstico revela o que o aluno realmente sabe — sem a segurança de que "alguma está certa".</p>
+    </div>
+  </div>
+
+  <!-- PLANEJAMENTO (continuação) -->
+  <div class="card professor">
+    <div class="card-label roxo">Planejamento — continuação</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tempo-badge">10–25'</div>
+        <div class="timeline-content">
+          <strong>Apresentação: regra base + casos especiais</strong>
+          <p>Use os cartões de regras. Explique o "truque do masculino" para testar a crase. Enfatize os casos que mais geram dúvida para hispanófonos.</p>
+        </div>
+      </div>
+      <div class="timeline-item ativ">
+        <div class="tempo-badge">25–40'</div>
+        <div class="timeline-content">
+          <strong>Atividade 1 + 2: prática guiada</strong>
+          <p>Atividade 1 individual, Atividade 2 em duplas. Corrija com o gabarito em conjunto.</p>
+        </div>
+      </div>
+      <div class="timeline-item ativ">
+        <div class="tempo-badge">40–55'</div>
+        <div class="timeline-content">
+          <strong>Atividade 3: produção contextualizada</strong>
+          <p>Reescrita de trecho de e-mail profissional. Nível real de aplicação B2.</p>
+        </div>
+      </div>
+      <div class="timeline-item prof">
+        <div class="tempo-badge">55–60'</div>
+        <div class="timeline-content">
+          <strong>Fechamento + para casa</strong>
+          <p>Revise os erros mais comuns. Indique o arquivo do aluno para prática autônoma.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGRA BASE -->
+  <div class="card regra">
+    <div class="card-label azul">Conteúdo gramatical</div>
+    <h2>A Crase — Regra Base</h2>
+    <p style="font-size:14px; margin-bottom:12px;">A crase é a <strong>fusão da preposição <em>a</em> com o artigo definido feminino <em>a/as</em></strong>. O acento grave <span class="highlight">à</span> marca essa fusão.</p>
+
+    <div class="regra-grid">
+
+      <div class="regra-item">
+        <h4>✅ USO OBRIGATÓRIO</h4>
+        <p>Diante de substantivos femininos que aceitam artigo definido <em>a</em>.</p>
+        <p style="font-size:12px; color:#666; margin-top:4px;"><em>Teste: substitua por masculino → "ao" = crase</em></p>
+        <div class="exemplo">
+          <span class="ex-tag">Vou <span class="crase">à</span> reunião <span class="esp">← ao encontro ✓</span></span>
+          <span class="ex-tag">Refiro-me <span class="crase">à</span> proposta</span>
+          <span class="ex-tag">Cheguei <span class="crase">às</span> 9h</span>
+        </div>
+      </div>
+
+      <div class="regra-item">
+        <h4>❌ NÃO SE USA</h4>
+        <p>Antes de verbos, pronomes pessoais, palavras masculinas, nomes de cidades sem artigo.</p>
+        <div class="exemplo">
+          <span class="ex-tag">Começou <span class="sem">a</span> chover</span>
+          <span class="ex-tag">Disse <span class="sem">a</span> ela</span>
+          <span class="ex-tag">Fui <span class="sem">a</span> Paris</span>
+          <span class="ex-tag">Falei <span class="sem">a</span> todos</span>
+        </div>
+      </div>
+
+      <div class="regra-item">
+        <h4>⚡ CASOS ESPECIAIS — mais cobrados no B2</h4>
+        <p>Locução adverbial feminina → sempre usa crase</p>
+        <div class="exemplo">
+          <span class="ex-tag"><span class="crase">à</span> noite</span>
+          <span class="ex-tag"><span class="crase">às</span> vezes</span>
+          <span class="ex-tag"><span class="crase">à</span> vontade</span>
+          <span class="ex-tag"><span class="crase">à</span> toa</span>
+          <span class="ex-tag"><span class="crase">à</span> medida que</span>
+        </div>
+      </div>
+
+      <div class="regra-item">
+        <h4>🌍 Nomes de lugares</h4>
+        <p>Usa crase se o lugar aceita artigo <em>a</em>.</p>
+        <div class="exemplo">
+          <span class="ex-tag">Fui <span class="crase">à</span> Bahia <span class="esp">(a Bahia ✓)</span></span>
+          <span class="ex-tag">Fui <span class="sem">a</span> Brasília <span class="esp">(sem artigo)</span></span>
+          <span class="ex-tag">Fui <span class="crase">à</span> França</span>
+          <span class="ex-tag">Fui <span class="sem">a</span> Cuba</span>
+        </div>
+      </div>
+
+      <div class="regra-item">
+        <h4>🔤 Pronomes demonstrativos</h4>
+        <p><em>àquela, àquele, àquilo, àquelas, àqueles</em> — sempre com crase (a + aquele/a).</p>
+        <div class="exemplo">
+          <span class="ex-tag">Refiro-me <span class="crase">àquela</span> situação</span>
+          <span class="ex-tag">Quanto <span class="crase">àquilo</span></span>
+        </div>
+      </div>
+
+      <div class="regra-item">
+        <h4>🎯 Crase facultativa</h4>
+        <p>Antes de nomes próprios femininos e pronomes possessivos femininos.</p>
+        <div class="exemplo">
+          <span class="ex-tag">Perguntei <span class="crase">à</span> / <span class="sem">a</span> Ana</span>
+          <span class="ex-tag"><span class="crase">À</span> / <span class="sem">A</span> sua maneira</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="nota-prof">
+      <strong>📌 Dica para hispanofalantes:</strong> Em espanhol não existe esse fenômeno — o aluno tende a usar <em>a</em> sempre sem pensar. O "truque do masculino" (<em>ao</em> → crase obrigatória) funciona muito bem nesse público.
+    </div>
+  </div>
+
+  <!-- ATIVIDADE 1 -->
+  <div class="card atividade">
+    <div class="atividade-header">
+      <span class="atividade-num">1</span>
+      <div class="card-label amarelo" style="margin-bottom:0">Atividade — Individual · 8 min</div>
+    </div>
+    <h3>Crase: sim ou não?</h3>
+    <p class="instrucao">Indique se as frases abaixo estão corretas (✓) ou erradas (✗) e, quando erradas, faça a correção.</p>
+    <ul class="frases-list">
+      <li><span class="num">1.</span><span>Ela foi <em>a</em> reunião sem avisar ninguém.</span></li>
+      <li><span class="num">2.</span><span>O relatório foi enviado <em>à</em> diretora ontem.</span></li>
+      <li><span class="num">3.</span><span>Chegamos <em>à</em> Paris na segunda-feira.</span></li>
+      <li><span class="num">4.</span><span>Refiro-me <em>àquelas</em> informações do contrato.</span></li>
+      <li><span class="num">5.</span><span>Ele começou <em>à</em> trabalhar tarde.</span></li>
+      <li><span class="num">6.</span><span>O produto foi entregue <em>à</em> domicílio.</span></li>
+      <li><span class="num">7.</span><span>Às vezes, a comunicação falha nas equipes remotas.</span></li>
+      <li><span class="num">8.</span><span>Escrevemos <em>a</em> nossa cliente sobre o atraso.</span></li>
+    </ul>
+    <button class="gabarito-btn" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.textContent.includes('Ver') ? '🔒 Ocultar gabarito' : '🔑 Ver gabarito'">🔑 Ver gabarito</button>
+    <div class="gabarito-box">
+      <ol>
+        <li>✗ — <strong>à reunião</strong> (preposição + artigo "a reunião")</li>
+        <li>✓ — correto</li>
+        <li>✗ — <strong>a Paris</strong> (nome de cidade sem artigo)</li>
+        <li>✓ — correto (a + aquelas)</li>
+        <li>✗ — <strong>a trabalhar</strong> (antes de verbo, nunca crase)</li>
+        <li>✓ — correto (locução adverbial "à domicílio")</li>
+        <li>✓ — correto</li>
+        <li>✓ / facultativo — <strong>à nossa cliente</strong> também é aceito</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ATIVIDADE 2 -->
+  <div class="card atividade">
+    <div class="atividade-header">
+      <span class="atividade-num">2</span>
+      <div class="card-label amarelo" style="margin-bottom:0">Atividade — Duplas · 8 min</div>
+    </div>
+    <h3>Complete com <em>a</em>, <em>à</em> ou <em>às</em></h3>
+    <p class="instrucao">Preencha os espaços com a forma correta. Discuta com o colega antes de responder.</p>
+    <ul class="frases-list">
+      <li><span class="num">1.</span><span>O gerente pediu que nos adaptássemos <em>___</em> novas diretrizes da empresa.</span></li>
+      <li><span class="num">2.</span><span>A reunião foi remarcada para <em>___</em> sexta-feira <em>___</em> 14h.</span></li>
+      <li><span class="num">3.</span><span>Encaminhamos o documento <em>___</em> coordenadora responsável.</span></li>
+      <li><span class="num">4.</span><span><em>___</em> medida que o projeto avança, surgem novos desafios.</span></li>
+      <li><span class="num">5.</span><span>Ela foi <em>___</em> Argentina para apresentar os resultados.</span></li>
+      <li><span class="num">6.</span><span>O cliente não estava disposto <em>___</em> negociar.</span></li>
+      <li><span class="num">7.</span><span>Precisamos chegar <em>___</em> um acordo ainda esta semana.</span></li>
+      <li><span class="num">8.</span><span>O prazo foi estendido <em>___</em> pedido da equipe.</span></li>
+    </ul>
+    <button class="gabarito-btn" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.textContent.includes('Ver') ? '🔒 Ocultar gabarito' : '🔑 Ver gabarito'">🔑 Ver gabarito</button>
+    <div class="gabarito-box">
+      <ol>
+        <li><strong>às</strong> novas diretrizes</li>
+        <li><strong>a</strong> sexta-feira · <strong>às</strong> 14h</li>
+        <li><strong>à</strong> coordenadora</li>
+        <li><strong>À</strong> medida que</li>
+        <li><strong>à</strong> Argentina (aceita artigo "a Argentina")</li>
+        <li><strong>a</strong> negociar (antes de verbo)</li>
+        <li><strong>a</strong> um acordo (artigo indefinido, sem crase)</li>
+        <li><strong>a</strong> pedido (sem artigo = sem crase)</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ATIVIDADE 3 -->
+  <div class="card atividade">
+    <div class="atividade-header">
+      <span class="atividade-num">3</span>
+      <div class="card-label amarelo" style="margin-bottom:0">Atividade — Produção · 12 min</div>
+    </div>
+    <h3>Reescrita de e-mail profissional</h3>
+    <p class="instrucao">O trecho abaixo foi escrito sem preocupação com a crase. Reescreva-o corretamente, inserindo ou removendo crases onde necessário. Há <strong>6 erros</strong>.</p>
+
+    <div style="background:#FFF0F0; border-radius:10px; padding:14px 16px; font-size:14px; line-height:1.8; border: 1px solid #FFCCCC; margin-bottom:12px;">
+      <em>"Prezada Dra. Lima,<br>
+      Conforme combinado a tarde de terça-feira, encaminho a documentação referente a proposta aprovada. Solicito que os ajustes sejam feitos a partir de amanhã e entregues a diretoria até as 18h de sexta. Caso tenha dúvidas, estou a disposição.<br>
+      Atenciosamente."</em>
+    </div>
+
+    <button class="gabarito-btn" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.textContent.includes('Ver') ? '🔒 Ocultar gabarito' : '🔑 Ver gabarito'">🔑 Ver gabarito</button>
+    <div class="gabarito-box">
+      <p style="font-size:13px; margin-bottom:8px; color:#666;">Correções (marcadas em negrito):</p>
+      <p style="font-size:14px; line-height:1.9;">"Conforme combinado <strong>à tarde</strong> de terça-feira, encaminho a documentação referente <strong>à proposta</strong> aprovada. Solicito que os ajustes sejam feitos a partir de amanhã e entregues <strong>à diretoria</strong> até <strong>as 18h</strong>* de sexta. Caso tenha dúvidas, estou <strong>à disposição</strong>."</p>
+      <p style="font-size:12px; color:#888; margin-top:8px;">* "as 18h" → há discussão sobre crase em horas com artigo, mas "às 18h" é o padrão formal recomendado. Total: 5 erros claros + 1 facultativo.</p>
+    </div>
+  </div>
+
+  <!-- ERROS COMUNS -->
+  <div class="card dica">
+    <div class="card-label laranja">Erros mais comuns — hispanofalantes</div>
+    <h3>Para reforçar na correção</h3>
+    <div class="erro-grid">
+      <div class="erro-item">
+        <div class="errado">✗ Fui a Argentina</div>
+        <div class="seta">→</div>
+        <div class="certo">✓ Fui à Argentina</div>
+      </div>
+      <div class="erro-item">
+        <div class="errado">✗ Estou à disposição (mas escrito "a disposição")</div>
+        <div class="seta">→</div>
+        <div class="certo">✓ Estou à disposição</div>
+      </div>
+      <div class="erro-item">
+        <div class="errado">✗ Às vezes → "as vezes"</div>
+        <div class="seta">→</div>
+        <div class="certo">✓ Às vezes</div>
+      </div>
+      <div class="erro-item">
+        <div class="errado">✗ começou à trabalhar</div>
+        <div class="seta">→</div>
+        <div class="certo">✓ começou a trabalhar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEBATE / EXTENSÃO -->
+  <div class="card">
+    <div class="card-label verde">Extensão · Se sobrar tempo</div>
+    <h3>Discussão final</h3>
+    <div class="debate-card">
+      <h4>💬 Proposta para debate oral (5 min)</h4>
+      <div class="debate-item">1. Você usaria crase num WhatsApp informal com um colega de trabalho? Por quê?</div>
+      <div class="debate-item">2. Em que situações um erro de crase pode prejudicar sua imagem profissional?</div>
+      <div class="debate-item">3. Por que a crase existe no português mas não no espanhol? O que isso revela sobre as línguas?</div>
+    </div>
+
+    <button class="gabarito-btn" style="margin-top:14px;" onclick="var b=this.nextElementSibling; b.style.display=b.style.display==='block'?'none':'block'; this.textContent=this.textContent.includes('Ver')?'🔒 Ocultar respostas':'🔑 Ver respostas sugeridas'">🔑 Ver respostas sugeridas</button>
+    <div style="display:none; margin-top:12px; background:var(--professor-light); border-radius:10px; padding:16px 18px; border-left:3px solid var(--professor);">
+
+      <div style="margin-bottom:14px;">
+        <p style="font-size:13px; font-weight:700; color:var(--professor); margin-bottom:5px;">1. Você usaria crase num WhatsApp informal?</p>
+        <p style="font-size:13.5px; line-height:1.7; color:#333;">Não necessariamente. A crase pertence à escrita formal — em mensagens rápidas e informais, omiti-la não compromete a comunicação nem soa descuidado. Os próprios brasileiros nativos raramente se preocupam com crase no WhatsApp. O que importa é o <strong>registro</strong>: numa mensagem para o chefe ou num e-mail institucional, a ausência da crase pode causar má impressão.</p>
+      </div>
+
+      <div style="height:1px; background:var(--cinza-medio); margin-bottom:14px;"></div>
+
+      <div style="margin-bottom:14px;">
+        <p style="font-size:13px; font-weight:700; color:var(--professor); margin-bottom:5px;">2. Quando um erro de crase prejudica a imagem profissional?</p>
+        <p style="font-size:13.5px; line-height:1.7; color:#333;">Em qualquer texto escrito formal: e-mails para clientes, relatórios, propostas comerciais, currículos, apresentações. Para um estrangeiro, o erro pode ser tolerado — mas em contextos onde se espera domínio da língua (tradutor, professor, jornalista, advogado), ele pesa. Um detalhe: <em>"estou a disposição"</em> no rodapé de um e-mail profissional é um dos erros mais visíveis e comentados por brasileiros nativos.</p>
+      </div>
+
+      <div style="height:1px; background:var(--cinza-medio); margin-bottom:14px;"></div>
+
+      <div>
+        <p style="font-size:13px; font-weight:700; color:var(--professor); margin-bottom:5px;">3. Por que a crase existe no português e não no espanhol?</p>
+        <p style="font-size:13.5px; line-height:1.7; color:#333;">Em espanhol, a contração <em>al</em> (a + el) existe, mas o artigo feminino <em>la</em> não se contrai com a preposição <em>a</em> — então o fenômeno da crase não ocorre. No português, o artigo feminino <em>a</em> é idêntico à preposição <em>a</em>, o que cria a necessidade de marcar graficamente essa fusão. Isso revela que as línguas resolvem de formas diferentes o mesmo problema: evitar ambiguidade. O acento grave é uma solução elegante — mas que exige atenção de quem escreve.</p>
+      </div>
+
+    </div>
+
+    <div class="nota-prof" style="margin-top:14px;">
+      <strong>📌 Para casa:</strong> Peça que o aluno acesse o arquivo do aluno pelo link/QR code e complete as atividades de fixação autônoma antes da próxima aula.
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Enlace Brasil</strong> · Instituto de Língua e Cultura Brasileira · Ciudad de México<br>
+  B2 · Aula 23 — Coesão e coerência: o uso da crase · Arquivo do Professor
+</div>
+
+<script>
+  // Nada extra necessário — gabaritos são controlados inline
+  document.querySelectorAll('.gabarito-btn').forEach(btn => {
+    btn.textContent = '🔑 Ver gabarito';
+  });
+</script>
+</body>
+</html>
