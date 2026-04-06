@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Aula 14.1 — Verbos em Português | Enlace Brasil | Professor</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--verde:#009C3B;--amarelo:#F5C518;--azul:#002776;--bg:#eaf5f0;--text:#1a1a1a;--muted:#666}
+html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--bg)}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:900px;margin:0 auto;padding:10px 12px 6px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-shrink:0}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);object-fit:cover}
+.logo-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:13px;color:var(--azul);line-height:1.1}
+.logo-sub{font-size:10px;color:var(--muted);font-weight:600}
+.prog-wrap{display:flex;align-items:center;gap:8px}
+.pbar{width:120px;height:5px;background:#d0e8d8;border-radius:10px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--verde),var(--amarelo));transition:width .35s}
+.pcnt{font-size:11px;color:var(--muted);font-weight:700;min-width:44px;text-align:right}
+.stage{flex:1;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 6px 28px rgba(0,39,118,.14);min-height:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+.cover{background:linear-gradient(140deg,#002776 0%,#0a3d8f 55%,#145cb5 100%);color:#fff;justify-content:center;align-items:center;text-align:center;padding:6% 8%;gap:2%}
+.cover-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.3vw,12px);font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1.2px}
+.cover-logo{width:clamp(50px,7vw,76px);height:clamp(50px,7vw,76px);border-radius:50%;border:3px solid rgba(255,255,255,.35);object-fit:cover}
+.cover-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,4vw,42px);font-weight:800;line-height:1.1}
+.cover-h1 span{color:var(--amarelo)}
+.cover-desc{font-size:clamp(9px,1.3vw,13px);color:rgba(255,255,255,.72)}
+.cover-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:clamp(8px,1.1vw,11px);padding:3px 11px;border-radius:20px}
+.cover-foot{font-size:clamp(9px,1.1vw,11px);color:rgba(255,255,255,.42);margin-top:auto}
+.content{background:#fff;color:var(--text);padding:4% 5% 3%}
+.shdr{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-bottom:2.5%}
+.stag{font-size:clamp(8px,1.1vw,11px);font-weight:700;letter-spacing:.8px;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.tg-gram{background:#E1F5EE;color:#0F6E56}
+.tg-voc{background:#E6F1FB;color:#0C447C}
+.tg-act{background:#FAEEDA;color:#633806}
+.stitle{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2.8vw,26px);font-weight:800;color:var(--azul);line-height:1.1}
+.sbody{flex:1;display:flex;flex-direction:column;gap:2%;overflow:hidden;min-height:0}
+.sfoot{font-size:clamp(8px,1vw,10px);color:var(--muted);flex-shrink:0;display:flex;align-items:center;gap:6px;padding-top:1.5%;border-top:1px solid #f0f0f0;margin-top:1.5%;font-style:italic}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2%;flex:1;min-height:0}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2%;flex:1;min-height:0}
+.box{background:#F6FBF8;border-radius:10px;padding:3% 4%;border-left:4px solid var(--verde);min-height:0;overflow:hidden}
+.box.az{border-left-color:var(--azul);background:#F0F4FB}
+.box.am{border-left-color:var(--amarelo);background:#FFFCF0}
+.box.rs{border-left-color:#e8336d;background:#FDF0F5}
+.box-title{font-size:clamp(9px,1.3vw,12px);font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--azul);margin-bottom:5%}
+.box-title.vd{color:#0F6E56}
+.ex-list{display:flex;flex-direction:column;gap:3%;flex:1;justify-content:center}
+.ex-item{display:flex;align-items:baseline;gap:2%;font-size:clamp(10px,1.6vw,16px);padding:2% 0;border-bottom:1px solid #f0f0f0}
+.ex-pt{font-weight:700;color:var(--azul);font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.8vw,18px)}
+.ex-es{color:var(--muted);font-size:clamp(9px,1.3vw,13px)}
+.alert{background:#FFF3CD;border:2px solid var(--amarelo);border-radius:10px;padding:3% 4%;font-size:clamp(10px,1.4vw,14px);color:#633806;line-height:1.5}
+.alert strong{display:block;font-size:clamp(11px,1.6vw,16px);margin-bottom:3%;color:#856404;font-family:'Baloo 2',sans-serif}
+.info{background:#E6F1FB;border-radius:10px;padding:3% 4%;font-size:clamp(9px,1.3vw,13px);color:#0C447C;line-height:1.5}
+.conj-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2%;flex:1;min-height:0}
+.conj-card{border-radius:12px;padding:3%;display:flex;flex-direction:column;gap:3%;overflow:hidden}
+.conj-card.ar{background:linear-gradient(135deg,#007a2e,var(--verde));color:#fff}
+.conj-card.er{background:linear-gradient(135deg,var(--azul),#1a4fa0);color:#fff}
+.conj-card.ir{background:linear-gradient(135deg,#6B21A8,#7C3AED);color:#fff}
+.conj-title{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,2.2vw,22px);font-weight:800}
+.conj-sub{font-size:clamp(8px,1.1vw,11px);opacity:.8;font-weight:700}
+.conj-rows{display:flex;flex-direction:column;gap:2%;font-size:clamp(9px,1.3vw,13px);flex:1;justify-content:center}
+.conj-row{display:flex;justify-content:space-between;padding:1.5% 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.conj-pron{opacity:.85}
+.conj-vb{font-weight:800;font-family:'Baloo 2',sans-serif;font-size:clamp(10px,1.5vw,15px)}
+.irreg-grid{display:grid;grid-template-columns:1fr 1fr;gap:2%;flex:1;min-height:0}
+.irreg-card{border-radius:12px;padding:3%;display:flex;flex-direction:column;gap:3%;overflow:hidden}
+.irreg-card.ser{background:linear-gradient(135deg,var(--azul),#1a4fa0);color:#fff}
+.irreg-card.estar{background:linear-gradient(135deg,#007a2e,var(--verde));color:#fff}
+.irreg-card.ter{background:linear-gradient(135deg,#856404,#a07808);color:#fff}
+.irreg-card.ir{background:linear-gradient(135deg,#72243E,#e8336d);color:#fff}
+.irreg-card.fazer{background:linear-gradient(135deg,#6B21A8,#7C3AED);color:#fff}
+.irreg-title{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2.5vw,24px);font-weight:800}
+.irreg-rows{display:flex;flex-direction:column;gap:2%;font-size:clamp(9px,1.3vw,12px);flex:1;justify-content:center}
+.irreg-row{display:flex;justify-content:space-between;padding:1% 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.irreg-pron{opacity:.85}
+.irreg-vb{font-weight:800;font-family:'Baloo 2',sans-serif;font-size:clamp(10px,1.5vw,15px)}
+.dialog-box{background:#f6fbf8;border-radius:12px;padding:3% 4%;display:flex;flex-direction:column;gap:2%;flex:1;justify-content:center}
+.dline{display:flex;gap:2%;align-items:flex-start;padding:1.5% 0;border-bottom:1px solid #eee}
+.dline.f{background:rgba(232,51,109,.06);border-radius:6px;padding:1.5% 2%;margin:0 -2%}
+.dline.m{background:rgba(0,39,118,.06);border-radius:6px;padding:1.5% 2%;margin:0 -2%}
+.dwho{font-size:clamp(8px,1.1vw,11px);font-weight:700;min-width:clamp(40px,6vw,60px);flex-shrink:0}
+.dwho.f{color:#e8336d}.dwho.m{color:var(--azul)}
+.dtxt{font-size:clamp(11px,1.6vw,15px);flex:1;line-height:1.4}
+.navrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:6px;flex-shrink:0}
+.nbtn{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);background:#fff;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.nbtn:hover:not(:disabled){background:var(--azul);color:#fff}
+.nbtn:disabled{opacity:.3;cursor:default}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:320px}
+.dot{width:9px;height:9px;border-radius:50%;background:#ccc;cursor:pointer;transition:background .2s}
+.dot.active{background:var(--azul)}
+.stype{text-align:center;font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.5px;min-height:14px;margin-top:2px}
+@media(max-width:600px){
+  .app{padding:6px 8px 4px}
+  .two-col,.three-col,.conj-grid,.irreg-grid{grid-template-columns:1fr;gap:6px}
+  .content{padding:4% 4% 2%}
+  .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .sbody{overflow:visible;min-height:unset}
+  .stage{border-radius:10px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo-wrap">
+      <img class="logo-img" src="data:image/jpeg;base64,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" alt="EB">
+      <div><div class="logo-name">Enlace Brasil</div><div class="logo-sub">Curso Regular A1</div></div>
+    </div>
+    <div class="prog-wrap">
+      <div class="pbar"><div class="pfill" id="prog" style="width:6%"></div></div>
+      <div class="pcnt" id="counter">1 / 16</div>
+    </div>
+  </div>
+  <div class="stage">
+
+    <!-- S1: CAPA -->
+    <div class="slide cover active" data-type="Capa">
+      <div class="cover-tag">AULA 14.1 · NÍVEL A1</div>
+      <img class="cover-logo" src="data:image/jpeg;base64,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" alt="EB">
+      <div class="cover-h1">Verbos em Português<br><span>Nível A1</span></div>
+      <div class="cover-desc">Infinitivo, verbos regulares e irregulares no presente do indicativo</div>
+      <div class="cover-pills">
+        <span class="pill">-AR · -ER · -IR</span>
+        <span class="pill">Regulares</span>
+        <span class="pill">SER · ESTAR · TER</span>
+        <span class="pill">IR · FAZER</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+    <!-- S2: O QUE É VERBO -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">O que é um Verbo?</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Os verbos indicam</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">👉 Ações</span><span class="ex-es">falar, comer, correr</span></div>
+              <div class="ex-item"><span class="ex-pt">👉 Estados</span><span class="ex-es">ser, estar, parecer</span></div>
+              <div class="ex-item"><span class="ex-pt">👉 Situações</span><span class="ex-es">ter, haver, existir</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Infinitivo</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">falar</span><span class="ex-es">hablar</span></div>
+              <div class="ex-item"><span class="ex-pt">comer</span><span class="ex-es">comer</span></div>
+              <div class="ex-item"><span class="ex-pt">abrir</span><span class="ex-es">abrir</span></div>
+              <div class="ex-item"><span class="ex-pt">estudar</span><span class="ex-es">estudiar</span></div>
+              <div class="ex-item"><span class="ex-pt">trabalhar</span><span class="ex-es">trabajar</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info">📌 O infinitivo é a forma básica do verbo — sem conjugação. Ex: "Eu gosto de <strong>falar</strong> português."</div>
+      </div>
+    </div>
+
+    <!-- S3: TERMINAÇÕES -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Terminações dos Verbos</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box" style="border-left-color:var(--verde)">
+            <div class="box-title vd">🟢 -AR</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">falar</span><span class="ex-es">hablar</span></div>
+              <div class="ex-item"><span class="ex-pt">trabalhar</span><span class="ex-es">trabajar</span></div>
+              <div class="ex-item"><span class="ex-pt">estudar</span><span class="ex-es">estudiar</span></div>
+              <div class="ex-item"><span class="ex-pt">morar</span><span class="ex-es">vivir</span></div>
+              <div class="ex-item"><span class="ex-pt">gostar</span><span class="ex-es">gustar</span></div>
+              <div class="ex-item"><span class="ex-pt">cantar</span><span class="ex-es">cantar</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">🔵 -ER</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">comer</span><span class="ex-es">comer</span></div>
+              <div class="ex-item"><span class="ex-pt">beber</span><span class="ex-es">beber</span></div>
+              <div class="ex-item"><span class="ex-pt">aprender</span><span class="ex-es">aprender</span></div>
+              <div class="ex-item"><span class="ex-pt">vender</span><span class="ex-es">vender</span></div>
+              <div class="ex-item"><span class="ex-pt">correr</span><span class="ex-es">correr</span></div>
+              <div class="ex-item"><span class="ex-pt">escrever</span><span class="ex-es">escribir</span></div>
+            </div>
+          </div>
+          <div class="box" style="border-left-color:#7C3AED;background:#F5F3FF">
+            <div class="box-title" style="color:#6B21A8">🟣 -IR</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">abrir</span><span class="ex-es">abrir</span></div>
+              <div class="ex-item"><span class="ex-pt">assistir</span><span class="ex-es">ver (TV)</span></div>
+              <div class="ex-item"><span class="ex-pt">dividir</span><span class="ex-es">dividir</span></div>
+              <div class="ex-item"><span class="ex-pt">partir</span><span class="ex-es">partir</span></div>
+              <div class="ex-item"><span class="ex-pt">decidir</span><span class="ex-es">decidir</span></div>
+              <div class="ex-item"><span class="ex-pt">discutir</span><span class="ex-es">discutir</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert"><strong>📌 A maioria dos verbos é -AR!</strong>Mais de 90% dos verbos novos em português terminam em -AR.</div>
+      </div>
+    </div>
+
+    <!-- S4: PRESENTE INDICATIVO -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Presente do Indicativo</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Usamos para falar de</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">✅ Rotina</span><span class="ex-es">Eu trabalho todo dia.</span></div>
+              <div class="ex-item"><span class="ex-pt">✅ Hábitos</span><span class="ex-es">Ela sempre estuda.</span></div>
+              <div class="ex-item"><span class="ex-pt">✅ Situação atual</span><span class="ex-es">Eu estudo português.</span></div>
+              <div class="ex-item"><span class="ex-pt">✅ Verdades gerais</span><span class="ex-es">A água é fria.</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">Verbos regulares vs irregulares</div>
+            <div class="ex-list">
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(11px,1.5vw,14px)">✅ Regulares</span><span class="ex-es">seguem um padrão fixo</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(11px,1.5vw,14px)">⚡ Irregulares</span><span class="ex-es">têm formas próprias — memorizar!</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5: VERBOS REGULARES -AR -ER -IR -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Verbos Regulares — -AR, -ER, -IR</span></div>
+      <div class="sbody">
+        <div class="conj-grid">
+          <div class="conj-card ar">
+            <div class="conj-title">🟢 FALAR</div>
+            <div class="conj-sub">-AR</div>
+            <div class="conj-rows">
+              <div class="conj-row"><span class="conj-pron">eu</span><span class="conj-vb">falo</span></div>
+              <div class="conj-row"><span class="conj-pron">você/ele/ela</span><span class="conj-vb">fala</span></div>
+              <div class="conj-row"><span class="conj-pron">nós</span><span class="conj-vb">falamos</span></div>
+              <div class="conj-row"><span class="conj-pron">vocês/eles</span><span class="conj-vb">falam</span></div>
+            </div>
+          </div>
+          <div class="conj-card er">
+            <div class="conj-title">🔵 COMER</div>
+            <div class="conj-sub">-ER</div>
+            <div class="conj-rows">
+              <div class="conj-row"><span class="conj-pron">eu</span><span class="conj-vb">como</span></div>
+              <div class="conj-row"><span class="conj-pron">você/ele/ela</span><span class="conj-vb">come</span></div>
+              <div class="conj-row"><span class="conj-pron">nós</span><span class="conj-vb">comemos</span></div>
+              <div class="conj-row"><span class="conj-pron">vocês/eles</span><span class="conj-vb">comem</span></div>
+            </div>
+          </div>
+          <div class="conj-card ir">
+            <div class="conj-title">🟣 ABRIR</div>
+            <div class="conj-sub">-IR</div>
+            <div class="conj-rows">
+              <div class="conj-row"><span class="conj-pron">eu</span><span class="conj-vb">abro</span></div>
+              <div class="conj-row"><span class="conj-pron">você/ele/ela</span><span class="conj-vb">abre</span></div>
+              <div class="conj-row"><span class="conj-pron">nós</span><span class="conj-vb">abrimos</span></div>
+              <div class="conj-row"><span class="conj-pron">vocês/eles</span><span class="conj-vb">abrem</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="sfoot">📌 Padrão -AR: o/a/amos/am · -ER: o/e/emos/em · -IR: o/e/imos/em</div>
+      </div>
+    </div>
+
+    <!-- S6: MAIS REGULARES -AR -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Mais Verbos Regulares -AR</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">TRABALHAR / ESTUDAR</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">eu trabalho</span><span class="ex-es">eu estudo</span></div>
+              <div class="ex-item"><span class="ex-pt">você trabalha</span><span class="ex-es">você estuda</span></div>
+              <div class="ex-item"><span class="ex-pt">nós trabalhamos</span><span class="ex-es">nós estudamos</span></div>
+              <div class="ex-item"><span class="ex-pt">vocês trabalham</span><span class="ex-es">vocês estudam</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">MORAR / GOSTAR</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">eu moro</span><span class="ex-es">eu gosto</span></div>
+              <div class="ex-item"><span class="ex-pt">você mora</span><span class="ex-es">você gosta</span></div>
+              <div class="ex-item"><span class="ex-pt">nós moramos</span><span class="ex-es">nós gostamos</span></div>
+              <div class="ex-item"><span class="ex-pt">vocês moram</span><span class="ex-es">vocês gostam</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="dialog-box">
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Onde você mora? Você trabalha aqui perto?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Moro no centro. Trabalho e estudo ao mesmo tempo!</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Que legal! Você gosta de estudar português?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Gosto muito! A gente aprende rápido!</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S7: VERBOS IRREGULARES SER/ESTAR -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Irregulares — SER e ESTAR</span></div>
+      <div class="sbody">
+        <div class="irreg-grid">
+          <div class="irreg-card ser">
+            <div class="irreg-title">SER</div>
+            <div class="irreg-rows">
+              <div class="irreg-row"><span class="irreg-pron">eu</span><span class="irreg-vb">sou</span></div>
+              <div class="irreg-row"><span class="irreg-pron">você</span><span class="irreg-vb">é</span></div>
+              <div class="irreg-row"><span class="irreg-pron">ele / ela</span><span class="irreg-vb">é</span></div>
+              <div class="irreg-row"><span class="irreg-pron">nós</span><span class="irreg-vb">somos</span></div>
+              <div class="irreg-row"><span class="irreg-pron">vocês</span><span class="irreg-vb">são</span></div>
+              <div class="irreg-row"><span class="irreg-pron">eles / elas</span><span class="irreg-vb">são</span></div>
+            </div>
+          </div>
+          <div class="irreg-card estar">
+            <div class="irreg-title">ESTAR</div>
+            <div class="irreg-rows">
+              <div class="irreg-row"><span class="irreg-pron">eu</span><span class="irreg-vb">estou</span></div>
+              <div class="irreg-row"><span class="irreg-pron">você</span><span class="irreg-vb">está</span></div>
+              <div class="irreg-row"><span class="irreg-pron">ele / ela</span><span class="irreg-vb">está</span></div>
+              <div class="irreg-row"><span class="irreg-pron">nós</span><span class="irreg-vb">estamos</span></div>
+              <div class="irreg-row"><span class="irreg-pron">vocês</span><span class="irreg-vb">estão</span></div>
+              <div class="irreg-row"><span class="irreg-pron">eles / elas</span><span class="irreg-vb">estão</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert"><strong>SER vs ESTAR</strong>SER = permanente · ESTAR = temporário</div>
+      </div>
+    </div>
+
+    <!-- S8: TER / IR -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Irregulares — TER e IR</span></div>
+      <div class="sbody">
+        <div class="irreg-grid">
+          <div class="irreg-card ter">
+            <div class="irreg-title">TER</div>
+            <div class="irreg-rows">
+              <div class="irreg-row"><span class="irreg-pron">eu</span><span class="irreg-vb">tenho</span></div>
+              <div class="irreg-row"><span class="irreg-pron">você</span><span class="irreg-vb">tem</span></div>
+              <div class="irreg-row"><span class="irreg-pron">ele / ela</span><span class="irreg-vb">tem</span></div>
+              <div class="irreg-row"><span class="irreg-pron">nós</span><span class="irreg-vb">temos</span></div>
+              <div class="irreg-row"><span class="irreg-pron">vocês</span><span class="irreg-vb">têm</span></div>
+              <div class="irreg-row"><span class="irreg-pron">eles / elas</span><span class="irreg-vb">têm</span></div>
+            </div>
+          </div>
+          <div class="irreg-card ir">
+            <div class="irreg-title">IR</div>
+            <div class="irreg-rows">
+              <div class="irreg-row"><span class="irreg-pron">eu</span><span class="irreg-vb">vou</span></div>
+              <div class="irreg-row"><span class="irreg-pron">você</span><span class="irreg-vb">vai</span></div>
+              <div class="irreg-row"><span class="irreg-pron">ele / ela</span><span class="irreg-vb">vai</span></div>
+              <div class="irreg-row"><span class="irreg-pron">nós</span><span class="irreg-vb">vamos</span></div>
+              <div class="irreg-row"><span class="irreg-pron">vocês</span><span class="irreg-vb">vão</span></div>
+              <div class="irreg-row"><span class="irreg-pron">eles / elas</span><span class="irreg-vb">vão</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info">📌 TER = tener · IR = ir (eu <strong>vou</strong> = yo voy) — muito usados no dia a dia!</div>
+      </div>
+    </div>
+
+    <!-- S9: FAZER -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Irregular — FAZER</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="irreg-card fazer" style="border-radius:12px">
+            <div class="irreg-title">FAZER</div>
+            <div class="irreg-rows">
+              <div class="irreg-row"><span class="irreg-pron">eu</span><span class="irreg-vb">faço</span></div>
+              <div class="irreg-row"><span class="irreg-pron">você</span><span class="irreg-vb">faz</span></div>
+              <div class="irreg-row"><span class="irreg-pron">ele / ela</span><span class="irreg-vb">faz</span></div>
+              <div class="irreg-row"><span class="irreg-pron">nós</span><span class="irreg-vb">fazemos</span></div>
+              <div class="irreg-row"><span class="irreg-pron">vocês</span><span class="irreg-vb">fazem</span></div>
+              <div class="irreg-row"><span class="irreg-pron">eles / elas</span><span class="irreg-vb">fazem</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">Exemplos com FAZER</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">O que você faz?</span><span class="ex-es">¿Qué haces?</span></div>
+              <div class="ex-item"><span class="ex-pt">Eu faço exercício.</span><span class="ex-es">Hago ejercicio.</span></div>
+              <div class="ex-item"><span class="ex-pt">Nós fazemos a aula.</span></div>
+              <div class="ex-item"><span class="ex-pt">Ela faz a tarefa.</span></div>
+              <div class="ex-item"><span class="ex-pt">Faço tudo de manhã.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Atenção: eu faço (não "eu faz") — forma irregular!</div>
+    </div>
+
+    <!-- S10: COMPARAÇÃO REGULARES -->
+    <div class="slide content" data-type="Gramática">
+      <div class="shdr"><span class="stag tg-gram">Gramática</span><span class="stitle">Padrão Regular — Compare!</span></div>
+      <div class="sbody">
+        <div class="box">
+          <div class="box-title vd">Terminações regulares</div>
+          <table style="width:100%;border-collapse:collapse;font-size:clamp(9px,1.3vw,13px)">
+            <thead><tr style="background:var(--azul);color:#fff"><th style="padding:3% 2%">Pronome</th><th style="padding:3% 2%;background:#007a2e">-AR (falar)</th><th style="padding:3% 2%">-ER (comer)</th><th style="padding:3% 2%;background:#6B21A8">-IR (abrir)</th></tr></thead>
+            <tbody>
+              <tr style="background:#f6fbf8"><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">eu</td><td style="padding:2.5% 2%;font-weight:700;color:#007a2e">falo</td><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">como</td><td style="padding:2.5% 2%;font-weight:700;color:#6B21A8">abro</td></tr>
+              <tr><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">você/ele/ela</td><td style="padding:2.5% 2%;font-weight:700;color:#007a2e">fala</td><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">come</td><td style="padding:2.5% 2%;font-weight:700;color:#6B21A8">abre</td></tr>
+              <tr style="background:#f6fbf8"><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">nós</td><td style="padding:2.5% 2%;font-weight:700;color:#007a2e">falamos</td><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">comemos</td><td style="padding:2.5% 2%;font-weight:700;color:#6B21A8">abrimos</td></tr>
+              <tr><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">vocês/eles</td><td style="padding:2.5% 2%;font-weight:700;color:#007a2e">falam</td><td style="padding:2.5% 2%;font-weight:700;color:var(--azul)">comem</td><td style="padding:2.5% 2%;font-weight:700;color:#6B21A8">abrem</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="sfoot">📌 -AR: o/a/amos/am · -ER: o/e/emos/em · -IR: o/e/imos/em</div>
+    </div>
+
+    <!-- S11: DIÁLOGO -->
+    <div class="slide content" data-type="Prática">
+      <div class="shdr"><span class="stag tg-act">Prática</span><span class="stitle">Diálogo — Rotina Diária</span></div>
+      <div class="sbody">
+        <div class="dialog-box">
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Carlos, o que você faz de manhã?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Acordo cedo, tomo café e vou ao trabalho. E você?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Eu faço exercício, como algo leve e estudo português!</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Que disciplinada! Você tem aula todo dia?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Tenho aula três vezes por semana. A gente aprende muito!</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Você vai ao Brasil em algum momento?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Vou sim! O próximo ano vou a São Paulo!</span></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Verbos usados: fazer, acordar, tomar, ir, comer, estudar, ter, aprender, ir</div>
+    </div>
+
+    <!-- S12: ATIVIDADE ORAL -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Atividade</span><span class="stitle">Atividade Oral — Pergunte ao Colega</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Perguntas</div>
+            <div class="ex-list">
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">Onde você mora?</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">Você trabalha?</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">Você estuda português?</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">Você vai ao Brasil?</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">O que você faz no fim de semana?</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">Fale sobre você</div>
+            <div class="ex-list">
+              <div class="ex-item" style="flex-direction:column"><span class="ex-es">✔️ Nome e nacionalidade</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-es">✔️ Profissão</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-es">✔️ Rotina diária</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-es">✔️ O que você gosta de fazer</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S13: PRODUÇÃO ESCRITA -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Atividade</span><span class="stitle">Produção — Escreva 6 Frases</span></div>
+      <div class="sbody">
+        <div class="box">
+          <div class="box-title vd">Use cada tipo de verbo</div>
+          <div class="ex-list">
+            <div class="ex-item"><span class="ex-pt">1.</span><span class="ex-es">Uma frase com infinitivo: "Eu gosto de ___"</span></div>
+            <div class="ex-item"><span class="ex-pt">2.</span><span class="ex-es">Uma com verbo -AR: trabalhar / falar / estudar</span></div>
+            <div class="ex-item"><span class="ex-pt">3.</span><span class="ex-es">Uma com verbo -ER: comer / beber / aprender</span></div>
+            <div class="ex-item"><span class="ex-pt">4.</span><span class="ex-es">Uma com verbo -IR: abrir / assistir / decidir</span></div>
+            <div class="ex-item"><span class="ex-pt">5.</span><span class="ex-es">Uma com verbo irregular: SER / TER / IR / FAZER</span></div>
+            <div class="ex-item"><span class="ex-pt">6.</span><span class="ex-es">Uma sobre sua rotina diária</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S14: RESUMO REGULARES -->
+    <div class="slide content" data-type="Resumo">
+      <div class="shdr"><span class="stag tg-gram">Resumo</span><span class="stitle">Resumo — Verbos Regulares</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box" style="border-left-color:var(--verde)">
+            <div class="box-title vd">-AR (falar)</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">falo</span></div>
+              <div class="ex-item"><span class="ex-pt">fala</span></div>
+              <div class="ex-item"><span class="ex-pt">falamos</span></div>
+              <div class="ex-item"><span class="ex-pt">falam</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">-ER (comer)</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">como</span></div>
+              <div class="ex-item"><span class="ex-pt">come</span></div>
+              <div class="ex-item"><span class="ex-pt">comemos</span></div>
+              <div class="ex-item"><span class="ex-pt">comem</span></div>
+            </div>
+          </div>
+          <div class="box" style="border-left-color:#7C3AED;background:#F5F3FF">
+            <div class="box-title" style="color:#6B21A8">-IR (abrir)</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">abro</span></div>
+              <div class="ex-item"><span class="ex-pt">abre</span></div>
+              <div class="ex-item"><span class="ex-pt">abrimos</span></div>
+              <div class="ex-item"><span class="ex-pt">abrem</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="box am" style="flex:none;margin-top:2%">
+          <div class="box-title am">Irregulares — memorizar!</div>
+          <div style="display:flex;gap:3%;flex-wrap:wrap;font-size:clamp(9px,1.3vw,13px)">
+            <span><strong>SER:</strong> sou/é/somos/são</span>
+            <span><strong>ESTAR:</strong> estou/está/estamos/estão</span>
+            <span><strong>TER:</strong> tenho/tem/temos/têm</span>
+            <span><strong>IR:</strong> vou/vai/vamos/vão</span>
+            <span><strong>FAZER:</strong> faço/faz/fazemos/fazem</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S15: FIM -->
+    <div class="slide cover" data-type="Fim">
+      <div class="cover-tag" style="background:rgba(255,255,255,.2)">FIM DA AULA 14.1</div>
+      <div class="cover-logo">🎉</div>
+      <div class="cover-h1">Parabéns! <span>🎉</span></div>
+      <div class="cover-desc">Você aprendeu os verbos regulares e irregulares em português!</div>
+      <div class="cover-pills">
+        <span class="pill">-AR ✓</span>
+        <span class="pill">-ER ✓</span>
+        <span class="pill">-IR ✓</span>
+        <span class="pill">SER/ESTAR ✓</span>
+        <span class="pill">TER/IR/FAZER ✓</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+  </div>
+  <div class="navrow">
+    <button class="nbtn" id="bp" onclick="go(-1)" disabled>&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="nbtn" id="bn" onclick="go(1)">&#8594;</button>
+  </div>
+  <div class="stype" id="stype"></div>
+</div>
+<script>
+const slides=document.querySelectorAll('.slide');
+const N=slides.length;
+let cur=0;
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<N;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>show(i);dotsEl.appendChild(d);}
+function show(n){slides[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));slides[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('bp').disabled=cur===0;document.getElementById('bn').disabled=cur===N-1;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';document.getElementById('counter').textContent=(cur+1)+' / '+N;document.getElementById('stype').textContent=slides[cur].dataset.type||'';}
+function go(d){show(cur+d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);});
+let tsX=0,tsY=0;
+document.querySelector('.stage').addEventListener('touchstart',e=>{tsX=e.changedTouches[0].clientX;tsY=e.changedTouches[0].clientY;},{passive:true});
+document.querySelector('.stage').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsX;const dy=e.changedTouches[0].clientY-tsY;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){if(dx<0)go(1);else go(-1);}},{passive:true});
+show(0);
+</script>
+</body>
+</html>
