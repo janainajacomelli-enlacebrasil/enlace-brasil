@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Enlace Brasil — Aula 10 · Corpo Humano e Saúde</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--vd:#009C3B;--am:#F5C518;--az:#002776;--rs:#e8336d;--bg:#eaf5f0;--text:#1a1a1a;--muted:#888;--radius:14px}
+html,body{font-family:Nunito,sans-serif;background:var(--bg);color:var(--text);-webkit-overflow-scrolling:touch}
+.topbar{background:var(--az);color:#fff;padding:14px 16px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;padding-top:max(14px,env(safe-area-inset-top,14px))}
+.tb-logo{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.4);object-fit:cover;flex-shrink:0}
+.tb-text{flex:1}.tb-title{font-family:"Baloo 2",sans-serif;font-size:15px;font-weight:800;line-height:1.1}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:1px}
+.tb-pts{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:4px 10px;font-size:12px;font-weight:700}
+.idx-bar{background:#fff;border-bottom:2px solid #eee;display:flex;overflow-x:auto;position:sticky;top:62px;z-index:99}
+.idx-bar::-webkit-scrollbar{display:none}
+.idx-btn{flex-shrink:0;padding:10px 14px;font-size:11px;font-weight:700;color:var(--muted);border:none;background:none;font-family:Nunito,sans-serif;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.idx-btn.active{color:var(--az);border-bottom-color:var(--az)}
+.section{padding:16px 14px 8px}
+.section-title{font-family:"Baloo 2",sans-serif;font-size:20px;font-weight:800;color:var(--az);margin-bottom:14px}
+.hero{background:linear-gradient(135deg,var(--az),#1a4fa0);border-radius:16px;padding:20px;color:#fff;margin:14px 14px 0}
+.hero-tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:10px;font-weight:700;padding:3px 10px;border-radius:14px;display:inline-block;margin-bottom:10px;letter-spacing:.5px}
+.hero-title{font-family:"Baloo 2",sans-serif;font-size:24px;font-weight:800;line-height:1.1;margin-bottom:6px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px}
+.card.vd{border-left:4px solid var(--vd)}.card.az{border-left:4px solid var(--az)}
+.card-title{font-size:11px;font-weight:700;color:var(--az);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.rule-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #f0f0f0}
+.rule-sym{font-family:"Baloo 2",sans-serif;font-size:14px;font-weight:800;color:var(--az);min-width:90px}
+.rule-txt{font-size:12px;color:#444}
+.sound-card{border-radius:12px;padding:14px;margin-bottom:10px}
+.c1{background:linear-gradient(135deg,var(--az),#1a4fa0);color:#fff}
+.c2{background:linear-gradient(135deg,#007a2e,var(--vd));color:#fff}
+.c3{background:linear-gradient(135deg,#856404,#a07808);color:#fff}
+.c4{background:linear-gradient(135deg,#72243E,var(--rs));color:#fff}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.sc-sym{font-family:"Baloo 2",sans-serif;font-size:22px;font-weight:800}
+.sc-badge{background:rgba(255,255,255,.2);font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px}
+.sc-play{background:rgba(255,255,255,.25);border:none;border-radius:50%;width:36px;height:36px;color:#fff;font-size:14px;cursor:pointer;flex-shrink:0}
+.sc-rule{font-size:11px;opacity:.8;margin-bottom:8px;line-height:1.4}
+.sc-exs{display:flex;flex-wrap:wrap;gap:6px}
+.sc-ex{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:700;cursor:pointer}
+.sc-ex:active{background:rgba(255,255,255,.35)}
+.tip{background:#E1F5EE;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.tip.am{background:#FFF3CD}
+.tip-lbl{font-size:10px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
+.tip.am .tip-lbl{color:#856404}
+.tip-txt{font-size:12px;color:#333;line-height:1.5}
+.tip-txt em{color:var(--az);font-style:normal;font-weight:700}
+.marcas-grid{display:flex;flex-direction:column;gap:6px}
+.marca-item{display:flex;align-items:center;gap:10px;background:#f6fbf8;border-radius:10px;padding:10px 12px;cursor:pointer;transition:background .15s}
+.marca-item:active{background:#E1F5EE}
+.marca-orig{font-size:13px;font-weight:700;color:var(--az);min-width:80px}
+.marca-pt{font-size:13px;color:#444;flex:1;font-style:italic}
+.marca-play{background:var(--vd);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.ditado-list{display:flex;flex-direction:column;gap:8px}
+.ditado-item{display:flex;align-items:flex-start;gap:10px;background:#f6fbf8;border-radius:10px;padding:10px 12px;cursor:pointer;transition:background .15s}
+.ditado-item:active{background:#E1F5EE}
+.ditado-num{font-family:"Baloo 2",sans-serif;font-size:16px;font-weight:800;color:var(--az);min-width:22px;flex-shrink:0}
+.ditado-play{background:var(--vd);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+.ditado-txt{font-size:12px;color:#333;line-height:1.5;flex:1}
+.play-btn{background:rgba(0,39,118,.1);border:2px solid var(--az);border-radius:12px;padding:10px;color:var(--az);font-size:13px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.play-btn.playing{background:var(--am);color:#333;border-color:var(--am)}
+.score-banner{background:linear-gradient(135deg,var(--vd),#007a2e);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;color:#fff;margin-bottom:10px}
+.sb-label{font-size:11px;opacity:.8;font-weight:600}
+.sb-score{font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800;line-height:1}
+.sb-stars{font-size:13px;margin-top:1px}
+.blank-card{background:#fff;border-radius:14px;padding:14px;border-left:4px solid var(--vd);margin-bottom:10px}
+.blank-q{font-size:13px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:10px}
+.blank-q .gap{display:inline-block;min-width:60px;border-bottom:2px dashed var(--vd);color:var(--vd);text-align:center;padding:0 4px}
+.blank-q .gap.correct{color:#0F6E56;border-bottom:2px solid #0F6E56;font-weight:700}
+.options-row{display:flex;flex-wrap:wrap;gap:6px}
+.opt{background:#f6fbf8;border:2px solid #ddd;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;color:#444;cursor:pointer;transition:all .15s}
+.opt:active{transform:scale(.95)}
+.opt.selected{background:#E1F5EE;border-color:var(--vd);color:#0F6E56}
+.opt.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D;animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.btn{width:100%;padding:13px;border-radius:12px;border:none;font-size:14px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.btn-verde{background:var(--vd);color:#fff}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,39,118,.9);color:#fff;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;z-index:200}
+.toast.show{opacity:1}
+@media(min-width:768px){
+  .section,.hero{max-width:860px;margin-left:auto;margin-right:auto}
+  .hero{padding:28px 32px;margin-top:16px}
+  .section{padding:20px 24px 12px}
+  .section-title{font-size:24px}
+  .marcas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tip-txt{font-size:14px}
+  .blank-q{font-size:15px}
+  .opt{font-size:14px;padding:10px 18px}
+}
+</style>
+</head>
+<body>
+
+<style>
+.abp{transition:opacity .2s,filter .2s}
+.abp:hover{opacity:.7!important}
+</style>
+<div class="topbar">
+  <img class="tb-logo" src="data:image/jpeg;base64,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" alt="EB">
+  <div class="tb-text">
+    <div class="tb-title">Enlace Brasil</div>
+    <div class="tb-sub">Aula 10 — Corpo Humano e Saúde</div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="scrollTo_('s-corpo',this)">🫀 Corpo</button>
+  <button class="idx-btn" onclick="scrollTo_('s-sintomas',this)">🤒 Sintomas</button>
+  <button class="idx-btn" onclick="scrollTo_('s-consulta',this)">🏥 Consulta</button>
+  <button class="idx-btn" onclick="scrollTo_('s-farmacia',this)">💊 Farmácia</button>
+  <button class="idx-btn" onclick="scrollTo_('s-emergencia',this)">🚨 Emergência</button>
+  <button class="idx-btn" onclick="scrollTo_('s-ativ',this)">✏️ Atividades</button>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">AULA 10 · NÍVEL A2</div>
+  <div class="hero-title">Corpo Humano<br><span>e Saúde</span></div>
+  <div class="hero-desc">Toque nas partes do corpo para ouvir!</div>
+  <div class="pill-row">
+    <span class="pill">🫀 Partes do corpo</span>
+    <span class="pill">🤒 Sintomas</span>
+    <span class="pill">🚨 Emergência</span>
+  </div>
+</div>
+
+<!-- CORPO INTERATIVO -->
+<div class="section" id="s-corpo">
+  <div class="section-title">🫀 Partes do Corpo — Toque para Ouvir!</div>
+
+  <!-- CORPO SVG INTERATIVO -->
+  <div style="background:linear-gradient(135deg,#f0f9f4,#e8f4fd);border-radius:16px;padding:16px;margin-bottom:10px">
+    <div id="active-label" style="text-align:center;min-height:52px;margin-bottom:12px;background:#002776;border-radius:10px;padding:8px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div style="font-size:11px;opacity:.7">👆 Toque em qualquer parte do corpo</div>
+      <div id="aluno-label-pt" style="font-family:'Baloo 2',sans-serif;font-size:22px;font-weight:800"></div>
+      <div id="aluno-label-es" style="font-size:12px;opacity:.8"></div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <svg viewBox="0 0 160 340" style="height:360px;max-width:180px" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cabeça -->
+        <ellipse cx="80" cy="30" rx="28" ry="32" fill="#FDDBB4" stroke="#c8956c" stroke-width="1.5" class="abp" data-id="cabeca" style="cursor:pointer"/>
+        <ellipse cx="80" cy="12" rx="28" ry="14" fill="#5C3317" class="abp" data-id="cabelo" style="cursor:pointer"/>
+        <ellipse cx="70" cy="26" rx="5" ry="4" fill="#fff" stroke="#555" stroke-width="1"/>
+        <ellipse cx="90" cy="26" rx="5" ry="4" fill="#fff" stroke="#555" stroke-width="1"/>
+        <circle cx="70" cy="27" r="3" fill="#3a6bc8" class="abp" data-id="olho" style="cursor:pointer"/>
+        <circle cx="90" cy="27" r="3" fill="#3a6bc8" class="abp" data-id="olho" style="cursor:pointer"/>
+        <ellipse cx="80" cy="33" rx="4" ry="5" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="nariz" style="cursor:pointer"/>
+        <path d="M72 42 Q80 48 88 42" fill="none" stroke="#c8956c" stroke-width="2" class="abp" data-id="boca" style="cursor:pointer"/>
+        <ellipse cx="52" cy="32" rx="7" ry="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="orelha" style="cursor:pointer"/>
+        <ellipse cx="108" cy="32" rx="7" ry="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="orelha" style="cursor:pointer"/>
+        <rect x="70" y="58" width="20" height="18" rx="4" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="pescoco" style="cursor:pointer"/>
+        <ellipse cx="45" cy="90" rx="20" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="ombro" style="cursor:pointer"/>
+        <ellipse cx="115" cy="90" rx="20" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="ombro" style="cursor:pointer"/>
+        <rect x="52" y="76" width="56" height="80" rx="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1.5" class="abp" data-id="torax" style="cursor:pointer"/>
+        <ellipse cx="80" cy="135" rx="22" ry="18" fill="#f5c99e" stroke="#c8956c" stroke-width="1" class="abp" data-id="abdomen" style="cursor:pointer"/>
+        <circle cx="80" cy="138" r="3" fill="#c8956c" class="abp" data-id="abdomen" style="cursor:pointer"/>
+        <rect x="22" y="78" width="22" height="70" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="braco" style="cursor:pointer"/>
+        <rect x="116" y="78" width="22" height="70" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="braco" style="cursor:pointer"/>
+        <ellipse cx="33" cy="138" rx="11" ry="9" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="cotovelo" style="cursor:pointer"/>
+        <ellipse cx="127" cy="138" rx="11" ry="9" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="cotovelo" style="cursor:pointer"/>
+        <rect x="22" y="148" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="antebraco" style="cursor:pointer"/>
+        <rect x="116" y="148" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="antebraco" style="cursor:pointer"/>
+        <ellipse cx="33" cy="205" rx="10" ry="7" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="pulso" style="cursor:pointer"/>
+        <ellipse cx="127" cy="205" rx="10" ry="7" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="pulso" style="cursor:pointer"/>
+        <ellipse cx="33" cy="222" rx="13" ry="16" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="mao" style="cursor:pointer"/>
+        <ellipse cx="127" cy="222" rx="13" ry="16" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="mao" style="cursor:pointer"/>
+        <ellipse cx="80" cy="165" rx="30" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="quadril" style="cursor:pointer"/>
+        <rect x="55" y="172" width="22" height="80" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="coxa" style="cursor:pointer"/>
+        <rect x="83" y="172" width="22" height="80" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="coxa" style="cursor:pointer"/>
+        <ellipse cx="66" cy="252" rx="12" ry="10" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="joelho" style="cursor:pointer"/>
+        <ellipse cx="94" cy="252" rx="12" ry="10" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="joelho" style="cursor:pointer"/>
+        <rect x="55" y="262" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="canela" style="cursor:pointer"/>
+        <rect x="83" y="262" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="canela" style="cursor:pointer"/>
+        <ellipse cx="66" cy="320" rx="11" ry="8" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="tornozelo" style="cursor:pointer"/>
+        <ellipse cx="94" cy="320" rx="11" ry="8" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="tornozelo" style="cursor:pointer"/>
+        <ellipse cx="63" cy="334" rx="16" ry="8" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="pe" style="cursor:pointer"/>
+        <ellipse cx="97" cy="334" rx="16" ry="8" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="pe" style="cursor:pointer"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- GRID DE PARTES -->
+  <div class="card vd">
+    <div class="card-title">Toque nos botões também!</div>
+    <div id="part-buttons" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"></div>
+  </div>
+</div>
+
+<!-- SINTOMAS -->
+<div class="section" id="s-sintomas">
+  <div class="section-title">🤒 Sintomas</div>
+  <div class="card vd">
+    <div class="card-title">TER + sintoma — toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Eu tenho febre.')"><span class="marca-orig">ter febre</span><span class="marca-pt">tener fiebre</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho dor de cabeça.')"><span class="marca-orig">ter dor de cabeça</span><span class="marca-pt">dolor de cabeza</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho tosse.')"><span class="marca-orig">ter tosse</span><span class="marca-pt">tener tos</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho enjoo.')"><span class="marca-orig">ter enjoo</span><span class="marca-pt">náuseas</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho tontura.')"><span class="marca-orig">ter tontura</span><span class="marca-pt">mareos</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho calafrio.')"><span class="marca-orig">ter calafrio</span><span class="marca-pt">escalofríos</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho falta de ar.')"><span class="marca-orig">falta de ar</span><span class="marca-pt">falta de aliento</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho inchaço.')"><span class="marca-orig">inchaço</span><span class="marca-pt">hinchazón</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho cansaço.')"><span class="marca-orig">cansaço / fadiga</span><span class="marca-pt">cansancio</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho formigamento.')"><span class="marca-orig">formigamento</span><span class="marca-pt">hormigueo</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu tenho pressão alta.')"><span class="marca-orig">pressão alta</span><span class="marca-pt">presión alta</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Eu vomitei.')"><span class="marca-orig">vômito</span><span class="marca-pt">vómito</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+  <div class="card az" style="margin-top:8px">
+    <div class="card-title">Dor de + parte — toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('Estou com dor de cabeça.')"><span class="marca-orig">dor de cabeça</span><span class="marca-pt">dolor de cabeza</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Estou com dor de garganta.')"><span class="marca-orig">dor de garganta</span><span class="marca-pt">dolor de garganta</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Estou com dor de barriga.')"><span class="marca-orig">dor de barriga</span><span class="marca-pt">dolor de barriga</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Estou com dor de dente.')"><span class="marca-orig">dor de dente</span><span class="marca-pt">dolor de muela</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Estou com dor nas costas.')"><span class="marca-orig">dor nas costas</span><span class="marca-pt">dolor de espalda</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('Estou com dor no peito.')"><span class="marca-orig">dor no peito</span><span class="marca-pt">dolor en el pecho</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONSULTA -->
+<div class="section" id="s-consulta">
+  <div class="section-title">🏥 Consulta Médica</div>
+  <div class="card vd">
+    <div class="card-title">Frases da consulta — toque para ouvir · ♀ Ana e 🩺 Médico</div>
+    <div class="ditado-list">
+      <div class="ditado-item" onclick="spkG('Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.','F')">
+        <span class="ditado-num" style="color:#e8336d">♀</span>
+        <span class="ditado-play" style="background:#e8336d">▶</span>
+        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Qual é o seu problema? Tem tosse? Está com coriza?','M')">
+        <span class="ditado-num" style="color:var(--az)">🩺</span>
+        <span class="ditado-play" style="background:var(--az)">▶</span>
+        <span class="ditado-txt"><strong style="color:var(--az)">Dr.:</strong> Qual é o seu problema? Tem tosse? Está com coriza?</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Sim, tenho tosse seca e estou com muita dor de cabeça também.','F')">
+        <span class="ditado-num" style="color:#e8336d">♀</span>
+        <span class="ditado-play" style="background:#e8336d">▶</span>
+        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Sim, tenho tosse seca e estou com muita dor de cabeça também.</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Desde quando você está assim? A febre é alta?','M')">
+        <span class="ditado-num" style="color:var(--az)">🩺</span>
+        <span class="ditado-play" style="background:var(--az)">▶</span>
+        <span class="ditado-txt"><strong style="color:var(--az)">Dr.:</strong> Desde quando você está assim? A febre é alta?</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('Desde ontem à noite. A febre estava em trinta e oito e meio.','F')">
+        <span class="ditado-num" style="color:#e8336d">♀</span>
+        <span class="ditado-play" style="background:#e8336d">▶</span>
+        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Desde ontem à noite. A febre estava em 38,5.</span>
+      </div>
+      <div class="ditado-item" onclick="spkG('É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.','M')">
+        <span class="ditado-num" style="color:var(--az)">🩺</span>
+        <span class="ditado-play" style="background:var(--az)">▶</span>
+        <span class="ditado-txt"><strong style="color:var(--az)">Dr.:</strong> É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.</span>
+      </div>
+    </div>
+    <button class="play-btn" id="dialogo-btn" onclick="playDialogo()" style="margin-top:12px">▶ Ouvir consulta completa ♀🩺</button>
+  </div>
+</div>
+
+<!-- FARMÁCIA -->
+<div class="section" id="s-farmacia">
+  <div class="section-title">💊 Farmácia</div>
+  <div class="card vd">
+    <div class="card-title">Formas de remédio — toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('comprimido')"><span class="marca-orig">💊 comprimido</span><span class="marca-pt">pastilla</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('cápsula')"><span class="marca-orig">🔴 cápsula</span><span class="marca-pt">cápsula</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('xarope')"><span class="marca-orig">🍶 xarope</span><span class="marca-pt">jarabe</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('injetável')"><span class="marca-orig">💉 injetável</span><span class="marca-pt">inyectable</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('colírio')"><span class="marca-orig">👁️ colírio</span><span class="marca-pt">colirio</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('pomada')"><span class="marca-orig">🧴 pomada</span><span class="marca-pt">pomada</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+  <div class="card am" style="margin-top:8px">
+    <div class="card-title">Instruções de uso — toque para ouvir</div>
+    <div class="marcas-grid">
+      <div class="marca-item" onclick="spk('tome de oito em oito horas.')"><span class="marca-orig">de 8 em 8 horas</span><span class="marca-pt">cada 8 horas</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('tome em jejum.')"><span class="marca-orig">em jejum</span><span class="marca-pt">en ayunas</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('tome após as refeições.')"><span class="marca-orig">após as refeições</span><span class="marca-pt">después de comer</span><span class="marca-play">▶</span></div>
+      <div class="marca-item" onclick="spk('tome com bastante água.')"><span class="marca-orig">tomar com água</span><span class="marca-pt">tomar con agua</span><span class="marca-play">▶</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- EMERGÊNCIA -->
+<div class="section" id="s-emergencia">
+  <div class="section-title">🚨 Emergência</div>
+  <div class="card" style="border-left:4px solid #CC0000;background:#FFF5F5">
+    <div class="card-title" style="color:#CC0000">Frases essenciais — toque para ouvir</div>
+    <div class="ditado-list">
+      <div class="ditado-item" onclick="spk('Preciso de ajuda!')"><span class="ditado-num" style="color:#CC0000">🚨</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Preciso de ajuda!</span></div>
+      <div class="ditado-item" onclick="spk('Chame uma ambulância!')"><span class="ditado-num" style="color:#CC0000">🚑</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Chame uma ambulância!</span></div>
+      <div class="ditado-item" onclick="spk('É uma emergência!')"><span class="ditado-num" style="color:#CC0000">❗</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">É uma emergência!</span></div>
+      <div class="ditado-item" onclick="spk('Ele desmaiou!')"><span class="ditado-num" style="color:#CC0000">😵</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Ele desmaiou!</span></div>
+      <div class="ditado-item" onclick="spk('Não consigo respirar!')"><span class="ditado-num" style="color:#CC0000">😮‍💨</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Não consigo respirar!</span></div>
+      <div class="ditado-item" onclick="spk('Estou com muita dor no peito!')"><span class="ditado-num" style="color:#CC0000">💔</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Estou com muita dor no peito!</span></div>
+    </div>
+  </div>
+  <div class="tip rs" style="margin-top:8px">
+    <div class="tip-lbl">📞 Números no Brasil</div>
+    <div class="tip-txt"><strong>SAMU 192</strong> · Bombeiros 193 · Polícia 190 · CVV 188</div>
+  </div>
+</div>
+
+<!-- ATIVIDADES -->
+<div class="section" id="s-ativ">
+  <div class="section-title">✏️ Atividades</div>
+  <div class="score-banner">
+    <div><div class="sb-label">Pontuação</div><div class="sb-stars" id="stars">☆☆☆☆☆☆☆☆</div></div>
+    <div class="sb-score" id="score-disp">0/8</div>
+  </div>
+
+  <div class="blank-card" id="bq-0">
+    <div class="blank-q">Minha temperatura é 39°. Estou com ___.</div>
+    <div class="options-row" id="opts-0">
+      <div class="opt" onclick="check(0,this,'tontura','febre')">tontura</div>
+      <div class="opt" onclick="check(0,this,'febre','febre')">febre</div>
+      <div class="opt" onclick="check(0,this,'tosse','febre')">tosse</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-1">
+    <div class="blank-q">"Estou ___ dor de cabeça."</div>
+    <div class="options-row" id="opts-1">
+      <div class="opt" onclick="check(1,this,'com','com')">com</div>
+      <div class="opt" onclick="check(1,this,'de','com')">de</div>
+      <div class="opt" onclick="check(1,this,'em','com')">em</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-2">
+    <div class="blank-q">O joelho está maior que o normal. Tem ___.</div>
+    <div class="options-row" id="opts-2">
+      <div class="opt" onclick="check(2,this,'tontura','inchaço')">tontura</div>
+      <div class="opt" onclick="check(2,this,'inchaço','inchaço')">inchaço</div>
+      <div class="opt" onclick="check(2,this,'febre','inchaço')">febre</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-3">
+    <div class="blank-q">Como se chama o remédio líquido para tosse?</div>
+    <div class="options-row" id="opts-3">
+      <div class="opt" onclick="check(3,this,'comprimido','xarope')">comprimido</div>
+      <div class="opt" onclick="check(3,this,'colírio','xarope')">colírio</div>
+      <div class="opt" onclick="check(3,this,'xarope','xarope')">xarope</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-4">
+    <div class="blank-q">Qual é o número do SAMU no Brasil?</div>
+    <div class="options-row" id="opts-4">
+      <div class="opt" onclick="check(4,this,'190','192')">190</div>
+      <div class="opt" onclick="check(4,this,'192','192')">192</div>
+      <div class="opt" onclick="check(4,this,'193','192')">193</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-5">
+    <div class="blank-q">Sinto o mundo girando. Tenho ___.</div>
+    <div class="options-row" id="opts-5">
+      <div class="opt" onclick="check(5,this,'tontura','tontura')">tontura</div>
+      <div class="opt" onclick="check(5,this,'febre','tontura')">febre</div>
+      <div class="opt" onclick="check(5,this,'tosse','tontura')">tosse</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-6">
+    <div class="blank-q">"Tome ___ as refeições" = después de comer</div>
+    <div class="options-row" id="opts-6">
+      <div class="opt" onclick="check(6,this,'antes de','após as')">antes de</div>
+      <div class="opt" onclick="check(6,this,'após as','após as')">após as</div>
+      <div class="opt" onclick="check(6,this,'durante as','após as')">durante as</div>
+    </div>
+  </div>
+
+  <div class="blank-card" id="bq-7">
+    <div class="blank-q">Para pedir ambulância no Brasil você liga para:</div>
+    <div class="options-row" id="opts-7">
+      <div class="opt" onclick="check(7,this,'911','192')">911</div>
+      <div class="opt" onclick="check(7,this,'192','192')">192 (SAMU)</div>
+      <div class="opt" onclick="check(7,this,'112','192')">112</div>
+    </div>
+  </div>
+
+  <button class="btn btn-verde" onclick="resetAct()">🔄 Recomeçar</button>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var points=0,score=0,total=8,done=new Array(8).fill(false);
+
+var bodyData={
+  cabeca:{pt:"a cabeça",es:"la cabeza"},
+  cabelo:{pt:"o cabelo",es:"el pelo"},
+  olho:{pt:"os olhos",es:"los ojos"},
+  nariz:{pt:"o nariz",es:"la nariz"},
+  boca:{pt:"a boca",es:"la boca"},
+  orelha:{pt:"a orelha",es:"la oreja"},
+  pescoco:{pt:"o pescoço",es:"el cuello"},
+  ombro:{pt:"o ombro",es:"el hombro"},
+  torax:{pt:"o tórax / peito",es:"el tórax / pecho"},
+  abdomen:{pt:"o abdômen / barriga",es:"el abdomen"},
+  braco:{pt:"o braço",es:"el brazo"},
+  cotovelo:{pt:"o cotovelo",es:"el codo"},
+  antebraco:{pt:"o antebraço",es:"el antebrazo"},
+  pulso:{pt:"o pulso",es:"la muñeca"},
+  mao:{pt:"a mão",es:"la mano"},
+  quadril:{pt:"o quadril",es:"la cadera"},
+  coxa:{pt:"a coxa",es:"el muslo"},
+  joelho:{pt:"o joelho",es:"la rodilla"},
+  canela:{pt:"a canela",es:"la canilla"},
+  tornozelo:{pt:"o tornozelo",es:"el tobillo"},
+  pe:{pt:"o pé",es:"el pie"}
+};
+
+var currentPart=null;
+
+// Build part buttons
+var btnGrid=document.getElementById('part-buttons');
+var mainParts=['cabeca','olho','nariz','boca','orelha','pescoco','ombro','torax','abdomen','braco','cotovelo','mao','quadril','coxa','joelho','pe','tornozelo','pe'];
+var seen={};
+Object.keys(bodyData).forEach(function(id){
+  if(seen[id])return; seen[id]=true;
+  var btn=document.createElement('button');
+  btn.style.cssText='background:#F6FBF8;border:2px solid #d0e8d8;border-radius:8px;padding:6px 4px;font-family:Nunito,sans-serif;font-size:11px;font-weight:700;color:#002776;cursor:pointer;text-align:center;transition:all .15s';
+  btn.innerHTML=bodyData[id].pt.replace(/^(o|a|os|as) /,'');
+  btn.id='pbtn-'+id;
+  btn.onclick=function(){activatePart(id);};
+  btnGrid.appendChild(btn);
+});
+
+// SVG click handlers
+document.querySelectorAll('.abp').forEach(function(el){
+  el.addEventListener('click',function(){
+    activatePart(el.dataset.id);
+  });
+});
+
+function activatePart(id){
+  if(!bodyData[id])return;
+  // Reset previous
+  if(currentPart){
+    document.querySelectorAll('.abp').forEach(function(el){
+      if(el.dataset.id===currentPart){el.style.opacity='';el.style.filter='';}
+    });
+    var prevBtn=document.getElementById('pbtn-'+currentPart);
+    if(prevBtn){prevBtn.style.background='#F6FBF8';prevBtn.style.borderColor='#d0e8d8';prevBtn.style.color='#002776';}
+  }
+  if(currentPart===id){currentPart=null;document.getElementById('aluno-label-pt').textContent='';document.getElementById('aluno-label-es').textContent='';return;}
+  currentPart=id;
+  // Highlight SVG parts
+  document.querySelectorAll('.abp').forEach(function(el){
+    if(el.dataset.id===id){el.style.opacity='.5';el.style.filter='drop-shadow(0 0 5px #009C3B)';}
+  });
+  // Highlight button
+  var btn=document.getElementById('pbtn-'+id);
+  if(btn){btn.style.background='#002776';btn.style.borderColor='#002776';btn.style.color='#fff';}
+  // Update label
+  document.getElementById('aluno-label-pt').textContent=bodyData[id].pt;
+  document.getElementById('aluno-label-es').textContent=bodyData[id].es;
+  // Speak
+  spk(bodyData[id].pt.replace(/^(o|a|os|as) /,''));
+}
+
+function scrollTo_(id,btn){
+  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+  document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+
+function getBRVoices(){
+  var all=speechSynthesis.getVoices();
+  var br=all.filter(function(x){return x.lang==='pt-BR';});
+  if(br.length)return br;
+  var pt=all.filter(function(x){return x.lang.startsWith('pt');});
+  return pt.length?pt:all;
+}
+function getMaleVoice(voices){
+  var mv=voices.find(function(x){return /male|man|masculin|ricardo|daniel|felipe/i.test(x.name)&&!/female/i.test(x.name);});
+  if(!mv)mv=voices.find(function(x){return /male|masculin/i.test(x.name);});
+  return mv||null;
+}
+function spk(txt){
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(txt);
+  u.lang='pt-BR';u.rate=0.88;
+  var brv=getBRVoices();
+  if(brv.length)u.voice=brv[0];
+  speechSynthesis.speak(u);
+}
+function spkG(txt,gender){
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';
+  var brv=getBRVoices();
+  if(gender==='F'){
+    u.pitch=1.4;u.rate=1.05;
+    var fv=brv.find(function(x){return /female|woman|francisca|vitoria|luciana/i.test(x.name);});
+    if(!fv)fv=brv.find(function(x){return !/male|masculin/i.test(x.name);});
+    if(fv)u.voice=fv;else if(brv.length)u.voice=brv[0];
+  } else {
+    var mv=getMaleVoice(brv);
+    if(mv){u.voice=mv;u.pitch=0.85;u.rate=1.12;}
+    else{u.pitch=1.15;u.rate=1.1;var fv2=brv.find(function(x){return /female|woman/i.test(x.name);});if(!fv2&&brv.length)fv2=brv[0];if(fv2)u.voice=fv2;}
+  }
+  speechSynthesis.speak(u);
+}
+
+var dialogoLines=[
+  {txt:'Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.',g:'F'},
+  {txt:'Qual é o seu problema? Tem tosse? Está com coriza?',g:'M'},
+  {txt:'Sim, tenho tosse seca e estou com muita dor de cabeça também.',g:'F'},
+  {txt:'Desde quando você está assim? A febre é alta?',g:'M'},
+  {txt:'Desde ontem à noite. A febre estava em trinta e oito e meio.',g:'F'},
+  {txt:'É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.',g:'M'}
+];
+function playDialogo(){
+  var btn=document.getElementById('dialogo-btn');
+  if(btn.classList.contains('playing')){speechSynthesis.cancel();btn.classList.remove('playing');btn.innerHTML='▶ Ouvir consulta completa ♀🩺';return;}
+  btn.classList.add('playing');btn.innerHTML='■ Parar';
+  var i=0;
+  function next(){
+    if(i>=dialogoLines.length){btn.classList.remove('playing');btn.innerHTML='▶ Ouvir consulta completa ♀🩺';return;}
+    var line=dialogoLines[i];
+    var u=new SpeechSynthesisUtterance(line.txt);u.lang='pt-BR';
+    var brv=getBRVoices();
+    if(line.g==='F'){u.pitch=1.4;u.rate=1.05;var fv=brv.find(function(x){return /female|woman|francisca/i.test(x.name);});if(!fv&&brv.length)fv=brv[0];if(fv)u.voice=fv;}
+    else{var mv=getMaleVoice(brv);if(mv){u.voice=mv;u.pitch=0.85;u.rate=1.12;}else{u.pitch=1.15;u.rate=1.1;if(brv.length)u.voice=brv[0];}}
+    u.onend=function(){i++;setTimeout(next,450);};
+    speechSynthesis.speak(u);
+  }
+  speechSynthesis.getVoices();setTimeout(next,100);
+}
+
+var toastT;
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('show');},1800);}
+
+function check(idx,el,chosen,correct){
+  if(done[idx])return;
+  if(chosen===correct){
+    el.classList.add('selected');
+    document.getElementById('opts-'+idx).querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});
+    done[idx]=true;score++;points+=10;
+    document.getElementById('tb-pts').textContent='⭐ '+points+' pts';
+    document.getElementById('score-disp').textContent=score+'/'+total;
+    document.getElementById('stars').textContent='⭐'.repeat(score)+'☆'.repeat(total-score);
+    toast('✅ Correto! +10 pts');
+    if(score===total)setTimeout(function(){toast('🏆 Perfeito! Parabéns!');},400);
+  } else {
+    el.classList.add('wrong');setTimeout(function(){el.classList.remove('wrong');},500);toast('❌ Tente novamente!');
+  }
+}
+function resetAct(){
+  score=0;points=0;done.fill(false);
+  for(var i=0;i<total;i++){document.getElementById('opts-'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';o.style.pointerEvents='';});}
+  document.getElementById('score-disp').textContent='0/'+total;
+  document.getElementById('stars').textContent='☆'.repeat(total);
+  document.getElementById('tb-pts').textContent='⭐ 0 pts';
+}
+
+if(window.speechSynthesis){
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};
+  document.addEventListener('touchstart',function iosUnlock(){
+    var u=new SpeechSynthesisUtterance('');u.volume=0;speechSynthesis.speak(u);
+    document.removeEventListener('touchstart',iosUnlock);
+  },{once:true});
+}
+</script>
+</body>
+</html>
