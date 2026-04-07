@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#002776">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Aula 10 — Corpo e Saúde | Enlace Brasil | Professor</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--verde:#009C3B;--amarelo:#F5C518;--azul:#002776;--bg:#eaf5f0;--text:#1a1a1a;--muted:#666}
+html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Nunito',sans-serif;background:var(--bg)}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:900px;margin:0 auto;padding:10px 12px 6px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-shrink:0}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);object-fit:cover}
+.logo-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:13px;color:var(--azul);line-height:1.1}
+.logo-sub{font-size:10px;color:var(--muted);font-weight:600}
+.prog-wrap{display:flex;align-items:center;gap:8px}
+.pbar{width:120px;height:5px;background:#d0e8d8;border-radius:10px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--verde),var(--amarelo));transition:width .35s}
+.pcnt{font-size:11px;color:var(--muted);font-weight:700;min-width:44px;text-align:right}
+.stage{flex:1;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 6px 28px rgba(0,39,118,.14);min-height:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+.cover{background:linear-gradient(140deg,#002776 0%,#0a3d8f 55%,#145cb5 100%);color:#fff;justify-content:center;align-items:center;text-align:center;padding:6% 8%;gap:2%}
+.cover-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.3vw,12px);font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1.2px}
+.cover-logo{width:clamp(50px,7vw,76px);height:clamp(50px,7vw,76px);border-radius:50%;border:3px solid rgba(255,255,255,.35);object-fit:cover}
+.cover-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,4vw,42px);font-weight:800;line-height:1.1}
+.cover-h1 span{color:var(--amarelo)}
+.cover-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);font-size:clamp(8px,1.1vw,11px);padding:3px 11px;border-radius:20px}
+.cover-foot{font-size:clamp(9px,1.1vw,11px);color:rgba(255,255,255,.42);margin-top:auto}
+.content{background:#fff;color:var(--text);padding:4% 5% 3%}
+.shdr{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-bottom:2.5%}
+.stag{font-size:clamp(8px,1.1vw,11px);font-weight:700;letter-spacing:.8px;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.tg-gram{background:#E1F5EE;color:#0F6E56}
+.tg-voc{background:#E6F1FB;color:#0C447C}
+.tg-act{background:#FAEEDA;color:#633806}
+.tg-cul{background:#EAF3DE;color:#27500A}
+.tg-saude{background:#FFE4E4;color:#CC0000}
+.stitle{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2.8vw,26px);font-weight:800;color:var(--azul);line-height:1.1}
+.sbody{flex:1;display:flex;flex-direction:column;gap:2%;overflow:hidden;min-height:0}
+.sfoot{font-size:clamp(8px,1vw,10px);color:var(--muted);flex-shrink:0;display:flex;align-items:center;gap:6px;padding-top:1.5%;border-top:1px solid #f0f0f0;margin-top:1.5%;font-style:italic}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2%;flex:1;min-height:0}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2%;flex:1;min-height:0}
+.box{background:#F6FBF8;border-radius:10px;padding:3% 4%;border-left:4px solid var(--verde);min-height:0;overflow:hidden}
+.box.az{border-left-color:var(--azul);background:#F0F4FB}
+.box.am{border-left-color:var(--amarelo);background:#FFFCF0}
+.box.rs{border-left-color:#e8336d;background:#FDF0F5}
+.box.verm{border-left-color:#CC0000;background:#FFF5F5}
+.box-title{font-size:clamp(9px,1.3vw,12px);font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--azul);margin-bottom:5%}
+.box-title.vd{color:#0F6E56}
+.box-title.rm{color:#CC0000}
+.ex-list{display:flex;flex-direction:column;gap:3%;flex:1;justify-content:center}
+.ex-item{display:flex;align-items:baseline;gap:2%;font-size:clamp(10px,1.6vw,16px);padding:2% 0;border-bottom:1px solid #f0f0f0}
+.ex-pt{font-weight:700;color:var(--azul);font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.8vw,18px)}
+.ex-es{color:var(--muted);font-size:clamp(9px,1.3vw,13px)}
+.alert{background:#FFF3CD;border:2px solid var(--amarelo);border-radius:10px;padding:3% 4%;font-size:clamp(10px,1.4vw,14px);color:#633806;line-height:1.5;flex:none}
+.alert strong{display:block;font-size:clamp(11px,1.6vw,16px);margin-bottom:3%;color:#856404;font-family:'Baloo 2',sans-serif}
+.info{background:#E6F1FB;border-radius:10px;padding:3% 4%;font-size:clamp(9px,1.3vw,13px);color:#0C447C;line-height:1.5;flex:none}
+.dialog-box{background:#f6fbf8;border-radius:12px;padding:3% 4%;display:flex;flex-direction:column;gap:2%;flex:1;justify-content:center}
+.dline{display:flex;gap:2%;align-items:flex-start;padding:1.5% 0;border-bottom:1px solid #eee}
+.dline.f{background:rgba(232,51,109,.06);border-radius:6px;padding:1.5% 2%;margin:0 -2%}
+.dline.m{background:rgba(0,39,118,.06);border-radius:6px;padding:1.5% 2%;margin:0 -2%}
+.dwho{font-size:clamp(8px,1.1vw,11px);font-weight:700;min-width:clamp(40px,6vw,60px);flex-shrink:0}
+.dwho.f{color:#e8336d}.dwho.m{color:var(--azul)}
+.dtxt{font-size:clamp(11px,1.6vw,15px);flex:1;line-height:1.4}
+.rev-ans{display:inline-block;background:var(--azul);color:var(--azul);border-radius:6px;padding:2px 10px;font-size:clamp(9px,1.3vw,13px);font-weight:700;cursor:pointer;user-select:none;min-width:40px;transition:color .2s}
+.rev-ans.show{color:#fff}
+
+/* CORPO SVG SLIDE */
+.body-slide{display:flex;gap:3%;flex:1;min-height:0}
+.body-svg-wrap{flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:45%}
+.body-labels{flex:1;display:flex;flex-direction:column;gap:2%;overflow:hidden;justify-content:center}
+.body-label-grid{display:grid;grid-template-columns:1fr 1fr;gap:3%}
+.blabel{background:#F6FBF8;border-radius:8px;padding:2.5% 3%;border-left:3px solid var(--verde);cursor:pointer;transition:all .2s}
+.blabel:hover,.blabel.active{background:var(--azul);border-left-color:var(--amarelo)}
+.blabel:hover .bl-pt,.blabel.active .bl-pt{color:#fff}
+.blabel:hover .bl-es,.blabel.active .bl-es{color:rgba(255,255,255,.7)}
+.bl-pt{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(10px,1.5vw,15px);color:var(--azul)}
+.bl-es{font-size:clamp(8px,1.1vw,11px);color:var(--muted)}
+
+/* body parts highlight */
+.body-part{cursor:pointer;transition:fill .2s,opacity .2s}
+.body-part:hover,.body-part.active{opacity:.7}
+
+.navrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:6px;flex-shrink:0}
+.nbtn{width:44px;height:44px;border-radius:50%;border:2px solid var(--azul);background:#fff;color:var(--azul);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.nbtn:hover:not(:disabled){background:var(--azul);color:#fff}
+.nbtn:disabled{opacity:.3;cursor:default}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:320px}
+.dot{width:9px;height:9px;border-radius:50%;background:#ccc;cursor:pointer;transition:background .2s}
+.dot.active{background:var(--azul)}
+.stype{text-align:center;font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.5px;min-height:14px;margin-top:2px}
+@media(max-width:600px){
+  .app{padding:6px 8px 4px}
+  .two-col,.three-col{grid-template-columns:1fr;gap:6px}
+  .body-slide{flex-direction:column}
+  .body-svg-wrap{width:100%;height:35vh}
+  .content{padding:4% 4% 2%}
+  .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .sbody{overflow:visible;min-height:unset}
+  .stage{border-radius:10px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo-wrap">
+      <img class="logo-img" src="data:image/jpeg;base64,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" alt="EB">
+      <div><div class="logo-name">Enlace Brasil</div><div class="logo-sub">Curso Regular A2</div></div>
+    </div>
+    <div class="prog-wrap">
+      <div class="pbar"><div class="pfill" id="prog" style="width:6%"></div></div>
+      <div class="pcnt" id="counter">1 / 17</div>
+    </div>
+  </div>
+  <div class="stage">
+
+    <!-- S1: CAPA -->
+    <div class="slide cover active" data-type="Capa">
+      <div class="cover-tag">AULA 10 · NÍVEL A2</div>
+      <img class="cover-logo" src="data:image/jpeg;base64,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" alt="EB">
+      <div class="cover-h1">Corpo Humano<br><span>e Saúde</span></div>
+      <div class="cover-pills">
+        <span class="pill">🫀 Partes do corpo</span>
+        <span class="pill">🤒 Sintomas</span>
+        <span class="pill">🏥 Consulta médica</span>
+        <span class="pill">💊 Farmácia</span>
+        <span class="pill">🚨 Emergência</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+    <!-- S2: CORPO FRENTE - CABEÇA/TRONCO -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">Partes do Corpo — Cabeça e Tronco</span></div>
+      <div class="sbody">
+        <div class="body-slide">
+          <div class="body-svg-wrap">
+            <svg viewBox="0 0 160 340" style="height:100%;max-height:280px" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cabeça -->
+              <ellipse cx="80" cy="30" rx="28" ry="32" fill="#FDDBB4" stroke="#c8956c" stroke-width="1.5" class="body-part" id="bp-cabeca" onclick="highlightPart('cabeca')" title="cabeça"/>
+              <!-- Cabelo -->
+              <ellipse cx="80" cy="12" rx="28" ry="14" fill="#5C3317" class="body-part" id="bp-cabelo" onclick="highlightPart('cabelo')"/>
+              <!-- Olhos -->
+              <ellipse cx="70" cy="26" rx="5" ry="4" fill="#fff" stroke="#555" stroke-width="1"/>
+              <ellipse cx="90" cy="26" rx="5" ry="4" fill="#fff" stroke="#555" stroke-width="1"/>
+              <circle cx="70" cy="27" r="2.5" fill="#3a6bc8" class="body-part" id="bp-olho" onclick="highlightPart('olho')"/>
+              <circle cx="90" cy="27" r="2.5" fill="#3a6bc8" class="body-part" id="bp-olho2" onclick="highlightPart('olho')"/>
+              <!-- Nariz -->
+              <ellipse cx="80" cy="33" rx="4" ry="5" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-nariz" onclick="highlightPart('nariz')"/>
+              <!-- Boca -->
+              <path d="M72 42 Q80 48 88 42" fill="none" stroke="#c8956c" stroke-width="2" class="body-part" id="bp-boca" onclick="highlightPart('boca')"/>
+              <!-- Orelha esq -->
+              <ellipse cx="52" cy="32" rx="7" ry="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-orelha" onclick="highlightPart('orelha')"/>
+              <!-- Orelha dir -->
+              <ellipse cx="108" cy="32" rx="7" ry="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-orelha2" onclick="highlightPart('orelha')"/>
+              <!-- Pescoço -->
+              <rect x="70" y="58" width="20" height="18" rx="4" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-pescoco" onclick="highlightPart('pescoco')"/>
+              <!-- Ombros -->
+              <ellipse cx="45" cy="90" rx="20" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-ombro" onclick="highlightPart('ombro')"/>
+              <ellipse cx="115" cy="90" rx="20" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-ombro2" onclick="highlightPart('ombro')"/>
+              <!-- Tronco -->
+              <rect x="52" y="76" width="56" height="80" rx="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1.5" class="body-part" id="bp-torax" onclick="highlightPart('torax')"/>
+              <!-- Peito -->
+              <ellipse cx="70" cy="95" rx="12" ry="10" fill="rgba(200,150,100,.2)" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-peito" onclick="highlightPart('peito')"/>
+              <ellipse cx="92" cy="95" rx="12" ry="10" fill="rgba(200,150,100,.2)" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-peito2" onclick="highlightPart('peito')"/>
+              <!-- Abdômen -->
+              <ellipse cx="80" cy="135" rx="22" ry="18" fill="#f5c99e" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-abdomen" onclick="highlightPart('abdomen')"/>
+              <!-- Umbigo -->
+              <circle cx="80" cy="138" r="3" fill="#c8956c" class="body-part" id="bp-umbigo" onclick="highlightPart('abdomen')"/>
+              <!-- Braços -->
+              <rect x="22" y="78" width="22" height="70" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-braco" onclick="highlightPart('braco')"/>
+              <rect x="116" y="78" width="22" height="70" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-braco2" onclick="highlightPart('braco')"/>
+              <!-- Cotovelos -->
+              <ellipse cx="33" cy="138" rx="11" ry="9" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-cotovelo" onclick="highlightPart('cotovelo')"/>
+              <ellipse cx="127" cy="138" rx="11" ry="9" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-cotovelo2" onclick="highlightPart('cotovelo')"/>
+              <!-- Antebraços -->
+              <rect x="22" y="148" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-antebraco" onclick="highlightPart('antebraco')"/>
+              <rect x="116" y="148" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-antebraco2" onclick="highlightPart('antebraco')"/>
+              <!-- Pulsos -->
+              <ellipse cx="33" cy="205" rx="10" ry="7" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-pulso" onclick="highlightPart('pulso')"/>
+              <ellipse cx="127" cy="205" rx="10" ry="7" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-pulso2" onclick="highlightPart('pulso')"/>
+              <!-- Mãos -->
+              <ellipse cx="33" cy="222" rx="13" ry="16" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-mao" onclick="highlightPart('mao')"/>
+              <ellipse cx="127" cy="222" rx="13" ry="16" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-mao2" onclick="highlightPart('mao')"/>
+              <!-- Quadril -->
+              <ellipse cx="80" cy="165" rx="30" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-quadril" onclick="highlightPart('quadril')"/>
+              <!-- Pernas -->
+              <rect x="55" y="172" width="22" height="90" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-coxa" onclick="highlightPart('coxa')"/>
+              <rect x="83" y="172" width="22" height="90" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-coxa2" onclick="highlightPart('coxa')"/>
+              <!-- Joelhos -->
+              <ellipse cx="66" cy="252" rx="12" ry="10" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-joelho" onclick="highlightPart('joelho')"/>
+              <ellipse cx="94" cy="252" rx="12" ry="10" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-joelho2" onclick="highlightPart('joelho')"/>
+              <!-- Canelas -->
+              <rect x="55" y="262" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-canela" onclick="highlightPart('canela')"/>
+              <rect x="83" y="262" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-canela2" onclick="highlightPart('canela')"/>
+              <!-- Tornozelos -->
+              <ellipse cx="66" cy="320" rx="11" ry="8" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-tornozelo" onclick="highlightPart('tornozelo')"/>
+              <ellipse cx="94" cy="320" rx="11" ry="8" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-tornozelo2" onclick="highlightPart('tornozelo')"/>
+              <!-- Pés -->
+              <ellipse cx="63" cy="334" rx="16" ry="8" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-pe" onclick="highlightPart('pe')"/>
+              <ellipse cx="97" cy="334" rx="16" ry="8" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="body-part" id="bp-pe2" onclick="highlightPart('pe')"/>
+              <!-- Tooltip -->
+              <rect id="tip-bg" x="0" y="0" width="0" height="0" rx="4" fill="#002776" opacity="0"/>
+              <text id="tip-txt" x="80" y="0" text-anchor="middle" fill="#fff" font-size="9" font-family="Nunito" opacity="0"></text>
+            </svg>
+          </div>
+          <div class="body-labels">
+            <div id="body-active-label" style="background:var(--azul);color:#fff;border-radius:10px;padding:3% 4%;text-align:center;margin-bottom:3%;min-height:50px;display:flex;flex-direction:column;justify-content:center">
+              <div style="font-size:clamp(8px,1.2vw,12px);opacity:.7;margin-bottom:2%">👆 Clique em qualquer parte</div>
+              <div id="label-pt" style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,3vw,30px);font-weight:800"></div>
+              <div id="label-es" style="font-size:clamp(10px,1.4vw,14px);opacity:.8"></div>
+            </div>
+            <div class="body-label-grid" id="body-grid"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Clique em qualquer parte do corpo para ver o nome!</div>
+    </div>
+
+    <!-- S3: VOCABULÁRIO INTERNO -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">Órgãos e Partes Internas</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box verm">
+            <div class="box-title rm">❤️ Órgãos</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o coração</span><span class="ex-es">el corazón</span></div>
+              <div class="ex-item"><span class="ex-pt">os pulmões</span><span class="ex-es">los pulmones</span></div>
+              <div class="ex-item"><span class="ex-pt">o fígado</span><span class="ex-es">el hígado</span></div>
+              <div class="ex-item"><span class="ex-pt">o estômago</span><span class="ex-es">el estómago</span></div>
+              <div class="ex-item"><span class="ex-pt">os rins</span><span class="ex-es">los riñones</span></div>
+              <div class="ex-item"><span class="ex-pt">a vesícula</span><span class="ex-es">la vesícula</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">🦴 Ossos e articulações</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o osso</span><span class="ex-es">el hueso</span></div>
+              <div class="ex-item"><span class="ex-pt">a coluna</span><span class="ex-es">la columna</span></div>
+              <div class="ex-item"><span class="ex-pt">a costela</span><span class="ex-es">la costilla</span></div>
+              <div class="ex-item"><span class="ex-pt">a articulação</span><span class="ex-es">la articulación</span></div>
+              <div class="ex-item"><span class="ex-pt">o tendão</span><span class="ex-es">el tendón</span></div>
+              <div class="ex-item"><span class="ex-pt">o nervo</span><span class="ex-es">el nervio</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">🩸 Sistema</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o sangue</span><span class="ex-es">la sangre</span></div>
+              <div class="ex-item"><span class="ex-pt">a veia</span><span class="ex-es">la vena</span></div>
+              <div class="ex-item"><span class="ex-pt">a pele</span><span class="ex-es">la piel</span></div>
+              <div class="ex-item"><span class="ex-pt">o músculo</span><span class="ex-es">el músculo</span></div>
+              <div class="ex-item"><span class="ex-pt">a garganta</span><span class="ex-es">la garganta</span></div>
+              <div class="ex-item"><span class="ex-pt">a nuca</span><span class="ex-es">la nuca</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S4: SINTOMAS -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">🤒 Saúde</span><span class="stitle">Sintomas — TER e ESTAR COM</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box verm">
+            <div class="box-title rm">TER + sintoma</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">ter febre</span><span class="ex-es">tener fiebre</span></div>
+              <div class="ex-item"><span class="ex-pt">ter dor</span><span class="ex-es">tener dolor</span></div>
+              <div class="ex-item"><span class="ex-pt">ter tosse</span><span class="ex-es">tener tos</span></div>
+              <div class="ex-item"><span class="ex-pt">ter enjoo</span><span class="ex-es">tener náuseas</span></div>
+              <div class="ex-item"><span class="ex-pt">ter tontura</span><span class="ex-es">tener mareos</span></div>
+              <div class="ex-item"><span class="ex-pt">ter calafrio</span><span class="ex-es">tener escalofríos</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">ESTAR COM + sintoma</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">estar com febre</span><span class="ex-es">tener fiebre</span></div>
+              <div class="ex-item"><span class="ex-pt">estar com dor</span><span class="ex-es">tener dolor</span></div>
+              <div class="ex-item"><span class="ex-pt">estar com náusea</span><span class="ex-es">tener náuseas</span></div>
+              <div class="ex-item"><span class="ex-pt">estar com falta de ar</span><span class="ex-es">tener falta de aliento</span></div>
+              <div class="ex-item"><span class="ex-pt">estar com pressão alta</span><span class="ex-es">tener presión alta</span></div>
+              <div class="ex-item"><span class="ex-pt">estar sem apetite</span><span class="ex-es">no tener apetito</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info">📌 Ambas as formas são corretas: <strong>tenho febre</strong> = <strong>estou com febre</strong> — use as duas!</div>
+      </div>
+    </div>
+
+    <!-- S5: DOR DE + parte do corpo -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">🤒 Saúde</span><span class="stitle">Dor de + Parte do Corpo</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box verm">
+            <div class="box-title rm">Dores comuns</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">dor de cabeça</span><span class="ex-es">dolor de cabeza</span></div>
+              <div class="ex-item"><span class="ex-pt">dor de garganta</span><span class="ex-es">dolor de garganta</span></div>
+              <div class="ex-item"><span class="ex-pt">dor de barriga</span><span class="ex-es">dolor de barriga</span></div>
+              <div class="ex-item"><span class="ex-pt">dor de dente</span><span class="ex-es">dolor de muela</span></div>
+              <div class="ex-item"><span class="ex-pt">dor nas costas</span><span class="ex-es">dolor de espalda</span></div>
+              <div class="ex-item"><span class="ex-pt">dor no peito</span><span class="ex-es">dolor en el pecho</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">Mais dores</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">dor no joelho</span><span class="ex-es">dolor en la rodilla</span></div>
+              <div class="ex-item"><span class="ex-pt">dor no ombro</span><span class="ex-es">dolor en el hombro</span></div>
+              <div class="ex-item"><span class="ex-pt">dor muscular</span><span class="ex-es">dolor muscular</span></div>
+              <div class="ex-item"><span class="ex-pt">dor de ouvido</span><span class="ex-es">dolor de oído</span></div>
+              <div class="ex-item"><span class="ex-pt">dor nos olhos</span><span class="ex-es">dolor en los ojos</span></div>
+              <div class="ex-item"><span class="ex-pt">dor lombar</span><span class="ex-es">dolor lumbar</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Frases completas</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Estou com dor de cabeça.</span></div>
+              <div class="ex-item"><span class="ex-pt">Tenho dor nas costas.</span></div>
+              <div class="ex-item"><span class="ex-pt">Ela está com dor de garganta.</span></div>
+              <div class="ex-item"><span class="ex-pt">Tenho uma dor forte no peito.</span></div>
+              <div class="ex-item"><span class="ex-pt">A dor piora à noite.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 dor de + órgão · dor no/na + parte com artigo</div>
+    </div>
+
+    <!-- S6: OUTROS SINTOMAS RICOS -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">🤒 Saúde</span><span class="stitle">Mais Sintomas — Vocabulário Rico</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box verm">
+            <div class="box-title rm">Sintomas gerais</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">cansaço / fadiga</span><span class="ex-es">cansancio / fatiga</span></div>
+              <div class="ex-item"><span class="ex-pt">fraqueza</span><span class="ex-es">debilidad</span></div>
+              <div class="ex-item"><span class="ex-pt">inchaço</span><span class="ex-es">hinchazón</span></div>
+              <div class="ex-item"><span class="ex-pt">coceira</span><span class="ex-es">picazón / comezón</span></div>
+              <div class="ex-item"><span class="ex-pt">ardência</span><span class="ex-es">ardor</span></div>
+              <div class="ex-item"><span class="ex-pt">sangramento</span><span class="ex-es">sangrado</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">Sintomas específicos</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">falta de ar</span><span class="ex-es">falta de aliento</span></div>
+              <div class="ex-item"><span class="ex-pt">visão turva</span><span class="ex-es">visión borrosa</span></div>
+              <div class="ex-item"><span class="ex-pt">formigamento</span><span class="ex-es">hormigueo</span></div>
+              <div class="ex-item"><span class="ex-pt">desmaio</span><span class="ex-es">desmayo</span></div>
+              <div class="ex-item"><span class="ex-pt">vômito</span><span class="ex-es">vómito</span></div>
+              <div class="ex-item"><span class="ex-pt">diarreia</span><span class="ex-es">diarrea</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert"><strong>📌 Intensidade da dor</strong>uma dorzinha (leve) · dor moderada · dor forte · dor insuportável — o médico vai perguntar: "De 0 a 10, qual é a sua dor?"</div>
+      </div>
+    </div>
+
+    <!-- S7: CONSULTA MÉDICA -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">🏥 Consulta</span><span class="stitle">Na Consulta Médica</span></div>
+      <div class="sbody">
+        <div class="dialog-box">
+          <div class="dline m"><span class="dwho m">🩺 Dr.:</span><span class="dtxt">Bom dia! Qual é o seu problema?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.</span></div>
+          <div class="dline m"><span class="dwho m">🩺 Dr.:</span><span class="dtxt">Tem tosse? Está com coriza?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Sim, tenho tosse seca e estou com muita dor de cabeça também.</span></div>
+          <div class="dline m"><span class="dwho m">🩺 Dr.:</span><span class="dtxt">Desde quando você está assim? A febre é alta?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Desde ontem à noite. A febre estava em 38,5. Estou muito cansada.</span></div>
+          <div class="dline m"><span class="dwho m">🩺 Dr.:</span><span class="dtxt">Vou te examinar. Abra a boca e diga "ahhh"... Sim, a garganta está inflamada.</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">É grave, doutor?</span></div>
+          <div class="dline m"><span class="dwho m">🩺 Dr.:</span><span class="dtxt">Não se preocupe! É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.</span></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Pratique em grupos de 3 — médico, paciente e observador!</div>
+    </div>
+
+    <!-- S8: VOCABULÁRIO CONSULTA -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">Vocabulário da Consulta</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box">
+            <div class="box-title vd">👨‍⚕️ Profissionais</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o/a médico/a</span><span class="ex-es">el/la médico/a</span></div>
+              <div class="ex-item"><span class="ex-pt">o/a enfermeiro/a</span><span class="ex-es">el/la enfermero/a</span></div>
+              <div class="ex-item"><span class="ex-pt">o/a dentista</span><span class="ex-es">el/la dentista</span></div>
+              <div class="ex-item"><span class="ex-pt">o/a especialista</span><span class="ex-es">el/la especialista</span></div>
+              <div class="ex-item"><span class="ex-pt">o/a cirurgião/ã</span><span class="ex-es">el/la cirujano/a</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">📋 Na consulta</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">a receita</span><span class="ex-es">la receta</span></div>
+              <div class="ex-item"><span class="ex-pt">o exame</span><span class="ex-es">el examen</span></div>
+              <div class="ex-item"><span class="ex-pt">o diagnóstico</span><span class="ex-es">el diagnóstico</span></div>
+              <div class="ex-item"><span class="ex-pt">o tratamento</span><span class="ex-es">el tratamiento</span></div>
+              <div class="ex-item"><span class="ex-pt">a internação</span><span class="ex-es">la internación</span></div>
+            </div>
+          </div>
+          <div class="box verm">
+            <div class="box-title rm">💊 Medicamentos</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o antibiótico</span><span class="ex-es">el antibiótico</span></div>
+              <div class="ex-item"><span class="ex-pt">o antifebril</span><span class="ex-es">el antifebril</span></div>
+              <div class="ex-item"><span class="ex-pt">o analgésico</span><span class="ex-es">el analgésico</span></div>
+              <div class="ex-item"><span class="ex-pt">o anti-inflamatório</span><span class="ex-es">el antiinflamatorio</span></div>
+              <div class="ex-item"><span class="ex-pt">o soro</span><span class="ex-es">el suero</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S9: NA FARMÁCIA -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">💊 Farmácia</span><span class="stitle">Na Farmácia</span></div>
+      <div class="sbody">
+        <div class="dialog-box">
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Boa tarde! Preciso de um remédio para dor de cabeça.</span></div>
+          <div class="dline m"><span class="dwho m">💊 Farm.:</span><span class="dtxt">Tem receita médica?</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Não. É só para uma dorzinha mesmo. Tenho também um pouco de febre.</span></div>
+          <div class="dline m"><span class="dwho m">💊 Farm.:</span><span class="dtxt">Posso indicar o Paracetamol — serve para dor e febre. É sem receita.</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Perfeito! Qual a dosagem? E de quanto em quanto tempo tomo?</span></div>
+          <div class="dline m"><span class="dwho m">💊 Farm.:</span><span class="dtxt">Um comprimido de 500mg de 6 em 6 horas. Não tome com o estômago vazio.</span></div>
+          <div class="dline f"><span class="dwho f">♀ Ana:</span><span class="dtxt">Obrigada! Tem algum xarope para tosse também?</span></div>
+          <div class="dline m"><span class="dwho m">💊 Farm.:</span><span class="dtxt">Sim! Esse aqui é bom para tosse seca. Tome 10ml três vezes ao dia.</span></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Pratique em pares — farmacêutico e cliente!</div>
+    </div>
+
+    <!-- S10: VOCABULÁRIO FARMÁCIA -->
+    <div class="slide content" data-type="Vocabulário">
+      <div class="shdr"><span class="stag tg-voc">Vocabulário</span><span class="stitle">Vocabulário da Farmácia</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box verm">
+            <div class="box-title rm">💊 Formas do remédio</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">o comprimido</span><span class="ex-es">la pastilla / el comprimido</span></div>
+              <div class="ex-item"><span class="ex-pt">a cápsula</span><span class="ex-es">la cápsula</span></div>
+              <div class="ex-item"><span class="ex-pt">o xarope</span><span class="ex-es">el jarabe</span></div>
+              <div class="ex-item"><span class="ex-pt">o supositório</span><span class="ex-es">el supositorio</span></div>
+              <div class="ex-item"><span class="ex-pt">o injetável</span><span class="ex-es">el inyectable</span></div>
+              <div class="ex-item"><span class="ex-pt">o colírio</span><span class="ex-es">el colirio</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">🕐 Instruções de uso</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">de 8 em 8 horas</span><span class="ex-es">cada 8 horas</span></div>
+              <div class="ex-item"><span class="ex-pt">em jejum</span><span class="ex-es">en ayunas</span></div>
+              <div class="ex-item"><span class="ex-pt">após as refeições</span><span class="ex-es">después de comer</span></div>
+              <div class="ex-item"><span class="ex-pt">tomar com água</span><span class="ex-es">tomar con agua</span></div>
+              <div class="ex-item"><span class="ex-pt">uso contínuo</span><span class="ex-es">uso continuo</span></div>
+              <div class="ex-item"><span class="ex-pt">genérico / referência</span><span class="ex-es">genérico / de marca</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">📌 No Brasil o SUS oferece muitos medicamentos gratuitos!</div>
+    </div>
+
+    <!-- S11: EMERGÊNCIA -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">🚨 Emergência</span><span class="stitle">Na Emergência — Expressões Essenciais</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box verm">
+            <div class="box-title rm">🚨 Frases de emergência</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Preciso de ajuda!</span><span class="ex-es">¡Necesito ayuda!</span></div>
+              <div class="ex-item"><span class="ex-pt">Chame uma ambulância!</span><span class="ex-es">¡Llame una ambulancia!</span></div>
+              <div class="ex-item"><span class="ex-pt">É uma emergência!</span><span class="ex-es">¡Es una emergencia!</span></div>
+              <div class="ex-item"><span class="ex-pt">Ele/ela desmaiou!</span><span class="ex-es">¡Se desmayó!</span></div>
+              <div class="ex-item"><span class="ex-pt">Estou tendo um infarto!</span><span class="ex-es">¡Estoy teniendo un infarto!</span></div>
+              <div class="ex-item"><span class="ex-pt">Não consigo respirar!</span><span class="ex-es">¡No puedo respirar!</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">📞 Números úteis no Brasil</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">SAMU: 192</span><span class="ex-es">Ambulância</span></div>
+              <div class="ex-item"><span class="ex-pt">Bombeiros: 193</span><span class="ex-es">Emergências gerais</span></div>
+              <div class="ex-item"><span class="ex-pt">Polícia: 190</span><span class="ex-es">Segurança</span></div>
+              <div class="ex-item"><span class="ex-pt">CVV: 188</span><span class="ex-es">Saúde mental</span></div>
+            </div>
+            <div class="info" style="margin-top:5%">🏥 UPA = Unidade de Pronto Atendimento · UBS = Unidade Básica de Saúde</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S12: DIÁLOGO EMERGÊNCIA -->
+    <div class="slide content" data-type="Saúde">
+      <div class="shdr"><span class="stag tg-saude">🚨 Emergência</span><span class="stitle">Diálogo — Pronto-Socorro</span></div>
+      <div class="sbody">
+        <div class="dialog-box">
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Socorro! Minha amiga caiu e está com muita dor no joelho. Não consegue andar!</span></div>
+          <div class="dline f"><span class="dwho f">👩‍⚕️ Enf.:</span><span class="dtxt">Calma! Vou chamar um médico. Ela está consciente?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Sim, está consciente mas com muita dor. O joelho está inchado.</span></div>
+          <div class="dline f"><span class="dwho f">👩‍⚕️ Enf.:</span><span class="dtxt">Não movam ela. Vou pegar uma cadeira de rodas. Ela tem alergia a algum medicamento?</span></div>
+          <div class="dline m"><span class="dwho m">♂ Carlos:</span><span class="dtxt">Não sei... ela é alérgica a penicilina, acho.</span></div>
+          <div class="dline f"><span class="dwho f">👩‍⚕️ Enf.:</span><span class="dtxt">Tudo bem. Vamos fazer um raio-X para ver se tem fratura. Preciso dos dados dela.</span></div>
+        </div>
+      </div>
+      <div class="sfoot">📌 Vocabulário: inchado · consciente · alérgico · fratura · raio-X</div>
+    </div>
+
+    <!-- S13: CULTURA BRASIL -->
+    <div class="slide content" data-type="Cultura">
+      <div class="shdr"><span class="stag tg-cul">Cultura</span><span class="stitle">🇧🇷 Saúde no Brasil</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">SUS — Sistema Único de Saúde</div>
+            <div class="ex-list">
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">Saúde pública e gratuita para todos</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">UBS = consultas básicas</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">UPA = urgência 24h</span></div>
+              <div class="ex-item" style="flex-direction:column"><span class="ex-pt" style="font-size:clamp(10px,1.4vw,14px)">SAMU 192 = ambulância</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">Expressões informais</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Estou me sentindo mal.</span></div>
+              <div class="ex-item"><span class="ex-pt">Não estou bem.</span></div>
+              <div class="ex-item"><span class="ex-pt">Estou adoecendo.</span></div>
+              <div class="ex-item"><span class="ex-pt">Fui ao médico / ao posto.</span></div>
+              <div class="ex-item"><span class="ex-pt">Tomei um remédio.</span></div>
+              <div class="ex-item"><span class="ex-pt">Já estou melhor!</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info">📌 "Posto de saúde" = UBS no dia a dia brasileiro · "Dar entrada" = ser internado na emergência</div>
+      </div>
+    </div>
+
+    <!-- S14: ATIVIDADE — SINTOMAS -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Atividade 1</span><span class="stitle">Qual é o Sintoma?</span></div>
+      <div class="sbody">
+        <div class="box">
+          <div class="box-title vd">Complete com o sintoma correto</div>
+          <div class="ex-list">
+            <div class="ex-item"><span class="ex-pt">Minha cabeça dói muito. Tenho ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">dor de cabeça</span></div>
+            <div class="ex-item"><span class="ex-pt">Minha temperatura é 39°. Tenho ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">febre</span></div>
+            <div class="ex-item"><span class="ex-pt">Não consigo respirar bem. Tenho ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">falta de ar</span></div>
+            <div class="ex-item"><span class="ex-pt">Sinto o mundo girando. Tenho ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">tontura</span></div>
+            <div class="ex-item"><span class="ex-pt">Quero vomitar. Estou com ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">enjoo / náusea</span></div>
+            <div class="ex-item"><span class="ex-pt">Minha perna está maior que o normal. Tem ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">inchaço</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">👆 Toque na caixinha para ver a resposta</div>
+    </div>
+
+    <!-- S15: ATIVIDADE — DIÁLOGO -->
+    <div class="slide content" data-type="Atividade">
+      <div class="shdr"><span class="stag tg-act">Atividade 2</span><span class="stitle">Monte o Diálogo</span></div>
+      <div class="sbody">
+        <div class="two-col">
+          <div class="box">
+            <div class="box-title vd">Médico pergunta — complete</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Qual é o seu ___?</span><span class="rev-ans" onclick="this.classList.toggle('show')">problema / sintoma</span></div>
+              <div class="ex-item"><span class="ex-pt">Desde quando você está ___?</span><span class="rev-ans" onclick="this.classList.toggle('show')">assim / com dor</span></div>
+              <div class="ex-item"><span class="ex-pt">Você tem ___ a algum medicamento?</span><span class="rev-ans" onclick="this.classList.toggle('show')">alergia</span></div>
+              <div class="ex-item"><span class="ex-pt">A dor é ___ ou fraca?</span><span class="rev-ans" onclick="this.classList.toggle('show')">forte</span></div>
+            </div>
+          </div>
+          <div class="box am">
+            <div class="box-title am">Paciente responde — complete</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">Estou ___ dor de cabeça.</span><span class="rev-ans" onclick="this.classList.toggle('show')">com</span></div>
+              <div class="ex-item"><span class="ex-pt">___ desde ontem à noite.</span><span class="rev-ans" onclick="this.classList.toggle('show')">Estou assim</span></div>
+              <div class="ex-item"><span class="ex-pt">Sou ___ a penicilina.</span><span class="rev-ans" onclick="this.classList.toggle('show')">alérgico/a</span></div>
+              <div class="ex-item"><span class="ex-pt">A dor é muito ___.</span><span class="rev-ans" onclick="this.classList.toggle('show')">forte / intensa</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sfoot">👆 Toque na caixinha para ver a resposta</div>
+    </div>
+
+    <!-- S16: RESUMO -->
+    <div class="slide content" data-type="Resumo">
+      <div class="shdr"><span class="stag tg-gram">Resumo</span><span class="stitle">Resumo — Corpo e Saúde</span></div>
+      <div class="sbody">
+        <div class="three-col">
+          <div class="box verm">
+            <div class="box-title rm">🤒 Sintomas</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">ter / estar com</span></div>
+              <div class="ex-item"><span class="ex-pt">febre · dor · tosse</span></div>
+              <div class="ex-item"><span class="ex-pt">enjoo · tontura</span></div>
+              <div class="ex-item"><span class="ex-pt">dor de + parte</span></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title vd">🏥 Consulta</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">receita · exame</span></div>
+              <div class="ex-item"><span class="ex-pt">diagnóstico</span></div>
+              <div class="ex-item"><span class="ex-pt">antibiótico</span></div>
+              <div class="ex-item"><span class="ex-pt">comprimido · xarope</span></div>
+            </div>
+          </div>
+          <div class="box az">
+            <div class="box-title">🚨 Emergência</div>
+            <div class="ex-list">
+              <div class="ex-item"><span class="ex-pt">SAMU: 192</span></div>
+              <div class="ex-item"><span class="ex-pt">Preciso de ajuda!</span></div>
+              <div class="ex-item"><span class="ex-pt">Chame ambulância!</span></div>
+              <div class="ex-item"><span class="ex-pt">Não consigo respirar!</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S17: FIM -->
+    <div class="slide cover" data-type="Fim">
+      <div class="cover-tag" style="background:rgba(255,255,255,.2)">FIM DA AULA 10</div>
+      <div class="cover-logo">🎉</div>
+      <div class="cover-h1">Parabéns! <span>🎉</span></div>
+      <div class="cover-pills">
+        <span class="pill">Corpo ✓</span>
+        <span class="pill">Sintomas ✓</span>
+        <span class="pill">Consulta ✓</span>
+        <span class="pill">Farmácia ✓</span>
+        <span class="pill">Emergência ✓</span>
+      </div>
+      <div class="cover-foot">Prof. Janaína Jacomelli · Enlace Brasil</div>
+    </div>
+
+  </div>
+  <div class="navrow">
+    <button class="nbtn" id="bp" onclick="go(-1)" disabled>&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="nbtn" id="bn" onclick="go(1)">&#8594;</button>
+  </div>
+  <div class="stype" id="stype"></div>
+</div>
+<script>
+const bodyParts = {
+  cabeca:{pt:"a cabeça",es:"la cabeza",fill:"#FF6B6B"},
+  cabelo:{pt:"o cabelo",es:"el pelo",fill:"#8B5E3C"},
+  olho:{pt:"os olhos",es:"los ojos",fill:"#4A90D9"},
+  nariz:{pt:"o nariz",es:"la nariz",fill:"#FF9999"},
+  boca:{pt:"a boca",es:"la boca",fill:"#FF6B6B"},
+  orelha:{pt:"a orelha",es:"la oreja",fill:"#FFB347"},
+  pescoco:{pt:"o pescoço",es:"el cuello",fill:"#FF9966"},
+  ombro:{pt:"o ombro",es:"el hombro",fill:"#66BB6A"},
+  torax:{pt:"o tórax / o peito",es:"el tórax / el pecho",fill:"#42A5F5"},
+  peito:{pt:"o peito",es:"el pecho",fill:"#42A5F5"},
+  abdomen:{pt:"o abdômen / a barriga",es:"el abdomen / la barriga",fill:"#FFA726"},
+  braco:{pt:"o braço",es:"el brazo",fill:"#AB47BC"},
+  cotovelo:{pt:"o cotovelo",es:"el codo",fill:"#EC407A"},
+  antebraco:{pt:"o antebraço",es:"el antebrazo",fill:"#7E57C2"},
+  pulso:{pt:"o pulso",es:"la muñeca",fill:"#26A69A"},
+  mao:{pt:"a mão",es:"la mano",fill:"#66BB6A"},
+  quadril:{pt:"o quadril",es:"la cadera",fill:"#FF7043"},
+  coxa:{pt:"a coxa",es:"el muslo",fill:"#5C6BC0"},
+  joelho:{pt:"o joelho",es:"la rodilla",fill:"#EC407A"},
+  canela:{pt:"a canela",es:"la canilla",fill:"#42A5F5"},
+  tornozelo:{pt:"o tornozelo",es:"el tobillo",fill:"#26A69A"},
+  pe:{pt:"o pé",es:"el pie",fill:"#FF7043"}
+};
+
+let activeGroup = null;
+const partGroups = {};
+document.querySelectorAll('.body-part').forEach(el => {
+  const id = el.id.replace(/\d+$/, '').replace('bp-','');
+  if(!partGroups[id]) partGroups[id]=[];
+  partGroups[id].push(el);
+});
+
+// Build label grid
+const grid = document.getElementById('body-grid');
+const mainParts = ['cabeca','olho','nariz','boca','orelha','pescoco','ombro','torax','abdomen','braco','mao','coxa','joelho','pe'];
+mainParts.forEach(id => {
+  if(!bodyParts[id]) return;
+  const div = document.createElement('div');
+  div.className = 'blabel';
+  div.id = 'lbl-'+id;
+  div.innerHTML = '<div class="bl-pt">'+bodyParts[id].pt+'</div><div class="bl-es">'+bodyParts[id].es+'</div>';
+  div.onclick = () => highlightPart(id);
+  grid.appendChild(div);
+});
+
+function highlightPart(id) {
+  // Reset previous
+  if(activeGroup) {
+    (partGroups[activeGroup]||[]).forEach(el => { el.style.opacity=''; el.style.filter=''; });
+    const prev = document.getElementById('lbl-'+activeGroup);
+    if(prev) prev.classList.remove('active');
+  }
+  if(activeGroup===id){ activeGroup=null; document.getElementById('label-pt').textContent=''; document.getElementById('label-es').textContent=''; return; }
+  activeGroup = id;
+  const data = bodyParts[id];
+  if(!data) return;
+  (partGroups[id]||[]).forEach(el => { el.style.opacity='.5'; el.style.filter='drop-shadow(0 0 4px '+data.fill+')'; });
+  const lbl = document.getElementById('lbl-'+id);
+  if(lbl) lbl.classList.add('active');
+  document.getElementById('label-pt').textContent = data.pt;
+  document.getElementById('label-es').textContent = data.es;
+  spkProf(data.pt.replace(/^(o|a|os|as) /,''));
+}
+
+function spkProf(txt) {
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(txt);
+  u.lang='pt-BR'; u.rate=0.85;
+  const voices = speechSynthesis.getVoices();
+  const br = voices.filter(v => v.lang==='pt-BR');
+  if(br.length) u.voice = br[0];
+  speechSynthesis.speak(u);
+}
+
+const slides=document.querySelectorAll('.slide');
+const N=slides.length;
+let cur=0;
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<N;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>show(i);dotsEl.appendChild(d);}
+function show(n){slides[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));slides[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('bp').disabled=cur===0;document.getElementById('bn').disabled=cur===N-1;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';document.getElementById('counter').textContent=(cur+1)+' / '+N;document.getElementById('stype').textContent=slides[cur].dataset.type||'';}
+function go(d){show(cur+d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);});
+let tsX=0,tsY=0;
+document.querySelector('.stage').addEventListener('touchstart',e=>{tsX=e.changedTouches[0].clientX;tsY=e.changedTouches[0].clientY;},{passive:true});
+document.querySelector('.stage').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsX;const dy=e.changedTouches[0].clientY-tsY;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){if(dx<0)go(1);else go(-1);}},{passive:true});
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};}
+show(0);
+</script>
+</body>
+</html>
