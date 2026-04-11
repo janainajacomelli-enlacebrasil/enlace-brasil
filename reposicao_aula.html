@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar Reposição de Aula — Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #2d7a4f;
+    --verde-claro: #3a9e65;
+    --verde-bg: #eaf5ee;
+    --laranja: #e87722;
+    --laranja-claro: #f5a44a;
+    --branco: #ffffff;
+    --cinza-claro: #f7f7f5;
+    --cinza-texto: #555;
+    --preto: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cinza-claro);
+    min-height: 100vh;
+    padding: 30px 16px 60px;
+    background-image: radial-gradient(circle at 10% 20%, #d4eddf 0%, transparent 50%),
+                      radial-gradient(circle at 90% 80%, #fde8d0 0%, transparent 50%);
+  }
+
+  .container {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .logo-area {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--verde);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 15px rgba(45,122,79,0.3);
+    min-height: 56px;
+  }
+
+  .logo-area span {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--preto);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: var(--laranja);
+  }
+
+  .header p {
+    color: var(--cinza-texto);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* AVISO */
+  .aviso {
+    background: linear-gradient(135deg, #fff8f2, #fff3e8);
+    border-left: 4px solid var(--laranja);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+    color: #7a4010;
+    line-height: 1.6;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .aviso strong { color: var(--laranja); }
+
+  /* CARD FORM */
+  .card {
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .field {
+    margin-bottom: 22px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+
+  label .obrig {
+    color: var(--laranja);
+    margin-left: 2px;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--preto);
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--verde-claro);
+    background: var(--branco);
+    box-shadow: 0 0 0 4px rgba(45,122,79,0.1);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232d7a4f' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 42px;
+    cursor: pointer;
+  }
+
+  /* RADIO GROUP */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 14px;
+    color: var(--preto);
+  }
+
+  .radio-option:hover {
+    border-color: var(--verde-claro);
+    background: var(--verde-bg);
+  }
+
+  .radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--verde);
+    flex-shrink: 0;
+  }
+
+  .radio-option.selected {
+    border-color: var(--verde);
+    background: var(--verde-bg);
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px dashed #ddd;
+    margin: 26px 0;
+  }
+
+  /* BOTÃO */
+  .btn-enviar {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--verde), var(--verde-claro));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(45,122,79,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(45,122,79,0.4);
+  }
+
+  .btn-enviar:active { transform: translateY(0); }
+
+  /* SUCESSO */
+  .sucesso {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .sucesso .icone {
+    font-size: 52px;
+    margin-bottom: 16px;
+  }
+
+  .sucesso h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--verde);
+    margin-bottom: 10px;
+  }
+
+  .sucesso p {
+    color: var(--cinza-texto);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .sucesso .destaque {
+    background: var(--verde-bg);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    color: var(--verde);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ERRO */
+  .erro-msg {
+    color: #c0392b;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+  }
+
+  .campo-erro input,
+  .campo-erro select,
+  .campo-erro textarea {
+    border-color: #e74c3c !important;
+  }
+
+  .campo-erro .erro-msg { display: block; }
+
+  /* ANIMAÇÕES */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RODAPÉ */
+  .footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 12px;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-area">
+      <img src="https://janainajacomelli-enlacebrasil.github.io/enlace-brasil/logo.png" alt="Enlace Brasil" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='inline';" style="height:36px;width:auto;display:block;">
+      <span id="logo-fallback" style="display:none;font-family:'Playfair Display',serif;font-size:17px;letter-spacing:0.5px;">🇧🇷 Enlace Brasil</span>
+    </div>
+    <h1>Solicitar <em>Reposição</em><br>de Aula</h1>
+    <p>Preencha o formulário abaixo com atenção.<br>Analisaremos seu pedido e responderemos em breve.</p>
+  </div>
+
+  <!-- AVISO -->
+  <div class="aviso">
+    ⏰ <strong>Prazo padrão:</strong> Os pedidos devem ser enviados com pelo menos <strong>12 horas de antecedência</strong>. Casos fora do prazo também serão avaliados individualmente.
+  </div>
+
+  <!-- CARD -->
+  <div class="card">
+
+    <div id="formulario">
+
+      <!-- NOME -->
+      <div class="field" id="campo-nome">
+        <label>Seu nome completo <span class="obrig">*</span></label>
+        <input type="text" id="nome" placeholder="Ex: María García López">
+        <div class="erro-msg">Por favor, informe seu nome.</div>
+      </div>
+
+      <!-- WHATSAPP -->
+      <div class="field" id="campo-whatsapp">
+        <label>WhatsApp <span class="obrig">*</span></label>
+        <input type="tel" id="whatsapp" placeholder="Ex: +52 55 1234 5678">
+        <div class="erro-msg">Por favor, informe seu WhatsApp.</div>
+      </div>
+
+      <!-- GRUPO -->
+      <div class="field" id="campo-grupo">
+        <label>Seu grupo / turma <span class="obrig">*</span></label>
+        <select id="grupo">
+          <option value="">Selecione seu grupo...</option>
+          <option>Grupo A1 — Iniciante</option>
+          <option>Grupo A2 — Básico</option>
+          <option>Grupo B1 — Intermediário</option>
+          <option>Grupo B2 — Intermediário avançado</option>
+          <option>Grupo C1 — Avançado</option>
+          <option>Grupo C2 — Fluente</option>
+          <option>Cápsulas de Português</option>
+          <option>Aulas particulares</option>
+          <option>Outro</option>
+        </select>
+        <div class="erro-msg">Por favor, selecione seu grupo.</div>
+      </div>
+
+      <!-- DATA DA AULA -->
+      <div class="field" id="campo-data">
+        <label>Data da aula que faltou <span class="obrig">*</span></label>
+        <input type="date" id="data-aula">
+        <div class="erro-msg">Por favor, informe a data da aula.</div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- MOTIVO -->
+      <div class="field" id="campo-motivo">
+        <label>Motivo da falta <span class="obrig">*</span></label>
+        <div class="radio-group" id="motivos">
+          <label class="radio-option" onclick="selecionarMotivo(this)">
+            <input type="radio" name="motivo" value="Saúde / mal-estar"> 🤒 Saúde / mal-estar
+          </label>
+          <label class="radio-option" onclick="selecionarMotivo(this)">
+            <input type="radio" name="motivo" value="Trabalho / compromisso profissional"> 💼 Trabalho / compromisso profissional
+          </label>
+          <label class="radio-option" onclick="selecionarMotivo(this)">
+            <input type="radio" name="motivo" value="Viagem"> ✈️ Viagem
+          </label>
+          <label class="radio-option" onclick="selecionarMotivo(this)">
+            <input type="radio" name="motivo" value="Compromisso familiar"> 👨‍👩‍👧 Compromisso familiar
+          </label>
+          <label class="radio-option" onclick="selecionarMotivo(this)">
+            <input type="radio" name="motivo" value="Problema técnico (internet, dispositivo)"> 💻 Problema técnico (internet, dispositivo)
+          </label>
+          <label class="radio-option" onclick="selecionarMotivo(this)">
+            <input type="radio" name="motivo" value="Outro"> 📝 Outro
+          </label>
+        </div>
+        <div class="erro-msg" id="erro-motivo">Por favor, selecione um motivo.</div>
+      </div>
+
+      <!-- DETALHE -->
+      <div class="field">
+        <label>Detalhes adicionais <span style="color:#aaa;font-weight:400;text-transform:none;font-size:12px">(opcional)</span></label>
+        <textarea id="detalhes" placeholder="Conta um pouco mais sobre a situação, se quiser..."></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <!-- DISPONIBILIDADE -->
+      <div class="field" id="campo-disponibilidade">
+        <label>Sua disponibilidade para a reposição <span class="obrig">*</span></label>
+        <input type="text" id="disponibilidade" placeholder="Ex: terças e quintas após as 19h, fins de semana...">
+        <div class="erro-msg">Por favor, informe sua disponibilidade.</div>
+      </div>
+
+      <!-- BOTÃO -->
+      <button class="btn-enviar" onclick="enviarFormulario()">
+        <span>📩</span> Enviar Solicitação
+      </button>
+
+    </div>
+
+    <!-- SUCESSO -->
+    <div class="sucesso" id="sucesso">
+      <div class="icone">🎉</div>
+      <h2>Pedido enviado!</h2>
+      <p>Recebemos sua solicitação de reposição. A professora Janaina irá analisá-la e retornará em breve pelo WhatsApp.</p>
+      <div class="destaque">
+        📱 Fique de olho no WhatsApp — responderemos assim que possível!
+      </div>
+      <p style="font-size:13px;color:#aaa;">Enlace Brasil • Instituto de Língua e Cultura Brasileira</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Enlace Brasil — Ciudad de México 🇧🇷🇲🇽
+  </div>
+
+</div>
+
+<script>
+  function selecionarMotivo(el) {
+    document.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('campo-motivo').classList.remove('campo-erro');
+  }
+
+  function validar() {
+    let ok = true;
+
+    const campos = [
+      { id: 'campo-nome', val: () => document.getElementById('nome').value.trim() },
+      { id: 'campo-whatsapp', val: () => document.getElementById('whatsapp').value.trim() },
+      { id: 'campo-grupo', val: () => document.getElementById('grupo').value },
+      { id: 'campo-data', val: () => document.getElementById('data-aula').value },
+      { id: 'campo-disponibilidade', val: () => document.getElementById('disponibilidade').value.trim() },
+    ];
+
+    campos.forEach(c => {
+      const el = document.getElementById(c.id);
+      if (!c.val()) {
+        el.classList.add('campo-erro');
+        ok = false;
+      } else {
+        el.classList.remove('campo-erro');
+      }
+    });
+
+    const motivo = document.querySelector('input[name="motivo"]:checked');
+    if (!motivo) {
+      document.getElementById('campo-motivo').classList.add('campo-erro');
+      document.getElementById('erro-motivo').style.display = 'block';
+      ok = false;
+    } else {
+      document.getElementById('campo-motivo').classList.remove('campo-erro');
+      document.getElementById('erro-motivo').style.display = 'none';
+    }
+
+    return ok;
+  }
+
+  function enviarFormulario() {
+    if (!validar()) return;
+
+    const nome = document.getElementById('nome').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const grupo = document.getElementById('grupo').value;
+    const data = document.getElementById('data-aula').value;
+    const motivo = document.querySelector('input[name="motivo"]:checked').value;
+    const detalhes = document.getElementById('detalhes').value.trim();
+    const disponibilidade = document.getElementById('disponibilidade').value.trim();
+
+    // Formatar data
+    const [ano, mes, dia] = data.split('-');
+    const dataFormatada = `${dia}/${mes}/${ano}`;
+
+    // Montar mensagem WhatsApp
+    let msg = `📋 *SOLICITAÇÃO DE REPOSIÇÃO DE AULA*\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+    msg += `👤 *Nome:* ${nome}\n`;
+    msg += `📱 *WhatsApp:* ${whatsapp}\n`;
+    msg += `🎓 *Grupo:* ${grupo}\n`;
+    msg += `📅 *Data da aula:* ${dataFormatada}\n`;
+    msg += `❓ *Motivo:* ${motivo}\n`;
+    if (detalhes) msg += `💬 *Detalhes:* ${detalhes}\n`;
+    msg += `🗓️ *Disponibilidade:* ${disponibilidade}\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━`;
+
+    const msgCodificada = encodeURIComponent(msg);
+    // Número da Janaina — ajuste aqui se necessário
+    const numero = '525573217496';
+    const urlWhatsApp = `https://wa.me/${numero}?text=${msgCodificada}`;
+
+    // Mostrar sucesso
+    document.getElementById('formulario').style.display = 'none';
+    document.getElementById('sucesso').style.display = 'block';
+
+    // Abrir WhatsApp após 1.5s
+    setTimeout(() => {
+      window.open(urlWhatsApp, '_blank');
+    }, 1500);
+  }
+</script>
+</body>
+</html>
