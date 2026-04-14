@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 15 — Cultura Gastronômica | Enlace Brasil | Aluno</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--vd:#009C3B;--am:#F5A800;--az:#002776;--rs:#e8336d}
+body{background:#f0f7f2;font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:40px}
+.topbar{background:linear-gradient(135deg,var(--az),#004aad);padding:clamp(10px,2vh,16px) clamp(14px,3vw,24px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.tb-wrap{display:flex;align-items:center;gap:10px}
+.tb-logo{width:40px;height:40px;border-radius:50%;background:var(--vd);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tb-title{font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:clamp(13px,2vw,17px)}
+.tb-sub{color:rgba(255,255,255,.6);font-size:clamp(9px,1.3vw,12px)}
+.tb-pts{background:rgba(245,168,0,.2);border:1.5px solid rgba(245,168,0,.5);color:var(--am);font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:4px 12px;border-radius:20px}
+
+.hero{background:linear-gradient(135deg,#009C3B,#006628);padding:clamp(24px,4vh,40px) clamp(16px,4vw,32px);text-align:center;color:#fff}
+.hero-badge{background:rgba(245,168,0,.2);border:1.5px solid rgba(245,168,0,.5);color:var(--am);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:10px}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,5vw,38px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:clamp(13px,2vw,17px);color:rgba(255,255,255,.8);margin-bottom:16px}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:clamp(11px,1.5vw,14px);font-weight:700;padding:5px 14px;border-radius:20px}
+
+.idx-bar{background:#fff;border-bottom:2px solid #e5f0ea;display:flex;overflow-x:auto;gap:4px;padding:8px 12px;position:sticky;top:62px;z-index:90;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.idx-bar::-webkit-scrollbar{height:3px}.idx-bar::-webkit-scrollbar-thumb{background:var(--vd);border-radius:2px}
+.idx-btn{background:none;border:1.5px solid #c8e6d0;color:#555;font-size:clamp(10px,1.4vw,13px);font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.idx-btn:hover,.idx-btn.active{background:var(--vd);border-color:var(--vd);color:#fff}
+
+.section{padding:clamp(20px,3vh,32px) clamp(14px,4vw,28px);max-width:860px;margin:0 auto}
+.sec-title{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--az);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--vd),transparent)}
+
+/* Vocab */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:clamp(8px,1.5vw,14px);margin-bottom:16px}
+.vocab-card{background:#fff;border:2px solid #e5f0ea;border-radius:14px;padding:clamp(12px,2vh,18px) 10px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.vocab-card:hover{border-color:var(--vd);transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,156,59,.2)}
+.vocab-card.playing{border-color:var(--am);background:#fffbe6;transform:scale(1.05)}
+.vocab-emoji{font-size:clamp(26px,4vw,36px);margin-bottom:6px}
+.vocab-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,2vw,18px);font-weight:800;color:var(--az)}
+.vocab-es{font-size:clamp(11px,1.4vw,14px);color:#888;font-style:italic}
+.vocab-pron{font-size:clamp(9px,1.1vw,11px);color:#bbb;margin-top:2px}
+
+/* Pratos cards */
+.pratos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:16px}
+.prato-card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);cursor:pointer;transition:all .2s;border-top:4px solid var(--vd)}
+.prato-card-img{width:100%;height:130px;object-fit:cover;display:block}
+.prato-card-body{padding:14px}
+.prato-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.prato-card.am{border-top-color:var(--am)}
+.prato-card.az{border-top-color:var(--az)}
+.prato-card.rs{border-top-color:var(--rs)}
+.prato-emoji-big{font-size:36px;margin-bottom:8px}
+.prato-nome{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.3vw,20px);font-weight:800;color:var(--az);margin-bottom:6px}
+.prato-desc{font-size:clamp(12px,1.6vw,15px);color:#555;line-height:1.5;margin-bottom:6px}
+.prato-reg{font-size:clamp(10px,1.3vw,12px);color:#999;font-style:italic}
+.prato-audio{font-size:11px;color:var(--vd);margin-top:6px}
+
+/* Refeições table */
+.ref-table{width:100%;border-collapse:collapse;font-size:clamp(12px,1.7vw,16px);margin-bottom:16px}
+.ref-table th{background:var(--az);color:#fff;padding:10px 14px;font-weight:700;text-align:left}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #e5f0ea;color:#333}
+.ref-table tr:nth-child(even) td{background:#f8fdf9}
+.ref-table .hora{color:var(--vd);font-weight:800;white-space:nowrap}
+
+/* Gostos */
+.gostos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:16px}
+.gosto-card{background:#fff;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06);border:2px solid #e5f0ea}
+.gosto-card.pos:hover{border-color:var(--vd);background:#f0f7f2}
+.gosto-card.neg:hover{border-color:var(--rs);background:#fef2f2}
+.gosto-card.neu:hover{border-color:var(--am);background:#fffbe6}
+.gosto-emoji{font-size:28px;margin-bottom:6px}
+.gosto-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:800;color:var(--az)}
+.gosto-es{font-size:clamp(11px,1.4vw,14px);color:#888;font-style:italic}
+
+/* Atividades */
+.ativ-card{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,24px);margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:4px solid var(--vd)}
+.ativ-card.am{border-top-color:var(--am)}
+.ativ-card.az{border-top-color:var(--az)}
+.ativ-title{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;color:var(--az);margin-bottom:14px}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.score-txt{font-size:14px;color:#555;font-weight:700}
+.stars{font-size:20px;letter-spacing:2px}
+
+/* Quiz opts */
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.opt{background:#f0f7f2;border:2px solid #c8e6d0;border-radius:20px;padding:6px 16px;font-size:clamp(12px,1.7vw,16px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:'Nunito',sans-serif}
+.opt:hover{border-color:var(--vd);background:#e8f5ee}
+.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+
+/* Gap */
+.gap-sentence{font-size:clamp(14px,2.2vw,20px);color:#222;line-height:2.2;margin-bottom:12px}
+.gap{display:inline-block;min-width:110px;border-bottom:2.5px solid var(--az);text-align:center;padding:2px 8px;font-weight:800;color:var(--az);cursor:pointer;transition:all .2s;border-radius:4px 4px 0 0}
+.gap.correct{background:#e8f5ee;color:var(--vd);border-color:var(--vd)}
+.gap.wrong{background:#fef2f2;color:var(--rs);border-color:var(--rs);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* Match */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-item{background:#f0f7f2;border:2px solid #c8e6d0;border-radius:10px;padding:10px 14px;font-size:clamp(12px,1.8vw,17px);font-weight:700;cursor:pointer;transition:all .2s;text-align:center;font-family:'Nunito',sans-serif}
+.match-item:hover{border-color:var(--vd);background:#e8f5ee}
+.match-item.selected{border-color:var(--am);background:#fff8e1;color:var(--az)}
+.match-item.correct{border-color:var(--vd);background:#e8f5ee;color:var(--vd);pointer-events:none}
+.match-item.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);animation:shake .3s ease}
+
+/* Coentro quiz */
+.coentro-btns{display:flex;gap:14px;justify-content:center;margin:16px 0}
+.coentro-btn{font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;padding:14px 28px;border-radius:14px;border:none;cursor:pointer;transition:all .2s}
+.coentro-btn.sim{background:#e8f5ee;color:var(--vd);border:3px solid var(--vd)}
+.coentro-btn.nao{background:#fef2f2;color:var(--rs);border:3px solid var(--rs)}
+.coentro-btn:hover{transform:scale(1.05)}
+.coentro-result{background:#f8f8f8;border-radius:12px;padding:16px;text-align:center;margin-top:12px;font-size:clamp(14px,2vw,18px);font-weight:700;color:#333;display:none}
+
+/* Btn */
+.btn-reset{background:var(--az);color:#fff;border:none;border-radius:10px;padding:9px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s;font-family:'Nunito',sans-serif;margin-top:4px}
+.btn-reset:hover{background:#003fa8}
+
+/* Tip */
+.tip{border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(12px,2vw,18px);margin-bottom:16px}
+.tip.vd{background:#e8f5ee;border-left:4px solid var(--vd)}
+.tip.am{background:#fff8e1;border-left:4px solid var(--am)}
+.tip.az{background:#e8eef8;border-left:4px solid var(--az)}
+.tip-lbl{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
+.tip.vd .tip-lbl{color:var(--vd)}.tip.am .tip-lbl{color:#b36b00}.tip.az .tip-lbl{color:var(--az)}
+.tip-txt{font-size:clamp(12px,1.7vw,16px);color:#333;line-height:1.5}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#333;color:#fff;padding:10px 22px;border-radius:22px;font-size:14px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-wrap">
+    <div class="tb-logo">🇧🇷</div>
+    <div><div class="tb-title">Enlace Brasil</div><div class="tb-sub">Aula 15 — Cultura Gastronômica · A1</div></div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="go('s-vocab',this)">🥦 Vocab</button>
+  <button class="idx-btn" onclick="go('s-pratos',this)">🍽️ Pratos</button>
+  <button class="idx-btn" onclick="go('s-sopas',this)">🍲 Sopas</button>
+  <button class="idx-btn" onclick="go('s-refei',this)">⏰ Refeições</button>
+  <button class="idx-btn" onclick="go('s-gostos',this)">😋 Gostos</button>
+  <button class="idx-btn" onclick="go('s-coentro',this)">🌿 Coentro</button>
+  <button class="idx-btn" onclick="go('s-sopa-caldo',this)">⚠️ Sopa≠Caldo</button>
+  <button class="idx-btn" onclick="go('s-anoNovo',this)">🍇 Ano Novo</button>
+  <button class="idx-btn" onclick="go('s-ativ1',this)">✏️ Ativ.1</button>
+  <button class="idx-btn" onclick="go('s-ativ2',this)">✏️ Ativ.2</button>
+  <button class="idx-btn" onclick="go('s-ativ3',this)">🎮 Ativ.3</button>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">AULA 15 · NÍVEL A1</div>
+  <div class="hero-title">🍽️ A Mesa Brasileira<br><span>Comida, Sabor e Cultura</span> 🇧🇷</div>
+  <div class="hero-desc">Toque nos cartões para ouvir a pronúncia em português!</div>
+  <div class="pill-row">
+    <span class="pill">Alimentos</span>
+    <span class="pill">Pratos típicos</span>
+    <span class="pill">Sopas</span>
+    <span class="pill">Refeições</span>
+    <span class="pill">Expressar gostos</span>
+  </div>
+</div>
+
+<!-- VOCABULÁRIO -->
+<div class="section" id="s-vocab">
+  <div class="sec-title">🥦 Vocabulário · Vocabulario</div>
+  <div class="tip vd"><div class="tip-lbl">💡 Como usar</div><div class="tip-txt">Toque em cada cartão para ouvir a pronúncia em português!</div></div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkCard(this,'cenoura')"><div class="vocab-emoji">🥕</div><div class="vocab-pt">cenoura</div><div class="vocab-es">zanahoria</div><div class="vocab-pron">/se-NOH-ra/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'cebola')"><div class="vocab-emoji">🧅</div><div class="vocab-pt">cebola</div><div class="vocab-es">cebolla</div><div class="vocab-pron">/se-BO-la/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'batata')"><div class="vocab-emoji">🥔</div><div class="vocab-pt">batata</div><div class="vocab-es">papa</div><div class="vocab-pron">/ba-TA-ta/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'tomate')"><div class="vocab-emoji">🍅</div><div class="vocab-pt">tomate</div><div class="vocab-es">jitomate</div><div class="vocab-pron">/to-MA-chi/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'feijão')"><div class="vocab-emoji">🫘</div><div class="vocab-pt">feijão</div><div class="vocab-es">frijol</div><div class="vocab-pron">/fei-ZHÃO/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'arroz')"><div class="vocab-emoji">🍚</div><div class="vocab-pt">arroz</div><div class="vocab-es">arroz</div><div class="vocab-pron">/a-RRÔS/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'alho')"><div class="vocab-emoji">🧄</div><div class="vocab-pt">alho</div><div class="vocab-es">ajo</div><div class="vocab-pron">/A-lhu/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'coentro')"><div class="vocab-emoji">🌿</div><div class="vocab-pt">coentro</div><div class="vocab-es">cilantro</div><div class="vocab-pron">/ku-EN-tru/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'frango')"><div class="vocab-emoji">🐔</div><div class="vocab-pt">frango</div><div class="vocab-es">pollo</div><div class="vocab-pron">/FRAN-gu/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'carne')"><div class="vocab-emoji">🥩</div><div class="vocab-pt">carne</div><div class="vocab-es">carne</div><div class="vocab-pron">/CAR-ni/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'peixe')"><div class="vocab-emoji">🐟</div><div class="vocab-pt">peixe</div><div class="vocab-es">pescado</div><div class="vocab-pron">/PEI-shi/</div></div>
+    <div class="vocab-card" onclick="spkCard(this,'queijo')"><div class="vocab-emoji">🧀</div><div class="vocab-pt">queijo</div><div class="vocab-es">queso</div><div class="vocab-pron">/KEI-zhu/</div></div>
+  </div>
+</div>
+
+<!-- PRATOS TÍPICOS -->
+<div class="section" id="s-pratos">
+  <div class="sec-title">🍽️ Pratos Típicos · Platos Típicos</div>
+  <div class="tip am"><div class="tip-lbl">🇧🇷 Sabia que?</div><div class="tip-txt">A <strong>feijoada</strong> é considerada o prato nacional do Brasil! Ela é feita às sextas-feiras e sábados na maioria dos restaurantes.</div></div>
+  <div class="pratos-grid">
+    <div class="prato-card" onclick="spk('feijoada')">
+      <div class="prato-emoji-big">🫘</div>
+      <div class="prato-nome">Feijoada</div><div class="prato-desc">Feijão preto + carnes + arroz + farofa. O prato nacional!</div>
+        <div class="prato-reg">🗺️ Todo o Brasil</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card am" onclick="spk('arroz e feijão')">
+      <div class="prato-emoji-big">🍽️</div>
+      <div class="prato-nome">Arroz e Feijão</div><div class="prato-desc">A base da alimentação diária. Com carne e salada = prato feito!</div>
+        <div class="prato-reg">🗺️ Todo o Brasil</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card az" onclick="spk('churrasco')">
+      <div class="prato-emoji-big">🥩</div>
+      <div class="prato-nome">Churrasco</div><div class="prato-desc">Carne assada na brasa. Evento social e familiar.</div>
+        <div class="prato-reg">🗺️ Sul do Brasil</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card rs" onclick="spk('moqueca')">
+      <div class="prato-emoji-big">🐟</div>
+      <div class="prato-nome">Moqueca</div><div class="prato-desc">Peixe com leite de coco e dendê. Cremosa e perfumada.</div>
+        <div class="prato-reg">🗺️ Bahia</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card" onclick="spk('pão de queijo')">
+      <div class="prato-emoji-big">🧀</div>
+      <div class="prato-nome">Pão de Queijo</div><div class="prato-desc">Bolinha de polvilho com queijo. O lanche mais amado!</div>
+        <div class="prato-reg">🗺️ Minas Gerais</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card am" onclick="spk('coxinha')">
+      <div class="prato-emoji-big">🍗</div>
+      <div class="prato-nome">Coxinha</div><div class="prato-desc">Frango empanado em forma de coxa. Clássico das festas!</div>
+        <div class="prato-reg">🗺️ São Paulo</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOPAS -->
+<div class="section" id="s-sopas">
+  <div class="sec-title">🍲 Sopas e Caldos · Sopas y Caldos</div>
+  <div class="tip vd"><div class="tip-lbl">🇧🇷 Cultura</div><div class="tip-txt">No Brasil, a sopa aparece muito no <strong>jantar</strong>. A <strong>canja de galinha</strong> é o remédio caseiro mais famoso — quando você está doente, a vovó faz canja!</div></div>
+  <div class="pratos-grid">
+    <div class="prato-card" onclick="spk('caldo de feijão')">
+      <div class="prato-nome">🫘 Caldo de Feijão</div><div class="prato-desc">Feijão + cebola + alho + bacon + coentro. Espesso e nutritivo.</div>
+        <div class="prato-reg">Popular no inverno</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card am" onclick="spk('canja de galinha')">
+      <div class="prato-emoji-big">🐔</div>
+      <div class="prato-nome">Canja de Galinha</div><div class="prato-desc">Frango + arroz + cenoura + limão. O "remédio da vovó"!</div>
+        <div class="prato-reg">Tradição em todo o Brasil</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card az" onclick="spk('caldo verde')">
+      <div class="prato-emoji-big">🌿</div>
+      <div class="prato-nome">Caldo Verde</div><div class="prato-desc">Couve + batata + linguiça. Influência portuguesa.</div>
+        <div class="prato-reg">Minas Gerais</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+    <div class="prato-card rs" onclick="spk('sopa de mandioca')">
+      <div class="prato-emoji-big">🥜</div>
+      <div class="prato-nome">Sopa de Mandioca</div><div class="prato-desc">Mandioca cremosa + carne seca. Sabor muito brasileiro!</div>
+        <div class="prato-reg">Nordeste do Brasil</div><div class="prato-audio">🔊 toque para ouvir</div>
+    </div>
+  </div>
+</div>
+
+<!-- REFEIÇÕES -->
+<div class="section" id="s-refei">
+  <div class="sec-title">⏰ Refeições e Horários · Comidas y Horarios</div>
+  <table class="ref-table">
+    <thead><tr><th>Refeição</th><th>Horário</th><th>O que se come</th></tr></thead>
+    <tbody>
+      <tr><td>☀️ <strong>Café da manhã</strong></td><td class="hora">7h–9h</td><td>Pão, manteiga, café com leite, frutas, tapioca</td></tr>
+      <tr><td>🍽️ <strong>Almoço</strong></td><td class="hora">12h–14h</td><td>Arroz, feijão, carne, salada, suco — a principal!</td></tr>
+      <tr><td>☕ <strong>Lanche</strong></td><td class="hora">15h–17h</td><td>Café, pão de queijo, bolo, frutas</td></tr>
+      <tr><td>🌙 <strong>Jantar</strong></td><td class="hora">19h–21h</td><td>Mais leve — sopa, sanduíche ou repetição do almoço</td></tr>
+    </tbody>
+  </table>
+  <div class="tip az"><div class="tip-lbl">💡 Importante</div><div class="tip-txt">No Brasil, o <strong>almoço</strong> é a refeição principal — não o jantar! A sopa aparece muito no jantar. / En Brasil, el <strong>almuerzo</strong> es la comida principal — ¡no la cena!</div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px">
+    <button onclick="spk('café da manhã')" style="background:var(--vd);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Café da manhã</button>
+    <button onclick="spk('almoço')" style="background:var(--az);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Almoço</button>
+    <button onclick="spk('jantar')" style="background:var(--am);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Jantar</button>
+  </div>
+</div>
+
+<!-- GOSTOS -->
+<div class="section" id="s-gostos">
+  <div class="sec-title">😋 Expressar Gostos · Expresar Gustos</div>
+  <div class="gostos-grid">
+    <div class="gosto-card pos" onclick="spk('Adoro feijoada!')"><div class="gosto-emoji">😍</div><div class="gosto-pt">Adoro!</div><div class="gosto-es">¡Me encanta!</div></div>
+    <div class="gosto-card pos" onclick="spk('Gosto muito de pão de queijo.')"><div class="gosto-emoji">😊</div><div class="gosto-pt">Gosto muito</div><div class="gosto-es">Me gusta mucho</div></div>
+    <div class="gosto-card pos" onclick="spk('Prefiro canja.')"><div class="gosto-emoji">👍</div><div class="gosto-pt">Prefiro</div><div class="gosto-es">Prefiero</div></div>
+    <div class="gosto-card pos" onclick="spk('Que delícia!')"><div class="gosto-emoji">🤩</div><div class="gosto-pt">Que delícia!</div><div class="gosto-es">¡Qué rico!</div></div>
+    <div class="gosto-card neg" onclick="spk('Não gosto de coentro.')"><div class="gosto-emoji">😐</div><div class="gosto-pt">Não gosto</div><div class="gosto-es">No me gusta</div></div>
+    <div class="gosto-card neg" onclick="spk('Detesto fígado!')"><div class="gosto-emoji">🙅</div><div class="gosto-pt">Detesto!</div><div class="gosto-es">¡Odio!</div></div>
+    <div class="gosto-card neu" onclick="spk('Tanto faz.')"><div class="gosto-emoji">🤷</div><div class="gosto-pt">Tanto faz</div><div class="gosto-es">Me da igual</div></div>
+    <div class="gosto-card neu" onclick="spk('Mais ou menos.')"><div class="gosto-emoji">🫤</div><div class="gosto-pt">Mais ou menos</div><div class="gosto-es">Más o menos</div></div>
+  </div>
+</div>
+
+<!-- COENTRO -->
+<div class="section" id="s-coentro">
+  <div class="sec-title">🌿 O Coentro Divide o Brasil!</div>
+  <div style="background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:16px">
+    <div style="font-size:36px;margin-bottom:8px">🌿</div>
+    <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--az);margin-bottom:8px">Você gosta de coentro?</div>
+    <div style="font-size:clamp(13px,1.8vw,17px);color:#555;margin-bottom:20px">No Brasil, o coentro divide opiniões! Você é do time SIM ou do time NÃO? 😄</div>
+    <div class="coentro-btns">
+      <button class="coentro-btn sim" onclick="respCoentro(true)">😍 SIM! Adoro!</button>
+      <button class="coentro-btn nao" onclick="respCoentro(false)">🙅 NÃO! Detesto!</button>
+    </div>
+    <div class="coentro-result" id="coentro-result"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="background:#f0f7f2;border:2px solid var(--vd);border-radius:12px;padding:14px;text-align:center">
+      <div style="font-size:24px;margin-bottom:6px">✅</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:16px;font-weight:800;color:var(--vd)">Time Coentro</div>
+      <div style="font-size:13px;color:#555;margin-top:4px">Nordeste e Norte do Brasil — coentro é essencial!</div>
+    </div>
+    <div style="background:#fef2f2;border:2px solid var(--rs);border-radius:12px;padding:14px;text-align:center">
+      <div style="font-size:24px;margin-bottom:6px">❌</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:16px;font-weight:800;color:var(--rs)">Time Sem Coentro</div>
+      <div style="font-size:13px;color:#555;margin-top:4px">Sul e Sudeste — "Tira o coentro!"</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SOPA ≠ CALDO -->
+<div class="section" id="s-sopa-caldo">
+  <div class="sec-title">⚠️ Sopa ≠ Caldo · ¡Cuidado!</div>
+  <div class="tip az"><div class="tip-lbl">💡 Atenção linguística</div><div class="tip-txt">Em espanhol tudo é "sopa" — mas em português a diferença importa! / En español todo es "sopa" — ¡pero en portugués la diferencia importa!</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+    <div style="background:#fff;border-radius:16px;padding:20px;border-top:4px solid var(--vd);box-shadow:0 2px 10px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:36px;margin-bottom:8px">🥣</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--vd)">SOPA</div>
+      <div style="font-size:clamp(13px,1.8vw,17px);color:#333;margin:8px 0;font-weight:700">= prato com pedaços</div>
+      <div style="font-size:clamp(11px,1.5vw,15px);color:#666;line-height:1.6">Tem legumes, carne ou macarrão visíveis no caldo.<br><em>Tiene trozos visibles en el caldo.</em></div>
+      <div style="margin-top:10px;background:#f0f7f2;border-radius:8px;padding:8px;font-size:13px;color:var(--vd);font-weight:700">Ex: sopa de legumes, sopa de macarrão</div>
+      <button onclick="spk('sopa de legumes')" style="margin-top:8px;background:var(--vd);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Ouvir</button>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:20px;border-top:4px solid var(--am);box-shadow:0 2px 10px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:36px;margin-bottom:8px">🍲</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--am)">CALDO</div>
+      <div style="font-size:clamp(13px,1.8vw,17px);color:#333;margin:8px 0;font-weight:700">= líquido espesso</div>
+      <div style="font-size:clamp(11px,1.5vw,15px);color:#666;line-height:1.6">Mais grosso, quase sem pedaços. Bebe-se como uma bebida!<br><em>Más espeso. ¡Se bebe como bebida caliente!</em></div>
+      <div style="margin-top:10px;background:#fff8e1;border-radius:8px;padding:8px;font-size:13px;color:var(--am);font-weight:700">Ex: caldo de feijão, caldo verde, caldo de cana</div>
+      <button onclick="spk('caldo de feijão')" style="margin-top:8px;background:var(--am);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Ouvir</button>
+    </div>
+  </div>
+</div>
+
+<!-- UVAS PASSAS NO ARROZ -->
+<div class="section" id="s-anoNovo">
+  <div class="sec-title">🍇 Uva Passa no Arroz? A Polêmica!</div>
+  <div class="tip am">
+    <div class="tip-lbl">🇧🇷 Igual ao coentro...</div>
+    <div class="tip-txt">No Brasil, colocar uva passa no arroz de festa divide as famílias! Você é do time SIM ou do time NÃO? / En Brasil, poner uva pasa en el arroz de fiesta divide a las familias.</div>
+  </div>
+  <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px;text-align:center">
+    <div style="font-size:40px;margin-bottom:10px">🍇</div>
+    <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--az);margin-bottom:6px">Uva passa no arroz?</div>
+    <div style="font-size:clamp(13px,1.8vw,17px);color:#555;margin-bottom:20px">Nas festas de fim de ano, o arroz brasileiro leva uva passa. Mas nem todo mundo gosta! 😄</div>
+    <div style="display:flex;gap:14px;justify-content:center;margin-bottom:14px;flex-wrap:wrap">
+      <button onclick="respUva(true)" id="btn-uva-sim" style="font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;padding:14px 24px;border-radius:14px;background:#e8f5ee;color:var(--vd);border:3px solid var(--vd);cursor:pointer;transition:all .2s">😍 SIM! Com uva passa!</button>
+      <button onclick="respUva(false)" id="btn-uva-nao" style="font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;padding:14px 24px;border-radius:14px;background:#fef2f2;color:var(--rs);border:3px solid var(--rs);cursor:pointer;transition:all .2s">🙅 NÃO! Tira a uva passa!</button>
+    </div>
+    <div id="resp-uva" style="display:none;background:#f8f8f8;border-radius:12px;padding:14px;font-size:clamp(14px,2vw,17px);font-weight:700;color:#333"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="background:#f0f7f2;border:2px solid var(--vd);border-radius:12px;padding:14px">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:15px;font-weight:800;color:var(--vd);margin-bottom:6px">✅ Time COM uva passa</div>
+      <div style="font-size:13px;color:#333;line-height:1.6">"O doce da uva passa deixa o arroz mais gostoso!" Popular no Nordeste e em muitas famílias.</div>
+    </div>
+    <div style="background:#fef2f2;border:2px solid var(--rs);border-radius:12px;padding:14px">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:15px;font-weight:800;color:var(--rs);margin-bottom:6px">❌ Time SEM uva passa</div>
+      <div style="font-size:13px;color:#333;line-height:1.6">"Arroz salgado não combina com coisa doce!" Misturar doce e salgado é crime! 😅</div>
+    </div>
+  </div>
+</div>
+
+<!-- ATIVIDADE 1: COMPLETE -->
+<div class="section" id="s-ativ1">
+  <div class="ativ-card">
+    <div class="ativ-title">✏️ Atividade 1 — Complete as frases</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc1">0</span>/6</span><span class="stars" id="st1">☆☆☆☆☆☆</span></div>
+    <div class="tip az" style="margin-bottom:16px"><div class="tip-lbl">💡 Instrução</div><div class="tip-txt">Escolha a palavra correta para completar cada frase!</div></div>
+
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">A <span class="gap" id="g0">_____</span> é o prato nacional do Brasil.</div>
+      <div class="opts-row" id="opts0">
+        <span class="opt" onclick="so(this,0,'feijoada')">feijoada</span>
+        <span class="opt" onclick="so(this,0,'moqueca')">moqueca</span>
+        <span class="opt" onclick="so(this,0,'coxinha')">coxinha</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">No Brasil, o <span class="gap" id="g1">_____</span> é a refeição principal.</div>
+      <div class="opts-row" id="opts1">
+        <span class="opt" onclick="so(this,1,'almoço')">almoço</span>
+        <span class="opt" onclick="so(this,1,'jantar')">jantar</span>
+        <span class="opt" onclick="so(this,1,'lanche')">lanche</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence"><span class="gap" id="g2">_____</span> de galinha é o "remédio da vovó"!</div>
+      <div class="opts-row" id="opts2">
+        <span class="opt" onclick="so(this,2,'canja')">canja</span>
+        <span class="opt" onclick="so(this,2,'caldo')">caldo</span>
+        <span class="opt" onclick="so(this,2,'arroz')">arroz</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">Eu <span class="gap" id="g3">_____</span> pão de queijo. É delicioso!</div>
+      <div class="opts-row" id="opts3">
+        <span class="opt" onclick="so(this,3,'adoro')">adoro</span>
+        <span class="opt" onclick="so(this,3,'detesto')">detesto</span>
+        <span class="opt" onclick="so(this,3,'coentro')">coentro</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">O pão de queijo é de <span class="gap" id="g4">_____</span> Gerais.</div>
+      <div class="opts-row" id="opts4">
+        <span class="opt" onclick="so(this,4,'Minas')">Minas</span>
+        <span class="opt" onclick="so(this,4,'São Paulo')">São Paulo</span>
+        <span class="opt" onclick="so(this,4,'Bahia')">Bahia</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">A moqueca é feita com peixe e leite de <span class="gap" id="g5">_____</span>.</div>
+      <div class="opts-row" id="opts5">
+        <span class="opt" onclick="so(this,5,'coco')">coco</span>
+        <span class="opt" onclick="so(this,5,'vaca')">vaca</span>
+        <span class="opt" onclick="so(this,5,'amêndoa')">amêndoa</span>
+      </div>
+    </div>
+    <button class="btn-reset" onclick="resetA1()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 2: COMBINAR -->
+<div class="section" id="s-ativ2">
+  <div class="ativ-card am">
+    <div class="ativ-title">✏️ Atividade 2 — Combine o prato com a região</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc2">0</span>/5</span><span class="stars" id="st2">☆☆☆☆☆</span></div>
+    <div class="tip am" style="margin-bottom:16px"><div class="tip-lbl">💡 Instrução</div><div class="tip-txt">Toque em um prato e depois na região correta!</div></div>
+    <div class="match-grid">
+      <div class="match-col" id="col-prato">
+        <div class="match-item" onclick="sm(this,'pt','feijoada')">🫘 Feijoada</div>
+        <div class="match-item" onclick="sm(this,'pt','pão de queijo')">🧀 Pão de Queijo</div>
+        <div class="match-item" onclick="sm(this,'pt','churrasco')">🥩 Churrasco</div>
+        <div class="match-item" onclick="sm(this,'pt','moqueca')">🐟 Moqueca</div>
+        <div class="match-item" onclick="sm(this,'pt','coxinha')">🍗 Coxinha</div>
+      </div>
+      <div class="match-col" id="col-reg">
+        <div class="match-item" onclick="sm(this,'es','churrasco')">🗺️ Sul do Brasil</div>
+        <div class="match-item" onclick="sm(this,'es','moqueca')">🗺️ Bahia</div>
+        <div class="match-item" onclick="sm(this,'es','feijoada')">🗺️ Todo o Brasil</div>
+        <div class="match-item" onclick="sm(this,'es','coxinha')">🗺️ São Paulo</div>
+        <div class="match-item" onclick="sm(this,'es','pão de queijo')">🗺️ Minas Gerais</div>
+      </div>
+    </div>
+    <button class="btn-reset" onclick="resetA2()" style="background:var(--am)">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 3: MINHA LISTA -->
+<div class="section" id="s-ativ3">
+  <div class="ativ-card az">
+    <div class="ativ-title">🎮 Atividade 3 — O que você gosta?</div>
+    <div class="tip az" style="margin-bottom:16px"><div class="tip-lbl">💡 Instrução</div><div class="tip-txt">Clique em cada prato para dizer se você gosta ou não! Depois ouça sua resposta em português.</div></div>
+    <div id="lista-gostos" style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px"></div>
+    <button onclick="ouvirGostos()" style="background:var(--az);color:#fff;border:none;border-radius:10px;padding:10px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif">🔊 Ouvir minhas respostas!</button>
+    <button onclick="resetA3()" style="background:#888;color:#fff;border:none;border-radius:10px;padding:10px 22px;font-size:15px;font-weight:700;cursor:pointer;margin-left:8px;font-family:'Nunito',sans-serif">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var pts=0;
+function addPts(n){pts+=n;document.getElementById('tb-pts').textContent='⭐ '+pts+' pts';}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1800);}
+function go(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});if(btn)btn.classList.add('active');}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(function(x){return x.lang==='pt-BR';});if(b.length)return b;return a.filter(function(x){return x.lang.startsWith('pt');});}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+function spkCard(el,w){document.querySelectorAll('.vocab-card').forEach(function(c){c.classList.remove('playing');});el.classList.add('playing');spk(w);setTimeout(function(){el.classList.remove('playing');},1500);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};document.addEventListener('touchstart',function iosU(){var u=new SpeechSynthesisUtterance('');u.volume=0;speechSynthesis.speak(u);document.removeEventListener('touchstart',iosU);},{once:true});}
+
+// Coentro
+function respUva(sim){
+  var r=document.getElementById('resp-uva');
+  r.style.display='block';
+  if(sim){r.innerHTML='😍 <strong>Time COM uva passa!</strong> Você está com o Nordeste!<br><em style="color:#888">¡Eres del equipo CON uva pasa!</em>';spk('Adoro uva passa no arroz!');}
+  else{r.innerHTML='🙅 <strong>Tira a uva passa!</strong> Arroz salgado é salgado!<br><em style="color:#888">¡Quita la uva pasa! El arroz salado es salado.</em>';spk('Tira a uva passa do meu arroz!');}
+  addPts(5);toast('🍇 Escolha registrada! +5 pts');
+}
+function respCoentro(sim){
+  var r=document.getElementById('coentro-result');
+  r.style.display='block';
+  if(sim){r.innerHTML='😍 <strong>Time Coentro!</strong> Você está com o Nordeste do Brasil!<br><em style="color:#888">¡Eres del equipo cilantro! Con el Nordeste de Brasil.</em>';spk('Adoro coentro!');}
+  else{r.innerHTML='🙅 <strong>Time Sem Coentro!</strong> Você está com o Sul do Brasil!<br><em style="color:#888">¡Eres del equipo sin cilantro! Con el Sur de Brasil.</em>';spk('Detesto coentro!');}
+  addPts(5);toast('🌿 Escolha registrada! +5 pts');
+}
+
+// Atividade 1
+var ans1=['feijoada','almoço','canja','adoro','Minas','coco'];
+var done1=[false,false,false,false,false,false];var sc1=0;
+function so(el,i,v){
+  if(done1[i])return;
+  var g=document.getElementById('g'+i);
+  if(v===ans1[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done1[i]=true;sc1++;document.getElementById('sc1').textContent=sc1;var s=[];for(var j=0;j<6;j++)s.push(j<sc1?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');spk(v);if(sc1===6)setTimeout(function(){toast('🏆 Perfeito!');},600);}
+  else{g.textContent=v;g.className='gap wrong';setTimeout(function(){g.textContent='_____';g.className='gap';el.classList.remove('selected');},700);toast('❌ Tente de novo!');}
+}
+function resetA1(){sc1=0;done1=[false,false,false,false,false,false];document.getElementById('sc1').textContent='0';document.getElementById('st1').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){document.getElementById('g'+i).textContent='_____';document.getElementById('g'+i).className='gap';document.getElementById('opts'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';});}}
+
+// Atividade 2
+var selPt=null,selPtEl=null,sc2=0;
+function sm(el,side,key){
+  if(el.classList.contains('correct'))return;
+  if(side==='pt'){if(selPtEl)selPtEl.classList.remove('selected');selPt=key;selPtEl=el;el.classList.add('selected');}
+  else{if(!selPt)return;if(selPt===key){el.classList.add('correct');selPtEl.classList.remove('selected');selPtEl.classList.add('correct');sc2++;document.getElementById('sc2').textContent=sc2;var s=[];for(var j=0;j<5;j++)s.push(j<sc2?'⭐':'☆');document.getElementById('st2').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');spk(selPt);selPt=null;selPtEl=null;if(sc2===5)setTimeout(function(){toast('🏆 Incrível!');},600);}else{el.classList.add('wrong');selPtEl.classList.add('wrong');setTimeout(function(){el.classList.remove('wrong','selected');if(selPtEl)selPtEl.classList.remove('wrong','selected');selPt=null;selPtEl=null;},700);toast('❌ Tente de novo!');}}
+}
+function resetA2(){sc2=0;selPt=null;selPtEl=null;document.getElementById('sc2').textContent='0';document.getElementById('st2').textContent='☆☆☆☆☆';document.querySelectorAll('#col-prato .match-item,#col-reg .match-item').forEach(function(el){el.className='match-item';});}
+
+// Atividade 3
+var pratos3=[
+  {emoji:'🫘',nome:'feijoada',es:'feijoada'},
+  {emoji:'🧀',nome:'pão de queijo',es:'pan de queso'},
+  {emoji:'🐔',nome:'canja de galinha',es:'sopa de pollo'},
+  {emoji:'🍗',nome:'coxinha',es:'coxinha'},
+  {emoji:'🥩',nome:'churrasco',es:'churrasco'},
+  {emoji:'🐟',nome:'moqueca',es:'moqueca'},
+];
+var resps3={};
+function buildA3(){
+  var d=document.getElementById('lista-gostos');d.innerHTML='';
+  pratos3.forEach(function(p){
+    var r=resps3[p.nome]||null;
+    var bg=r===true?'#e8f5ee':r===false?'#fef2f2':'#f9f9f9';
+    var html='<div style="background:'+bg+';border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;transition:background .3s">';
+    html+='<span style="font-size:24px">'+p.emoji+'</span>';
+    html+='<span style="font-size:clamp(13px,1.9vw,17px);font-weight:700;color:#222;flex:1">'+p.nome+'</span>';
+    html+='<div style="display:flex;gap:6px">';
+    html+='<button onclick="setGosto(\''+p.nome+'\',true)" style="background:'+(r===true?'var(--vd)':'#f0f7f2')+';color:'+(r===true?'#fff':'var(--vd)')+';border:2px solid var(--vd);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:\'Nunito\',sans-serif">😍 Adoro</button>';
+    html+='<button onclick="setGosto(\''+p.nome+'\',false)" style="background:'+(r===false?'var(--rs)':'#fef2f2')+';color:'+(r===false?'#fff':'var(--rs)')+';border:2px solid var(--rs);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:\'Nunito\',sans-serif">🙅 Não gosto</button>';
+    html+='</div></div>';
+    d.innerHTML+=html;
+  });
+}
+function setGosto(nome,val){resps3[nome]=val;buildA3();addPts(5);toast(val?'😍 Adoro!':'🙅 Não gosto!');}
+function ouvirGostos(){
+  var frases=[];
+  pratos3.forEach(function(p){if(resps3[p.nome]===true)frases.push('Adoro '+p.nome+'!');else if(resps3[p.nome]===false)frases.push('Não gosto de '+p.nome+'.');});
+  if(frases.length===0){toast('Escolha seus gostos primeiro!');return;}
+  spk(frases.join(' '));addPts(10);toast('🔊 Ouvindo! +10 pts');
+}
+function resetA3(){resps3={};buildA3();}
+buildA3();
+</script>
+</body>
+</html>
