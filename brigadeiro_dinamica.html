@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Brigadeiro 🍫 | Enlace Brasil | Dinâmica A1</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--vd:#009C3B;--am:#F5A800;--az:#002776;--cho:#5C2D0E;--cho2:#8B4513;--cre:#FFF8DC;--rs:#e8336d}
+body{background:#FDF6EC;font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:48px}
+
+/* TOPBAR */
+.topbar{background:linear-gradient(135deg,var(--cho),var(--cho2));padding:clamp(10px,2vh,16px) clamp(14px,3vw,24px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 3px 14px rgba(92,45,14,.35)}
+.tb-wrap{display:flex;align-items:center;gap:10px}
+.tb-logo{width:40px;height:40px;border-radius:50%;background:var(--vd);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tb-title{font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:clamp(13px,2vw,17px)}
+.tb-sub{color:rgba(255,255,255,.6);font-size:clamp(9px,1.3vw,12px)}
+.tb-pts{background:rgba(245,168,0,.25);border:1.5px solid rgba(245,168,0,.6);color:var(--am);font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:4px 12px;border-radius:20px}
+
+/* INDEX BAR */
+.idx-bar{background:#fff;border-bottom:2px solid #f0e0c8;display:flex;overflow-x:auto;gap:4px;padding:8px 12px;position:sticky;top:62px;z-index:90;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.idx-bar::-webkit-scrollbar{height:3px}.idx-bar::-webkit-scrollbar-thumb{background:var(--cho2);border-radius:2px}
+.idx-btn{background:none;border:1.5px solid #d4a57a;color:#666;font-size:clamp(10px,1.4vw,13px);font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.idx-btn:hover,.idx-btn.active{background:var(--cho2);border-color:var(--cho2);color:#fff}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--cho) 0%,#7B3F1A 50%,var(--cho2) 100%);padding:clamp(28px,5vh,48px) clamp(16px,4vw,32px);text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'🍫';position:absolute;font-size:200px;opacity:.06;top:-30px;right:-30px;transform:rotate(15deg)}
+.hero::after{content:'🍫';position:absolute;font-size:150px;opacity:.06;bottom:-20px;left:-20px;transform:rotate(-10deg)}
+.hero-badge{background:rgba(245,168,0,.25);border:1.5px solid rgba(245,168,0,.6);color:var(--am);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:12px}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(26px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:clamp(13px,2vw,18px);color:rgba(255,255,255,.85);margin-bottom:16px;line-height:1.5}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:clamp(11px,1.5vw,14px);font-weight:700;padding:5px 14px;border-radius:20px}
+
+/* SECTION */
+.section{padding:clamp(20px,3vh,32px) clamp(14px,4vw,28px);max-width:860px;margin:0 auto}
+.sec-title{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--cho);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--cho2),transparent)}
+
+/* TIPS */
+.tip{border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(12px,2vw,18px);margin-bottom:16px}
+.tip.cho{background:#FFF0E0;border-left:4px solid var(--cho2)}
+.tip.vd{background:#e8f5ee;border-left:4px solid var(--vd)}
+.tip.am{background:#fff8e1;border-left:4px solid var(--am)}
+.tip.az{background:#e8eef8;border-left:4px solid var(--az)}
+.tip-lbl{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px;color:var(--cho2)}
+.tip.vd .tip-lbl{color:var(--vd)}.tip.am .tip-lbl{color:#b36b00}.tip.az .tip-lbl{color:var(--az)}
+.tip-txt{font-size:clamp(12px,1.7vw,16px);color:#333;line-height:1.6}
+
+/* RECEITA */
+.receita-box{background:#fff;border-radius:18px;box-shadow:0 4px 18px rgba(92,45,14,.12);overflow:hidden;margin-bottom:20px}
+.receita-header{background:linear-gradient(135deg,var(--cho),var(--cho2));padding:clamp(16px,2.5vh,24px);text-align:center}
+.receita-header h2{font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,30px);font-weight:800;color:#fff}
+.receita-header p{color:rgba(255,255,255,.8);font-size:clamp(12px,1.6vw,15px);margin-top:4px}
+.receita-body{padding:clamp(16px,2.5vh,24px)}
+.ing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:20px}
+.ing-card{background:#FFF8F0;border:2px solid #F0D5B0;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s}
+.ing-card:hover{border-color:var(--cho2);background:#FFF0DC;transform:translateY(-2px)}
+.ing-card.playing{border-color:var(--am);background:#fff8e1;transform:scale(1.04)}
+.ing-emoji{font-size:26px;flex-shrink:0}
+.ing-info{}
+.ing-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,1.9vw,17px);font-weight:800;color:var(--cho)}
+.ing-qty{font-size:clamp(11px,1.5vw,14px);color:#888}
+.ing-audio{font-size:11px;color:var(--cho2);margin-top:2px}
+
+/* PREPARO STEPS */
+.steps-list{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.step-item{display:flex;align-items:flex-start;gap:14px;background:#FFF8F0;border-radius:12px;padding:14px 16px;border-left:4px solid var(--cho2);cursor:pointer;transition:all .2s}
+.step-item:hover{background:#FFF0DC;transform:translateX(3px)}
+.step-num{background:var(--cho2);color:#fff;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:16px;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-txt{font-size:clamp(13px,1.9vw,17px);color:#333;line-height:1.5;flex:1}
+.step-audio{font-size:11px;color:var(--cho2);margin-top:4px}
+
+/* HISTÓRIA */
+.historia-timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:32px}
+.historia-timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--cho2),var(--am))}
+.hist-item{position:relative;padding:0 0 20px 20px}
+.hist-item::before{content:'';position:absolute;left:-22px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--cho2);border:3px solid #FDF6EC}
+.hist-year{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:800;color:var(--cho2);margin-bottom:4px}
+.hist-txt{font-size:clamp(13px,1.8vw,16px);color:#333;line-height:1.6;background:#fff;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.hist-txt strong{color:var(--cho)}
+
+/* QUIZ */
+.ativ-card{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,24px);margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:4px solid var(--cho2)}
+.ativ-card.am{border-top-color:var(--am)}
+.ativ-card.vd{border-top-color:var(--vd)}
+.ativ-card.az{border-top-color:var(--az)}
+.ativ-title{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;color:var(--az);margin-bottom:6px}
+.ativ-sub{font-size:clamp(12px,1.6vw,15px);color:#666;margin-bottom:14px;font-style:italic}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.score-txt{font-size:14px;color:#555;font-weight:700}
+.stars{font-size:18px;letter-spacing:2px}
+
+/* Gap fill */
+.gap-sentence{font-size:clamp(14px,2.2vw,19px);color:#222;line-height:2.3;margin-bottom:10px}
+.gap{display:inline-block;min-width:110px;border-bottom:2.5px solid var(--cho2);text-align:center;padding:2px 8px;font-weight:800;color:var(--cho2);cursor:pointer;transition:all .2s;border-radius:4px 4px 0 0}
+.gap.correct{background:#e8f5ee;color:var(--vd);border-color:var(--vd)}
+.gap.wrong{background:#fef2f2;color:var(--rs);border-color:var(--rs);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.opt{background:#FFF0DC;border:2px solid #D4A57A;border-radius:20px;padding:6px 16px;font-size:clamp(12px,1.7vw,16px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:'Nunito',sans-serif}
+.opt:hover{border-color:var(--cho2);background:#FFE5C0}
+.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+
+/* Match */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-item{background:#FFF8F0;border:2px solid #D4A57A;border-radius:10px;padding:10px 14px;font-size:clamp(12px,1.8vw,16px);font-weight:700;cursor:pointer;transition:all .2s;text-align:center;font-family:'Nunito',sans-serif;line-height:1.4}
+.match-item:hover{border-color:var(--cho2);background:#FFE5C0}
+.match-item.selected{border-color:var(--am);background:#fff8e1;color:var(--az)}
+.match-item.correct{border-color:var(--vd);background:#e8f5ee;color:var(--vd);pointer-events:none}
+.match-item.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);animation:shake .3s ease}
+
+/* Quiz opções */
+.quiz-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.quiz-opt{background:#FFF8F0;border:2px solid #D4A57A;border-radius:12px;padding:12px 16px;font-size:clamp(13px,1.8vw,17px);cursor:pointer;transition:all .2s;text-align:left;font-family:'Nunito',sans-serif;font-weight:600}
+.quiz-opt:hover{border-color:var(--cho2);background:#FFE5C0}
+.quiz-opt.correct{border-color:var(--vd);background:#e8f5ee;color:var(--vd);pointer-events:none}
+.quiz-opt.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);pointer-events:none}
+.quiz-explain{display:none;background:#f0f7f2;border-radius:8px;padding:10px 14px;font-size:clamp(12px,1.6vw,15px);color:#333;line-height:1.5;margin-top:8px}
+
+/* Textarea */
+.resp-area{width:100%;min-height:90px;border:2px solid #D4A57A;border-radius:12px;padding:12px 14px;font-size:clamp(13px,1.8vw,16px);font-family:'Nunito',sans-serif;color:#333;background:#FFF8F0;resize:vertical;transition:border .2s;margin-bottom:10px}
+.resp-area:focus{outline:none;border-color:var(--cho2);background:#fff}
+.resp-area::placeholder{color:#bbb}
+
+/* Menu restaurante */
+.menu-box{background:linear-gradient(135deg,#FFF8F0,#FFF0DC);border:3px solid var(--cho2);border-radius:18px;padding:24px;text-align:center;margin-bottom:16px}
+.menu-title-input{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--cho);text-align:center;border:none;border-bottom:3px solid var(--cho2);background:transparent;width:100%;padding:4px 8px;margin-bottom:16px}
+.menu-title-input:focus{outline:none}
+.menu-title-input::placeholder{color:#ccc}
+.menu-row{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:10px;margin-bottom:12px}
+.menu-label{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(13px,1.9vw,17px);color:var(--cho2);text-align:right}
+.menu-input{border:none;border-bottom:2px solid var(--cho2);background:transparent;font-size:clamp(13px,1.8vw,16px);font-family:'Nunito',sans-serif;padding:4px 6px;width:100%;color:#333}
+.menu-input:focus{outline:none}
+.menu-input::placeholder{color:#ccc}
+
+/* Btn */
+.btn{border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;display:inline-flex;align-items:center;gap:6px}
+.btn-cho{background:var(--cho2);color:#fff}.btn-cho:hover{background:var(--cho)}
+.btn-vd{background:var(--vd);color:#fff}.btn-vd:hover{background:#007a2f}
+.btn-am{background:var(--am);color:#fff}.btn-am:hover{background:#d49200}
+.btn-az{background:var(--az);color:#fff}.btn-az:hover{background:#001a5c}
+.btn-gray{background:#888;color:#fff}.btn-gray:hover{background:#666}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+
+/* Video button */
+.video-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#c00,#e00);color:#fff;border:none;border-radius:12px;padding:12px 22px;font-size:clamp(13px,1.9vw,17px);font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;text-decoration:none;margin-bottom:8px}
+.video-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(200,0,0,.3)}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#333;color:#fff;padding:10px 22px;border-radius:22px;font-size:14px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* Confete final */
+.confete{display:none;text-align:center;padding:20px;font-size:clamp(16px,3vw,22px);color:var(--cho);font-family:'Baloo 2',sans-serif;font-weight:800}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-wrap">
+    <div class="tb-logo">🇧🇷</div>
+    <div><div class="tb-title">Enlace Brasil</div><div class="tb-sub">Brigadeiro 🍫 · Dinâmica Cultural · A1</div></div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="go('s-receita',this)">🍫 Receita</button>
+  <button class="idx-btn" onclick="go('s-historia',this)">📖 História</button>
+  <button class="idx-btn" onclick="go('s-video',this)">🎬 Vídeo</button>
+  <button class="idx-btn" onclick="go('s-a1',this)">✏️ Ativ.1</button>
+  <button class="idx-btn" onclick="go('s-a2',this)">✏️ Ativ.2</button>
+  <button class="idx-btn" onclick="go('s-a3',this)">✏️ Ativ.3</button>
+  <button class="idx-btn" onclick="go('s-a4',this)">🍽️ Cardápio</button>
+  <button class="idx-btn" onclick="go('s-quiz',this)">🎮 Quiz</button>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">DINÂMICA CULTURAL · NÍVEL A1</div>
+  <div class="hero-title">🍫 Brigadeiro<br><span>O Doce Mais Famoso do Brasil!</span></div>
+  <div class="hero-desc">Receita interativa · História · Exercícios · Quiz · Crie seu cardápio!</div>
+  <div class="pill-row">
+    <span class="pill">leite condensado</span>
+    <span class="pill">chocolate em pó</span>
+    <span class="pill">manteiga</span>
+    <span class="pill">brigadeiro Eduardo Gomes</span>
+    <span class="pill">1945</span>
+  </div>
+</div>
+
+<!-- ══ RECEITA ══════════════════════════════════════════════════════════ -->
+<div class="section" id="s-receita">
+  <div class="sec-title">🍫 Receita de Brigadeiro</div>
+  <div class="tip cho">
+    <div class="tip-lbl">💡 Como usar</div>
+    <div class="tip-txt">Toque em cada ingrediente ou passo para ouvir em português!</div>
+  </div>
+
+  <div class="receita-box">
+    <div class="receita-header">
+      <h2>🍫 Brigadeiro Clássico</h2>
+      <p>O doce mais amado do Brasil · El dulce más amado de Brasil</p>
+    </div>
+    <div class="receita-body">
+
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--cho);margin-bottom:12px">📋 Ingredientes</div>
+      <div class="ing-grid">
+        <div class="ing-card" onclick="spkCard(this,'leite condensado')">
+          <div class="ing-emoji">🥛</div>
+          <div class="ing-info">
+            <div class="ing-pt">leite condensado</div>
+            <div class="ing-qty">1 lata</div>
+            <div class="ing-audio">🔊 toque para ouvir</div>
+          </div>
+        </div>
+        <div class="ing-card" onclick="spkCard(this,'chocolate em pó')">
+          <div class="ing-emoji">🍫</div>
+          <div class="ing-info">
+            <div class="ing-pt">chocolate em pó</div>
+            <div class="ing-qty">4 colheres de sopa</div>
+            <div class="ing-audio">🔊 toque para ouvir</div>
+          </div>
+        </div>
+        <div class="ing-card" onclick="spkCard(this,'manteiga')">
+          <div class="ing-emoji">🧈</div>
+          <div class="ing-info">
+            <div class="ing-pt">manteiga</div>
+            <div class="ing-qty">1 colher de sopa</div>
+            <div class="ing-audio">🔊 toque para ouvir</div>
+          </div>
+        </div>
+        <div class="ing-card" onclick="spkCard(this,'chocolate granulado')">
+          <div class="ing-emoji">✨</div>
+          <div class="ing-info">
+            <div class="ing-pt">chocolate granulado</div>
+            <div class="ing-qty">1 pacote (opcional)</div>
+            <div class="ing-audio">🔊 toque para ouvir</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--cho);margin-bottom:12px">👨‍🍳 Modo de Preparo</div>
+      <div class="steps-list">
+        <div class="step-item" onclick="spk('Aqueça a panela em fogo médio.')">
+          <div class="step-num">1</div>
+          <div><div class="step-txt">Aqueça a panela em <strong>fogo médio</strong>. <em style="color:#888;font-size:.9em">/ Calienta la olla a fuego medio.</em></div><div class="step-audio">🔊 toque para ouvir</div></div>
+        </div>
+        <div class="step-item" onclick="spk('Acrescente uma colher de sopa de manteiga.')">
+          <div class="step-num">2</div>
+          <div><div class="step-txt">Acrescente <strong>1 colher de sopa de manteiga</strong>. <em style="color:#888;font-size:.9em">/ Añade 1 cucharada de mantequilla.</em></div><div class="step-audio">🔊 toque para ouvir</div></div>
+        </div>
+        <div class="step-item" onclick="spk('Adicione todo o leite condensado.')">
+          <div class="step-num">3</div>
+          <div><div class="step-txt">Adicione todo o <strong>leite condensado</strong>. <em style="color:#888;font-size:.9em">/ Añade toda la leche condensada.</em></div><div class="step-audio">🔊 toque para ouvir</div></div>
+        </div>
+        <div class="step-item" onclick="spk('Acrescente quatro colheres de chocolate em pó e mexa sem parar.')">
+          <div class="step-num">4</div>
+          <div><div class="step-txt">Acrescente <strong>4 colheres de chocolate em pó</strong> e <strong>mexa sem parar</strong> até desgrudar da panela. <em style="color:#888;font-size:.9em">/ Agrega el chocolate y revuelve sin parar.</em></div><div class="step-audio">🔊 toque para ouvir</div></div>
+        </div>
+        <div class="step-item" onclick="spk('Sirva em um prato com colher ou enrole em bolinhas com granulado.')">
+          <div class="step-num">5</div>
+          <div><div class="step-txt">Sirva em prato com colher <strong>ou</strong> enrole em <strong>bolinhas</strong> e cubra com granulado! 🍫 <em style="color:#888;font-size:.9em">/ Sirve en plato o enrolla en bolitas con granulado.</em></div><div class="step-audio">🔊 toque para ouvir</div></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-cho" onclick="spk('leite condensado, chocolate em pó, manteiga, chocolate granulado')">🔊 Ouvir ingredientes</button>
+        <button class="btn btn-am" onclick="spk('Que delícia! Adoro brigadeiro!')">🔊 Que delícia!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HISTÓRIA ═════════════════════════════════════════════════════════ -->
+<div class="section" id="s-historia">
+  <div class="sec-title">📖 História do Brigadeiro</div>
+  <div class="tip am">
+    <div class="tip-lbl">🇧🇷 Sabia que?</div>
+    <div class="tip-txt">O brigadeiro tem nome de <strong>político</strong>! A história começa em 1945 no Rio de Janeiro...</div>
+  </div>
+
+  <div class="historia-timeline">
+    <div class="hist-item">
+      <div class="hist-year">📅 Dezembro de 1945</div>
+      <div class="hist-txt">O Rio de Janeiro era a capital federal do Brasil e a Segunda Guerra Mundial tinha acabado de terminar. O Brasil vivia um processo de <strong>redemocratização</strong> com eleições presidenciais.<br><em style="color:#888;font-size:.9em">Brasil vivía un proceso de redemocratización con elecciones presidenciales.</em></div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">🎖️ O Candidato</div>
+      <div class="hist-txt">Dentre os candidatos estava o <strong>Brigadeiro Eduardo Gomes</strong> — "brigadeiro" é uma patente militar, como general. Ele era famoso e muito apoiado pela alta sociedade carioca.<br><em style="color:#888;font-size:.9em">"Brigadeiro" es un rango militar. Era famoso y muy apoyado.</em></div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">🫖 A Reunião</div>
+      <div class="hist-txt">Os comitês das senhoras da sociedade que apoiavam a campanha sempre realizavam reuniões requintadas. Em uma dessas reuniões, a <strong>Dona Heloísa Nabuco de Oliveira</strong> levou um docinho feito com leite condensado e chocolate.<br><em style="color:#888;font-size:.9em">En una de las reuniones, Heloísa llevó un dulcito de leche condensada y chocolate.</em></div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">🍫 O Nome</div>
+      <div class="hist-txt">Ela nomeou o doce de <strong>"brigadeiro"</strong> em homenagem ao candidato Eduardo Gomes. O nome pegou e o docinho se espalhou por todo o Brasil!<br><em style="color:#888;font-size:.9em">Llamó al dulce "brigadeiro" en honor al candidato. ¡El nombre se popularizó!</em></div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">🗳️ O Resultado</div>
+      <div class="hist-txt"><strong>O brigadeiro candidato perdeu as eleições... mas o docinho ganhou o Brasil inteiro!</strong> 🍫🎉<br><em style="color:#888;font-size:.9em">¡El candidato perdió las elecciones, pero el dulcito conquistó todo Brasil!</em></div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">🌍 Hoje</div>
+      <div class="hist-txt">O brigadeiro é <strong>obrigatório</strong> em festas de aniversário, casamentos e comemorações. Existem hoje mais de 100 sabores diferentes: morango, maracujá, pistache, café...</div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px" class="btn-row">
+    <button class="btn btn-cho" onclick="spk('O brigadeiro candidato perdeu as eleições, mas o docinho ganhou o Brasil inteiro!')">🔊 Ouvir frase famosa</button>
+  </div>
+</div>
+
+<!-- ══ VÍDEO ══════════════════════════════════════════════════════════════ -->
+<div class="section" id="s-video">
+  <div class="sec-title">🎬 Vídeo · Video</div>
+  <div class="tip az">
+    <div class="tip-lbl">📺 Instrução</div>
+    <div class="tip-txt">Assista aos vídeos e responda as perguntas da Atividade 1!</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+    <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">🍫</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.3vw,20px);font-weight:800;color:var(--cho);margin-bottom:6px">Receita do Brigadeiro</div>
+      <div style="font-size:clamp(12px,1.6vw,14px);color:#555;margin-bottom:14px">Veja o passo a passo da receita original!</div>
+      <a href="https://www.youtube.com/watch?v=E79m3HzoqBE" target="_blank" class="video-btn">
+        ▶️ Assistir receita
+      </a>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">📖</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.3vw,20px);font-weight:800;color:var(--az);margin-bottom:6px">História do Brigadeiro</div>
+      <div style="font-size:clamp(12px,1.6vw,14px);color:#555;margin-bottom:14px">A história do Brigadeiro Eduardo Gomes e o nascimento do doce!</div>
+      <a href="https://www.youtube.com/watch?v=echc1nLxRMg" target="_blank" class="video-btn" style="background:linear-gradient(135deg,var(--az),#004aad)">
+        ▶️ Assistir história
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ATIVIDADE 1 — COMPLETE ════════════════════════════════════════════ -->
+<div class="section" id="s-a1">
+  <div class="ativ-card">
+    <div class="ativ-title">✏️ Atividade 1 — Complete as frases</div>
+    <div class="ativ-sub">Escolha a palavra correta para completar cada frase sobre o brigadeiro e sua história.</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc1">0</span>/6</span><span class="stars" id="st1">☆☆☆☆☆☆</span></div>
+
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">O brigadeiro é feito com <span class="gap" id="g0">_____</span> e chocolate em pó.</div>
+      <div class="opts-row" id="opts0">
+        <span class="opt" onclick="so(this,0,'leite condensado')">leite condensado</span>
+        <span class="opt" onclick="so(this,0,'suco de laranja')">suco de laranja</span>
+        <span class="opt" onclick="so(this,0,'farinha de trigo')">farinha de trigo</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">O nome "brigadeiro" é uma homenagem ao <span class="gap" id="g1">_____</span> Eduardo Gomes.</div>
+      <div class="opts-row" id="opts1">
+        <span class="opt" onclick="so(this,1,'brigadeiro')">brigadeiro</span>
+        <span class="opt" onclick="so(this,1,'presidente')">presidente</span>
+        <span class="opt" onclick="so(this,1,'professor')">professor</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">A história do brigadeiro começa em <span class="gap" id="g2">_____</span>.</div>
+      <div class="opts-row" id="opts2">
+        <span class="opt" onclick="so(this,2,'1945')">1945</span>
+        <span class="opt" onclick="so(this,2,'2000')">2000</span>
+        <span class="opt" onclick="so(this,2,'1822')">1822</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">Dona Heloísa <span class="gap" id="g3">_____</span> o docinho de brigadeiro.</div>
+      <div class="opts-row" id="opts3">
+        <span class="opt" onclick="so(this,3,'nomeou')">nomeou</span>
+        <span class="opt" onclick="so(this,3,'comeu')">comeu</span>
+        <span class="opt" onclick="so(this,3,'vendeu')">vendeu</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">O brigadeiro candidato <span class="gap" id="g4">_____</span> as eleições.</div>
+      <div class="opts-row" id="opts4">
+        <span class="opt" onclick="so(this,4,'perdeu')">perdeu</span>
+        <span class="opt" onclick="so(this,4,'ganhou')">ganhou</span>
+        <span class="opt" onclick="so(this,4,'cancelou')">cancelou</span>
+      </div>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="gap-sentence">Você <span class="gap" id="g5">_____</span> sem parar até o brigadeiro desgrudar da panela.</div>
+      <div class="opts-row" id="opts5">
+        <span class="opt" onclick="so(this,5,'mexe')">mexe</span>
+        <span class="opt" onclick="so(this,5,'dorme')">dorme</span>
+        <span class="opt" onclick="so(this,5,'canta')">canta</span>
+      </div>
+    </div>
+    <button class="btn btn-gray" onclick="resetA1()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ══ ATIVIDADE 2 — COMBINE ═════════════════════════════════════════════ -->
+<div class="section" id="s-a2">
+  <div class="ativ-card am">
+    <div class="ativ-title">✏️ Atividade 2 — Combine o ingrediente com a quantidade</div>
+    <div class="ativ-sub">Toque em um ingrediente e depois na quantidade correta!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc2">0</span>/4</span><span class="stars" id="st2">☆☆☆☆</span></div>
+    <div class="match-grid">
+      <div class="match-col" id="col-ing">
+        <div class="match-item" onclick="sm(this,'pt','leite condensado')">🥛 leite condensado</div>
+        <div class="match-item" onclick="sm(this,'pt','chocolate em pó')">🍫 chocolate em pó</div>
+        <div class="match-item" onclick="sm(this,'pt','manteiga')">🧈 manteiga</div>
+        <div class="match-item" onclick="sm(this,'pt','granulado')">✨ granulado</div>
+      </div>
+      <div class="match-col" id="col-qty">
+        <div class="match-item" onclick="sm(this,'es','manteiga')">1 colher de sopa</div>
+        <div class="match-item" onclick="sm(this,'es','leite condensado')">1 lata inteira</div>
+        <div class="match-item" onclick="sm(this,'es','granulado')">1 pacote (opcional)</div>
+        <div class="match-item" onclick="sm(this,'es','chocolate em pó')">4 colheres de sopa</div>
+      </div>
+    </div>
+    <button class="btn btn-am" onclick="resetA2()" style="background:var(--cho2)">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ══ ATIVIDADE 3 — PERGUNTAS ABERTAS ══════════════════════════════════ -->
+<div class="section" id="s-a3">
+  <div class="ativ-card vd">
+    <div class="ativ-title">✏️ Atividade 3 — Perguntas para refletir</div>
+    <div class="ativ-sub">Responda em português! Não precisa ser perfeito — o importante é praticar! 😊</div>
+
+    <div style="margin-bottom:20px">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">
+        1. 🎬 De acordo com o vídeo, qual é a origem do brigadeiro?
+      </div>
+      <div style="font-size:13px;color:#888;margin-bottom:8px;font-style:italic">Según el video, ¿cuál es el origen del brigadeiro?</div>
+      <textarea class="resp-area" id="r1" placeholder="O brigadeiro foi criado em..."></textarea>
+      <button class="btn btn-vd" onclick="ouvirResp('r1')">🔊 Ouvir minha resposta</button>
+    </div>
+
+    <div style="margin-bottom:20px;padding-top:16px;border-top:2px solid #e5f0ea">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">
+        2. 🍽️ Você já experimentou brigadeiro? O que achou?
+      </div>
+      <div style="font-size:13px;color:#888;margin-bottom:8px;font-style:italic">¿Ya probaste el brigadeiro? ¿Qué te pareció?</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <button class="btn btn-cho" onclick="insText('r2','Sim, eu já comi brigadeiro. Eu gostei muito! É muito gostoso.')">😍 Sim, adorei!</button>
+        <button class="btn btn-gray" onclick="insText('r2','Não, eu nunca comi brigadeiro. Mas quero experimentar!')">🤷 Não, mas quero!</button>
+        <button class="btn" style="background:#e8eef8;color:var(--az);border:2px solid var(--az)" onclick="insText('r2','Sim, eu comi. Mais ou menos, não gostei muito.')">😐 Comi, mais ou menos</button>
+      </div>
+      <textarea class="resp-area" id="r2" placeholder="Sim, eu já comi... / Não, mas quero experimentar porque..."></textarea>
+      <button class="btn btn-vd" onclick="ouvirResp('r2')">🔊 Ouvir minha resposta</button>
+    </div>
+
+    <div style="margin-bottom:20px;padding-top:16px;border-top:2px solid #e5f0ea">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">
+        3. 🌮 Conhece outros pratos da gastronomia brasileira? Cite outros pratos brasileiros que você conhece ou quer conhecer!
+      </div>
+      <div style="font-size:13px;color:#888;margin-bottom:8px;font-style:italic">¿Conoces otros platos brasileños? ¡Cuéntanos!</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <button class="btn" style="background:#FFF0DC;color:var(--cho2);border:2px solid var(--cho2);font-size:13px" onclick="addPrato('feijoada 🫘')">+ feijoada</button>
+        <button class="btn" style="background:#FFF0DC;color:var(--cho2);border:2px solid var(--cho2);font-size:13px" onclick="addPrato('pão de queijo 🧀')">+ pão de queijo</button>
+        <button class="btn" style="background:#FFF0DC;color:var(--cho2);border:2px solid var(--cho2);font-size:13px" onclick="addPrato('coxinha 🍗')">+ coxinha</button>
+        <button class="btn" style="background:#FFF0DC;color:var(--cho2);border:2px solid var(--cho2);font-size:13px" onclick="addPrato('açaí 🍇')">+ açaí</button>
+        <button class="btn" style="background:#FFF0DC;color:var(--cho2);border:2px solid var(--cho2);font-size:13px" onclick="addPrato('churrasco 🥩')">+ churrasco</button>
+      </div>
+      <textarea class="resp-area" id="r3" placeholder="Eu conheço... / Eu quero provar..."></textarea>
+      <button class="btn btn-vd" onclick="ouvirResp('r3')">🔊 Ouvir minha resposta</button>
+    </div>
+
+    <div style="padding-top:16px;border-top:2px solid #e5f0ea">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">
+        4. 🍮 Tem alguma sobremesa tradicional do México parecida com o brigadeiro? Como é feita?
+      </div>
+      <div style="font-size:13px;color:#888;margin-bottom:8px;font-style:italic">¿Hay algún postre mexicano parecido? ¿Cómo se hace?</div>
+      <textarea class="resp-area" id="r4" placeholder="No México, temos... Os ingredientes são..."></textarea>
+      <button class="btn btn-vd" onclick="ouvirResp('r4')">🔊 Ouvir minha resposta</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ATIVIDADE 4 — CARDÁPIO ════════════════════════════════════════════ -->
+<div class="section" id="s-a4">
+  <div class="ativ-card az">
+    <div class="ativ-title">🍽️ Atividade 4 — Crie seu Cardápio Brasileiro!</div>
+    <div class="ativ-sub">Imagina que você tem um restaurante brasileiro em CDMX. Crie seu cardápio! / ¡Imagina que tienes un restaurante brasileño en CDMX!</div>
+
+    <div class="menu-box">
+      <div style="font-size:24px;margin-bottom:8px">🍴🇧🇷🍴</div>
+      <input class="menu-title-input" id="rest-nome" type="text" placeholder="Nome do restaurante...">
+      <div class="menu-row">
+        <div class="menu-label">🥗 Entrada:</div>
+        <input class="menu-input" id="m-entrada" type="text" placeholder="Ex: sopa de legumes, salada tropical...">
+      </div>
+      <div class="menu-row">
+        <div class="menu-label">🍽️ Prato principal:</div>
+        <input class="menu-input" id="m-prato" type="text" placeholder="Ex: feijoada, moqueca, churrasco...">
+      </div>
+      <div class="menu-row">
+        <div class="menu-label">🍫 Sobremesa:</div>
+        <input class="menu-input" id="m-sobremesa" type="text" placeholder="Ex: brigadeiro, pudim, açaí...">
+      </div>
+      <div class="menu-row">
+        <div class="menu-label">🥤 Bebida:</div>
+        <input class="menu-input" id="m-bebida" type="text" placeholder="Ex: suco de maracujá, caipirinha...">
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-cho" onclick="lerCardapio()">🔊 Ouvir meu cardápio!</button>
+      <button class="btn btn-am" onclick="mostrarCardapio()">📋 Ver cardápio completo</button>
+    </div>
+    <div id="cardapio-result" style="display:none;background:#FFF8F0;border:2px solid var(--cho2);border-radius:12px;padding:16px;margin-top:14px;font-size:clamp(14px,1.9vw,17px);color:#333;line-height:2"></div>
+  </div>
+</div>
+
+<!-- ══ QUIZ HISTÓRIA ═════════════════════════════════════════════════════ -->
+<div class="section" id="s-quiz">
+  <div class="ativ-card" style="border-top-color:var(--cho)">
+    <div class="ativ-title">🎮 Quiz — Você conhece o brigadeiro?</div>
+    <div class="ativ-sub">4 perguntas sobre a história e a receita! · ¡4 preguntas sobre la historia y la receta!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="scQ">0</span>/4</span><span class="stars" id="stQ">☆☆☆☆</span></div>
+
+    <!-- Q1 -->
+    <div id="q1-block" style="margin-bottom:20px">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--cho);margin-bottom:10px">1. 🎖️ O que significa "brigadeiro" em português?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ(1,this,false)">A. Um tipo de chocolate</button>
+        <button class="quiz-opt" onclick="checkQ(1,this,true)">B. Uma patente militar (como general)</button>
+        <button class="quiz-opt" onclick="checkQ(1,this,false)">C. O nome de uma cidade brasileira</button>
+        <button class="quiz-opt" onclick="checkQ(1,this,false)">D. Uma marca de leite condensado</button>
+      </div>
+      <div class="quiz-explain" id="exp1">✅ Correto! "Brigadeiro" é uma patente militar. O doce foi nomeado em homenagem ao <strong>Brigadeiro Eduardo Gomes</strong>, candidato à presidência em 1945.</div>
+    </div>
+
+    <!-- Q2 -->
+    <div id="q2-block" style="margin-bottom:20px;padding-top:16px;border-top:2px solid #f0e0c8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--cho);margin-bottom:10px">2. 🥛 Qual é o ingrediente PRINCIPAL do brigadeiro?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ(2,this,false)">A. Farinha de trigo</button>
+        <button class="quiz-opt" onclick="checkQ(2,this,false)">B. Açúcar refinado</button>
+        <button class="quiz-opt" onclick="checkQ(2,this,true)">C. Leite condensado</button>
+        <button class="quiz-opt" onclick="checkQ(2,this,false)">D. Creme de leite</button>
+      </div>
+      <div class="quiz-explain" id="exp2">✅ Exatamente! O <strong>leite condensado</strong> é a base do brigadeiro. Curiosidade: o leite condensado é um produto de origem americana!</div>
+    </div>
+
+    <!-- Q3 -->
+    <div id="q3-block" style="margin-bottom:20px;padding-top:16px;border-top:2px solid #f0e0c8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--cho);margin-bottom:10px">3. 🗳️ O que aconteceu com o Brigadeiro Eduardo Gomes nas eleições de 1945?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ(3,this,false)">A. Ganhou as eleições</button>
+        <button class="quiz-opt" onclick="checkQ(3,this,true)">B. Perdeu as eleições</button>
+        <button class="quiz-opt" onclick="checkQ(3,this,false)">C. Não participou das eleições</button>
+        <button class="quiz-opt" onclick="checkQ(3,this,false)">D. Virou presidente depois</button>
+      </div>
+      <div class="quiz-explain" id="exp3">✅ Isso mesmo! <strong>O brigadeiro candidato perdeu as eleições, mas o docinho ganhou o Brasil inteiro!</strong> 🍫 Uma das frases mais famosas sobre o brigadeiro.</div>
+    </div>
+
+    <!-- Q4 -->
+    <div id="q4-block" style="padding-top:16px;border-top:2px solid #f0e0c8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--cho);margin-bottom:10px">4. 👨‍🍳 Enquanto você faz o brigadeiro, o que deve fazer o tempo todo?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ(4,this,false)">A. Deixar em fogo alto sem mexer</button>
+        <button class="quiz-opt" onclick="checkQ(4,this,false)">B. Cobrir a panela com tampa</button>
+        <button class="quiz-opt" onclick="checkQ(4,this,true)">C. Mexer sem parar até desgrudar</button>
+        <button class="quiz-opt" onclick="checkQ(4,this,false)">D. Adicionar água aos poucos</button>
+      </div>
+      <div class="quiz-explain" id="exp4">✅ Perfeito! Você deve <strong>mexer sem parar</strong> até o brigadeiro desgrudar da panela. Se parar de mexer, queima!</div>
+    </div>
+
+    <div class="confete" id="confete">🎉 Parabéns! Você é expert em brigadeiro! 🍫🇧🇷 Vai abrir uma brigaderia no México? 😄</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var pts=0;
+function addPts(n){pts+=n;document.getElementById('tb-pts').textContent='⭐ '+pts+' pts';}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1800);}
+function go(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});if(btn)btn.classList.add('active');}
+
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(function(x){return x.lang==='pt-BR';});if(b.length)return b;return a.filter(function(x){return x.lang.startsWith('pt');});}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.05;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+function spkCard(el,w){document.querySelectorAll('.ing-card').forEach(function(c){c.classList.remove('playing');});el.classList.add('playing');spk(w);setTimeout(function(){el.classList.remove('playing');},1600);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};document.addEventListener('touchstart',function u(){var x=new SpeechSynthesisUtterance('');x.volume=0;speechSynthesis.speak(x);document.removeEventListener('touchstart',u);},{once:true});}
+
+// Atividade 1
+var ans1=['leite condensado','brigadeiro','1945','nomeou','perdeu','mexe'];
+var done1=[false,false,false,false,false,false];var sc1=0;
+function so(el,i,v){
+  if(done1[i])return;
+  var g=document.getElementById('g'+i);
+  if(v===ans1[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done1[i]=true;sc1++;document.getElementById('sc1').textContent=sc1;var s=[];for(var j=0;j<6;j++)s.push(j<sc1?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');spk(v);if(sc1===6)setTimeout(function(){toast('🏆 Perfeito! Você conhece o brigadeiro!');},600);}
+  else{g.textContent=v;g.className='gap wrong';setTimeout(function(){g.textContent='_____';g.className='gap';el.classList.remove('selected');},700);toast('❌ Tente de novo!');}
+}
+function resetA1(){sc1=0;done1=[false,false,false,false,false,false];document.getElementById('sc1').textContent='0';document.getElementById('st1').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){document.getElementById('g'+i).textContent='_____';document.getElementById('g'+i).className='gap';document.getElementById('opts'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';});}}
+
+// Atividade 2
+var selPt=null,selPtEl=null,sc2=0;
+function sm(el,side,key){
+  if(el.classList.contains('correct'))return;
+  if(side==='pt'){if(selPtEl)selPtEl.classList.remove('selected');selPt=key;selPtEl=el;el.classList.add('selected');}
+  else{if(!selPt)return;if(selPt===key){el.classList.add('correct');selPtEl.classList.remove('selected');selPtEl.classList.add('correct');sc2++;document.getElementById('sc2').textContent=sc2;var s=[];for(var j=0;j<4;j++)s.push(j<sc2?'⭐':'☆');document.getElementById('st2').textContent=s.join('');addPts(15);toast('✅ Certo! +15 pts');spk(selPt);selPt=null;selPtEl=null;if(sc2===4)setTimeout(function(){toast('🍫 Perfeito! Você sabe a receita!');},600);}else{el.classList.add('wrong');selPtEl.classList.add('wrong');setTimeout(function(){el.classList.remove('wrong','selected');if(selPtEl)selPtEl.classList.remove('wrong','selected');selPt=null;selPtEl=null;},700);toast('❌ Tente de novo!');}}
+}
+function resetA2(){sc2=0;selPt=null;selPtEl=null;document.getElementById('sc2').textContent='0';document.getElementById('st2').textContent='☆☆☆☆';document.querySelectorAll('#col-ing .match-item,#col-qty .match-item').forEach(function(el){el.className='match-item';});}
+
+// Atividade 3
+function ouvirResp(id){var v=document.getElementById(id).value.trim();if(!v){toast('Escreva sua resposta primeiro!');return;}spk(v);addPts(10);toast('🔊 Ouvindo! +10 pts');}
+function insText(id,txt){document.getElementById(id).value=txt;}
+function addPrato(p){var el=document.getElementById('r3');if(el.value)el.value+=', '+p;else el.value=p;}
+
+// Cardápio
+function lerCardapio(){
+  var nome=document.getElementById('rest-nome').value||'Meu Restaurante';
+  var e=document.getElementById('m-entrada').value||'...';
+  var p=document.getElementById('m-prato').value||'...';
+  var s=document.getElementById('m-sobremesa').value||'...';
+  var b=document.getElementById('m-bebida').value||'...';
+  spk('Bem-vindo ao '+nome+'! Entrada: '+e+'. Prato principal: '+p+'. Sobremesa: '+s+'. Bebida: '+b+'.');
+  addPts(15);toast('🍽️ Cardápio lido! +15 pts');
+}
+function mostrarCardapio(){
+  var nome=document.getElementById('rest-nome').value||'Meu Restaurante Brasileiro';
+  var e=document.getElementById('m-entrada').value||'—';
+  var p=document.getElementById('m-prato').value||'—';
+  var s=document.getElementById('m-sobremesa').value||'—';
+  var b=document.getElementById('m-bebida').value||'—';
+  var d=document.getElementById('cardapio-result');
+  d.style.display='block';
+  d.innerHTML='<div style="text-align:center;font-family:\'Baloo 2\',sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800;color:var(--cho);margin-bottom:12px">🍴 '+nome+' 🍴</div>'
+    +'<div>🥗 <strong>Entrada:</strong> '+e+'</div>'
+    +'<div>🍽️ <strong>Prato principal:</strong> '+p+'</div>'
+    +'<div>🍫 <strong>Sobremesa:</strong> '+s+'</div>'
+    +'<div>🥤 <strong>Bebida:</strong> '+b+'</div>';
+}
+
+// Quiz
+var scQ=0,doneQ={};
+function checkQ(n,el,correct){
+  if(doneQ[n])return;
+  doneQ[n]=true;
+  var opts=el.closest('.quiz-opts').querySelectorAll('.quiz-opt');
+  opts.forEach(function(o){o.style.pointerEvents='none';});
+  if(correct){el.classList.add('correct');scQ++;document.getElementById('scQ').textContent=scQ;var s=[];for(var j=0;j<4;j++)s.push(j<scQ?'⭐':'☆');document.getElementById('stQ').textContent=s.join('');addPts(20);toast('✅ Correto! +20 pts');}
+  else{el.classList.add('wrong');toast('❌ Quase! Leia a explicação!');}
+  var exp=document.getElementById('exp'+n);if(exp){exp.style.display='block';}
+  if(scQ===4){setTimeout(function(){document.getElementById('confete').style.display='block';document.getElementById('confete').scrollIntoView({behavior:'smooth'});},400);}
+}
+</script>
+</body>
+</html>
