@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Ouse Ser Brasileiro — Aluno B1 | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--vd:#009C3B;--am:#F5A800;--az:#002776;--rs:#e8336d}
+body{background:#f0f4fb;font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:40px}
+.topbar{background:linear-gradient(135deg,#0d3b1a,var(--vd));padding:clamp(10px,2vh,16px) clamp(14px,3vw,24px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.tb-wrap{display:flex;align-items:center;gap:10px}
+.tb-logo{width:40px;height:40px;border-radius:50%;background:var(--az);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tb-title{font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:clamp(13px,2vw,17px)}
+.tb-sub{color:rgba(255,255,255,.6);font-size:clamp(9px,1.3vw,12px)}
+.tb-pts{background:rgba(245,168,0,.2);border:1.5px solid rgba(245,168,0,.5);color:var(--am);font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:4px 12px;border-radius:20px}
+.hero{background:linear-gradient(135deg,#0d3b1a 0%,#1a5c2e 50%,var(--vd) 100%);padding:clamp(28px,5vh,48px) clamp(16px,4vw,32px);text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'🌍';position:absolute;font-size:180px;opacity:.07;top:-20px;right:-20px}
+.hero-badge{background:rgba(245,168,0,.25);border:1.5px solid rgba(245,168,0,.6);color:var(--am);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:12px}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(26px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:clamp(13px,2vw,18px);color:rgba(255,255,255,.85);margin-bottom:16px}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:clamp(11px,1.5vw,14px);font-weight:700;padding:5px 14px;border-radius:20px}
+.idx-bar{background:#fff;border-bottom:2px solid #d0e8d8;display:flex;overflow-x:auto;gap:4px;padding:8px 12px;position:sticky;top:62px;z-index:90;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.idx-bar::-webkit-scrollbar{height:3px}.idx-bar::-webkit-scrollbar-thumb{background:var(--vd);border-radius:2px}
+.idx-btn{background:none;border:1.5px solid #a8d8b4;color:#555;font-size:clamp(10px,1.4vw,13px);font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.idx-btn:hover,.idx-btn.active{background:var(--vd);border-color:var(--vd);color:#fff}
+.section{padding:clamp(20px,3vh,32px) clamp(14px,4vw,28px);max-width:860px;margin:0 auto}
+.sec-title{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--az);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--vd),transparent)}
+.tip{border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(12px,2vw,18px);margin-bottom:16px}
+.tip.az{background:#e8eef8;border-left:4px solid var(--az)}
+.tip.vd{background:#e8f5ee;border-left:4px solid var(--vd)}
+.tip.am{background:#fff8e1;border-left:4px solid var(--am)}
+.tip.rs{background:#fef2f2;border-left:4px solid var(--rs)}
+.tip-lbl{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
+.tip.az .tip-lbl{color:var(--az)}.tip.vd .tip-lbl{color:var(--vd)}.tip.am .tip-lbl{color:#b36b00}.tip.rs .tip-lbl{color:var(--rs)}
+.tip-txt{font-size:clamp(12px,1.7vw,16px);color:#333;line-height:1.6}
+/* Texto leitura */
+.leitura-box{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,26px);margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:6px solid var(--vd);font-size:clamp(13px,1.9vw,17px);color:#222;line-height:1.8}
+.leitura-box em{color:var(--az);font-style:normal;font-weight:700}
+.leitura-box strong{color:var(--vd)}
+/* Perfis */
+.perfil-card{background:#fff;border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:all .2s;border-left:4px solid var(--vd)}
+.perfil-card:hover{transform:translateX(4px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.perfil-card.az-border{border-left-color:var(--az)}
+.perfil-card.am-border{border-left-color:var(--am)}
+.perfil-flag{font-size:32px;flex-shrink:0}
+.perfil-nome{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,19px);font-weight:800;color:var(--az);margin-bottom:5px}
+.perfil-txt{font-size:clamp(12px,1.6vw,16px);color:#333;line-height:1.6}
+.perfil-verbo{display:inline-block;background:#e8f5ee;border:1px solid #a8d8b4;color:var(--vd);font-size:12px;font-weight:700;padding:2px 9px;border-radius:12px;margin:4px 2px}
+.perfil-audio{font-size:11px;color:var(--vd);margin-top:6px}
+/* Conj tables */
+.conj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.conj-box{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.conj-head{background:var(--az);padding:10px 14px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(13px,1.9vw,17px);color:var(--am);text-align:center}
+.conj-body{padding:8px 12px}
+.conj-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #e8eef8;font-size:clamp(12px,1.6vw,15px)}
+.conj-row:last-child{border-bottom:none}
+.cp2{color:#888;font-size:.9em}.cv2{color:var(--vd);font-weight:800}
+/* Contraste */
+.contraste-table{width:100%;border-collapse:collapse;font-size:clamp(12px,1.7vw,16px);margin-bottom:16px}
+.contraste-table th{padding:10px 14px;font-weight:700;text-align:left}
+.contraste-table td{padding:10px 14px;border-bottom:1px solid #e8eef8;color:#333;vertical-align:top}
+.contraste-table tr:nth-child(even) td{background:#f8f9ff}
+.th-pp{background:#e8f5ee;color:var(--vd)}
+.th-pi{background:#e8eef8;color:var(--az)}
+.pp-cell{color:var(--vd);font-weight:700}
+.pi-cell{color:var(--az);font-weight:700}
+/* Atividades */
+.ativ-card{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,24px);margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:4px solid var(--vd)}
+.ativ-card.az{border-top-color:var(--az)}.ativ-card.am{border-top-color:var(--am)}
+.ativ-title{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;color:var(--az);margin-bottom:6px}
+.ativ-sub{font-size:clamp(12px,1.6vw,15px);color:#666;margin-bottom:14px;font-style:italic}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.score-txt{font-size:14px;color:#555;font-weight:700}
+.stars{font-size:18px;letter-spacing:2px}
+/* Gap */
+.gap-sentence{font-size:clamp(14px,2.2vw,19px);color:#222;line-height:2.4;margin-bottom:10px}
+.gap{display:inline-block;min-width:100px;border-bottom:2.5px solid var(--vd);text-align:center;padding:2px 8px;font-weight:800;color:var(--vd);cursor:pointer;transition:all .2s;border-radius:4px 4px 0 0}
+.gap.correct{background:#e8f5ee;color:var(--vd);border-color:var(--vd)}
+.gap.wrong{background:#fef2f2;color:var(--rs);border-color:var(--rs);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.opt{background:#f0f8f2;border:2px solid #a8d8b4;border-radius:20px;padding:6px 16px;font-size:clamp(12px,1.7vw,16px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:'Nunito',sans-serif}
+.opt:hover{border-color:var(--vd);background:#e8f5ee}
+.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+/* Quiz */
+.quiz-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.quiz-opt{background:#f0f8f2;border:2px solid #a8d8b4;border-radius:12px;padding:12px 16px;font-size:clamp(13px,1.8vw,17px);cursor:pointer;transition:all .2s;text-align:left;font-family:'Nunito',sans-serif;font-weight:600}
+.quiz-opt:hover{border-color:var(--vd);background:#e8f5ee}
+.quiz-opt.correct{border-color:var(--vd);background:#e8f5ee;color:var(--vd);pointer-events:none}
+.quiz-opt.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);pointer-events:none}
+.quiz-explain{display:none;background:#f0f8f2;border-radius:8px;padding:10px 14px;font-size:clamp(12px,1.6vw,15px);color:#333;line-height:1.5;margin-top:8px}
+/* Produção */
+.resp-area{width:100%;min-height:120px;border:2px solid #a8d8b4;border-radius:12px;padding:12px 14px;font-size:clamp(13px,1.8vw,16px);font-family:'Nunito',sans-serif;color:#333;background:#f8fff9;resize:vertical;transition:border .2s;margin-bottom:10px}
+.resp-area:focus{outline:none;border-color:var(--vd);background:#fff}
+.resp-area::placeholder{color:#bbb}
+.btn{border:none;border-radius:10px;padding:9px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.btn-vd{background:var(--vd);color:#fff}.btn-az{background:var(--az);color:#fff}
+.btn-am{background:var(--am);color:#fff}.btn-gray{background:#888;color:#fff}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+/* Ouse criativo */
+.ouse-box{background:linear-gradient(135deg,var(--az),#1a3a8f);border-radius:18px;padding:clamp(20px,3vh,32px);margin-bottom:16px;color:#fff}
+.ouse-slogan{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,4vw,38px);font-weight:800;text-align:center;margin-bottom:14px;letter-spacing:1px}
+.ouse-slogan span{color:var(--am)}
+.ouse-inp{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.3);color:#fff;font-family:'Nunito',sans-serif;font-size:clamp(13px,1.8vw,16px);padding:9px 14px;border-radius:10px;width:100%;margin-bottom:8px}
+.ouse-inp:focus{outline:none;border-color:var(--am);background:rgba(255,255,255,.2)}
+.ouse-inp::placeholder{color:rgba(255,255,255,.4)}
+.ouse-lbl{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:4px;font-weight:700}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#333;color:#fff;padding:10px 22px;border-radius:22px;font-size:14px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-wrap">
+    <div class="tb-logo">🇧🇷</div>
+    <div><div class="tb-title">Enlace Brasil</div><div class="tb-sub">Ouse Ser Brasileiro · Nível B1</div></div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="go('s-nike',this)">⚽ Nike</button>
+  <button class="idx-btn" onclick="go('s-estrang',this)">🌍 Estrangeiros</button>
+  <button class="idx-btn" onclick="go('s-jeitinho',this)">🇧🇷 Jeitinho</button>
+  <button class="idx-btn" onclick="go('s-pp',this)">📝 PP irr.</button>
+  <button class="idx-btn" onclick="go('s-contraste',this)">🔀 PP×PI</button>
+  <button class="idx-btn" onclick="go('s-a1',this)">✏️ Ativ.1</button>
+  <button class="idx-btn" onclick="go('s-a2',this)">✏️ Ativ.2</button>
+  <button class="idx-btn" onclick="go('s-prod',this)">✍️ Produção</button>
+  <button class="idx-btn" onclick="go('s-ouse',this)">🌍 Ouse ser!</button>
+</div>
+<div class="hero">
+  <div class="hero-badge">NÍVEL B1 · BRASIL, MEU PAÍS ESTRANGEIRO</div>
+  <div class="hero-title">🇧🇷 Ouse Ser<br><span>Brasileiro!</span></div>
+  <div class="hero-desc">Campanha Nike · Identidade · Estrangeiros no Brasil · Jeitinho · PP × PI</div>
+  <div class="pill-row">
+    <span class="pill">identidade cultural</span><span class="pill">jeitinho brasileiro</span>
+    <span class="pill">pretérito perfeito irregular</span><span class="pill">PP × Imperfeito</span>
+  </div>
+</div>
+
+<!-- CAMPANHA NIKE -->
+<div class="section" id="s-nike">
+  <div class="sec-title">⚽ Campanha Nike — "Ouse Ser Brasileiro"</div>
+  <div class="leitura-box">
+    <p style="margin-bottom:12px">A Nike do Brasil, com campanha produzida pela Wieden+Kennedy, <em>lançou</em> o filme <strong>"Ouse Ser Brasileiro"</strong> — o maior filme publicitário já criado pela Nike no Brasil.</p>
+    <p style="margin-bottom:12px">De acordo com a Nike: <em>alegria, autenticidade, audácia, provocação, luta, espontaneidade, fé, imaginação, paixão, determinação e alma</em> são características que <strong>são a cara do brasileiro</strong>: elas são o brasileiro e <em>transbordam</em> nas jogadas dos nossos atletas.</p>
+    <p style="font-style:italic;color:#888;font-size:.9em">Adaptado de nikeinc.com, abril 2014</p>
+  </div>
+  <div class="tip vd"><div class="tip-lbl">🔍 Análise</div><div class="tip-txt">
+    <strong>a)</strong> O que você entende por "Ouse ser Brasileiro"? É uma afirmação, um desafio ou um convite? Justifique.<br>
+    <strong>b)</strong> Você concorda que estas características "são a cara do brasileiro"? Por quê?<br>
+    <strong>c)</strong> Como você descreveria "a cara do mexicano"? Quais seriam as características?
+  </div></div>
+  <div class="btn-row">
+    <button class="btn btn-vd" onclick="spk('Ouse ser brasileiro!')">🔊 Slogan</button>
+    <button class="btn btn-az" onclick="spk('alegria, autenticidade, audácia, paixão, determinação, fé, imaginação e alma')">🔊 Características</button>
+  </div>
+</div>
+
+<!-- ESTRANGEIROS -->
+<div class="section" id="s-estrang">
+  <div class="sec-title">🌍 Estrangeiros que Escolheram o Brasil</div>
+  <div class="leitura-box" style="margin-bottom:14px">
+    Nos últimos anos, o Brasil <strong>tem se tornado</strong> um destino cada vez mais atraente para pessoas de todas as partes do mundo. Elas vêm por causa do <strong>crescimento econômico</strong>, da <strong>tolerância étnica e religiosa</strong> e também, claro, pelo <strong>jeito como se vive por aqui</strong>.
+  </div>
+  <div class="perfil-card" onclick="spk('Souraya Sbeih, engenheira francesa de 25 anos, conseguiu uma vaga em São Paulo e foi morar no Brasil.')">
+    <div class="perfil-flag">🇫🇷</div>
+    <div>
+      <div class="perfil-nome">Souraya Sbeih, 25 anos · França</div>
+      <div class="perfil-txt">Engenheira que <strong>conseguiu</strong> uma vaga na Alstom em São Paulo. <em>Provocou</em> "inveja boa" entre os amigos quando <em>anunciou</em> que <em>iria</em> para o Brasil.</div>
+      <div><span class="perfil-verbo">conseguiu</span><span class="perfil-verbo">anunciou</span><span class="perfil-verbo">foi</span></div>
+      <div class="perfil-audio">🔊 toque para ouvir</div>
+    </div>
+  </div>
+  <div class="perfil-card az-border" onclick="spk('Eric, nova-iorquino de 54 anos, já incorporou o jeitinho carioca depois de dois anos morando no Rio de Janeiro.')">
+    <div class="perfil-flag">🇺🇸</div>
+    <div>
+      <div class="perfil-nome">Eric, 54 anos · Nova York, EUA</div>
+      <div class="perfil-txt">Nova-iorquino que, em dois anos no Rio, <strong>já incorporou</strong> o jeitinho carioca. Com cara e bochechas rosadas de gringo, <em>já virou</em> quase carioca.</div>
+      <div><span class="perfil-verbo">incorporou</span><span class="perfil-verbo">virou</span><span class="perfil-verbo">morou</span></div>
+      <div class="perfil-audio">🔊 toque para ouvir</div>
+    </div>
+  </div>
+  <div class="perfil-card am-border" onclick="spk('Daniela Schwarzenegger, austríaca de 34 anos, trocou a pequena cidade de Muerzzuschlag por Parajuru, perto de Fortaleza.')">
+    <div class="perfil-flag">🇦🇹</div>
+    <div>
+      <div class="perfil-nome">Daniela Schwarzenegger, 34 anos · Áustria</div>
+      <div class="perfil-txt"><strong>Trocou</strong> a pequena Muerzzuschlag, na Áustria, por Parajuru — um distrito do município de Beberibe, a 120 km de Fortaleza.</div>
+      <div><span class="perfil-verbo">trocou</span><span class="perfil-verbo">escolheu</span></div>
+      <div class="perfil-audio">🔊 toque para ouvir</div>
+    </div>
+  </div>
+  <div class="perfil-card" onclick="spk('Valery Pereux, padeiro francês, reformou um casarão em São Luís. Ele diz: Adoro a simplicidade.')">
+    <div class="perfil-flag">🇫🇷</div>
+    <div>
+      <div class="perfil-nome">Valery Pereux · França</div>
+      <div class="perfil-txt">Padeiro francês que <strong>reformou</strong> um casarão histórico em São Luís, Maranhão. <em>"Adoro a simplicidade."</em></div>
+      <div><span class="perfil-verbo">reformou</span><span class="perfil-verbo">escolheu</span></div>
+      <div class="perfil-audio">🔊 toque para ouvir</div>
+    </div>
+  </div>
+</div>
+
+<!-- JEITINHO -->
+<div class="section" id="s-jeitinho">
+  <div class="sec-title">🇧🇷 O Jeitinho Brasileiro</div>
+  <div class="tip am"><div class="tip-lbl">🇧🇷 Conceito cultural</div><div class="tip-txt">No texto, Eric <em>"incorporou o jeitinho carioca"</em>. Mas o que é o <strong>jeitinho brasileiro</strong>?</div></div>
+  <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px">
+    <p style="font-size:clamp(13px,1.8vw,17px);color:#333;line-height:1.7;margin-bottom:12px">O <strong>"jeitinho brasileiro"</strong> é uma forma criativa e informal de resolver problemas, contornar obstáculos e encontrar soluções alternativas — muitas vezes usando relações pessoais ou criatividade.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#e8f5ee;border-radius:10px;padding:14px">
+        <div style="font-weight:800;color:var(--vd);margin-bottom:6px">✅ Lado positivo</div>
+        <div style="font-size:13px;color:#333;line-height:1.6">Criatividade · Flexibilidade · Adaptação · Otimismo · "Vai dar certo!"</div>
+      </div>
+      <div style="background:#fef2f2;border-radius:10px;padding:14px">
+        <div style="font-weight:800;color:var(--rs);margin-bottom:6px">⚠️ Lado negativo</div>
+        <div style="font-size:13px;color:#333;line-height:1.6">Pode contornar regras · Fura fila · "Quem tem padrinho não morre pagão"</div>
+      </div>
+    </div>
+  </div>
+  <div class="tip az"><div class="tip-lbl">💬 Debate</div><div class="tip-txt">Existe algo parecido no México? Como você descreveria? É algo positivo ou negativo na sua cultura?</div></div>
+  <div class="btn-row">
+    <button class="btn btn-vd" onclick="spk('Jeitinho brasileiro')">🔊 Jeitinho</button>
+    <button class="btn btn-az" onclick="spk('Se não tem jeito, dá um jeitinho!')">🔊 Expressão</button>
+  </div>
+</div>
+
+<!-- PP IRREGULARES -->
+<div class="section" id="s-pp">
+  <div class="sec-title">📝 Pretérito Perfeito — Verbos Irregulares</div>
+  <div class="tip az"><div class="tip-lbl">⚡ Atenção</div><div class="tip-txt">Estes verbos são muito comuns e precisam ser memorizados. Toque em cada forma para ouvir!</div></div>
+  <div class="conj-grid">
+    <div class="conj-box">
+      <div class="conj-head">SER / IR ⚠️</div>
+      <div class="conj-body">
+        <div class="conj-row"><span class="cp2">eu</span><span class="cv2" onclick="spk('fui')" style="cursor:pointer">fui 🔊</span></div>
+        <div class="conj-row"><span class="cp2">você/ele</span><span class="cv2" onclick="spk('foi')" style="cursor:pointer">foi 🔊</span></div>
+        <div class="conj-row"><span class="cp2">nós</span><span class="cv2" onclick="spk('fomos')" style="cursor:pointer">fomos 🔊</span></div>
+        <div class="conj-row"><span class="cp2">vocês/eles</span><span class="cv2" onclick="spk('foram')" style="cursor:pointer">foram 🔊</span></div>
+      </div>
+    </div>
+    <div class="conj-box">
+      <div class="conj-head">TER</div>
+      <div class="conj-body">
+        <div class="conj-row"><span class="cp2">eu</span><span class="cv2" onclick="spk('tive')" style="cursor:pointer">tive 🔊</span></div>
+        <div class="conj-row"><span class="cp2">você/ele</span><span class="cv2" onclick="spk('teve')" style="cursor:pointer">teve 🔊</span></div>
+        <div class="conj-row"><span class="cp2">nós</span><span class="cv2" onclick="spk('tivemos')" style="cursor:pointer">tivemos 🔊</span></div>
+        <div class="conj-row"><span class="cp2">vocês/eles</span><span class="cv2" onclick="spk('tiveram')" style="cursor:pointer">tiveram 🔊</span></div>
+      </div>
+    </div>
+    <div class="conj-box">
+      <div class="conj-head">FAZER</div>
+      <div class="conj-body">
+        <div class="conj-row"><span class="cp2">eu</span><span class="cv2" onclick="spk('fiz')" style="cursor:pointer">fiz 🔊</span></div>
+        <div class="conj-row"><span class="cp2">você/ele</span><span class="cv2" onclick="spk('fez')" style="cursor:pointer">fez 🔊</span></div>
+        <div class="conj-row"><span class="cp2">nós</span><span class="cv2" onclick="spk('fizemos')" style="cursor:pointer">fizemos 🔊</span></div>
+        <div class="conj-row"><span class="cp2">vocês/eles</span><span class="cv2" onclick="spk('fizeram')" style="cursor:pointer">fizeram 🔊</span></div>
+      </div>
+    </div>
+    <div class="conj-box">
+      <div class="conj-head">VIR</div>
+      <div class="conj-body">
+        <div class="conj-row"><span class="cp2">eu</span><span class="cv2" onclick="spk('vim')" style="cursor:pointer">vim 🔊</span></div>
+        <div class="conj-row"><span class="cp2">você/ele</span><span class="cv2" onclick="spk('veio')" style="cursor:pointer">veio 🔊</span></div>
+        <div class="conj-row"><span class="cp2">nós</span><span class="cv2" onclick="spk('viemos')" style="cursor:pointer">viemos 🔊</span></div>
+        <div class="conj-row"><span class="cp2">vocês/eles</span><span class="cv2" onclick="spk('vieram')" style="cursor:pointer">vieram 🔊</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tip vd"><div class="tip-lbl">⚠️ Atenção!</div><div class="tip-txt"><strong>SER e IR têm as mesmas formas</strong> no pretérito perfeito! O contexto indica qual é.<br>Ex: Ela <em>foi</em> engenheira. (SER) / Ela <em>foi</em> para o Brasil. (IR)</div></div>
+  <div class="btn-row">
+    <button class="btn btn-vd" onclick="spk('Eu fui ao Brasil e tive uma experiência incrível. Fiz amigos e vim embora transformada.')">🔊 Exemplo narrativo</button>
+  </div>
+</div>
+
+<!-- CONTRASTE PP × PI -->
+<div class="section" id="s-contraste">
+  <div class="sec-title">🔀 Pretérito Perfeito × Imperfeito</div>
+  <div class="tip az"><div class="tip-lbl">📌 Regra geral</div><div class="tip-txt"><strong>PP</strong> = ação pontual e completa no passado · <strong>PI</strong> = estado, hábito ou descrição no passado<br>Na narrativa, usamos os <strong>dois juntos</strong>: o PI dá o contexto, o PP avança a história.</div></div>
+  <table class="contraste-table">
+    <thead><tr><th>Contexto</th><th class="th-pp">✅ Pretérito Perfeito</th><th class="th-pi">🔄 Pretérito Imperfeito</th></tr></thead>
+    <tbody>
+      <tr><td>Uso</td><td class="pp-cell">ação que aconteceu e terminou</td><td class="pi-cell">estado / hábito / descrição</td></tr>
+      <tr><td>Exemplo 1</td><td class="pp-cell">Ela <strong>conseguiu</strong> uma vaga.</td><td class="pi-cell">Ela <strong>morava</strong> na França.</td></tr>
+      <tr><td>Exemplo 2</td><td class="pp-cell">Eric <strong>incorporou</strong> o jeitinho.</td><td class="pi-cell">Antes, ele <strong>era</strong> muito formal.</td></tr>
+      <tr><td>Exemplo 3</td><td class="pp-cell">Daniela <strong>trocou</strong> a Áustria.</td><td class="pi-cell">Ela <strong>queria</strong> vida mais simples.</td></tr>
+      <tr><td>Narrativa</td><td colspan="2" style="color:var(--az);font-weight:700">Antes <span class="pi-cell">ela morava</span> na França, mas <span class="pp-cell">teve</span> uma oportunidade e <span class="pp-cell">foi</span> para o Brasil.</td></tr>
+    </tbody>
+  </table>
+  <div class="btn-row">
+    <button class="btn btn-vd" onclick="spk('Antes ela morava na França, mas teve uma oportunidade e foi para o Brasil.')">🔊 Exemplo narrativo</button>
+    <button class="btn btn-az" onclick="spk('Eric era muito formal, mas incorporou o jeitinho carioca depois de dois anos no Rio.')">🔊 Eric</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 1: PP IRREGULARES -->
+<div class="section" id="s-a1">
+  <div class="ativ-card">
+    <div class="ativ-title">✏️ Atividade 1 — Complete com o verbo correto</div>
+    <div class="ativ-sub">Use o pretérito perfeito dos verbos indicados (regulares e irregulares).</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc1">0</span>/6</span><span class="stars" id="st1">☆☆☆☆☆☆</span></div>
+    <div style="margin-bottom:16px">
+      <div class="gap-sentence">Souraya <span class="gap" id="g0">_____</span> uma vaga em São Paulo. (conseguir)</div>
+      <div class="opts-row" id="opts0"><span class="opt" onclick="so(this,0,'conseguiu')">conseguiu</span><span class="opt" onclick="so(this,0,'teve')">teve</span><span class="opt" onclick="so(this,0,'fez')">fez</span></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="gap-sentence">Daniela <span class="gap" id="g1">_____</span> para o Brasil para ter uma vida mais simples. (ir)</div>
+      <div class="opts-row" id="opts1"><span class="opt" onclick="so(this,1,'foi')">foi</span><span class="opt" onclick="so(this,1,'veio')">veio</span><span class="opt" onclick="so(this,1,'fez')">fez</span></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="gap-sentence">Eric <span class="gap" id="g2">_____</span> muitos amigos cariocas em dois anos. (fazer)</div>
+      <div class="opts-row" id="opts2"><span class="opt" onclick="so(this,2,'fez')">fez</span><span class="opt" onclick="so(this,2,'foi')">foi</span><span class="opt" onclick="so(this,2,'teve')">teve</span></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="gap-sentence">Valery <span class="gap" id="g3">_____</span> uma oportunidade incrível em São Luís. (ter)</div>
+      <div class="opts-row" id="opts3"><span class="opt" onclick="so(this,3,'teve')">teve</span><span class="opt" onclick="so(this,3,'fez')">fez</span><span class="opt" onclick="so(this,3,'foi')">foi</span></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="gap-sentence">Os estrangeiros <span class="gap" id="g4">_____</span> ao Brasil por causa da tolerância e do jeito de viver. (vir)</div>
+      <div class="opts-row" id="opts4"><span class="opt" onclick="so(this,4,'vieram')">vieram</span><span class="opt" onclick="so(this,4,'foram')">foram</span><span class="opt" onclick="so(this,4,'fizeram')">fizeram</span></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="gap-sentence">A Nike <span class="gap" id="g5">_____</span> a maior campanha publicitária de sua história no Brasil. (fazer)</div>
+      <div class="opts-row" id="opts5"><span class="opt" onclick="so(this,5,'fez')">fez</span><span class="opt" onclick="so(this,5,'foi')">foi</span><span class="opt" onclick="so(this,5,'teve')">teve</span></div>
+    </div>
+    <button class="btn btn-gray" onclick="resetA1()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 2: PP × PI QUIZ -->
+<div class="section" id="s-a2">
+  <div class="ativ-card am">
+    <div class="ativ-title">✏️ Atividade 2 — PP ou Imperfeito?</div>
+    <div class="ativ-sub">Escolha o tempo verbal correto para cada contexto.</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="scQ">0</span>/4</span><span class="stars" id="stQ">☆☆☆☆</span></div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">1. Antes, Souraya _____ na França, mas depois conseguiu uma vaga no Brasil.</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(1,this,true)">A. <strong>morava</strong> (imperfeito — estado anterior)</button>
+        <button class="quiz-opt" onclick="chkQ(1,this,false)">B. <strong>morou</strong> (perfeito — ação pontual)</button>
+      </div>
+      <div class="quiz-explain" id="qexp1">✅ Correto! O imperfeito <strong>morava</strong> descreve o estado anterior (contexto). O perfeito <em>conseguiu</em> avança a história.</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fff8e1">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">2. Em 2014, a Nike _____ a campanha "Ouse Ser Brasileiro".</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(2,this,false)">A. <strong>lançava</strong> (imperfeito)</button>
+        <button class="quiz-opt" onclick="chkQ(2,this,true)">B. <strong>lançou</strong> (perfeito — ação datada)</button>
+      </div>
+      <div class="quiz-explain" id="qexp2">✅ Correto! A data "em 2014" indica uma ação pontual → pretérito perfeito <strong>lançou</strong>.</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fff8e1">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">3. Eric _____ muito formal antes de morar no Rio.</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(3,this,true)">A. <strong>era</strong> (imperfeito — descrição)</button>
+        <button class="quiz-opt" onclick="chkQ(3,this,false)">B. <strong>foi</strong> (perfeito)</button>
+      </div>
+      <div class="quiz-explain" id="qexp3">✅ Correto! <strong>era</strong> descreve uma característica que ele tinha — descrição no passado = imperfeito.</div>
+    </div>
+
+    <div style="padding-top:16px;border-top:2px solid #fff8e1">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">4. Quando _____ ao Brasil pela primeira vez, Daniela _____ imediatamente apaixonada.</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(4,this,true)">A. <strong>foi / ficou</strong> (duas ações pontuais)</button>
+        <button class="quiz-opt" onclick="chkQ(4,this,false)">B. <strong>ia / ficava</strong> (dois imperfeitos)</button>
+      </div>
+      <div class="quiz-explain" id="qexp4">✅ Correto! Ambas são ações pontuais: <strong>foi</strong> (chegou) e <strong>ficou</strong> (apaixonou-se) — os dois no pretérito perfeito.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUÇÃO ESCRITA -->
+<div class="section" id="s-prod">
+  <div class="ativ-card vd">
+    <div class="ativ-title">✍️ Produção — Imagine que você mora no Brasil!</div>
+    <div class="ativ-sub">Escreva um texto para o "Ig Brasil" (8-10 linhas) contando onde você mora e por que escolheu esse lugar.</div>
+    <div class="tip az" style="margin-bottom:14px"><div class="tip-lbl">📌 Inclua</div><div class="tip-txt">✅ Nome, idade, nacionalidade · ✅ Estado/cidade escolhida · ✅ Por que foi para o Brasil · ✅ Como era sua vida antes · ✅ O que mudou</div></div>
+    <div class="tip vd" style="margin-bottom:14px"><div class="tip-lbl">📝 Modelo</div><div class="tip-txt"><em>"Antes eu <strong>morava</strong> em (cidade), mas <strong>tive</strong> uma oportunidade incrível e <strong>vim</strong> para o Brasil. <strong>Escolhi</strong> (estado) porque..."</em></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+      <button class="btn btn-vd" style="font-size:12px" onclick="addT('Antes eu morava em..., mas tive uma oportunidade e vim para o Brasil.')">+ início</button>
+      <button class="btn btn-az" style="font-size:12px" onclick="addT('Escolhi (estado) porque...')">+ escolha</button>
+      <button class="btn btn-am" style="font-size:12px" onclick="addT('O que mais me surpreendeu foi...')">+ surpresa</button>
+      <button class="btn btn-vd" style="font-size:12px" onclick="addT('Já incorporei o jeitinho brasileiro e...')">+ jeitinho</button>
+    </div>
+    <textarea class="resp-area" id="rtexto" placeholder="Olá! Me chamo... Tenho... anos e sou (nacionalidade). Antes eu morava em..., mas..."></textarea>
+    <div class="btn-row">
+      <button class="btn btn-vd" onclick="ouv('rtexto')">🔊 Ouvir meu texto</button>
+      <button class="btn btn-gray" onclick="document.getElementById('rtexto').value=''">🗑️ Limpar</button>
+    </div>
+  </div>
+</div>
+
+<!-- OUSE SER -->
+<div class="section" id="s-ouse">
+  <div class="sec-title">🌍 Ouse Ser — Campanha do Seu País!</div>
+  <div class="tip am"><div class="tip-lbl">🎯 Atividade criativa</div><div class="tip-txt">Se a Nike fizesse uma campanha no seu país — com <strong>sua nacionalidade</strong> — quais características você escolheria? Argumente suas escolhas!</div></div>
+  <div class="ouse-box">
+    <div class="ouse-slogan">OUSE SER <span id="nac-preview">_____</span></div>
+    <div class="ouse-lbl">Sua nacionalidade:</div>
+    <input class="ouse-inp" id="o-nac" type="text" placeholder="Ex: mexicano, colombiano..." oninput="document.getElementById('nac-preview').textContent=this.value.toUpperCase()||'_____'">
+    <div class="ouse-lbl" style="margin-top:10px">3 características + justificativa:</div>
+    <input class="ouse-inp" id="o-c1" type="text" placeholder="1. Ex: criatividade — porque...">
+    <input class="ouse-inp" id="o-c2" type="text" placeholder="2. Ex: hospitalidade — porque...">
+    <input class="ouse-inp" id="o-c3" type="text" placeholder="3. Ex: resiliência — porque...">
+    <div class="ouse-lbl" style="margin-top:10px">Compare com o Brasil:</div>
+    <input class="ouse-inp" id="o-comp" type="text" placeholder="O Brasil e meu país têm em comum... mas são diferentes em...">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-vd" onclick="lerOuse()">🔊 Ouvir minha campanha!</button>
+    <button class="btn btn-az" onclick="ouv('o-comp')">🔊 Comparação</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+var pts=0;
+function addPts(n){pts+=n;document.getElementById('tb-pts').textContent='⭐ '+pts+' pts';}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1800);}
+function go(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});if(btn)btn.classList.add('active');}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(function(x){return x.lang==='pt-BR';});if(b.length)return b;return a.filter(function(x){return x.lang.startsWith('pt');});}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};document.addEventListener('touchstart',function u(){var x=new SpeechSynthesisUtterance('');x.volume=0;speechSynthesis.speak(x);document.removeEventListener('touchstart',u);},{once:true});}
+// A1
+var ans1=['conseguiu','foi','fez','teve','vieram','fez'];
+var done1=[false,false,false,false,false,false];var sc1v=0;
+function so(el,i,v){if(done1[i])return;var g=document.getElementById('g'+i);if(v===ans1[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done1[i]=true;sc1v++;document.getElementById('sc1').textContent=sc1v;var s=[];for(var j=0;j<6;j++)s.push(j<sc1v?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');spk(v);if(sc1v===6)setTimeout(function(){toast('🏆 Perfeito!');},600);}else{g.textContent=v;g.className='gap wrong';setTimeout(function(){g.textContent='_____';g.className='gap';el.classList.remove('selected');},700);toast('❌ Tente de novo!');}}
+function resetA1(){sc1v=0;done1=[false,false,false,false,false,false];document.getElementById('sc1').textContent='0';document.getElementById('st1').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){document.getElementById('g'+i).textContent='_____';document.getElementById('g'+i).className='gap';document.getElementById('opts'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';});}}
+// Quiz
+var scQv=0,doneQ={};
+function chkQ(n,el,correct){
+  if(doneQ[n])return;doneQ[n]=true;
+  el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(function(o){o.style.pointerEvents='none';});
+  if(correct){el.classList.add('correct');scQv++;document.getElementById('scQ').textContent=scQv;var s=[];for(var j=0;j<4;j++)s.push(j<scQv?'⭐':'☆');document.getElementById('stQ').textContent=s.join('');addPts(20);toast('✅ Correto! +20 pts');}
+  else{el.classList.add('wrong');toast('❌ Quase! Leia a explicação.');}
+  var exp=document.getElementById('qexp'+n);if(exp)exp.style.display='block';
+  if(scQv===4)setTimeout(function(){toast('🏆 Perfeito no PP × PI!');},600);
+}
+// Produção
+function addT(txt){var el=document.getElementById('rtexto');if(el.value.trim())el.value+=' '+txt;else el.value=txt;}
+function ouv(id){var el=document.getElementById(id);var v=el?el.value:'';if(!v.trim()){toast('Escreva algo primeiro!');return;}spk(v);addPts(10);toast('🔊 Ouvindo! +10 pts');}
+// Ouse
+function lerOuse(){var n=document.getElementById('o-nac').value||'...';var c1=document.getElementById('o-c1').value||'...';var c2=document.getElementById('o-c2').value||'...';var c3=document.getElementById('o-c3').value||'...';spk('Ouse ser '+n+'! As características são: '+c1+', '+c2+' e '+c3+'!');addPts(15);toast('🔊 +15 pts!');}
+</script>
+</body>
+</html>
