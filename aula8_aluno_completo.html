@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 8 — Artigos · Aluno | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--tl:#028090;--am:#F5A800;--az:#002776;--vd:#009C3B;--rs:#e8336d}
+body{background:#f0f6f7;font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:40px}
+.topbar{background:linear-gradient(135deg,#015a65,var(--tl));padding:clamp(10px,2vh,16px) clamp(14px,3vw,24px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.tb-wrap{display:flex;align-items:center;gap:10px}
+.tb-logo{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;flex-shrink:0}
+.tb-logo img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.tb-title{font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:clamp(13px,2vw,17px)}
+.tb-sub{color:rgba(255,255,255,.6);font-size:clamp(9px,1.3vw,12px)}
+.tb-pts{background:rgba(245,168,0,.2);border:1.5px solid rgba(245,168,0,.5);color:var(--am);font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:4px 12px;border-radius:20px}
+.idx-bar{background:#fff;border-bottom:2px solid #b2dde3;display:flex;overflow-x:auto;gap:4px;padding:8px 12px;position:sticky;top:62px;z-index:90;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.idx-bar::-webkit-scrollbar{height:3px}.idx-bar::-webkit-scrollbar-thumb{background:var(--tl);border-radius:2px}
+.idx-btn{background:none;border:1.5px solid #7cc8d0;color:#555;font-size:clamp(10px,1.4vw,13px);font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.idx-btn:hover,.idx-btn.active{background:var(--tl);border-color:var(--tl);color:#fff}
+.hero{background:linear-gradient(135deg,#015a65 0%,var(--tl) 60%,#02c39a 100%);padding:clamp(28px,5vh,48px) clamp(16px,4vw,32px);text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'📖';position:absolute;font-size:180px;opacity:.07;top:-20px;right:-20px}
+.hero-badge{background:rgba(245,168,0,.25);border:1.5px solid rgba(245,168,0,.6);color:var(--am);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:12px}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(26px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:clamp(13px,2vw,17px);color:rgba(255,255,255,.85);margin-bottom:16px}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:clamp(11px,1.5vw,14px);font-weight:700;padding:5px 14px;border-radius:20px}
+.section{padding:clamp(20px,3vh,32px) clamp(14px,4vw,28px);max-width:860px;margin:0 auto}
+.sec-title{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--tl),transparent)}
+.tip{border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(12px,2vw,18px);margin-bottom:16px}
+.tip.tl{background:#e0f4f6;border-left:4px solid var(--tl)}
+.tip.am{background:#fff8e1;border-left:4px solid var(--am)}
+.tip.vd{background:#e8f5ee;border-left:4px solid var(--vd)}
+.tip.rs{background:#fef2f2;border-left:4px solid var(--rs)}
+.tip-lbl{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
+.tip.tl .tip-lbl{color:var(--tl)}.tip.am .tip-lbl{color:#b36b00}.tip.vd .tip-lbl{color:var(--vd)}.tip.rs .tip-lbl{color:var(--rs)}
+.tip-txt{font-size:clamp(12px,1.7vw,16px);color:#333;line-height:1.6}
+/* Nome próprio */
+.cmp-box{background:#fff;border-radius:16px;padding:clamp(14px,2.2vh,22px);margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden}
+.cmp-header{display:flex;gap:0;margin-bottom:14px;border-radius:10px;overflow:hidden}
+.cmp-col{flex:1;padding:10px 14px;text-align:center}
+.cmp-col.br{background:#e0f4f6}.cmp-col.es{background:#fef2f2}
+.cmp-col-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(13px,1.9vw,17px);margin-bottom:6px}
+.cmp-col.br .cmp-col-title{color:var(--tl)}.cmp-col.es .cmp-col-title{color:var(--rs)}
+.cmp-ex{font-size:clamp(13px,1.8vw,17px);line-height:1.8;color:#222}
+/* País cards */
+.pais-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:16px}
+.pais-card{background:#fff;border:2px solid #b2dde3;border-radius:14px;padding:clamp(10px,1.5vh,16px) 8px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pais-card:hover{border-color:var(--tl);transform:translateY(-3px);box-shadow:0 6px 16px rgba(2,128,144,.15)}
+.pais-card.playing{border-color:var(--am);background:#fffbe6;transform:scale(1.05)}
+.pais-flag{font-size:clamp(22px,3.5vw,34px)}
+.pais-art{font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl)}
+.pais-nome{font-size:clamp(10px,1.3vw,13px);color:#666}
+/* Gênero table */
+.gen-table{width:100%;border-collapse:collapse;font-size:clamp(12px,1.7vw,16px);margin-bottom:16px}
+.gen-table th{padding:10px 14px;font-weight:700;text-align:center}
+.gen-table td{padding:10px 14px;border-bottom:1px solid #e0f4f6;color:#333;text-align:center}
+.gen-table tr:nth-child(even) td{background:#f5fcfd}
+.th-pt{background:var(--tl);color:#fff}.th-es{background:var(--az);color:#fff}.th-al{background:#fef2f2;color:var(--rs)}
+.pt-cell{color:var(--tl);font-weight:800}.es-cell{color:var(--az);font-weight:800}.al-cell{color:var(--rs);font-weight:700}
+/* Crase */
+.crase-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.crase-card{border-radius:14px;padding:clamp(12px,1.8vh,20px)}
+.crase-card.sim{background:#e8f5ee;border:2px solid #a8d8b4}
+.crase-card.nao{background:#fef2f2;border:2px solid #fca5a5}
+.crase-title{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(14px,2vw,18px);margin-bottom:8px}
+.crase-card.sim .crase-title{color:var(--vd)}.crase-card.nao .crase-title{color:var(--rs)}
+.crase-ex{font-size:clamp(13px,1.8vw,17px);line-height:1.8;color:#222}
+/* Atividades */
+.ativ-card{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,24px);margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:4px solid var(--tl)}
+.ativ-card.am{border-top-color:var(--am)}.ativ-card.vd{border-top-color:var(--vd)}.ativ-card.rs{border-top-color:var(--rs)}
+.ativ-title{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;color:var(--az);margin-bottom:6px}
+.ativ-sub{font-size:clamp(12px,1.6vw,15px);color:#666;margin-bottom:14px;font-style:italic}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.score-txt{font-size:14px;color:#555;font-weight:700}.stars{font-size:18px;letter-spacing:2px}
+/* Gap fill */
+.gap-sent{font-size:clamp(14px,2.2vw,19px);color:#222;line-height:2.4;margin-bottom:10px}
+.gap{display:inline-block;min-width:80px;border-bottom:2.5px solid var(--tl);text-align:center;padding:2px 8px;font-weight:800;color:var(--tl);cursor:pointer;transition:all .2s;border-radius:4px 4px 0 0}
+.gap.correct{background:#e0f4f6;color:var(--tl);border-color:var(--tl)}
+.gap.wrong{background:#fef2f2;color:var(--rs);border-color:var(--rs);animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.opt{background:#f0f9fa;border:2px solid #7cc8d0;border-radius:20px;padding:6px 16px;font-size:clamp(12px,1.7vw,16px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:'Nunito',sans-serif}
+.opt:hover{border-color:var(--tl);background:#e0f4f6}
+.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+/* Quiz */
+.quiz-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.quiz-opt{background:#f0f9fa;border:2px solid #7cc8d0;border-radius:12px;padding:12px 16px;font-size:clamp(13px,1.8vw,17px);cursor:pointer;transition:all .2s;text-align:left;font-family:'Nunito',sans-serif;font-weight:600}
+.quiz-opt:hover{border-color:var(--tl);background:#e0f4f6}
+.quiz-opt.correct{border-color:var(--vd);background:#e8f5ee;color:var(--vd);pointer-events:none}
+.quiz-opt.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);pointer-events:none}
+.quiz-explain{display:none;background:#f0f9fa;border-radius:8px;padding:10px 14px;font-size:clamp(12px,1.6vw,15px);color:#333;line-height:1.5;margin-top:8px}
+/* Match */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-item{background:#f0f9fa;border:2px solid #7cc8d0;border-radius:10px;padding:10px 14px;font-size:clamp(12px,1.8vw,16px);font-weight:700;cursor:pointer;transition:all .2s;text-align:center;font-family:'Nunito',sans-serif}
+.match-item:hover{border-color:var(--tl);background:#e0f4f6}
+.match-item.selected{border-color:var(--am);background:#fff8e1;color:var(--az)}
+.match-item.correct{border-color:var(--vd);background:#e8f5ee;color:var(--vd);pointer-events:none}
+.match-item.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);animation:shake .3s}
+.btn{border:none;border-radius:10px;padding:9px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.btn-tl{background:var(--tl);color:#fff}.btn-vd{background:var(--vd);color:#fff}
+.btn-am{background:var(--am);color:#fff}.btn-gray{background:#888;color:#fff}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#333;color:#fff;padding:10px 22px;border-radius:22px;font-size:14px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-wrap">
+    <div class="tb-logo"><img id="tblogo" src="" alt="EB"></div>
+    <div><div class="tb-title">Enlace Brasil</div><div class="tb-sub">Aula 8 · Artigos · Complemento · A1</div></div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="go('s-def',this)">📖 Definidos</button>
+  <button class="idx-btn" onclick="go('s-indef',this)">📋 Indefinidos</button>
+  <button class="idx-btn" onclick="go('s-resumo',this)">🔀 Resumo</button>
+  <button class="idx-btn" onclick="go('s-ptes',this)">PT×ES</button>
+  <button class="idx-btn" onclick="go('s-prep',this)">🔗 Preposições</button>
+  <button class="idx-btn" onclick="go('s-ex1',this)">✏️ Ex.1</button>
+  <button class="idx-btn" onclick="go('s-ex2',this)">✏️ Ex.2</button>
+  <button class="idx-btn" onclick="go('s-nome',this)">👤 Nome prop.</button>
+  <button class="idx-btn" onclick="go('s-genero',this)">⚠️ Gêneros</button>
+  <button class="idx-btn" onclick="go('s-paises',this)">🌍 Países</button>
+  <button class="idx-btn" onclick="go('s-crase',this)">📝 Crase à</button>
+  <button class="idx-btn" onclick="go('s-a1',this)">✏️ Ativ.1</button>
+  <button class="idx-btn" onclick="go('s-a2',this)">✏️ Ativ.2</button>
+  <button class="idx-btn" onclick="go('s-a3',this)">✏️ Ativ.3</button>
+  <button class="idx-btn" onclick="go('s-quiz',this)">🎮 Quiz</button>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">AULA 8 · COMPLEMENTO · A1</div>
+  <div class="hero-title">📖 Artigos em<br><span>Português!</span></div>
+  <div class="hero-desc">Nome próprio · Gêneros ≠ espanhol · Países · Crase à</div>
+  <div class="pill-row">
+    <span class="pill">a Maria 🇧🇷</span><span class="pill">a árvore ≠ el árbol</span>
+    <span class="pill">o Brasil</span><span class="pill">à escola</span>
+  </div>
+</div>
+
+<!-- NOME PRÓPRIO -->
+
+<!-- ══ ARTIGOS DEFINIDOS ══════════════════════════════════════════ -->
+<div class="section" id="s-def">
+  <div class="sec-title">📖 Artigos Definidos</div>
+  <div class="tip tl"><div class="tip-lbl">📌 Quando usar?</div><div class="tip-txt">Usamos quando falamos de algo <strong>já conhecido</strong>, algo <strong>específico</strong> ou algo mencionado <strong>pela segunda vez</strong>.</div></div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
+    <div onclick="spk('o')" style="background:var(--tl);border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">o</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">masculino singular</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">O professor é educado.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spk('a')" style="background:#015a65;border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">a</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">feminino singular</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">A aula é à noite.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spk('os')" style="background:var(--tl);border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">os</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">masculino plural</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">Os alunos estudam.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spk('as')" style="background:#015a65;border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">as</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">feminino plural</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">As aulas são boas.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+  </div>
+  <div class="tip tl"><div class="tip-lbl">💡 Quando usar definido?</div><div class="tip-txt">
+    🎯 <strong>Algo já conhecido:</strong> "O professor está aqui." (sabemos quem é)<br>
+    🔍 <strong>Algo específico:</strong> "A caneta está na mesa." (aquela caneta)<br>
+    🔁 <strong>Segunda menção:</strong> "Comprei um carro. <em>O carro</em> é bonito."
+  </div></div>
+  <div class="btn-row">
+    <button class="btn btn-tl" onclick="spk('o, a, os, as')">🔊 Ouvir todos</button>
+  </div>
+</div>
+
+<!-- ══ ARTIGOS INDEFINIDOS ════════════════════════════════════════ -->
+<div class="section" id="s-indef">
+  <div class="sec-title">📋 Artigos Indefinidos</div>
+  <div class="tip am"><div class="tip-lbl">📌 Quando usar?</div><div class="tip-txt">Usamos quando falamos de algo <strong>não específico</strong>, algo <strong>novo</strong> ou ainda não mencionado.</div></div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
+    <div onclick="spk('um')" style="background:var(--vd);border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">um</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">masculino singular</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">Tenho um irmão.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spk('uma')" style="background:#007a2f;border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">uma</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">feminino singular</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">Moro em uma casa.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spk('uns')" style="background:var(--vd);border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">uns</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">masculino plural</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">Tenho uns amigos.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spk('umas')" style="background:#007a2f;border-radius:16px;padding:clamp(16px,2.5vh,26px);text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(40px,8vw,72px);font-weight:800;color:#fff;line-height:1">umas</div>
+      <div style="color:rgba(255,255,255,.75);font-size:clamp(11px,1.5vw,15px)">feminino plural</div>
+      <div style="color:rgba(255,255,255,.6);font-size:clamp(11px,1.4vw,14px);font-style:italic;margin-top:4px">Compro umas coisas.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px">🔊 toque para ouvir</div>
+    </div>
+  </div>
+  <div class="tip rs"><div class="tip-lbl">⚠️ Atenção!</div><div class="tip-txt">O plural de <strong>UM</strong> é <strong>UNS</strong> — não existe "umos"!<br>O plural de <strong>UMA</strong> é <strong>UMAS</strong> — não existe "umas" com "o"!</div></div>
+  <div class="btn-row">
+    <button class="btn btn-vd" onclick="spk('um, uma, uns, umas')">🔊 Ouvir todos</button>
+  </div>
+</div>
+
+<!-- ══ QUADRO RESUMO ══════════════════════════════════════════════ -->
+<div class="section" id="s-resumo">
+  <div class="sec-title">🔀 Quadro Resumo</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Comparação</div><div class="tip-txt">Toque em cada artigo para ouvir a pronúncia!</div></div>
+  <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;font-family:'Baloo 2',sans-serif">
+      <div style="background:var(--az);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:13px">Gênero/Número</div>
+      <div style="background:var(--tl);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:13px">DEFINIDO</div>
+      <div style="background:var(--vd);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:13px">INDEFINIDO</div>
+      <div style="padding:12px;color:#555;font-size:13px;border-bottom:1px solid #f0f0f0">Masc. singular</div>
+      <div onclick="spk('o')" style="padding:12px;text-align:center;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl)">o</div>
+      <div onclick="spk('um')" style="padding:12px;text-align:center;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--vd)">um</div>
+      <div style="padding:12px;color:#555;font-size:13px;border-bottom:1px solid #f0f0f0">Fem. singular</div>
+      <div onclick="spk('a')" style="padding:12px;text-align:center;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl)">a</div>
+      <div onclick="spk('uma')" style="padding:12px;text-align:center;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--vd)">uma</div>
+      <div style="padding:12px;color:#555;font-size:13px;border-bottom:1px solid #f0f0f0">Masc. plural</div>
+      <div onclick="spk('os')" style="padding:12px;text-align:center;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl)">os</div>
+      <div onclick="spk('uns')" style="padding:12px;text-align:center;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--vd)">uns</div>
+      <div style="padding:12px;color:#555;font-size:13px">Fem. plural</div>
+      <div onclick="spk('as')" style="padding:12px;text-align:center;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl)">as</div>
+      <div onclick="spk('umas')" style="padding:12px;text-align:center;cursor:pointer;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--vd)">umas</div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-tl" onclick="spk('o, a, os, as')">🔊 Definidos</button>
+    <button class="btn btn-vd" onclick="spk('um, uma, uns, umas')">🔊 Indefinidos</button>
+  </div>
+</div>
+
+<!-- ══ PT × ES ════════════════════════════════════════════════════ -->
+<div class="section" id="s-ptes">
+  <div class="sec-title">🔀 Português × Espanhol</div>
+  <div class="tip tl"><div class="tip-lbl">🔊 Toque nas linhas</div><div class="tip-txt">Toque em cada linha para ouvir o exemplo em português!</div></div>
+  <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px">
+    <div style="display:grid;grid-template-columns:.5fr .5fr 1fr;font-family:'Baloo 2',sans-serif">
+      <div style="background:var(--tl);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:13px">PT 🇧🇷</div>
+      <div style="background:var(--az);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:13px">ES 🇪🇸</div>
+      <div style="background:#f0f4fb;color:var(--az);padding:10px;text-align:center;font-weight:800;font-size:13px">Exemplo PT</div>
+      <div onclick="spk('o')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#f5fcfd">o</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#f5fcfd">el</div>
+      <div onclick="spk('O professor está aqui.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#f5fcfd">O professor está aqui. 🔊</div>
+      <div onclick="spk('a')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#fff">a</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#fff">la</div>
+      <div onclick="spk('A aula é à noite.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#fff">A aula é à noite. 🔊</div>
+      <div onclick="spk('os')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#f5fcfd">os</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#f5fcfd">los</div>
+      <div onclick="spk('Os alunos estudam.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#f5fcfd">Os alunos estudam. 🔊</div>
+      <div onclick="spk('as')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#fff">as</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#fff">las</div>
+      <div onclick="spk('As aulas são boas.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#fff">As aulas são boas. 🔊</div>
+      <div onclick="spk('um')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#f5fcfd">um</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#f5fcfd">un</div>
+      <div onclick="spk('Tenho um irmão.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#f5fcfd">Tenho um irmão. 🔊</div>
+      <div onclick="spk('uma')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#fff">uma</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#fff">una</div>
+      <div onclick="spk('Moro em uma casa.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#fff">Moro em uma casa. 🔊</div>
+      <div onclick="spk('uns')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#f5fcfd">uns</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#f5fcfd">unos</div>
+      <div onclick="spk('Tenho uns amigos.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#f5fcfd">Tenho uns amigos. 🔊</div>
+      <div onclick="spk('umas')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl);background:#fff">umas</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--az);background:#fff">unas</div>
+      <div onclick="spk('Compro umas coisas.')" style="padding:11px;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(12px,1.6vw,15px);color:#333;background:#fff">Compro umas coisas. 🔊</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PREPOSIÇÕES + ARTIGOS ════════════════════════════════════= -->
+<div class="section" id="s-prep">
+  <div class="sec-title">🔗 Preposições + Artigos</div>
+  <div class="tip am"><div class="tip-lbl">📌 Contrações obrigatórias</div><div class="tip-txt">Em português, <strong>de + artigo</strong> e <strong>em + artigo</strong> sempre se fundem! Toque nos resultados para ouvir.</div></div>
+  <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;font-family:'Baloo 2',sans-serif">
+      <div style="background:var(--tl);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:12px">Artigo</div>
+      <div style="background:var(--az);color:#fff;padding:10px;text-align:center;font-weight:800;font-size:12px">+</div>
+      <div style="background:#b36b00;color:#fff;padding:10px;text-align:center;font-weight:800;font-size:12px">DE +</div>
+      <div style="background:#004aad;color:#fff;padding:10px;text-align:center;font-weight:800;font-size:12px">EM +</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,20px);font-weight:800;color:var(--tl);background:#f5fcfd">o</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(11px,1.4vw,14px);color:#888;background:#f5fcfd">de+o / em+o</div>
+      <div onclick="spk('do')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#b36b00;background:#f5fcfd">do 🔊</div>
+      <div onclick="spk('no')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#004aad;background:#f5fcfd">no 🔊</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,20px);font-weight:800;color:var(--tl);background:#fff">a</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(11px,1.4vw,14px);color:#888;background:#fff">de+a / em+a</div>
+      <div onclick="spk('da')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#b36b00;background:#fff">da 🔊</div>
+      <div onclick="spk('na')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#004aad;background:#fff">na 🔊</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,20px);font-weight:800;color:var(--tl);background:#f5fcfd">os</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(11px,1.4vw,14px);color:#888;background:#f5fcfd">de+os / em+os</div>
+      <div onclick="spk('dos')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#b36b00;background:#f5fcfd">dos 🔊</div>
+      <div onclick="spk('nos')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#004aad;background:#f5fcfd">nos 🔊</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(16px,2.5vw,20px);font-weight:800;color:var(--tl);background:#fff">as</div>
+      <div style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;font-size:clamp(11px,1.4vw,14px);color:#888;background:#fff">de+as / em+as</div>
+      <div onclick="spk('das')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#b36b00;background:#fff">das 🔊</div>
+      <div onclick="spk('nas')" style="padding:11px;text-align:center;border-bottom:1px solid #f0f4fb;cursor:pointer;font-size:clamp(18px,3vw,24px);font-weight:800;color:#004aad;background:#fff">nas 🔊</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px">
+    <div onclick="spk('Sou do Brasil.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl)">do</div>
+      <div style="font-size:clamp(12px,1.6vw,15px);color:#333;margin-top:2px">Sou do Brasil.</div>
+      <div style="font-size:11px;color:#aaa;margin-top:2px">de+o · 🔊 toque</div>
+    </div>
+    <div onclick="spk('Venho da escola.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl)">da</div>
+      <div style="font-size:clamp(12px,1.6vw,15px);color:#333;margin-top:2px">Venho da escola.</div>
+      <div style="font-size:11px;color:#aaa;margin-top:2px">de+a · 🔊 toque</div>
+    </div>
+    <div onclick="spk('Moro no México.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl)">no</div>
+      <div style="font-size:clamp(12px,1.6vw,15px);color:#333;margin-top:2px">Moro no México.</div>
+      <div style="font-size:11px;color:#aaa;margin-top:2px">em+o · 🔊 toque</div>
+    </div>
+    <div onclick="spk('Estou na aula.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--tl)">na</div>
+      <div style="font-size:clamp(12px,1.6vw,15px);color:#333;margin-top:2px">Estou na aula.</div>
+      <div style="font-size:11px;color:#aaa;margin-top:2px">em+a · 🔊 toque</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EXERCÍCIO 1 ═══════════════════════════════════════════════ -->
+<div class="section" id="s-ex1">
+  <div class="sec-title">✏️ Exercício 1 — Artigo Definido</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Como jogar</div><div class="tip-txt">Toque em cada palavra para revelar o artigo correto!</div></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:14px">
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ casa</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ apartamento</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ rua</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ bairro</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ sopa</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ suco</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'as')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ meninas</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">as</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'os')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ meninos</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">os</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'as')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ mulheres</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">as</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'os')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ homens</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">os</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'as')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ canetas</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">as</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'os')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ envelopes</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">os</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EXERCÍCIO 2 ═══════════════════════════════════════════════ -->
+<div class="section" id="s-ex2">
+  <div class="sec-title">✏️ Exercício 2 — Substantivos e Artigos</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Como jogar</div><div class="tip-txt">Toque para revelar o artigo!</div></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:14px">
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ sobremesa</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ computador</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ caneta</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ mala</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ suco</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ calculadora</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ cartão</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ dinheiro</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ crachá</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'a')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ borracha</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">a</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ gerente</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ café</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ documento</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ caderno</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ presidente</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="revealEx(this,'o')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <div class="ex-word" style="font-size:clamp(12px,1.6vw,16px);font-weight:700;color:#333">___ filme</div>
+      <div class="ex-art" style="display:none;font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,32px);font-weight:800;color:var(--tl)">o</div>
+      <div class="ex-tip" style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s-nome">
+  <div class="sec-title">👤 Artigo + Nome Próprio</div>
+  <div class="tip am"><div class="tip-lbl">🇧🇷 Muito Brasileiro!</div><div class="tip-txt">Em Portugal e no espanhol, NÃO se usa artigo com nomes. Mas no <strong>Brasil</strong>, é muito comum! É uma das características mais marcantes do português brasileiro.</div></div>
+
+  <div class="cmp-box">
+    <div class="cmp-header">
+      <div class="cmp-col br"><div class="cmp-col-title">🇧🇷 Brasil ✅</div>
+        <div class="cmp-ex">
+          <strong style="color:var(--tl)">A</strong> Maria mora aqui.<br>
+          <strong style="color:var(--tl)">O</strong> João chegou.<br>
+          <strong style="color:var(--tl)">A</strong> Ana é professora.<br>
+          <strong style="color:var(--tl)">O</strong> Pedro viajou.
+        </div>
+      </div>
+      <div class="cmp-col es"><div class="cmp-col-title">🇪🇸 Espanhol ❌</div>
+        <div class="cmp-ex">
+          <span style="color:var(--rs)">❌</span> La María vive aquí.<br>
+          <span style="color:var(--rs)">❌</span> El Juan llegó.<br>
+          <span style="color:var(--vd)">✅</span> María vive aquí.<br>
+          <span style="color:var(--vd)">✅</span> Juan llegó.
+        </div>
+      </div>
+    </div>
+    <div class="tip tl" style="margin:0"><div class="tip-lbl">💡 Regra</div><div class="tip-txt">No Brasil usamos artigo com nomes de pessoas <strong>conhecidas ou íntimas</strong>. Com pessoas formais ou desconhecidas, podemos omitir.</div></div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+    <div onclick="spkC(this,'A Maria mora no Brasil.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .2s;flex:1;min-width:200px" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(14px,2vw,18px);color:var(--az)">A Maria mora no Brasil.</div>
+      <div style="font-size:12px;color:#888;margin-top:3px;font-style:italic">María vive en Brasil. 🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spkC(this,'O Carlos é professor.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .2s;flex:1;min-width:200px" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(14px,2vw,18px);color:var(--az)">O Carlos é professor.</div>
+      <div style="font-size:12px;color:#888;margin-top:3px;font-style:italic">Carlos es profesor. 🔊 toque para ouvir</div>
+    </div>
+    <div onclick="spkC(this,'A Ana e o Pedro são amigos.')" style="background:#fff;border:2px solid #b2dde3;border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .2s;flex:1;min-width:200px" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#b2dde3'">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(14px,2vw,18px);color:var(--az)">A Ana e o Pedro são amigos.</div>
+      <div style="font-size:12px;color:#888;margin-top:3px;font-style:italic">Ana y Pedro son amigos. 🔊 toque para ouvir</div>
+    </div>
+  </div>
+</div>
+
+<!-- GÊNEROS -->
+<div class="section" id="s-genero">
+  <div class="sec-title">⚠️ Gêneros PT ≠ ES</div>
+  <div class="tip rs"><div class="tip-lbl">⚠️ Cuidado!</div><div class="tip-txt">Algumas palavras têm gênero <strong>diferente</strong> em português e espanhol. Aprenda sempre o artigo junto com a palavra nova!</div></div>
+  <table class="gen-table">
+    <thead><tr><th class="th-pt">🇧🇷 Português</th><th class="th-es">🇪🇸 Espanhol</th><th class="th-al">⚠️</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pt-cell">a</span> árvore 🌳</td><td><span class="es-cell">el</span> árbol</td><td class="al-cell">F→M</td></tr>
+      <tr><td><span class="pt-cell">o</span> leite 🥛</td><td><span class="es-cell">la</span> leche</td><td class="al-cell">M→F</td></tr>
+      <tr><td><span class="pt-cell">o</span> sangue 🩸</td><td><span class="es-cell">la</span> sangre</td><td class="al-cell">M→F</td></tr>
+      <tr><td><span class="pt-cell">a</span> ponte 🌉</td><td><span class="es-cell">el</span> puente</td><td class="al-cell">F→M</td></tr>
+      <tr><td><span class="pt-cell">o</span> nariz 👃</td><td><span class="es-cell">la</span> nariz</td><td class="al-cell">M→F</td></tr>
+      <tr><td><span class="pt-cell">a</span> cor 🎨</td><td><span class="es-cell">el</span> color</td><td class="al-cell">F→M</td></tr>
+      <tr><td><span class="pt-cell">o</span> mel 🍯</td><td><span class="es-cell">la</span> miel</td><td class="al-cell">M→F</td></tr>
+      <tr><td><span class="pt-cell">a</span> dor 🤕</td><td><span class="es-cell">el</span> dolor</td><td class="al-cell">F→M</td></tr>
+    </tbody>
+  </table>
+  <div class="btn-row">
+    <button class="btn btn-tl" onclick="spk('a árvore, o leite, o sangue, a ponte, o nariz, a cor, o mel, a dor')">🔊 Ouvir em português</button>
+  </div>
+</div>
+
+<!-- PAÍSES -->
+<div class="section" id="s-paises">
+  <div class="sec-title">🌍 Artigos com Países</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Diferença do espanhol</div><div class="tip-txt">Em espanhol, os países geralmente não levam artigo. Em português, a maioria <strong>exige artigo</strong>! Toque em cada país para ouvir.</div></div>
+  <div class="pais-grid">
+    <div class="pais-card" onclick="spkPC(this,'o Brasil')"><div class="pais-flag">🇧🇷</div><div class="pais-art">o</div><div class="pais-nome">Brasil</div></div>
+    <div class="pais-card" onclick="spkPC(this,'o México')"><div class="pais-flag">🇲🇽</div><div class="pais-art">o</div><div class="pais-nome">México</div></div>
+    <div class="pais-card" onclick="spkPC(this,'a França')"><div class="pais-flag">🇫🇷</div><div class="pais-art">a</div><div class="pais-nome">França</div></div>
+    <div class="pais-card" onclick="spkPC(this,'a Alemanha')"><div class="pais-flag">🇩🇪</div><div class="pais-art">a</div><div class="pais-nome">Alemanha</div></div>
+    <div class="pais-card" onclick="spkPC(this,'os Estados Unidos')"><div class="pais-flag">🇺🇸</div><div class="pais-art">os</div><div class="pais-nome">EUA</div></div>
+    <div class="pais-card" onclick="spkPC(this,'a Argentina')"><div class="pais-flag">🇦🇷</div><div class="pais-art">a</div><div class="pais-nome">Argentina</div></div>
+    <div class="pais-card" onclick="spkPC(this,'a China')"><div class="pais-flag">🇨🇳</div><div class="pais-art">a</div><div class="pais-nome">China</div></div>
+    <div class="pais-card" onclick="spkPC(this,'o Japão')"><div class="pais-flag">🇯🇵</div><div class="pais-art">o</div><div class="pais-nome">Japão</div></div>
+    <div class="pais-card" onclick="spkPC(this,'a Itália')"><div class="pais-flag">🇮🇹</div><div class="pais-art">a</div><div class="pais-nome">Itália</div></div>
+    <div class="pais-card" onclick="spkPC(this,'Portugal')"><div class="pais-flag">🇵🇹</div><div class="pais-art" style="color:var(--rs)">—</div><div class="pais-nome">Portugal ⚠️</div></div>
+  </div>
+  <div class="tip rs"><div class="tip-lbl">⚠️ Exceção importante</div><div class="tip-txt"><strong>Portugal</strong> não leva artigo! Dizemos <em>"Moro em Portugal"</em> — nunca "no Portugal".</div></div>
+  <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:14px">
+    <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);margin-bottom:10px;font-size:clamp(14px,2vw,18px)">🔄 Países + preposição em</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:clamp(13px,1.8vw,17px)">
+      <div onclick="spk('Moro no Brasil.')" style="cursor:pointer;padding:8px;border-radius:8px;background:#f0f9fa;transition:all .2s" onmouseover="this.style.background='#e0f4f6'" onmouseout="this.style.background='#f0f9fa'">🇧🇷 Moro <strong style="color:var(--tl)">no</strong> Brasil. <span style="font-size:.8em;color:#888">(em+o)</span></div>
+      <div onclick="spk('Moro na França.')" style="cursor:pointer;padding:8px;border-radius:8px;background:#f0f9fa;transition:all .2s" onmouseover="this.style.background='#e0f4f6'" onmouseout="this.style.background='#f0f9fa'">🇫🇷 Moro <strong style="color:var(--tl)">na</strong> França. <span style="font-size:.8em;color:#888">(em+a)</span></div>
+      <div onclick="spk('Moro nos Estados Unidos.')" style="cursor:pointer;padding:8px;border-radius:8px;background:#f0f9fa;transition:all .2s" onmouseover="this.style.background='#e0f4f6'" onmouseout="this.style.background='#f0f9fa'">🇺🇸 Moro <strong style="color:var(--tl)">nos</strong> EUA. <span style="font-size:.8em;color:#888">(em+os)</span></div>
+      <div onclick="spk('Moro em Portugal.')" style="cursor:pointer;padding:8px;border-radius:8px;background:#fef2f2;transition:all .2s" onmouseover="this.style.background='#fde8e8'" onmouseout="this.style.background='#fef2f2'">🇵🇹 Moro <strong style="color:var(--rs)">em</strong> Portugal. <span style="font-size:.8em;color:#888">(sem artigo!)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CRASE -->
+<div class="section" id="s-crase">
+  <div class="sec-title">📝 Contração À — Crase</div>
+  <div class="tip am"><div class="tip-lbl">📌 O que é?</div><div class="tip-txt">A crase (<strong>à</strong>) acontece quando a preposição <em>"a"</em> encontra o artigo <em>"a"</em>. Usamos o acento grave: <strong>a + a = à</strong></div></div>
+
+  <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px;text-align:center">
+    <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(24px,5vw,48px);font-weight:800;color:#333;margin-bottom:6px">
+      <span style="color:#888">a</span> + <span style="color:var(--tl)">a</span> = <span style="color:var(--vd)">à</span>
+    </div>
+    <div style="font-size:clamp(13px,1.8vw,17px);color:#555">preposição + artigo = crase</div>
+  </div>
+
+  <div class="crase-cards">
+    <div class="crase-card sim">
+      <div class="crase-title">✅ Com crase (à)</div>
+      <div class="crase-ex">
+        Vou <strong>à</strong> escola. 🏫<br>
+        Vou <strong>à</strong> praia. 🏖️<br>
+        Chego <strong>às</strong> 8h. 🕗<br>
+        Vou <strong>à</strong> farmácia. 💊<br>
+        <strong>À</strong> meia-noite. 🌙
+      </div>
+    </div>
+    <div class="crase-card nao">
+      <div class="crase-title">❌ Sem crase</div>
+      <div class="crase-ex">
+        Vou <strong>ao</strong> banco. 🏦 (a+o)<br>
+        Vou <strong>ao</strong> mercado. 🛒<br>
+        Vou <strong>a</strong> Portugal. 🇵🇹<br>
+        Falo <strong>de</strong> manhã. ☀️<br>
+        Começa <strong>em</strong> março. 📅
+      </div>
+    </div>
+  </div>
+  <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:14px">
+    <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);margin-bottom:10px">🍽️ Curiosidade — Nos menus brasileiros!</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span onclick="spk('arroz à grega')" style="background:#e0f4f6;border:1.5px solid #7cc8d0;border-radius:10px;padding:6px 12px;cursor:pointer;font-weight:700;font-size:clamp(12px,1.6vw,15px)">🍚 arroz à grega</span>
+      <span onclick="spk('bife à milanesa')" style="background:#e0f4f6;border:1.5px solid #7cc8d0;border-radius:10px;padding:6px 12px;cursor:pointer;font-weight:700;font-size:clamp(12px,1.6vw,15px)">🥩 bife à milanesa</span>
+      <span onclick="spk('frango à parmegiana')" style="background:#e0f4f6;border:1.5px solid #7cc8d0;border-radius:10px;padding:6px 12px;cursor:pointer;font-weight:700;font-size:clamp(12px,1.6vw,15px)">🍗 frango à parmegiana</span>
+      <span onclick="spk('café à moda brasileira')" style="background:#e0f4f6;border:1.5px solid #7cc8d0;border-radius:10px;padding:6px 12px;cursor:pointer;font-weight:700;font-size:clamp(12px,1.6vw,15px)">☕ café à moda brasileira</span>
+    </div>
+  </div>
+</div>
+
+<!-- ATIVIDADE 1: NOME PRÓPRIO -->
+<div class="section" id="s-a1">
+  <div class="ativ-card">
+    <div class="ativ-title">✏️ Atividade 1 — Artigo + Nome Próprio</div>
+    <div class="ativ-sub">Complete com o artigo correto (o / a) — estilo brasileiro!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc1">0</span>/5</span><span class="stars" id="st1">☆☆☆☆☆</span></div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent"><span class="gap" id="g0">___</span> Maria mora no México.</div>
+      <div class="opts-row" id="opts0"><span class="opt" onclick="so(this,0,'A')">A</span><span class="opt" onclick="so(this,0,'O')">O</span><span class="opt" onclick="so(this,0,'Um')">Um</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent"><span class="gap" id="g1">___</span> Pedro chegou cedo hoje.</div>
+      <div class="opts-row" id="opts1"><span class="opt" onclick="so(this,1,'O')">O</span><span class="opt" onclick="so(this,1,'A')">A</span><span class="opt" onclick="so(this,1,'Os')">Os</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent"><span class="gap" id="g2">___</span> Ana e <span class="gap" id="g2b">___</span> Carlos são irmãos.</div>
+      <div class="opts-row" id="opts2"><span class="opt" onclick="soDouble(this,'A','O')">A / O</span><span class="opt" onclick="soDouble(this,'O','A')">O / A</span><span class="opt" onclick="soDouble(this,'Um','Uma')">Um / Uma</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent"><span class="gap" id="g3">___</span> Sofia é professora de português.</div>
+      <div class="opts-row" id="opts3"><span class="opt" onclick="so(this,3,'A')">A</span><span class="opt" onclick="so(this,3,'O')">O</span><span class="opt" onclick="so(this,3,'Uma')">Uma</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent"><span class="gap" id="g4">___</span> Roberto trabalha no banco.</div>
+      <div class="opts-row" id="opts4"><span class="opt" onclick="so(this,4,'O')">O</span><span class="opt" onclick="so(this,4,'A')">A</span><span class="opt" onclick="so(this,4,'Os')">Os</span></div>
+    </div>
+    <button class="btn btn-gray" onclick="resetA1()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 2: PAÍSES -->
+<div class="section" id="s-a2">
+  <div class="ativ-card am">
+    <div class="ativ-title">✏️ Atividade 2 — Combine País + Artigo</div>
+    <div class="ativ-sub">Toque no país e depois no artigo correto!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc2">0</span>/5</span><span class="stars" id="st2">☆☆☆☆☆</span></div>
+    <div class="match-grid">
+      <div class="match-col" id="col-p">
+        <div class="match-item" onclick="sm(this,'p','brasil')">🇧🇷 Brasil</div>
+        <div class="match-item" onclick="sm(this,'p','franca')">🇫🇷 França</div>
+        <div class="match-item" onclick="sm(this,'p','eua')">🇺🇸 Estados Unidos</div>
+        <div class="match-item" onclick="sm(this,'p','portugal')">🇵🇹 Portugal</div>
+        <div class="match-item" onclick="sm(this,'p','japao')">🇯🇵 Japão</div>
+      </div>
+      <div class="match-col" id="col-a">
+        <div class="match-item" onclick="sm(this,'a','japao')">o (masc. sing.)</div>
+        <div class="match-item" onclick="sm(this,'a','brasil')">o (masc. sing.)</div>
+        <div class="match-item" onclick="sm(this,'a','portugal')" style="background:#fef2f2;border-color:#fca5a5">sem artigo ⚠️</div>
+        <div class="match-item" onclick="sm(this,'a','eua')">os (masc. plural)</div>
+        <div class="match-item" onclick="sm(this,'a','franca')">a (fem. sing.)</div>
+      </div>
+    </div>
+    <button class="btn btn-am" style="background:var(--tl)" onclick="resetA2()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 3: CRASE -->
+<div class="section" id="s-a3">
+  <div class="ativ-card vd">
+    <div class="ativ-title">✏️ Atividade 3 — à, ao ou a?</div>
+    <div class="ativ-sub">Complete com à, ao ou a (sem artigo).</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc3">0</span>/6</span><span class="stars" id="st3">☆☆☆☆☆☆</span></div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent">Vou <span class="gap" id="h0">___</span> escola amanhã. 🏫</div>
+      <div class="opts-row" id="hopts0"><span class="opt" onclick="ho(this,0,'à')">à</span><span class="opt" onclick="ho(this,0,'ao')">ao</span><span class="opt" onclick="ho(this,0,'a')">a</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent">Chego <span class="gap" id="h1">___</span> oito horas. 🕗</div>
+      <div class="opts-row" id="hopts1"><span class="opt" onclick="ho(this,1,'às')">às</span><span class="opt" onclick="ho(this,1,'ao')">ao</span><span class="opt" onclick="ho(this,1,'à')">à</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent">Vou <span class="gap" id="h2">___</span> banco hoje. 🏦</div>
+      <div class="opts-row" id="hopts2"><span class="opt" onclick="ho(this,2,'ao')">ao</span><span class="opt" onclick="ho(this,2,'à')">à</span><span class="opt" onclick="ho(this,2,'a')">a</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent">Viajo <span class="gap" id="h3">___</span> Portugal. 🇵🇹</div>
+      <div class="opts-row" id="hopts3"><span class="opt" onclick="ho(this,3,'a')">a</span><span class="opt" onclick="ho(this,3,'à')">à</span><span class="opt" onclick="ho(this,3,'ao')">ao</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent">Ela foi <span class="gap" id="h4">___</span> praia. 🏖️</div>
+      <div class="opts-row" id="hopts4"><span class="opt" onclick="ho(this,4,'à')">à</span><span class="opt" onclick="ho(this,4,'ao')">ao</span><span class="opt" onclick="ho(this,4,'a')">a</span></div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div class="gap-sent">Moro <span class="gap" id="h5">___</span> Brasil. 🇧🇷</div>
+      <div class="opts-row" id="hopts5"><span class="opt" onclick="ho(this,5,'no')">no</span><span class="opt" onclick="ho(this,5,'à')">à</span><span class="opt" onclick="ho(this,5,'ao')">ao</span></div>
+    </div>
+    <button class="btn btn-gray" onclick="resetA3()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- QUIZ GÊNEROS -->
+<div class="section" id="s-quiz">
+  <div class="ativ-card rs">
+    <div class="ativ-title">🎮 Quiz — Gêneros PT ≠ ES</div>
+    <div class="ativ-sub">Qual é o artigo correto em português?</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="scQ">0</span>/5</span><span class="stars" id="stQ">☆☆☆☆☆</span></div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">1. 🌳 Em espanhol é "el árbol". Em português é...</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(1,this,true)">A. <strong>a</strong> árvore (feminino)</button>
+        <button class="quiz-opt" onclick="chkQ(1,this,false)">B. <strong>o</strong> árvore (masculino)</button>
+      </div>
+      <div class="quiz-explain" id="qe1">✅ <strong>a árvore</strong> — feminino em PT, mas masculino em ES (el árbol). Cuidado!</div>
+    </div>
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fde8e8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">2. 🥛 Em espanhol é "la leche". Em português é...</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(2,this,false)">A. <strong>a</strong> leite (feminino)</button>
+        <button class="quiz-opt" onclick="chkQ(2,this,true)">B. <strong>o</strong> leite (masculino)</button>
+      </div>
+      <div class="quiz-explain" id="qe2">✅ <strong>o leite</strong> — masculino em PT, mas feminino em ES (la leche). Armadilha!</div>
+    </div>
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fde8e8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">3. 🎨 Em espanhol é "el color". Em português é...</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(3,this,true)">A. <strong>a</strong> cor (feminino)</button>
+        <button class="quiz-opt" onclick="chkQ(3,this,false)">B. <strong>o</strong> cor (masculino)</button>
+      </div>
+      <div class="quiz-explain" id="qe3">✅ <strong>a cor</strong> — feminino em PT! Em ES é "el color" (masculino). Diferente!</div>
+    </div>
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fde8e8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">4. 🇧🇷 "Moro ___ Brasil" — qual a forma correta?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(4,this,true)">A. Moro <strong>no</strong> Brasil. (em + o)</button>
+        <button class="quiz-opt" onclick="chkQ(4,this,false)">B. Moro <strong>em</strong> Brasil. (sem artigo)</button>
+        <button class="quiz-opt" onclick="chkQ(4,this,false)">C. Moro <strong>à</strong> Brasil. (crase)</button>
+      </div>
+      <div class="quiz-explain" id="qe4">✅ <strong>no Brasil</strong> — em + o = no. O Brasil leva artigo, diferente do espanhol (en Brasil).</div>
+    </div>
+    <div style="padding-top:16px;border-top:2px solid #fde8e8">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">5. 👤 Qual frase está correta em português brasileiro?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chkQ(5,this,true)">A. <strong>A Maria</strong> mora aqui. ✅</button>
+        <button class="quiz-opt" onclick="chkQ(5,this,false)">B. <strong>Maria</strong> mora aqui. (estilo ES)</button>
+      </div>
+      <div class="quiz-explain" id="qe5">✅ As duas são usadas, mas <strong>"A Maria"</strong> é muito característico do português brasileiro! Em espanhol seria "María vive aquí" (sem artigo).</div>
+    </div>
+    <div id="final-msg" style="display:none;background:linear-gradient(135deg,var(--tl),#02c39a);border-radius:12px;padding:16px;text-align:center;margin-top:16px;color:#fff;font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800">
+      🎉 Parabéns! Você domina os artigos do português brasileiro!
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+var pts=0;
+const lb64=`data:image/jpeg;base64,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`;
+if(lb64&&lb64.length>50){document.getElementById('tblogo').src=lb64;}
+function addPts(n){pts+=n;document.getElementById('tb-pts').textContent='⭐ '+pts+' pts';}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+function go(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.idx-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+function spkC(el,w){spk(w);addPts(5);toast('🔊 +5 pts');}
+function spkPC(el,w){document.querySelectorAll('.pais-card').forEach(c=>c.classList.remove('playing'));el.classList.add('playing');spk(w);setTimeout(()=>el.classList.remove('playing'),1600);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();document.addEventListener('touchstart',function u(){var x=new SpeechSynthesisUtterance('');x.volume=0;speechSynthesis.speak(x);document.removeEventListener('touchstart',u);},{once:true});}
+
+// A1 - nome próprio
+var ans1=['A','O',null,'A','O'],done1=[false,false,false,false,false],sc1v=0;
+function so(el,i,v){if(done1[i])return;var g=document.getElementById('g'+i);if(v===ans1[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done1[i]=true;sc1v++;document.getElementById('sc1').textContent=sc1v;var s=[];for(var j=0;j<5;j++)s.push(j<sc1v?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');spk(v);if(sc1v===5)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function soDouble(el,v1,v2){if(done1[2])return;var g=document.getElementById('g2'),g2=document.getElementById('g2b');if(v1==='A'&&v2==='O'){g.textContent=v1;g.className='gap correct';g2.textContent=v2;g2.className='gap correct';el.classList.add('used');done1[2]=true;sc1v++;document.getElementById('sc1').textContent=sc1v;var s=[];for(var j=0;j<5;j++)s.push(j<sc1v?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');}else{g.className='gap wrong';g2.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';g2.textContent='___';g2.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA1(){sc1v=0;done1=[false,false,false,false,false];document.getElementById('sc1').textContent='0';document.getElementById('st1').textContent='☆☆☆☆☆';['g0','g1','g2','g2b','g3','g4'].forEach(id=>{var el=document.getElementById(id);if(el){el.textContent='___';el.className='gap';}});['opts0','opts1','opts2','opts3','opts4'].forEach(id=>{var el=document.getElementById(id);if(el)el.querySelectorAll('.opt').forEach(o=>o.className='opt');});}
+
+// A2 - países
+var selP=null,selPEl=null,sc2v=0;
+function sm(el,side,key){if(el.classList.contains('correct'))return;if(side==='p'){if(selPEl)selPEl.classList.remove('selected');selP=key;selPEl=el;el.classList.add('selected');}else{if(!selP)return;if(selP===key){el.classList.add('correct');selPEl.classList.remove('selected');selPEl.classList.add('correct');sc2v++;document.getElementById('sc2').textContent=sc2v;var s=[];for(var j=0;j<5;j++)s.push(j<sc2v?'⭐':'☆');document.getElementById('st2').textContent=s.join('');addPts(15);toast('✅ Certo! +15 pts');selP=null;selPEl=null;if(sc2v===5)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{el.classList.add('wrong');selPEl.classList.add('wrong');setTimeout(()=>{el.classList.remove('wrong','selected');if(selPEl)selPEl.classList.remove('wrong','selected');selP=null;selPEl=null;},700);toast('❌ Tente de novo!');}}}
+function resetA2(){sc2v=0;selP=null;selPEl=null;document.getElementById('sc2').textContent='0';document.getElementById('st2').textContent='☆☆☆☆☆';document.querySelectorAll('#col-p .match-item,#col-a .match-item').forEach(el=>el.className='match-item');}
+
+// A3 - crase
+var hans=['à','às','ao','a','à','no'],hdone=[false,false,false,false,false,false],sc3v=0;
+function ho(el,i,v){if(hdone[i])return;var g=document.getElementById('h'+i);if(v===hans[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');hdone[i]=true;sc3v++;document.getElementById('sc3').textContent=sc3v;var s=[];for(var j=0;j<6;j++)s.push(j<sc3v?'⭐':'☆');document.getElementById('st3').textContent=s.join('');addPts(15);toast('✅ Correto! +15 pts');spk(v);if(sc3v===6)setTimeout(()=>toast('🏆 Perfeito na crase!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA3(){sc3v=0;hdone=[false,false,false,false,false,false];document.getElementById('sc3').textContent='0';document.getElementById('st3').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){var el=document.getElementById('h'+i);if(el){el.textContent='___';el.className='gap';}document.getElementById('hopts'+i).querySelectorAll('.opt').forEach(o=>o.className='opt');}}
+
+// Quiz
+var scQv=0,doneQ={};
+function chkQ(n,el,correct){if(doneQ[n])return;doneQ[n]=true;el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.style.pointerEvents='none');if(correct){el.classList.add('correct');scQv++;document.getElementById('scQ').textContent=scQv;var s=[];for(var j=0;j<5;j++)s.push(j<scQv?'⭐':'☆');document.getElementById('stQ').textContent=s.join('');addPts(20);toast('✅ Correto! +20 pts');}else{el.classList.add('wrong');toast('❌ Quase! Veja a explicação.');}var exp=document.getElementById('qe'+n);if(exp)exp.style.display='block';if(scQv===5)setTimeout(()=>{document.getElementById('final-msg').style.display='block';document.getElementById('final-msg').scrollIntoView({behavior:'smooth'});},400);}
+
+function revealEx(el, art){
+  el.querySelector('.ex-word').style.fontSize='clamp(10px,1.2vw,13px)';
+  el.querySelector('.ex-word').style.color='#aaa';
+  el.querySelector('.ex-art').style.display='block';
+  el.querySelector('.ex-tip').style.display='none';
+  el.style.borderColor='var(--tl)';
+  el.style.background='#e0f4f6';
+  spk(art);
+  addPts(5);toast('🔊 +5 pts');
+}
+</script>
+</body>
+</html>
