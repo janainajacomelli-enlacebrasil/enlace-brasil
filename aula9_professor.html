@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 9 — Substantivos & Falsos Cognatos · Professor | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--vd:#1a5c45;--tl:#2a8c6e;--am:#e8a020;--rs:#c0392b;--az:#1a3a5c;--cl:#5ef0cc}
+html,body{height:100%;background:#0e1f18;font-family:'Nunito',sans-serif;overflow:hidden}
+.stage{width:100vw;height:100vh;height:100dvh;position:relative;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity .65s ease;pointer-events:none;display:flex;flex-direction:column;z-index:0}
+.scene.active{opacity:1;pointer-events:auto;z-index:1}
+.pbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.28) saturate(1.2)}
+.ov{position:absolute;inset:0}
+.ov-vd{background:linear-gradient(140deg,rgba(26,92,69,.85),rgba(42,140,110,.3))}
+.ov-rs{background:linear-gradient(140deg,rgba(140,30,20,.82),rgba(192,57,43,.28))}
+.ov-am{background:linear-gradient(140deg,rgba(160,110,0,.78),rgba(232,160,32,.25))}
+.ov-az{background:linear-gradient(140deg,rgba(26,58,92,.82),rgba(30,80,130,.3))}
+.ov-dark{background:rgba(0,0,0,.62)}
+.lbar{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:clamp(8px,1.4vh,16px) clamp(14px,2vw,28px);background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
+.lwrap{display:flex;align-items:center;gap:10px}
+.limg{width:clamp(36px,4vw,48px);height:clamp(36px,4vw,48px);border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;flex-shrink:0}
+.lname{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(12px,1.6vw,17px);color:#fff;line-height:1.1}
+.lsub{font-size:clamp(9px,1vw,11px);color:rgba(255,255,255,.5)}
+.sbadge{background:rgba(94,240,204,.15);border:1.5px solid rgba(94,240,204,.45);color:var(--cl);font-size:clamp(9px,1.1vw,12px);font-weight:700;letter-spacing:.7px;padding:4px 12px;border-radius:14px;white-space:nowrap}
+.cnt{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(64px,9vh,84px) clamp(14px,3vw,48px) clamp(30px,5vh,50px);gap:clamp(8px,1.4vh,16px)}
+.sc-tag{font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--am);background:rgba(232,160,32,.15);border:1.5px solid rgba(232,160,32,.4);padding:4px 14px;border-radius:16px;text-align:center}
+.sc-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,5vw,56px);font-weight:800;color:#fff;text-align:center;line-height:1.05;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.go{color:var(--am)}.gr{color:var(--cl)}.rs{color:#f87171}
+.sc-sub{font-size:clamp(13px,2vw,21px);color:rgba(255,255,255,.85);text-align:center;line-height:1.5;max-width:820px}
+.sc-sub strong{color:var(--am)}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.a1{animation:fu .5s .05s both}.a2{animation:fu .5s .18s both}
+.a3{animation:fu .5s .32s both}.a4{animation:fu .5s .46s both}.as{animation:si .55s .1s both}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.1vw,16px);width:100%;max-width:880px}
+.cbox{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);border-radius:14px;padding:clamp(11px,1.6vh,20px) clamp(13px,1.5vw,20px);backdrop-filter:blur(6px)}
+.ct{font-size:clamp(11px,1.4vw,14px);font-weight:700;color:var(--am);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.cbox ul{list-style:none;display:flex;flex-direction:column;gap:clamp(5px,.7vh,9px)}
+.cbox ul li{font-size:clamp(12px,1.6vw,17px);color:rgba(255,255,255,.9);line-height:1.4;display:flex;gap:7px;align-items:flex-start}
+/* Parte banner */
+.parte-box{background:rgba(0,0,0,.4);border:2px solid rgba(94,240,204,.35);border-radius:20px;padding:clamp(20px,3vh,36px) clamp(24px,4vw,48px);text-align:center;backdrop-filter:blur(8px)}
+.parte-num{font-size:clamp(12px,1.6vw,16px);font-weight:700;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.parte-title{font-family:'Baloo 2',sans-serif;font-size:clamp(24px,5vw,52px);font-weight:800;color:#fff;line-height:1.1}
+.parte-sub{font-size:clamp(13px,1.8vw,19px);color:rgba(255,255,255,.7);margin-top:8px}
+/* Substantivos grid */
+.subst-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(7px,1vw,14px);width:100%;max-width:820px}
+.subst-card{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:clamp(10px,1.5vh,18px) 8px;text-align:center;backdrop-filter:blur(5px)}
+.subst-icon{font-size:clamp(26px,4vw,44px)}
+.subst-cat{font-size:clamp(11px,1.4vw,15px);font-weight:700;color:var(--am);margin:4px 0 6px}
+.subst-ex{font-size:clamp(10px,1.3vw,14px);color:rgba(255,255,255,.75);line-height:1.5;font-style:italic}
+/* Genero comparison */
+.genero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.3vw,18px);width:100%;max-width:820px}
+.gen-card{border-radius:14px;padding:clamp(12px,1.8vh,22px);backdrop-filter:blur(6px)}
+.gen-card.masc{background:rgba(26,58,92,.5);border:2px solid rgba(100,160,255,.35)}
+.gen-card.fem{background:rgba(140,30,60,.45);border:2px solid rgba(255,120,150,.35)}
+.gen-title{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,20px);font-weight:800;margin-bottom:8px}
+.gen-card.masc .gen-title{color:#93c5fd}.gen-card.fem .gen-title{color:#fca5a5}
+.gen-ex{font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.85);line-height:1.7}
+.gen-excep{font-size:clamp(10px,1.3vw,14px);color:#f87171;margin-top:6px;border-top:1px solid rgba(255,255,255,.15);padding-top:6px;line-height:1.5}
+/* Hetero table */
+.hetero-table{width:100%;max-width:860px;border-collapse:collapse;font-size:clamp(12px,1.7vw,17px)}
+.hetero-table th{padding:clamp(7px,1vh,12px) clamp(10px,1.3vw,16px);font-weight:700;text-align:center}
+.hetero-table td{padding:clamp(7px,1vh,11px) clamp(10px,1.3vw,16px);border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+.hetero-table tr:nth-child(even) td{background:rgba(255,255,255,.05)}
+.th-es{background:rgba(192,57,43,.6);color:#fff}.th-pt{background:rgba(26,92,69,.7);color:#fff}
+.th-tip{background:rgba(232,160,32,.35);color:var(--am)}
+.es-cell{color:#fca5a5;font-weight:700}.pt-cell{color:var(--cl);font-weight:700}
+/* Cognatos table */
+.cogn-table{width:100%;max-width:900px;border-collapse:collapse;font-size:clamp(11px,1.55vw,15px)}
+.cogn-table th{padding:clamp(6px,.9vh,11px) clamp(8px,1.1vw,14px);font-weight:700;text-align:center}
+.cogn-table td{padding:clamp(6px,.9vh,11px) clamp(8px,1.1vw,14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.cogn-table tr:nth-child(even) td{background:rgba(255,255,255,.04)}
+.th-pal{background:rgba(26,58,92,.7);color:#fff}
+.th-es2{background:rgba(192,57,43,.55);color:#fff}
+.th-pt2{background:rgba(26,92,69,.65);color:#fff}
+.pal-cell{font-weight:800;color:var(--am)}.es2-cell{color:#fca5a5}.pt2-cell{color:var(--cl)}
+/* Dica/alerta */
+.dica-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);width:100%;max-width:800px}
+.dica-item{background:rgba(255,255,255,.09);border-left:4px solid var(--am);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,20px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);line-height:1.5}
+.dica-item .es{display:block;font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.5);font-style:italic;margin-top:4px}
+.alert-box{background:rgba(192,57,43,.25);border:2px solid rgba(192,57,43,.5);border-radius:14px;padding:clamp(12px,1.8vh,22px);width:100%;max-width:760px;text-align:center;backdrop-filter:blur(6px)}
+/* Exerc */
+.exerc-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);width:100%;max-width:820px}
+.exerc-item{background:rgba(255,255,255,.09);border-radius:12px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,22px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);line-height:1.5;cursor:pointer;transition:all .2s}
+.exerc-item:hover{background:rgba(255,255,255,.14)}
+.exerc-item .dica{display:none;font-size:clamp(10px,1.3vw,14px);color:var(--cl);margin-top:6px;border-top:1px solid rgba(255,255,255,.12);padding-top:6px}
+.exerc-item.open .dica{display:block}
+/* Video btn */
+.video-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#b00,#e00);color:#fff;border:none;border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(18px,2.5vw,28px);font-size:clamp(13px,1.9vw,17px);font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;text-decoration:none}
+.video-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(200,0,0,.3)}
+.quiz-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1a5c45,#2a8c6e);color:#fff;border:none;border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(18px,2.5vw,28px);font-size:clamp(13px,1.9vw,17px);font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;text-decoration:none}
+.quiz-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,100,60,.4)}
+/* Pronbtns */
+.pronbtns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pbtn{background:rgba(232,160,32,.2);border:1.5px solid rgba(232,160,32,.5);color:var(--am);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:clamp(11px,1.4vw,14px);padding:5px 12px;border-radius:10px;cursor:pointer;transition:all .15s}
+.pbtn:hover{background:rgba(232,160,32,.38)}
+/* Nav */
+.pbar{position:fixed;bottom:0;left:0;height:3px;background:var(--cl);z-index:300;transition:width .3s}
+.dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:200;flex-wrap:wrap;justify-content:center;max-width:92vw}
+.dot{width:clamp(4px,.6vw,6px);height:clamp(4px,.6vw,6px);border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .25s}
+.dot.active{background:var(--am);transform:scale(1.5)}
+.ctrl{position:fixed;bottom:7px;right:11px;display:flex;gap:6px;z-index:200}
+.cbtn{width:clamp(32px,4vw,42px);height:clamp(32px,4vw,42px);border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:clamp(12px,1.5vw,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:all .2s}
+.cbtn:hover{background:rgba(255,255,255,.2)}
+.scnt{position:fixed;top:clamp(10px,1.3vh,16px);right:clamp(12px,1.5vw,20px);font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.4);font-weight:700;z-index:200}
+@media(max-width:560px){.twocol,.genero-grid,.subst-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.subst-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="pbar" id="prog"></div>
+<div class="scnt" id="scnt">1 / 20</div>
+<div class="dots" id="dots"></div>
+<div class="ctrl">
+  <button class="cbtn" onclick="prev()">◀</button>
+  <button class="cbtn" onclick="next()">▶</button>
+</div>
+
+<!-- SLIDE 1: CAPA -->
+<div class="scene active" data-n="1">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Aula 9 · A1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">Aula 9 · Nível A1 · Português para falantes de Espanhol</div>
+    <div class="sc-h1 a2">Substantivos & Gênero<br><span class="go">Falsos Cognatos</span> 🚨</div>
+    <div class="sc-sub a3">Palavras Heterogenéricas · Falsos Cognatos PT–ES<br>Exercícios · Vídeos · Quiz</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Substantivos e gênero em português.')">🔊 Título</button>
+      <button class="pbtn" onclick="spk('Falsos cognatos português espanhol.')">🔊 Falsos cognatos</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: AGENDA -->
+<div class="scene" data-n="2">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Agenda</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 O que vamos ver hoje?</div>
+    <div class="dica-list as" style="max-width:700px">
+      <div class="dica-item" style="border-left-color:var(--cl)">1️⃣ <strong>Substantivos</strong> — o que são e como funcionam</div>
+      <div class="dica-item" style="border-left-color:#93c5fd">2️⃣ <strong>Gênero</strong> — masculino e feminino · regras e exceções</div>
+      <div class="dica-item" style="border-left-color:var(--am)">3️⃣ <strong>Palavras Heterogenéricas</strong> — gênero diferente entre PT e ES</div>
+      <div class="dica-item" style="border-left-color:#f87171">4️⃣ <strong>Falsos Cognatos</strong> — mesma escrita, significado diferente</div>
+      <div class="dica-item" style="border-left-color:#4ade80">5️⃣ <strong>Exercícios + Quiz Wordwall</strong> 🎮</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: PARTE 1 -->
+<div class="scene" data-n="3">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Parte 1</span></div>
+  <div class="cnt">
+    <div class="parte-box as">
+      <div class="parte-num">PARTE 1 DE 5</div>
+      <div class="parte-title">📚 Substantivos<br>em Português</div>
+      <div class="parte-sub">Palavras que nomeiam pessoas, objetos, lugares e ideias</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: O QUE SÃO SUBSTANTIVOS -->
+<div class="scene" data-n="4">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📚 Substantivos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📌 Em português, <strong>TUDO</strong> tem gênero!</div>
+    <div class="subst-grid as">
+      <div class="subst-card"><div class="subst-icon">👤</div><div class="subst-cat">Pessoas</div><div class="subst-ex" onclick="spk('o professor, a aluna')" style="cursor:pointer">o professor<br>a aluna 🔊</div></div>
+      <div class="subst-card"><div class="subst-icon">🪑</div><div class="subst-cat">Objetos</div><div class="subst-ex" onclick="spk('a mesa, o livro')" style="cursor:pointer">a mesa<br>o livro 🔊</div></div>
+      <div class="subst-card"><div class="subst-icon">🗺️</div><div class="subst-cat">Lugares</div><div class="subst-ex" onclick="spk('o Brasil, a cidade')" style="cursor:pointer">o Brasil<br>a cidade 🔊</div></div>
+      <div class="subst-card"><div class="subst-icon">💡</div><div class="subst-cat">Ideias</div><div class="subst-ex" onclick="spk('a liberdade, o amor')" style="cursor:pointer">a liberdade<br>o amor 🔊</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(13px,1.9vw,20px)">
+      <em style="color:var(--cl)">"O professor trabalha. &nbsp;A mesa é grande. &nbsp;O Brasil é lindo."</em>
+    </div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('O professor trabalha. A mesa é grande. O Brasil é lindo.')">🔊 Exemplos</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: PARTE 2 -->
+<div class="scene" data-n="5">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Parte 2</span></div>
+  <div class="cnt">
+    <div class="parte-box as">
+      <div class="parte-num">PARTE 2 DE 5</div>
+      <div class="parte-title">♂♀ Gênero em Português</div>
+      <div class="parte-sub">Masculino e Feminino — regras e exceções</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: GÊNERO REGRAS -->
+<div class="scene" data-n="6">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">♂♀ Gênero</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">♂♀ Gênero em Português — Regras e Exceções</div>
+    <div class="genero-grid as">
+      <div class="gen-card masc">
+        <div class="gen-title">♂ MASCULINO · termina em -O</div>
+        <div class="gen-ex">
+          <span style="color:#93c5fd">EL → O</span> · <span style="color:#93c5fd">LOS → OS</span><br>
+          o livro · o amigo · o carro
+        </div>
+        <div class="gen-excep">
+          ⚠️ Exceções:<br>
+          <strong style="color:#f87171">o problema · o leite · o nariz</strong>
+        </div>
+      </div>
+      <div class="gen-card fem">
+        <div class="gen-title">♀ FEMININO · termina em -A</div>
+        <div class="gen-ex">
+          <span style="color:#fca5a5">LA → A</span> · <span style="color:#fca5a5">LAS → AS</span><br>
+          a casa · a amiga · a professora
+        </div>
+        <div class="gen-excep">
+          ⚠️ Exceções:<br>
+          <strong style="color:#f87171">a viagem · a cor · a ponte · a dor</strong>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box a3">
+      ⚠️ As exceções precisam ser memorizadas! A intuição do espanhol pode enganar.
+    </div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('o livro, a casa, o problema, a viagem, a cor, a dor')">🔊 Exemplos</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: SUBSTANTIVOS PESSOAS -->
+<div class="scene" data-n="7">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">👥 Pessoas</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">👥 Substantivos de Pessoas · PT × ES</div>
+    <table class="hetero-table as" style="max-width:700px">
+      <thead><tr><th class="th-pt">🇧🇷 Português</th><th class="th-es">🇪🇸 Espanhol</th></tr></thead>
+      <tbody>
+        <tr><td onclick="spk('Ele é médico.')" style="cursor:pointer"><span class="pt-cell">Ele é médico.</span> 🔊</td><td><em style="color:rgba(255,255,255,.6)">Él es médico.</em></td></tr>
+        <tr><td onclick="spk('Ela é professora.')" style="cursor:pointer"><span class="pt-cell">Ela é professora.</span> 🔊</td><td><em style="color:rgba(255,255,255,.6)">Ella es profesora.</em></td></tr>
+        <tr><td onclick="spk('Nós somos alunos.')" style="cursor:pointer"><span class="pt-cell">Nós somos alunos.</span> 🔊</td><td><em style="color:rgba(255,255,255,.6)">Nosotros somos alumnos.</em></td></tr>
+        <tr><td onclick="spk('A gente é estudante.')" style="cursor:pointer"><span class="pt-cell">A gente é estudante.</span> 🔊</td><td><em style="color:rgba(255,255,255,.6)">Nosotros somos estudiantes.</em></td></tr>
+      </tbody>
+    </table>
+    <div class="alert-box a3" style="max-width:700px;font-size:clamp(12px,1.7vw,17px)">
+      💡 <strong>"A gente"</strong> = "nós" no Brasil — o verbo fica no <strong>singular</strong>:<br>
+      ✅ A gente <strong>é</strong> estudante. &nbsp;&nbsp; ❌ A gente <em style="color:#f87171">somos</em> estudantes.
+    </div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('A gente é estudante.')">🔊 A gente</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: EXERCÍCIO GÊNERO -->
+<div class="scene" data-n="8">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Complete com O ou A · Toque para a resposta!</div>
+    <div class="twocol as" style="max-width:820px">
+      <div class="cbox">
+        <ul>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>A</strong> casa é grande.'" style="cursor:pointer">1. ___ casa é grande. 👆</li>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>O</strong> problema é sério.'" style="cursor:pointer">2. ___ problema é sério. 👆</li>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>A</strong> professora trabalha muito.'" style="cursor:pointer">3. ___ professora trabalha muito. 👆</li>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>O</strong> leite está frio.'" style="cursor:pointer">4. ___ leite está frio. 👆</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <ul>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>A</strong> viagem é longa.'" style="cursor:pointer">5. ___ viagem é longa. 👆</li>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>A</strong> cor é bonita.'" style="cursor:pointer">6. ___ cor é bonita. 👆</li>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>A</strong> ponte é antiga.'" style="cursor:pointer">7. ___ ponte é antiga. 👆</li>
+          <li onclick="this.innerHTML='<strong style=color:var(--cl)>O</strong> clima está bom.'" style="cursor:pointer">8. ___ clima está bom. 👆</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,15px)">💡 problema, clima, sistema → masculinos (origem grega/latina!)</div>
+  </div>
+</div>
+
+<!-- SLIDE 9: PARTE 3 -->
+<div class="scene" data-n="9">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Parte 3</span></div>
+  <div class="cnt">
+    <div class="parte-box as">
+      <div class="parte-num">PARTE 3 DE 5</div>
+      <div class="parte-title">⚠️ Cuidado<br>com o Gênero!</div>
+      <div class="parte-sub">Palavras Heterogenéricas — gênero DIFERENTE entre PT e ES</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: HETEROGENÉRICOS -->
+<div class="scene" data-n="10">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">⚠️ Heterogenéricos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">⚠️ Padrão -AJE (masc. ES) → -AGEM (fem. PT)</div>
+    <table class="hetero-table as" style="max-width:720px">
+      <thead><tr><th class="th-es">🇪🇸 Espanhol (masc.)</th><th style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.5)">→</th><th class="th-pt">🇧🇷 Português (fem.)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="es-cell">El viaje</span></td><td style="color:rgba(255,255,255,.4);text-align:center">→</td><td onclick="spk('a viagem')" style="cursor:pointer"><span class="pt-cell">a viagem</span> 🔊</td></tr>
+        <tr><td><span class="es-cell">El paisaje</span></td><td style="color:rgba(255,255,255,.4);text-align:center">→</td><td onclick="spk('a paisagem')" style="cursor:pointer"><span class="pt-cell">a paisagem</span> 🔊</td></tr>
+        <tr><td><span class="es-cell">El mensaje</span></td><td style="color:rgba(255,255,255,.4);text-align:center">→</td><td onclick="spk('a mensagem')" style="cursor:pointer"><span class="pt-cell">a mensagem</span> 🔊</td></tr>
+        <tr><td><span class="es-cell">El lenguaje</span></td><td style="color:rgba(255,255,255,.4);text-align:center">→</td><td onclick="spk('a linguagem')" style="cursor:pointer"><span class="pt-cell">a linguagem</span> 🔊</td></tr>
+      </tbody>
+    </table>
+    <div class="alert-box a3" style="max-width:720px">🔑 Não confie na intuição do espanhol. O artigo pode enganar!</div>
+  </div>
+</div>
+
+<!-- SLIDE 11: CLÁSSICOS DIA A DIA -->
+<div class="scene" data-n="11">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🗓️ Clássicos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🗓️ Os Clássicos do Dia a Dia</div>
+    <table class="hetero-table as">
+      <thead><tr><th class="th-es">🇪🇸 ES (feminino)</th><th style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)">→</th><th class="th-pt">🇧🇷 PT (masculino)</th><th class="th-tip">Dica</th></tr></thead>
+      <tbody>
+        <tr><td class="es-cell">La sal</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('o sal')" style="cursor:pointer" class="pt-cell">O sal 🔊</td><td style="font-size:.85em;color:rgba(255,255,255,.6)">ES fem. → PT masc.</td></tr>
+        <tr><td class="es-cell">La leche</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('o leite')" style="cursor:pointer" class="pt-cell">O leite 🔊</td><td style="font-size:.85em;color:rgba(255,255,255,.6)">O "R" que muda tudo!</td></tr>
+        <tr><td class="es-cell">La nariz</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('o nariz')" style="cursor:pointer" class="pt-cell">O nariz 🔊</td><td style="font-size:.85em;color:rgba(255,255,255,.6)">mesma escrita!</td></tr>
+        <tr><td class="es-cell">La sangre</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('o sangue')" style="cursor:pointer" class="pt-cell">O sangue 🔊</td><td style="font-size:.85em;color:rgba(255,255,255,.6)">-gre → -gue</td></tr>
+        <tr><td class="es-cell">El color</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('a cor')" style="cursor:pointer" class="pt-cell">A cor 🔊</td><td style="font-size:.85em;color:var(--am)">PT masc.→ PT fem.!</td></tr>
+        <tr><td class="es-cell">El dolor</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('a dor')" style="cursor:pointer" class="pt-cell">A dor 🔊</td><td style="font-size:.85em;color:var(--am)">-or masc.→ fem.!</td></tr>
+        <tr><td class="es-cell">El puente</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('a ponte')" style="cursor:pointer" class="pt-cell">A ponte 🔊</td><td style="font-size:.85em;color:var(--am)">-ente → fem. PT</td></tr>
+        <tr><td class="es-cell">La costumbre</td><td style="text-align:center;color:rgba(255,255,255,.4)">→</td><td onclick="spk('o costume')" style="cursor:pointer" class="pt-cell">O costume 🔊</td><td style="font-size:.85em;color:rgba(255,255,255,.6)">-umbre → -ume masc.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 12: EXERCÍCIO HETEROGENÉRICOS -->
+<div class="scene" data-n="12">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Traduza para o Espanhol · Toque para ver!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">
+        🇧🇷 1. A viagem foi muito longa.
+        <div class="dica">🇪🇸 <strong>El viaje</strong> fue muy largo. &nbsp;(viagem → el viaje, masculino!)</div>
+      </div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">
+        🇧🇷 2. Eu gosto muito da cor da sua casa.
+        <div class="dica">🇪🇸 Me gusta mucho <strong>el color</strong> de tu casa. &nbsp;(cor → el color, masculino!)</div>
+      </div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">
+        🇧🇷 3. O sal está na mesa.
+        <div class="dica">🇪🇸 <strong>La sal</strong> está en la mesa. &nbsp;(sal → la sal, feminino!)</div>
+      </div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">
+        🇧🇷 4. Lave o nariz!
+        <div class="dica">🇪🇸 ¡Lávate <strong>la nariz</strong>! &nbsp;(mesma palavra, artigo diferente! PT: o nariz · ES: la nariz)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13: PARTE 4 -->
+<div class="scene" data-n="13">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Parte 4</span></div>
+  <div class="cnt">
+    <div class="parte-box as" style="border-color:rgba(248,113,113,.5)">
+      <div class="parte-num">PARTE 4 DE 5</div>
+      <div class="parte-title">🚨 FALSOS<br>COGNATOS</div>
+      <div class="parte-sub">Português – Espanhol · Mesma escrita, significado DIFERENTE!</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 14: INTRODUÇÃO FALSOS COGNATOS -->
+<div class="scene" data-n="14">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🚨 Falsos Cognatos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🚨 Os mais famosos — muito cuidado!</div>
+    <div class="twocol as" style="max-width:820px">
+      <div class="cbox" style="border-color:rgba(248,113,113,.3)">
+        <div class="ct" style="color:#f87171">embarazada 🤰</div>
+        <ul>
+          <li>🇪🇸 = <strong>grávida</strong></li>
+          <li>🇧🇷 = confusa, envergonhada</li>
+          <li style="color:#f87171;font-size:.9em">⚠️ Estou embaraçada ≠ embarazada!</li>
+        </ul>
+      </div>
+      <div class="cbox" style="border-color:rgba(248,113,113,.3)">
+        <div class="ct" style="color:#f87171">borracha 🍷</div>
+        <ul>
+          <li>🇪🇸 = <strong>bêbada</strong></li>
+          <li>🇧🇷 = material de borracha / apagador</li>
+          <li style="color:#f87171;font-size:.9em">⚠️ Ela é borracha ≠ está borracha!</li>
+        </ul>
+      </div>
+      <div class="cbox" style="border-color:rgba(248,113,113,.3)">
+        <div class="ct" style="color:#f87171">polvo 💨</div>
+        <ul>
+          <li>🇪🇸 = <strong>pó, poeira</strong></li>
+          <li>🇧🇷 = animal marinho (🐙)</li>
+          <li style="color:#f87171;font-size:.9em">⚠️ Muito polvo na casa!</li>
+        </ul>
+      </div>
+      <div class="cbox" style="border-color:rgba(248,113,113,.3)">
+        <div class="ct" style="color:#f87171">padre 👨‍👦</div>
+        <ul>
+          <li>🇪🇸 = <strong>pai</strong></li>
+          <li>🇧🇷 = sacerdote / padre</li>
+          <li style="color:#f87171;font-size:.9em">⚠️ O meu padre é legal!</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('embaraçada, borracha, polvo, padre')">🔊 Ouvir</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15: TABELA FALSOS COGNATOS 1 -->
+<div class="scene" data-n="15">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🚨 Lista 1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🚨 Falsos Cognatos — Parte 1 · Toque para ouvir!</div>
+    <table class="cogn-table as">
+      <thead><tr><th class="th-pal">Palavra</th><th class="th-es2">🇪🇸 significa...</th><th class="th-pt2">🇧🇷 significa...</th></tr></thead>
+      <tbody>
+        <tr><td class="pal-cell" onclick="spk('abrigo')" style="cursor:pointer">abrigo 🔊</td><td class="es2-cell">casaco, refúgio</td><td class="pt2-cell">refúgio</td></tr>
+        <tr><td class="pal-cell" onclick="spk('acordar')" style="cursor:pointer">acordar 🔊</td><td class="es2-cell">lembrar</td><td class="pt2-cell">despertar</td></tr>
+        <tr><td class="pal-cell" onclick="spk('chato')" style="cursor:pointer">chato 🔊</td><td class="es2-cell">achatado</td><td class="pt2-cell">chateante / entediante</td></tr>
+        <tr><td class="pal-cell" onclick="spk('cola')" style="cursor:pointer">cola 🔊</td><td class="es2-cell">rabo</td><td class="pt2-cell">pegamento / cola</td></tr>
+        <tr><td class="pal-cell" onclick="spk('vaso')" style="cursor:pointer">vaso 🔊</td><td class="es2-cell">copo</td><td class="pt2-cell">vaso de flor / privada</td></tr>
+        <tr><td class="pal-cell" onclick="spk('doce')" style="cursor:pointer">doce 🔊</td><td class="es2-cell">doze (12)</td><td class="pt2-cell">o contrário de salgado 🍬</td></tr>
+        <tr><td class="pal-cell" onclick="spk('cachorro')" style="cursor:pointer">cachorro 🔊</td><td class="es2-cell">filhote</td><td class="pt2-cell">cão / cachorro 🐶</td></tr>
+        <tr><td class="pal-cell" onclick="spk('firma')" style="cursor:pointer">firma 🔊</td><td class="es2-cell">assinatura</td><td class="pt2-cell">empresa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 16: TABELA FALSOS COGNATOS 2 -->
+<div class="scene" data-n="16">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🚨 Lista 2</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🚨 Falsos Cognatos — Parte 2</div>
+    <table class="cogn-table as">
+      <thead><tr><th class="th-pal">Palavra</th><th class="th-es2">🇪🇸 significa...</th><th class="th-pt2">🇧🇷 significa...</th></tr></thead>
+      <tbody>
+        <tr><td class="pal-cell" onclick="spk('oficina')" style="cursor:pointer">oficina 🔊</td><td class="es2-cell">escritório</td><td class="pt2-cell">mecânica / ateliê</td></tr>
+        <tr><td class="pal-cell" onclick="spk('pasta')" style="cursor:pointer">pasta 🔊</td><td class="es2-cell">massa (macarrão)</td><td class="pt2-cell">pasta de dentes / maleta</td></tr>
+        <tr><td class="pal-cell" onclick="spk('rato')" style="cursor:pointer">rato 🔊</td><td class="es2-cell">momento, instante</td><td class="pt2-cell">animal (ratón) 🐭</td></tr>
+        <tr><td class="pal-cell" onclick="spk('salada')" style="cursor:pointer">salada 🔊</td><td class="es2-cell">salgada</td><td class="pt2-cell">ensalada (alimentos) 🥗</td></tr>
+        <tr><td class="pal-cell" onclick="spk('barata')" style="cursor:pointer">barata 🔊</td><td class="es2-cell">preço baixo</td><td class="pt2-cell">inseto (cucaracha) 🪳</td></tr>
+        <tr><td class="pal-cell" onclick="spk('pronto')" style="cursor:pointer">pronto 🔊</td><td class="es2-cell">rápido</td><td class="pt2-cell">finalizado, pronto ✅</td></tr>
+        <tr><td class="pal-cell" onclick="spk('sítio')" style="cursor:pointer">sítio 🔊</td><td class="es2-cell">site / página web</td><td class="pt2-cell">chácara / sítio 🌿</td></tr>
+        <tr><td class="pal-cell" onclick="spk('borrar')" style="cursor:pointer">borrar 🔊</td><td class="es2-cell">apagar</td><td class="pt2-cell">manchar, estragar</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 17: ESCRITA DIFERENTE -->
+<div class="scene" data-n="17">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✍️ Escrita diferente</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✍️ Palavras com Escrita Diferente mas Som Parecido</div>
+    <table class="cogn-table as">
+      <thead><tr><th class="th-es2">🇪🇸 Palavra ES</th><th class="th-pal" style="background:rgba(0,0,0,.35)">Sig. em PT</th><th class="th-pt2">🇧🇷 Palavra PT</th><th class="th-pal" style="background:rgba(0,0,0,.35)">Sig. em PT</th></tr></thead>
+      <tbody>
+        <tr><td class="es2-cell">cadera</td><td style="color:rgba(255,255,255,.6);font-size:.9em">quadril</td><td class="pt2-cell" onclick="spk('cadeira')" style="cursor:pointer">cadeira 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">banco com encosto</td></tr>
+        <tr><td class="es2-cell">crianza</td><td style="color:rgba(255,255,255,.6);font-size:.9em">criação</td><td class="pt2-cell" onclick="spk('criança')" style="cursor:pointer">criança 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">menino/a 👧</td></tr>
+        <tr><td class="es2-cell">embarazada</td><td style="color:rgba(255,255,255,.6);font-size:.9em">grávida</td><td class="pt2-cell" onclick="spk('embaraçada')" style="cursor:pointer">embaraçada 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">confusa</td></tr>
+        <tr><td class="es2-cell">escoba</td><td style="color:rgba(255,255,255,.6);font-size:.9em">vassoura</td><td class="pt2-cell" onclick="spk('escova')" style="cursor:pointer">escova 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">de dente/cabelo</td></tr>
+        <tr><td class="es2-cell">extrañar</td><td style="color:rgba(255,255,255,.6);font-size:.9em">sentir saudade</td><td class="pt2-cell" onclick="spk('estranhar')" style="cursor:pointer">estranhar 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">achar raro</td></tr>
+        <tr><td class="es2-cell">grasa</td><td style="color:rgba(255,255,255,.6);font-size:.9em">gordura</td><td class="pt2-cell" onclick="spk('graça')" style="cursor:pointer">graça 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">leveza / humor</td></tr>
+        <tr><td class="es2-cell">cartón</td><td style="color:rgba(255,255,255,.6);font-size:.9em">papelão</td><td class="pt2-cell" onclick="spk('cartão')" style="cursor:pointer">cartão 🔊</td><td style="color:rgba(255,255,255,.6);font-size:.9em">cartão crédito/débito</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 18: PARTE 5 + VÍDEOS -->
+<div class="scene" data-n="18">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1536240478700-b869ad10a2ab?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎬 Vídeos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎬 Vídeos — Falsos Cognatos PT–ES</div>
+    <div class="dica-list as" style="max-width:720px">
+      <div class="dica-item" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span>🎬 <strong>Vídeo 1</strong> — palavras idênticas, significados opostos</span>
+        <a href="https://www.youtube.com/watch?v=xEdfOr9N_rw" target="_blank" class="video-btn" style="font-size:13px;padding:7px 14px">▶️ Abrir</a>
+      </div>
+      <div class="dica-item" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span>🎬 <strong>Vídeo 2</strong> — mais pares com mesma grafia</span>
+        <a href="https://www.youtube.com/watch?v=pSG6AiNlB_g" target="_blank" class="video-btn" style="font-size:13px;padding:7px 14px">▶️ Abrir</a>
+      </div>
+      <div class="dica-item" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span>🎬 <strong>Vídeo 3</strong> — escrita diferente, som parecido</span>
+        <a href="https://www.youtube.com/watch?v=GWWcnm2Y2vg" target="_blank" class="video-btn" style="font-size:13px;padding:7px 14px">▶️ Abrir</a>
+      </div>
+      <div class="dica-item" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-left-color:#4ade80">
+        <span>🎮 <strong>Quiz Wordwall</strong> — jogue sozinho ou em equipe!</span>
+        <a href="https://wordwall.net/es/resource/29862134" target="_blank" class="quiz-btn" style="font-size:13px;padding:7px 14px">🏆 Jogar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 19: EXERCÍCIOS FINAIS -->
+<div class="scene" data-n="19">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercícios</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício — Traduza para o Português · Toque para ver!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">🇪🇸 1. Nosotros queremos un vaso con agua.<div class="dica">🇧🇷 Nós queremos um <strong>copo</strong> com água. &nbsp;(vaso→copo · vaso em PT = vaso de flor / privada!)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">🇪🇸 2. Mi guitarra es mi mayor regalo.<div class="dica">🇧🇷 O meu <strong>violão</strong> é o meu maior <strong>presente</strong>. &nbsp;(guitarra→violão · regalo→presente)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">🇪🇸 3. Ella tiene mucho dolor de cadera.<div class="dica">🇧🇷 Ela tem muita <strong>dor</strong> no <strong>quadril</strong>. &nbsp;(dolor→dor · cadera→quadril, não cadeira!)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">🇪🇸 4. Yo estaba usando un vestido rojo.<div class="dica">🇧🇷 Eu estava usando um <strong>vestido</strong> <strong>vermelho</strong>. &nbsp;(vestido=vestido ✅ · rojo→vermelho)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">🇪🇸 5. ¿Cuál será la fecha de la fiesta?<div class="dica">🇧🇷 Qual será a <strong>data</strong> da festa? &nbsp;(fecha→data · festa=festa ✅)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 20: RESUMO + ENCERRAMENTO -->
+<div class="scene" data-n="20">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Resumo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Resumo da Aula 9</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">1️⃣ Substantivos</div>
+        <ul><li>Em PT, <strong>tudo</strong> tem gênero — pessoas, objetos, lugares, ideias</li></ul>
+        <div class="ct" style="margin-top:10px">2️⃣ Gênero</div>
+        <ul><li>-O = masc. | -A = fem. · Exceções: o leite, a cor, a viagem...</li></ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">3️⃣ Heterogenéricos</div>
+        <ul><li>-aje ES (masc.) → -agem PT (fem.) · El color → A cor</li></ul>
+        <div class="ct" style="margin-top:10px">4️⃣ Falsos Cognatos</div>
+        <ul>
+          <li>embarazada = grávida 🤰</li>
+          <li>polvo = pó/poeira 💨</li>
+          <li>borracha = bêbada 🍷</li>
+          <li>cachorro = cão 🐶</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Ótimo trabalho! Até a próxima aula!')">🔊 Até a próxima!</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const LOGO='data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=20;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>
