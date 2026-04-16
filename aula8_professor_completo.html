@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 8 — Artigos · Professor Completo | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--vd:#009C3B;--am:#F5A800;--az:#002776;--tl:#028090;--rs:#e8336d}
+html,body{height:100%;background:#071a2e;font-family:'Nunito',sans-serif;overflow:hidden}
+.stage{width:100vw;height:100vh;height:100dvh;position:relative;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity .65s ease;pointer-events:none;display:flex;flex-direction:column;z-index:0}
+.scene.active{opacity:1;pointer-events:auto;z-index:1}
+.pbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.32) saturate(1.3)}
+.ov{position:absolute;inset:0}
+.ov-tl{background:linear-gradient(140deg,rgba(2,128,144,.8),rgba(0,168,150,.25))}
+.ov-az{background:linear-gradient(140deg,rgba(0,39,118,.8),rgba(0,39,118,.3))}
+.ov-vd{background:linear-gradient(140deg,rgba(0,100,35,.78),rgba(0,156,59,.25))}
+.ov-am{background:linear-gradient(140deg,rgba(180,120,0,.75),rgba(245,168,0,.2))}
+.ov-rs{background:linear-gradient(140deg,rgba(160,20,60,.75),rgba(232,51,109,.25))}
+.ov-dark{background:rgba(0,0,0,.58)}
+.lbar{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:clamp(8px,1.4vh,16px) clamp(14px,2vw,28px);background:linear-gradient(to bottom,rgba(0,0,0,.78),transparent)}
+.lwrap{display:flex;align-items:center;gap:10px}
+.limg{width:clamp(36px,4vw,48px);height:clamp(36px,4vw,48px);border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;flex-shrink:0}
+.lname{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(12px,1.6vw,17px);color:#fff;line-height:1.1}
+.lsub{font-size:clamp(9px,1vw,11px);color:rgba(255,255,255,.5)}
+.sbadge{background:rgba(2,128,144,.25);border:1.5px solid rgba(2,128,144,.6);color:#5ef0ff;font-size:clamp(9px,1.1vw,12px);font-weight:700;letter-spacing:.7px;padding:4px 12px;border-radius:14px;white-space:nowrap}
+.sbadge.comp{background:rgba(245,168,0,.2);border-color:rgba(245,168,0,.5);color:var(--am)}
+.cnt{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(64px,9vh,84px) clamp(14px,3vw,48px) clamp(30px,5vh,50px);gap:clamp(8px,1.4vh,16px)}
+.sc-tag{font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--am);background:rgba(245,168,0,.15);border:1.5px solid rgba(245,168,0,.4);padding:4px 14px;border-radius:16px;text-align:center}
+.sc-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,5vw,56px);font-weight:800;color:#fff;text-align:center;line-height:1.05;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.go{color:var(--am)}.gr{color:#4ade80}.rs{color:#f87171}.tl{color:#5ef0ff}
+.sc-sub{font-size:clamp(13px,2vw,21px);color:rgba(255,255,255,.85);text-align:center;line-height:1.5;max-width:820px}
+.sc-sub strong{color:var(--am)}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.a1{animation:fu .5s .05s both}.a2{animation:fu .5s .18s both}
+.a3{animation:fu .5s .32s both}.a4{animation:fu .5s .46s both}.as{animation:si .55s .1s both}
+/* Layout blocks */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.1vw,16px);width:100%;max-width:880px}
+.cbox{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);border-radius:14px;padding:clamp(11px,1.6vh,20px) clamp(13px,1.5vw,20px);backdrop-filter:blur(6px)}
+.ct{font-size:clamp(11px,1.4vw,14px);font-weight:700;color:var(--am);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.cbox ul{list-style:none;display:flex;flex-direction:column;gap:clamp(5px,.7vh,9px)}
+.cbox ul li{font-size:clamp(12px,1.6vw,17px);color:rgba(255,255,255,.9);line-height:1.4;display:flex;gap:7px;align-items:flex-start}
+/* Artigo cards */
+.artigo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(7px,1vw,14px);width:100%;max-width:860px}
+.artigo-big{border-radius:16px;padding:clamp(14px,2vh,24px) 10px;text-align:center;backdrop-filter:blur(6px)}
+.artigo-big.def{background:rgba(2,128,144,.35);border:2px solid rgba(94,240,255,.4)}
+.artigo-big.indef{background:rgba(0,156,59,.3);border:2px solid rgba(74,222,128,.4)}
+.artigo-form{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,58px);font-weight:800;color:#fff;line-height:1}
+.artigo-gen{font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.55);margin-top:4px}
+/* Compare table */
+.cmp-table{width:100%;max-width:820px;border-collapse:collapse;font-size:clamp(12px,1.7vw,17px)}
+.cmp-table th{padding:clamp(7px,1vh,12px) clamp(10px,1.3vw,16px);font-weight:700;text-align:center}
+.cmp-table td{padding:clamp(7px,1vh,12px) clamp(10px,1.3vw,16px);border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.9);text-align:center}
+.cmp-table tr:nth-child(even) td{background:rgba(255,255,255,.05)}
+.th-pt{background:rgba(2,128,144,.6);color:#fff}.th-es{background:rgba(0,39,118,.6);color:#fff}
+.th-ex{background:rgba(245,168,0,.3);color:var(--am)}.th-exes{background:rgba(147,197,253,.2);color:#93c5fd}
+.pt-cell{color:#5ef0ff;font-weight:700}.es-cell{color:#93c5fd;font-weight:700}
+.alert-cell{color:#f87171;font-weight:700}
+/* Exercício grids */
+.exerc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:clamp(6px,.9vw,12px);width:100%;max-width:860px}
+.exerc-item{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.15);border-radius:10px;padding:clamp(9px,1.3vh,15px) 10px;text-align:center;cursor:pointer;transition:all .2s;backdrop-filter:blur(4px)}
+.exerc-item:hover{background:rgba(245,168,0,.2);border-color:var(--am)}
+.exerc-word{font-size:clamp(13px,1.8vw,18px);color:rgba(255,255,255,.9);font-weight:700}
+.exerc-art{font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,26px);font-weight:800;color:var(--am);display:none}
+.exerc-item.revealed .exerc-art{display:block}
+.exerc-item.revealed .exerc-word{font-size:clamp(11px,1.4vw,14px);color:rgba(255,255,255,.55)}
+/* Preposições */
+.prep-table{width:100%;max-width:820px;border-collapse:collapse;font-size:clamp(12px,1.7vw,17px)}
+.prep-table th{padding:clamp(8px,1.1vh,14px);font-weight:700;text-align:center}
+.prep-table td{padding:clamp(7px,1vh,12px);border-bottom:1px solid rgba(255,255,255,.1);text-align:center;color:rgba(255,255,255,.9)}
+.prep-table tr:nth-child(even) td{background:rgba(255,255,255,.05)}
+.th-def{background:rgba(2,128,144,.6);color:#fff}.th-indef{background:rgba(0,156,59,.5);color:#fff}
+.th-de{background:rgba(180,120,0,.6);color:var(--am)}.th-em{background:rgba(0,39,118,.6);color:#fff}
+.prep-result{color:#4ade80;font-weight:800;font-size:1.1em}
+/* Países */
+.pais-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:clamp(7px,1vw,12px);width:100%;max-width:860px}
+.pais-card{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;padding:clamp(10px,1.4vh,18px) 8px;text-align:center;backdrop-filter:blur(5px);cursor:pointer;transition:all .2s}
+.pais-card:hover{background:rgba(245,168,0,.2);border-color:var(--am)}
+.pais-flag{font-size:clamp(22px,3.2vw,36px)}.pais-art{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,1.8vw,20px);font-weight:800;color:var(--am)}.pais-nome{font-size:clamp(11px,1.3vw,14px);color:rgba(255,255,255,.75)}
+/* Dica list */
+.dica-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);width:100%;max-width:800px}
+.dica-item{background:rgba(255,255,255,.09);border-left:4px solid var(--am);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,20px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);line-height:1.5}
+.dica-item .es{display:block;font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.5);font-style:italic;margin-top:4px}
+.dica-item .alerta{color:#f87171;font-weight:700}.dica-item .certo{color:#4ade80;font-weight:700}
+/* Contração */
+.contracao-box{background:rgba(0,0,0,.35);border:2px solid rgba(94,240,255,.35);border-radius:16px;padding:clamp(14px,2vh,24px);width:100%;max-width:820px;backdrop-filter:blur(8px)}
+.contr-row{display:flex;align-items:center;gap:clamp(8px,1.2vw,16px);margin-bottom:clamp(8px,1.1vh,14px);flex-wrap:wrap;justify-content:center}
+.contr-part{font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,42px);font-weight:800;color:rgba(255,255,255,.6);text-align:center;min-width:60px}
+.contr-plus{font-size:clamp(18px,3vw,38px);color:var(--am);font-weight:800}
+.contr-eq{font-size:clamp(16px,2.5vw,32px);color:rgba(255,255,255,.5)}
+.contr-result{font-family:'Baloo 2',sans-serif;font-size:clamp(24px,4.5vw,52px);font-weight:800;color:#4ade80;min-width:80px;text-align:center}
+.contr-ex{font-size:clamp(11px,1.5vw,15px);color:rgba(255,255,255,.6);text-align:center;margin-top:-4px;margin-bottom:8px;font-style:italic}
+/* Nome próprio */
+.nome-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.3vw,18px);width:100%;max-width:840px}
+.nome-card{border-radius:14px;padding:clamp(12px,1.7vh,22px) clamp(14px,1.6vw,22px);backdrop-filter:blur(6px)}
+.nome-card.br{background:rgba(2,128,144,.3);border:2px solid rgba(94,240,255,.35)}
+.nome-card.es{background:rgba(150,50,20,.35);border:2px solid rgba(248,113,113,.3)}
+.nome-card.pt{background:rgba(0,39,118,.4);border:2px solid rgba(147,197,253,.3)}
+.nome-card.regra{background:rgba(0,156,59,.28);border:2px solid rgba(74,222,128,.35)}
+.nome-title{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,1.9vw,20px);font-weight:800;color:var(--am);margin-bottom:8px}
+.nome-ex{font-size:clamp(13px,1.8vw,19px);color:#fff;line-height:1.6}
+.nome-es{font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.5);font-style:italic;margin-top:4px}
+/* Separador de parte */
+.part-banner{background:linear-gradient(135deg,rgba(2,128,144,.7),rgba(0,168,150,.4));border:2px solid rgba(94,240,255,.4);border-radius:16px;padding:clamp(16px,2.5vh,28px);width:100%;max-width:700px;text-align:center;backdrop-filter:blur(8px)}
+.part-num{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,1.8vw,18px);font-weight:700;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.part-title{font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,38px);font-weight:800;color:#fff}
+.part-sub{font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.7);margin-top:6px}
+/* Pronbtns */
+.pronbtns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pbtn{background:rgba(245,168,0,.2);border:1.5px solid rgba(245,168,0,.5);color:var(--am);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:clamp(11px,1.4vw,14px);padding:5px 12px;border-radius:10px;cursor:pointer;transition:all .15s}
+.pbtn:hover{background:rgba(245,168,0,.38)}
+/* Section indicator */
+.sec-ind{position:fixed;top:clamp(10px,1.3vh,16px);left:50%;transform:translateX(-50%);font-size:clamp(9px,1.1vw,12px);font-weight:700;letter-spacing:.5px;z-index:200;padding:3px 10px;border-radius:12px;display:none}
+.sec-ind.ppt{background:rgba(2,128,144,.4);color:#5ef0ff;border:1px solid rgba(94,240,255,.3);display:block}
+.sec-ind.comp{background:rgba(245,168,0,.25);color:var(--am);border:1px solid rgba(245,168,0,.4);display:block}
+/* Nav */
+.pbar{position:fixed;bottom:0;left:0;height:3px;background:var(--tl);z-index:300;transition:width .3s}
+.dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:200;flex-wrap:wrap;justify-content:center;max-width:92vw}
+.dot{width:clamp(4px,.6vw,6px);height:clamp(4px,.6vw,6px);border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .25s}
+.dot.active{background:var(--am);transform:scale(1.5)}
+.dot.ppt-dot{background:rgba(94,240,255,.3)}
+.dot.ppt-dot.active{background:#5ef0ff}
+.dot.comp-dot{background:rgba(245,168,0,.3)}
+.dot.comp-dot.active{background:var(--am)}
+.ctrl{position:fixed;bottom:7px;right:11px;display:flex;gap:6px;z-index:200}
+.cbtn{width:clamp(32px,4vw,42px);height:clamp(32px,4vw,42px);border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:clamp(12px,1.5vw,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:all .2s}
+.cbtn:hover{background:rgba(255,255,255,.2)}
+.scnt{position:fixed;top:clamp(10px,1.3vh,16px);right:clamp(12px,1.5vw,20px);font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.4);font-weight:700;z-index:200}
+@media(max-width:560px){.twocol,.nome-grid{grid-template-columns:1fr}.artigo-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="pbar" id="prog"></div>
+<div class="scnt" id="scnt">1 / 22</div>
+<div class="sec-ind" id="secind"></div>
+<div class="dots" id="dots"></div>
+<div class="ctrl">
+  <button class="cbtn" onclick="prev()">◀</button>
+  <button class="cbtn" onclick="next()">▶</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PARTE 1: PPT ORIGINAL (slides 1–12)                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<!-- SLIDE 1: CAPA -->
+<div class="scene active" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Aula 8 · A1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📖 Aula 8 · Nível A1</div>
+    <div class="sc-h1 a2">Artigos<br><span class="go">Definidos e Indefinidos</span></div>
+    <div class="sc-sub a3">o · a · os · as &nbsp;|&nbsp; um · uma · uns · umas<br>de + artigo &nbsp;|&nbsp; em + artigo</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('o, a, os, as')">🔊 Definidos</button>
+      <button class="pbtn" onclick="spk('um, uma, uns, umas')">🔊 Indefinidos</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: ARTIGOS DEFINIDOS — QUANDO USAR -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Artigos Definidos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📌 Artigos Definidos — Quando Usar?</div>
+    <div class="twocol as" style="max-width:780px">
+      <div class="cbox">
+        <div class="ct">🎯 Algo já conhecido</div>
+        <ul>
+          <li>Falante e ouvinte já sabem de que se trata</li>
+          <li>Ex: <em style="color:var(--am)">O professor</em> está aqui. (sabemos quem)</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🔍 Algo específico</div>
+        <ul>
+          <li>Um objeto ou pessoa determinada</li>
+          <li>Ex: <em style="color:var(--am)">A caneta</em> está na mesa. (aquela caneta)</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🔁 Segunda menção</div>
+        <ul>
+          <li>Algo mencionado anteriormente</li>
+          <li>Ex: Comprei um carro. <em style="color:var(--am)">O carro</em> é bonito.</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">❓ Qual artigo usar?</div>
+        <ul>
+          <li>Depende do gênero (M/F) e número (sing./pl.)</li>
+          <li><strong style="color:#5ef0ff">o</strong> livro · <strong style="color:#5ef0ff">a</strong> mesa · <strong style="color:#5ef0ff">os</strong> livros · <strong style="color:#5ef0ff">as</strong> mesas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: FORMAS DEFINIDOS -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">o · a · os · as</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Formas dos Artigos Definidos · o · a · os · as</div>
+    <div class="artigo-grid as">
+      <div class="artigo-big def" onclick="spk('o')"><div class="artigo-form">o</div><div class="artigo-gen">masculino singular</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">O professor<br>é educado.</div></div>
+      <div class="artigo-big def" onclick="spk('a')"><div class="artigo-form">a</div><div class="artigo-gen">feminino singular</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">A aula<br>é à noite.</div></div>
+      <div class="artigo-big def" onclick="spk('os')"><div class="artigo-form">os</div><div class="artigo-gen">masculino plural</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">Os alunos<br>estudam.</div></div>
+      <div class="artigo-big def" onclick="spk('as')"><div class="artigo-form">as</div><div class="artigo-gen">feminino plural</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">As aulas<br>são boas.</div></div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('o professor é educado')">🔊 o professor</button>
+      <button class="pbtn" onclick="spk('a aula é à noite')">🔊 a aula</button>
+      <button class="pbtn" onclick="spk('os alunos estudam')">🔊 os alunos</button>
+      <button class="pbtn" onclick="spk('as aulas são boas')">🔊 as aulas</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: FORMAS INDEFINIDOS -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">um · uma · uns · umas</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Formas dos Artigos Indefinidos · um · uma · uns · umas</div>
+    <div class="artigo-grid as">
+      <div class="artigo-big indef" onclick="spk('um')"><div class="artigo-form">um</div><div class="artigo-gen">masculino singular</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">Tenho um<br>irmão.</div></div>
+      <div class="artigo-big indef" onclick="spk('uma')"><div class="artigo-form">uma</div><div class="artigo-gen">feminino singular</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">Moro em uma<br>casa.</div></div>
+      <div class="artigo-big indef" onclick="spk('uns')"><div class="artigo-form">uns</div><div class="artigo-gen">masculino plural</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">Tenho uns<br>amigos.</div></div>
+      <div class="artigo-big indef" onclick="spk('umas')"><div class="artigo-form">umas</div><div class="artigo-gen">feminino plural</div><div style="font-size:clamp(12px,1.6vw,16px);color:rgba(255,255,255,.8);margin-top:8px;font-style:italic">Compro umas<br>coisas.</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.5vw,15px)">⚠️ O plural de <strong>UM</strong> é <strong>UNS</strong> — não existe "umos"! · O plural de <strong>UMA</strong> é <strong>UMAS</strong></div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Tenho um irmão. Moro em uma casa.')">🔊 Exemplos</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: QUADRO RESUMO -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Resumo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Quadro Resumo · Definido × Indefinido</div>
+    <table class="cmp-table as" style="max-width:700px">
+      <thead><tr><th></th><th class="th-pt">DEFINIDOS</th><th class="th-es" style="background:rgba(0,156,59,.5)">INDEFINIDOS</th></tr></thead>
+      <tbody>
+        <tr><td style="color:rgba(255,255,255,.6)">Masc. singular</td><td><span class="pt-cell" style="cursor:pointer" onclick="spk('o')">o</span></td><td><span style="color:#4ade80;font-weight:700;cursor:pointer" onclick="spk('um')">um</span></td></tr>
+        <tr><td style="color:rgba(255,255,255,.6)">Fem. singular</td><td><span class="pt-cell" style="cursor:pointer" onclick="spk('a')">a</span></td><td><span style="color:#4ade80;font-weight:700;cursor:pointer" onclick="spk('uma')">uma</span></td></tr>
+        <tr><td style="color:rgba(255,255,255,.6)">Masc. plural</td><td><span class="pt-cell" style="cursor:pointer" onclick="spk('os')">os</span></td><td><span style="color:#4ade80;font-weight:700;cursor:pointer" onclick="spk('uns')">uns</span></td></tr>
+        <tr><td style="color:rgba(255,255,255,.6)">Fem. plural</td><td><span class="pt-cell" style="cursor:pointer" onclick="spk('as')">as</span></td><td><span style="color:#4ade80;font-weight:700;cursor:pointer" onclick="spk('umas')">umas</span></td></tr>
+      </tbody>
+    </table>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('o, a, os, as')">🔊 Definidos</button>
+      <button class="pbtn" onclick="spk('um, uma, uns, umas')">🔊 Indefinidos</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: PT × ES -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">PT × ES</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🔀 Artigos: Português × Espanhol · Comparativo A1</div>
+    <table class="cmp-table as">
+      <thead><tr><th class="th-pt">PT 🇧🇷</th><th class="th-es">ES 🇪🇸</th><th class="th-ex">Exemplo PT</th><th class="th-exes">Ejemplo ES</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-cell" onclick="spk('o')" style="cursor:pointer">o</td><td class="es-cell">el</td><td>O professor está aqui.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">El profesor está aquí.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('a')" style="cursor:pointer">a</td><td class="es-cell">la</td><td>A aula é à noite.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">La clase es de noche.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('os')" style="cursor:pointer">os</td><td class="es-cell">los</td><td>Os alunos estudam.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">Los alumnos estudian.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('as')" style="cursor:pointer">as</td><td class="es-cell">las</td><td>As aulas são boas.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">Las clases son buenas.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('um')" style="cursor:pointer">um</td><td class="es-cell">un</td><td>Tenho um irmão.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">Tengo un hermano.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('uma')" style="cursor:pointer">uma</td><td class="es-cell">una</td><td>Moro em uma casa.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">Vivo en una casa.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('uns')" style="cursor:pointer">uns</td><td class="es-cell">unos</td><td>Tenho uns amigos.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">Tengo unos amigos.</td></tr>
+        <tr><td class="pt-cell" onclick="spk('umas')" style="cursor:pointer">umas</td><td class="es-cell">unas</td><td>Compro umas coisas.</td><td style="color:rgba(255,255,255,.6);font-size:.9em">Compro unas cosas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 7: EXEMPLOS -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">💬 Exemplos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">💬 Exemplos — Identifique o Artigo</div>
+    <div class="twocol as" style="max-width:780px">
+      <div class="cbox" style="border-color:rgba(94,240,255,.3)">
+        <div class="ct" style="color:#5ef0ff">Definidos</div>
+        <ul>
+          <li><span style="color:var(--am);font-weight:800;font-size:1.2em">O</span> professor é brasileiro.</li>
+          <li><span style="color:var(--am);font-weight:800;font-size:1.2em">A</span> Maria mora no México.</li>
+          <li><span style="color:var(--am);font-weight:800;font-size:1.2em">A</span> aula é à noite.</li>
+          <li><span style="color:var(--am);font-weight:800;font-size:1.2em">Os</span> professores estão na escola.</li>
+        </ul>
+      </div>
+      <div class="cbox" style="border-color:rgba(74,222,128,.3)">
+        <div class="ct" style="color:#4ade80">Indefinidos</div>
+        <ul>
+          <li><span style="color:var(--am);font-weight:800;font-size:1.2em">Um</span> aluno mora no México.</li>
+          <li><span style="color:var(--am);font-weight:800;font-size:1.2em">Uma</span> pessoa tem 30 anos.</li>
+          <li>Comprei <span style="color:var(--am);font-weight:800;font-size:1.2em">um</span> livro novo.</li>
+          <li>Ela tem <span style="color:var(--am);font-weight:800;font-size:1.2em">uma</span> irmã bonita.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('O professor é brasileiro.')">🔊 O professor</button>
+      <button class="pbtn" onclick="spk('Um aluno mora no México.')">🔊 Um aluno</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: PREPOSIÇÕES + ARTIGOS -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">de · em + artigo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🔗 Preposições + Artigos · de · em</div>
+    <table class="prep-table as">
+      <thead>
+        <tr><th class="th-def">Definidos</th><th class="th-indef">Indefinidos</th><th class="th-de">DE + artigo</th><th class="th-em">EM + artigo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="pt-cell" onclick="spk('o')" style="cursor:pointer">o</td><td style="color:#4ade80;font-weight:700" onclick="spk('um')" style="cursor:pointer">um</td><td>de+o = <span class="prep-result" onclick="spk('do')">do</span></td><td>em+o = <span class="prep-result" onclick="spk('no')">no</span></td></tr>
+        <tr><td class="pt-cell" onclick="spk('a')" style="cursor:pointer">a</td><td style="color:#4ade80;font-weight:700" onclick="spk('uma')" style="cursor:pointer">uma</td><td>de+a = <span class="prep-result" onclick="spk('da')">da</span></td><td>em+a = <span class="prep-result" onclick="spk('na')">na</span></td></tr>
+        <tr><td class="pt-cell" onclick="spk('os')" style="cursor:pointer">os</td><td style="color:#4ade80;font-weight:700" onclick="spk('uns')" style="cursor:pointer">uns</td><td>de+os = <span class="prep-result" onclick="spk('dos')">dos</span></td><td>em+os = <span class="prep-result" onclick="spk('nos')">nos</span></td></tr>
+        <tr><td class="pt-cell" onclick="spk('as')" style="cursor:pointer">as</td><td style="color:#4ade80;font-weight:700" onclick="spk('umas')" style="cursor:pointer">umas</td><td>de+as = <span class="prep-result" onclick="spk('das')">das</span></td><td>em+as = <span class="prep-result" onclick="spk('nas')">nas</span></td></tr>
+      </tbody>
+    </table>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.5vw,16px)">💡 Toque nos resultados para ouvir!</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Sou do Brasil.')">🔊 do Brasil</button>
+      <button class="pbtn" onclick="spk('Moro no México.')">🔊 no México</button>
+      <button class="pbtn" onclick="spk('Venho da escola.')">🔊 da escola</button>
+      <button class="pbtn" onclick="spk('Estou na aula.')">🔊 na aula</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: EXERCÍCIO 1 -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 1 — Complete com o Artigo Definido · o · a · os · as</div>
+    <div class="exerc-grid as">
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ casa</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ apartamento</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ rua</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ bairro</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ sopa</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ suco</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'as')"><div class="exerc-word">___ meninas</div><div class="exerc-art">as</div></div>
+      <div class="exerc-item" onclick="reveal(this,'os')"><div class="exerc-word">___ meninos</div><div class="exerc-art">os</div></div>
+      <div class="exerc-item" onclick="reveal(this,'as')"><div class="exerc-word">___ mulheres</div><div class="exerc-art">as</div></div>
+      <div class="exerc-item" onclick="reveal(this,'os')"><div class="exerc-word">___ homens</div><div class="exerc-art">os</div></div>
+      <div class="exerc-item" onclick="reveal(this,'as')"><div class="exerc-word">___ canetas</div><div class="exerc-art">as</div></div>
+      <div class="exerc-item" onclick="reveal(this,'os')"><div class="exerc-word">___ envelopes</div><div class="exerc-art">os</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,15px)">💡 Toque em cada palavra para revelar o artigo correto!</div>
+  </div>
+</div>
+
+<!-- SLIDE 10: EXERCÍCIO 2 -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 2</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 2 — Substantivos e Seus Artigos</div>
+    <div class="exerc-grid as">
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ sobremesa</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ computador</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ caneta</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ mala</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ suco</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ calculadora</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ cartão</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ dinheiro</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ crachá</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'a')"><div class="exerc-word">___ borracha</div><div class="exerc-art">a</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ gerente</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ café</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ documento</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ caderno</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ presidente</div><div class="exerc-art">o</div></div>
+      <div class="exerc-item" onclick="reveal(this,'o')"><div class="exerc-word">___ filme</div><div class="exerc-art">o</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: EXERCÍCIO 6 — SINGULAR E PLURAL -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 6</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 6 — Singular e Plural</div>
+    <table class="cmp-table as" style="max-width:720px;font-size:clamp(13px,1.9vw,19px)">
+      <thead><tr><th class="th-pt">Singular</th><th class="th-es" style="background:rgba(0,156,59,.5)">Plural</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pt-cell">a</span> casa</td><td onclick="spk('as casas')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">as</span> casas 🔊</td></tr>
+        <tr><td><span class="pt-cell">a</span> rua</td><td onclick="spk('as ruas')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">as</span> ruas 🔊</td></tr>
+        <tr><td><span class="pt-cell">a</span> sopa</td><td onclick="spk('as sopas')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">as</span> sopas 🔊</td></tr>
+        <tr><td><span class="pt-cell">o</span> apartamento</td><td onclick="spk('os apartamentos')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">os</span> apartamentos 🔊</td></tr>
+        <tr><td><span class="pt-cell">o</span> bairro</td><td onclick="spk('os bairros')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">os</span> bairros 🔊</td></tr>
+        <tr><td><span class="pt-cell">o</span> suco</td><td onclick="spk('os sucos')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">os</span> sucos 🔊</td></tr>
+        <tr><td><span class="pt-cell">a</span> menina</td><td onclick="spk('as meninas')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">as</span> meninas 🔊</td></tr>
+        <tr><td><span class="pt-cell">o</span> homem</td><td onclick="spk('os homens')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">os</span> homens 🔊</td></tr>
+        <tr><td><span class="pt-cell">a</span> caneta</td><td onclick="spk('as canetas')" style="cursor:pointer"><span style="color:#4ade80;font-weight:700">as</span> canetas 🔊</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 12: TRANSIÇÃO -->
+<div class="scene" data-part="ppt">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">➡️ Complemento</span></div>
+  <div class="cnt">
+    <div class="part-banner as">
+      <div class="part-num">PARTE 2 DE 2</div>
+      <div class="part-title">🇧🇷 Complemento</div>
+      <div class="part-sub">Artigo + nome próprio · Gêneros PT≠ES<br>Artigos com países · Contração à</div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="next()">▶ Continuar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PARTE 2: COMPLEMENTO (slides 13–22)                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<!-- SLIDE 13: NOME PRÓPRIO -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">🇧🇷 Nome Próprio</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🇧🇷 Artigo + Nome Próprio — Muito Brasileiro!</div>
+    <div class="nome-grid as">
+      <div class="nome-card br"><div class="nome-title">🇧🇷 Português do Brasil</div><div class="nome-ex"><strong style="color:#5ef0ff">A</strong> Maria mora aqui.<br><strong style="color:#5ef0ff">O</strong> João chegou.<br><strong style="color:#5ef0ff">A</strong> Ana é professora.<br><strong style="color:#5ef0ff">O</strong> Pedro viajou.</div><div class="nome-es">✅ Muito comum no Brasil</div></div>
+      <div class="nome-card es"><div class="nome-title">🇪🇸 Espanhol</div><div class="nome-ex"><strong style="color:#f87171">❌</strong> La María vive aquí.<br><strong style="color:#f87171">❌</strong> El Juan llegó.<br><strong style="color:#4ade80">✅</strong> María vive aquí.<br><strong style="color:#4ade80">✅</strong> Juan llegó.</div><div class="nome-es">⚠️ Em ES, artigo + nome soa errado!</div></div>
+      <div class="nome-card pt"><div class="nome-title">🇵🇹 Portugal</div><div class="nome-ex"><strong style="color:#f87171">❌</strong> A Maria vive aqui.<br><strong style="color:#4ade80">✅</strong> Maria vive aqui.</div><div class="nome-es">Em Portugal também não se usa!</div></div>
+      <div class="nome-card regra"><div class="nome-title">📌 Regra</div><div class="nome-ex" style="font-size:clamp(12px,1.6vw,16px)">No Brasil usamos artigo com nomes de pessoas <strong>conhecidas ou íntimas</strong>.</div></div>
+    </div>
+    <div class="pronbtns a3"><button class="pbtn" onclick="spk('A Maria mora no Brasil.')">🔊 A Maria</button><button class="pbtn" onclick="spk('O João chegou hoje.')">🔊 O João</button></div>
+  </div>
+</div>
+
+<!-- SLIDE 14: ARMADILHAS GÊNERO -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">⚠️ Armadilhas</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">⚠️ Cuidado! Gêneros Diferentes PT ≠ ES</div>
+    <table class="cmp-table as">
+      <thead><tr><th class="th-pt">🇧🇷 Português</th><th class="th-es">🇪🇸 Espanhol</th><th class="th-ex">⚠️</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pt-cell">a</span> árvore 🌳</td><td><span class="es-cell">el</span> árbol</td><td class="alert-cell">F→M!</td></tr>
+        <tr><td><span class="pt-cell">o</span> leite 🥛</td><td><span class="es-cell">la</span> leche</td><td class="alert-cell">M→F!</td></tr>
+        <tr><td><span class="pt-cell">o</span> sangue 🩸</td><td><span class="es-cell">la</span> sangre</td><td class="alert-cell">M→F!</td></tr>
+        <tr><td><span class="pt-cell">a</span> ponte 🌉</td><td><span class="es-cell">el</span> puente</td><td class="alert-cell">F→M!</td></tr>
+        <tr><td><span class="pt-cell">o</span> nariz 👃</td><td><span class="es-cell">la</span> nariz</td><td class="alert-cell">M→F!</td></tr>
+        <tr><td><span class="pt-cell">a</span> cor 🎨</td><td><span class="es-cell">el</span> color</td><td class="alert-cell">F→M!</td></tr>
+        <tr><td><span class="pt-cell">o</span> mel 🍯</td><td><span class="es-cell">la</span> miel</td><td class="alert-cell">M→F!</td></tr>
+        <tr><td><span class="pt-cell">a</span> dor 🤕</td><td><span class="es-cell">el</span> dolor</td><td class="alert-cell">F→M!</td></tr>
+      </tbody>
+    </table>
+    <div class="pronbtns a4"><button class="pbtn" onclick="spk('a árvore, o leite, o sangue, a ponte, a cor, o mel, a dor')">🔊 Ouvir em PT</button></div>
+  </div>
+</div>
+
+<!-- SLIDE 15: MAIS ARMADILHAS -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">⚠️ Mais Casos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">⚠️ Mais Diferenças PT ≠ ES</div>
+    <div class="twocol as">
+      <div class="cbox"><div class="ct">🇧🇷 PT Feminino · 🇪🇸 ES Masculino</div><ul>
+        <li>🌳 <span style="color:#5ef0ff"><strong>a</strong></span> árvore / <span style="color:#93c5fd">el</span> árbol</li>
+        <li>🌉 <span style="color:#5ef0ff"><strong>a</strong></span> ponte / <span style="color:#93c5fd">el</span> puente</li>
+        <li>🎨 <span style="color:#5ef0ff"><strong>a</strong></span> cor / <span style="color:#93c5fd">el</span> color</li>
+        <li>🤕 <span style="color:#5ef0ff"><strong>a</strong></span> dor / <span style="color:#93c5fd">el</span> dolor</li>
+        <li>📡 <span style="color:#5ef0ff"><strong>a</strong></span> internet / <span style="color:#93c5fd">el</span> internet</li>
+      </ul></div>
+      <div class="cbox"><div class="ct">🇧🇷 PT Masculino · 🇪🇸 ES Feminino</div><ul>
+        <li>🥛 <span style="color:#5ef0ff"><strong>o</strong></span> leite / <span style="color:#93c5fd">la</span> leche</li>
+        <li>🩸 <span style="color:#5ef0ff"><strong>o</strong></span> sangue / <span style="color:#93c5fd">la</span> sangre</li>
+        <li>👃 <span style="color:#5ef0ff"><strong>o</strong></span> nariz / <span style="color:#93c5fd">la</span> nariz</li>
+        <li>🍯 <span style="color:#5ef0ff"><strong>o</strong></span> mel / <span style="color:#93c5fd">la</span> miel</li>
+        <li>🌸 <span style="color:#5ef0ff"><strong>o</strong></span> perfume / <span style="color:#93c5fd">la</span> fragancia</li>
+      </ul></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,15px)">💡 Aprenda sempre o artigo junto com a palavra nova!</div>
+  </div>
+</div>
+
+<!-- SLIDE 16: PAÍSES -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">🌍 Países</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🌍 Artigos com Países — Toque para ouvir!</div>
+    <div class="pais-grid as">
+      <div class="pais-card" onclick="spk('o Brasil')"><div class="pais-flag">🇧🇷</div><div class="pais-art">o</div><div class="pais-nome">Brasil</div></div>
+      <div class="pais-card" onclick="spk('o México')"><div class="pais-flag">🇲🇽</div><div class="pais-art">o</div><div class="pais-nome">México</div></div>
+      <div class="pais-card" onclick="spk('a França')"><div class="pais-flag">🇫🇷</div><div class="pais-art">a</div><div class="pais-nome">França</div></div>
+      <div class="pais-card" onclick="spk('a Alemanha')"><div class="pais-flag">🇩🇪</div><div class="pais-art">a</div><div class="pais-nome">Alemanha</div></div>
+      <div class="pais-card" onclick="spk('os Estados Unidos')"><div class="pais-flag">🇺🇸</div><div class="pais-art">os</div><div class="pais-nome">Estados Unidos</div></div>
+      <div class="pais-card" onclick="spk('a Argentina')"><div class="pais-flag">🇦🇷</div><div class="pais-art">a</div><div class="pais-nome">Argentina</div></div>
+      <div class="pais-card" onclick="spk('a China')"><div class="pais-flag">🇨🇳</div><div class="pais-art">a</div><div class="pais-nome">China</div></div>
+      <div class="pais-card" onclick="spk('o Japão')"><div class="pais-flag">🇯🇵</div><div class="pais-art">o</div><div class="pais-nome">Japão</div></div>
+      <div class="pais-card" onclick="spk('a Itália')"><div class="pais-flag">🇮🇹</div><div class="pais-art">a</div><div class="pais-nome">Itália</div></div>
+      <div class="pais-card" onclick="spk('Portugal')"><div class="pais-flag">🇵🇹</div><div class="pais-art" style="color:#f87171">—</div><div class="pais-nome">Portugal ⚠️</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,15px)">⚠️ <strong>Portugal</strong> — exceção! Sem artigo: "Moro <strong>em</strong> Portugal"</div>
+  </div>
+</div>
+
+<!-- SLIDE 17: PAÍSES + PREPOSIÇÕES -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">🌍 Países + prep.</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🌍 Países + Preposição em → Contrações</div>
+    <div class="dica-list as">
+      <div class="dica-item">🇧🇷 <span class="certo">Moro no Brasil.</span> → em + <strong>o</strong> = <span class="certo">no</span><span class="es">Vivo en Brasil. / en el Brasil → PT usa contração!</span></div>
+      <div class="dica-item">🇫🇷 <span class="certo">Moro na França.</span> → em + <strong>a</strong> = <span class="certo">na</span><span class="es">Vivo en Francia. / en la Francia → PT usa contração!</span></div>
+      <div class="dica-item">🇺🇸 <span class="certo">Moro nos Estados Unidos.</span> → em + <strong>os</strong> = <span class="certo">nos</span><span class="es">Vivo en los Estados Unidos → PT: nos EUA</span></div>
+      <div class="dica-item">🇵🇹 <span class="alerta">⚠️ Portugal — SEM artigo:</span> <span class="certo">Moro em Portugal.</span> ← nunca "no Portugal"!<span class="es">¡Excepción importante!</span></div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Moro no Brasil.')">🔊 no Brasil</button>
+      <button class="pbtn" onclick="spk('Moro na França.')">🔊 na França</button>
+      <button class="pbtn" onclick="spk('Moro em Portugal.')">🔊 em Portugal</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 18: CRASE -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">📝 Crase à</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📝 Contração À — Preposição a + Artigo a</div>
+    <div class="contracao-box as">
+      <div class="contr-row">
+        <div><div class="contr-part">a</div><div class="contr-ex">preposição</div></div>
+        <div class="contr-plus">+</div>
+        <div><div class="contr-part">a</div><div class="contr-ex">artigo "a"</div></div>
+        <div class="contr-eq">=</div>
+        <div><div class="contr-result">à</div><div class="contr-ex">crase!</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.2vw,16px);font-size:clamp(12px,1.7vw,17px)">
+        <div><div style="color:var(--am);font-weight:700;margin-bottom:6px">✅ Com crase (à)</div><div style="color:rgba(255,255,255,.9);line-height:1.8">Vou <strong style="color:#4ade80">à</strong> escola.<br>Chego <strong style="color:#4ade80">às</strong> 8h.<br>Vou <strong style="color:#4ade80">à</strong> praia.<br>Ela foi <strong style="color:#4ade80">à</strong> farmácia.</div></div>
+        <div><div style="color:var(--am);font-weight:700;margin-bottom:6px">❌ Sem crase</div><div style="color:rgba(255,255,255,.9);line-height:1.8">Vou <strong style="color:#f87171">ao</strong> banco. (a+o)<br>Vou <strong style="color:#f87171">a</strong> Portugal.<br>Falo <strong style="color:#f87171">de</strong> manhã.<br>Começa <strong style="color:#f87171">em</strong> março.</div></div>
+      </div>
+    </div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Vou à escola às oito horas.')">🔊 à escola às 8h</button>
+      <button class="pbtn" onclick="spk('Vou ao banco amanhã.')">🔊 ao banco</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 19: CRASE COTIDIANO -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">📝 Crase · Prática</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📝 Crase na Prática — Frases do Cotidiano</div>
+    <div class="dica-list as">
+      <div class="dica-item">🕗 <strong>Horários:</strong> <span class="certo">à meia-noite · às três horas · às 19h</span><span class="es">A medianoche · A las tres · a + a(s) = à/às</span></div>
+      <div class="dica-item">🏫 <strong>Lugares femininos:</strong> <span class="certo">à escola · à praia · à farmácia · à universidade</span><span class="es">a la escuela · a la playa · a la farmacia</span></div>
+      <div class="dica-item">🍽️ <strong>Menus brasileiros:</strong> <span class="certo">arroz à grega · bife à milanesa · frango à parmegiana</span><span class="es">Muito comum em restaurantes brasileiros!</span></div>
+      <div class="dica-item">🏦 <strong>Lugares masculinos = ao:</strong> <span class="certo">ao banco · ao mercado · ao trabalho</span><span class="es">a + o = ao (nunca "à banco"!)</span></div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('arroz à grega')">🔊 à grega</button>
+      <button class="pbtn" onclick="spk('Vou ao banco.')">🔊 ao banco</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 20: ATIVIDADE -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">✏️ Atividade</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Atividade em Sala</div>
+    <div class="twocol as">
+      <div class="cbox"><div class="ct">1️⃣ Artigo + Nome</div><ul>
+        <li>___ Carlos mora em SP.</li>
+        <li>___ Ana chegou cedo.</li>
+        <li>___ Pedro é professor.</li>
+        <li>___ Sofia estuda aqui.</li>
+      </ul></div>
+      <div class="cbox"><div class="ct">2️⃣ Países</div><ul>
+        <li>Moro ___ Brasil.</li>
+        <li>Ele é ___ França.</li>
+        <li>Viajei para ___ México.</li>
+        <li>Ela vive em ___ Portugal.</li>
+      </ul></div>
+      <div class="cbox"><div class="ct">3️⃣ Corrija o erro</div><ul>
+        <li>❌ <span style="color:#f87171">o árvore</span> → ___</li>
+        <li>❌ <span style="color:#f87171">a leite</span> → ___</li>
+        <li>❌ <span style="color:#f87171">o cor</span> → ___</li>
+        <li>❌ <span style="color:#f87171">a mel</span> → ___</li>
+      </ul></div>
+      <div class="cbox"><div class="ct">4️⃣ à / ao?</div><ul>
+        <li>Vou ___ escola.</li>
+        <li>Chego ___ 8 horas.</li>
+        <li>Vou ___ banco.</li>
+        <li>Vou ___ praia.</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 21: RESUMO FINAL -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">📋 Resumo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Resumo Completo da Aula 8</div>
+    <div class="twocol as">
+      <div class="cbox"><div class="ct">📖 Artigos</div><ul>
+        <li><strong style="color:#5ef0ff">Definidos:</strong> o · a · os · as (algo conhecido)</li>
+        <li><strong style="color:#4ade80">Indefinidos:</strong> um · uma · uns · umas</li>
+        <li>de+o=do · de+a=da · em+o=no · em+a=na</li>
+      </ul></div>
+      <div class="cbox"><div class="ct">🇧🇷 Peculiaridades PT</div><ul>
+        <li>👤 <strong>"A Maria"</strong> — muito brasileiro!</li>
+        <li>🌍 Países levam artigo: <em>o Brasil, a França</em></li>
+        <li>⚠️ Portugal — exceção sem artigo</li>
+        <li>📝 à = a+a · ao = a+o</li>
+      </ul></div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('A Maria vai à escola às oito horas.')">🔊 Frase modelo</button>
+      <button class="pbtn" onclick="spk('Até a próxima aula!')">🔊 Até a próxima!</button>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 22: ENCERRAMENTO -->
+<div class="scene" data-part="comp">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge comp">Até logo!</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎉 Aula 8 Concluída!</div>
+    <div class="sc-h1 a2">Parabéns! 🇧🇷<br><span class="go">Você conhece os artigos!</span></div>
+    <div class="sc-sub a3">Pratique com o app do aluno →<br>Lembre: <strong>o · a · os · as</strong> e <strong>um · uma · uns · umas</strong></div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Até a próxima aula! Parabéns!')">🔊 Até a próxima!</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const LOGO_B64 = 'data:image/jpeg;base64,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';
+if(LOGO_B64.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO_B64);}
+
+const scenes = document.querySelectorAll('.scene');
+const N = 22; let cur = 0;
+const dotsEl = document.getElementById('dots');
+const secEl = document.getElementById('secind');
+
+scenes.forEach((s,i)=>{
+  const d = document.createElement('div');
+  const part = s.dataset.part;
+  d.className = 'dot ' + (part==='ppt'?'ppt-dot':'comp-dot') + (i===0?' active':'');
+  d.onclick = ()=>goTo(i);
+  dotsEl.appendChild(d);
+});
+
+function goTo(n){
+  scenes[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  cur = Math.max(0, Math.min(N-1, n));
+  scenes[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  document.getElementById('scnt').textContent = (cur+1)+' / '+N;
+  document.getElementById('prog').style.width = ((cur+1)/N*100)+'%';
+  const part = scenes[cur].dataset.part;
+  secEl.className = 'sec-ind ' + part;
+  secEl.textContent = part==='ppt' ? '📖 PPT Original · slides 1–12' : '🇧🇷 Complemento · slides 13–22';
+}
+function next(){goTo(cur+1);}
+function prev(){goTo(cur-1);}
+
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+function reveal(el, art){el.classList.add('revealed');spk(art);}
+
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>
