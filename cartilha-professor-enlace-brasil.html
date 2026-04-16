@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartilha do Professor · Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --coral:    #C94B28;
+  --coral-lt: #FAEDE7;
+  --verde:    #3A7D44;
+  --verde-lt: #E8F4E9;
+  --azul:     #1E6FA8;
+  --azul-lt:  #E4F1FA;
+  --amber:    #9A6200;
+  --amber-lt: #FDF3DC;
+  --lilas:    #6B4BA1;
+  --lilas-lt: #F1EBF9;
+  --teal:     #0F7E6B;
+  --teal-lt:  #E0F4F0;
+  --cinza:    #4A4A4A;
+  --cinza-lt: #F5F4F0;
+  --borda:    #E2DDD5;
+  --bg:       #FDFCF9;
+  --texto:    #1C1C1C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: var(--texto);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+/* ── CAPA ── */
+.capa {
+  background: var(--texto);
+  color: #fff;
+  padding: 4rem 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.capa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 28px,
+    rgba(255,255,255,0.03) 28px,
+    rgba(255,255,255,0.03) 29px
+  );
+}
+
+.capa-inner { position: relative; z-index: 1; }
+
+.capa-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.75rem;
+}
+
+.capa h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.capa h1 em {
+  font-style: italic;
+  color: #F4A26C;
+}
+
+.capa p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+
+/* índice */
+.indice {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.indice a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 5px 14px;
+  transition: background 0.2s;
+}
+
+.indice a:hover { background: rgba(255,255,255,0.2); }
+
+/* ── LAYOUT ── */
+.conteudo {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* ── BLOCO / SEÇÃO ── */
+.secao {
+  margin-top: 3.5rem;
+}
+
+.secao-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--borda);
+}
+
+.secao-num {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #aaa;
+  min-width: 28px;
+}
+
+.icone-secao {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.secao-titulo-wrap h2 {
+  font-family: 'Lora', serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--texto);
+  line-height: 1.25;
+}
+
+.secao-titulo-wrap span {
+  font-size: 12px;
+  color: #999;
+  font-weight: 400;
+}
+
+/* ── DICA ROW ── */
+.dicas { display: flex; flex-direction: column; gap: 10px; }
+
+.dica {
+  display: flex;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: box-shadow 0.15s;
+}
+
+.dica:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+.dica-pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.dica-body { flex: 1; }
+.dica-body p { font-size: 14px; color: #555; }
+.dica-body strong { color: var(--texto); font-weight: 600; }
+
+/* ── CARDS ── */
+.cards { display: grid; gap: 12px; }
+.cols2 { grid-template-columns: repeat(2, 1fr); }
+.cols3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 620px) {
+  .cols2, .cols3 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.card-emoji { font-size: 18px; }
+
+.card h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.card p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* barras laterais coloridas */
+.bl-coral  { border-left: 3px solid var(--coral);  border-radius: 0 12px 12px 0; }
+.bl-verde  { border-left: 3px solid var(--verde);  border-radius: 0 12px 12px 0; }
+.bl-azul   { border-left: 3px solid var(--azul);   border-radius: 0 12px 12px 0; }
+.bl-amber  { border-left: 3px solid var(--amber);  border-radius: 0 12px 12px 0; }
+.bl-lilas  { border-left: 3px solid var(--lilas);  border-radius: 0 12px 12px 0; }
+.bl-teal   { border-left: 3px solid var(--teal);   border-radius: 0 12px 12px 0; }
+
+/* pips */
+.pip-coral  { background: var(--coral); }
+.pip-verde  { background: var(--verde); }
+.pip-azul   { background: var(--azul); }
+.pip-amber  { background: var(--amber); }
+.pip-lilas  { background: var(--lilas); }
+.pip-teal   { background: var(--teal); }
+
+/* ícones seção */
+.bg-coral  { background: var(--coral-lt); }
+.bg-verde  { background: var(--verde-lt); }
+.bg-azul   { background: var(--azul-lt); }
+.bg-amber  { background: var(--amber-lt); }
+.bg-lilas  { background: var(--lilas-lt); }
+.bg-teal   { background: var(--teal-lt); }
+
+/* ── DESTAQUE / AVISO ── */
+.aviso {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+
+.aviso p { font-size: 13px; line-height: 1.6; }
+.aviso strong { font-weight: 600; }
+
+.aviso-amber { background: var(--amber-lt); border: 1px solid #E8B84B; }
+.aviso-amber p { color: #5A3900; }
+
+.aviso-coral { background: var(--coral-lt); border: 1px solid #D87055; }
+.aviso-coral p { color: #6B2110; }
+
+.aviso-verde { background: var(--verde-lt); border: 1px solid #72B87A; }
+.aviso-verde p { color: #1A4D21; }
+
+/* ── BADGE ── */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.badge-teal  { background: var(--teal-lt);  color: var(--teal); }
+.badge-lilas { background: var(--lilas-lt); color: var(--lilas); }
+.badge-azul  { background: var(--azul-lt);  color: var(--azul); }
+
+/* ── REGRA DESTACADA ── */
+.regra-box {
+  background: var(--texto);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 12px;
+}
+
+.regra-box .regra-titulo {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #F4A26C;
+  margin-bottom: 10px;
+}
+
+.regra-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.regra-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+
+.regra-check {
+  color: #7EE8A2;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.regra-x {
+  color: #F4A26C;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── DIVISOR ── */
+.div { height: 1px; background: var(--borda); margin: 2rem 0; }
+
+/* ── RODAPÉ ── */
+.rodape {
+  background: var(--texto);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 12.5px;
+  line-height: 1.8;
+  margin-top: 3rem;
+}
+
+.rodape strong { color: #F4A26C; font-weight: 500; }
+
+/* ── PRINT ── */
+@media print {
+  .capa { background: #1C1C1C !important; -webkit-print-color-adjust: exact; }
+  .regra-box { background: #1C1C1C !important; -webkit-print-color-adjust: exact; }
+  body { font-size: 13px; }
+  .secao { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ CAPA ═══════════════ -->
+<div class="capa">
+  <div class="capa-inner">
+    <div style="margin-bottom:1.5rem;">
+      <img src="data:image/png;base64,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" alt="Logo Enlace Brasil" style="width:100px; height:100px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,0.3);">
+    </div>
+    <div class="capa-selo">🇧🇷 Enlace Brasil · Instituto de Língua e Cultura Brasileira</div>
+    <h1>Cartilha do Professor<br><em>bem-estar, engajamento<br>e boas práticas de aula</em></h1>
+    <p>Um guia de referência rápida para cuidar da sua saúde, conduzir aulas envolventes e manter um ambiente de aprendizagem de qualidade.</p>
+    <div class="indice">
+      <a href="#voz">Saúde vocal</a>
+      <a href="#postura">Postura</a>
+      <a href="#engajamento">Engajamento</a>
+      <a href="#pronuncia">Pronúncia</a>
+      <a href="#online">Aulas online</a>
+      <a href="#celular">Celular em aula</a>
+      <a href="#rotina">Rotina diária</a>
+    </div>
+  </div>
+</div>
+
+<div class="conteudo">
+
+<!-- ═══════════════ 1. SAÚDE VOCAL ═══════════════ -->
+<div class="secao" id="voz">
+  <div class="secao-topo">
+    <span class="secao-num">01</span>
+    <div class="icone-secao bg-coral">🎙️</div>
+    <div class="secao-titulo-wrap">
+      <h2>Saúde vocal</h2>
+      <span>A voz é o principal instrumento do professor</span>
+    </div>
+  </div>
+
+  <div class="dicas">
+    <div class="dica">
+      <div class="dica-pip pip-coral"></div>
+      <div class="dica-body">
+        <p><strong>Aquecimento antes de começar.</strong> Dedique 2–3 minutos: humming suave (mmm…), bocejo sonoro, sopros longos, sirenes vocais do grave ao agudo. Isso prepara as cordas vocais e reduz o risco de lesões.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-coral"></div>
+      <div class="dica-body">
+        <p><strong>Hidrate-se constantemente.</strong> Água morna ou em temperatura ambiente ao longo de toda a aula. Água gelada contrai as cordas vocais. Evite café e álcool nas horas que antecedem o trabalho.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-coral"></div>
+      <div class="dica-body">
+        <p><strong>Use o diafragma, não a garganta.</strong> Volume vem da respiração abdominal, não de apertar a laringe. Em aulas online, ajuste o microfone em vez de forçar o volume.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-coral"></div>
+      <div class="dica-body">
+        <p><strong>Varie ritmo e volume intencionalmente.</strong> Falar mais baixo em momentos-chave cria atenção. Pausas estratégicas dão descanso à voz e impacto às ideias. Não fale de forma contínua por mais de 20 minutos sem pausar.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-coral"></div>
+      <div class="dica-body">
+        <p><strong>Resfriamento vocal ao final.</strong> Ao terminar um dia de muitas aulas, evite falar alto por pelo menos 30 minutos. Se possível, faça inalação com soro fisiológico para hidratar as mucosas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="aviso aviso-amber" style="margin-top:14px;">
+    <div>⚠️</div>
+    <p><strong>Sinais de alerta:</strong> rouquidão persistente, dor, coceira ou cansaço vocal frequente pedem redução imediata da carga. Se recorrente, procure avaliação com fonoaudióloga. Não espere o quadro piorar.</p>
+  </div>
+
+  <div class="div" style="margin-top:20px;"></div>
+
+  <div class="cards cols2" style="margin-top:0;">
+    <div class="card bl-coral">
+      <div class="card-head"><span class="card-emoji">✅</span><h3>Favorece a voz</h3></div>
+      <p>Mel com gengibre morno · própolis · água em temperatura ambiente · umidificador no ambiente · silêncio vocal entre aulas</p>
+    </div>
+    <div class="card bl-coral">
+      <div class="card-head"><span class="card-emoji">🚫</span><h3>Prejudica a voz</h3></div>
+      <p>Café antes de aulas · bala de menta · chicletes · refrigerante · ar-condicionado muito frio · gritar ou sussurrar por muito tempo</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 2. POSTURA ═══════════════ -->
+<div class="secao" id="postura">
+  <div class="secao-topo">
+    <span class="secao-num">02</span>
+    <div class="icone-secao bg-verde">🧍</div>
+    <div class="secao-titulo-wrap">
+      <h2>Postura e corpo</h2>
+      <span>Bem-estar físico ao longo do dia</span>
+    </div>
+  </div>
+
+  <div class="cards cols2">
+    <div class="card bl-verde">
+      <div class="card-head"><span class="card-emoji">🏫</span><h3>Aula presencial</h3></div>
+      <p>Pés paralelos, peso distribuído. Circule pelo espaço com intenção — não fique preso à frente da sala nem se mova sem propósito. Evite cruzar os braços (cria barreira). Use as mãos para ilustrar ideias.</p>
+    </div>
+    <div class="card bl-verde">
+      <div class="card-head"><span class="card-emoji">💻</span><h3>Aula online</h3></div>
+      <p>Câmera na altura dos olhos (use suporte ou livros). Costas apoiadas, ombros relaxados. A cada 45 min, levante por 2 minutos para preservar a lombar. Mantenha o ambiente bem iluminado.</p>
+    </div>
+    <div class="card bl-verde">
+      <div class="card-head"><span class="card-emoji">🤲</span><h3>Gestos</h3></div>
+      <p>Gestos são aliados pedagógicos: usados com inteligência, reforçam o significado e mantêm a atenção. Mas evite excesso — gestos demais dispersam.</p>
+    </div>
+    <div class="card bl-verde">
+      <div class="card-head"><span class="card-emoji">⏱️</span><h3>Micro-pausas</h3></div>
+      <p>A cada hora: 30 seg de respiração profunda + alongamento de pescoço e ombros. Pequenas pausas acumulam grande diferença no final de um dia intenso.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 3. ENGAJAMENTO ═══════════════ -->
+<div class="secao" id="engajamento">
+  <div class="secao-topo">
+    <span class="secao-num">03</span>
+    <div class="icone-secao bg-azul">🌟</div>
+    <div class="secao-titulo-wrap">
+      <h2>Como manter os alunos atentos e à vontade</h2>
+      <span>Técnicas de engajamento e clima de aula</span>
+    </div>
+  </div>
+
+  <div class="dicas">
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Abra com contexto claro.</strong> Nos primeiros 2 minutos, apresente brevemente o que será trabalhado e por quê. Alunos aprendem melhor quando sabem para onde vão. Uma frase de abertura já muda o clima.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Conecte o conteúdo à vida real.</strong> Traga exemplos do cotidiano mexicano, situações que os alunos vivem ou viverão em português. A língua ganha vida quando tem contexto real.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Alterne formatos a cada 15–20 minutos.</strong> Exposição → prática em dupla → produção individual → discussão. A variação evita o cansaço e mantém a curiosidade acesa.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Use o nome dos alunos.</strong> Chamar pelo nome cria pertencimento e ativa a atenção de forma natural. Também demonstra que você conhece e valoriza cada um.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Crie espaço para o erro.</strong> Deixe claro que errar faz parte do processo. Um ambiente psicologicamente seguro libera o aluno para tentar, e tentativas são o coração do aprendizado de idiomas.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Encerre com síntese e antecipação.</strong> Reserve os últimos 3–5 minutos para retomar o que foi visto e dar um gancho para a próxima aula. Gera sensação de conclusão e motivação para voltar.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p><strong>Lide com o silêncio como aliado.</strong> Após uma pergunta, aguarde ao menos 5 segundos. Silêncio é processamento, não fracasso. Resistir ao impulso de responder por eles é um dos gestos mais poderosos do professor.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 4. PRONÚNCIA INDIVIDUAL ═══════════════ -->
+<div class="secao" id="pronuncia">
+  <div class="secao-topo">
+    <span class="secao-num">04</span>
+    <div class="icone-secao bg-lilas">🗣️</div>
+    <div class="secao-titulo-wrap">
+      <h2>Prática de pronúncia individual</h2>
+      <span>Ouvir cada aluno claramente faz toda a diferença</span>
+    </div>
+  </div>
+
+  <div class="badge badge-lilas">Por que é importante</div>
+
+  <div class="dica" style="margin-bottom:12px;">
+    <div class="dica-pip pip-lilas"></div>
+    <div class="dica-body">
+      <p>Quando vários alunos falam ao mesmo tempo, o professor não consegue identificar os desvios individuais de pronúncia — e erros se cristalizam. A produção individual é a principal ferramenta de diagnóstico fonético.</p>
+    </div>
+  </div>
+
+  <div class="dicas">
+    <div class="dica">
+      <div class="dica-pip pip-lilas"></div>
+      <div class="dica-body">
+        <p><strong>Rodada de pronúncia individual.</strong> Ao introduzir palavras novas, peça que cada aluno pronuncie separadamente — especialmente sons difíceis para falantes de espanhol (ã, nh, lh, r inicial, vogais nasais). Escute antes de corrigir.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-lilas"></div>
+      <div class="dica-body">
+        <p><strong>Corrija com modelo, não com julgamento.</strong> Em vez de "errado", diga "em português ficaria assim: [modelo]" e peça que repita. A correção positiva mantém a confiança do aluno intacta.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-lilas"></div>
+      <div class="dica-body">
+        <p><strong>Registro dos padrões de erro.</strong> Anote brevemente quais sons cada aluno tem mais dificuldade. Isso permite retomadas específicas em aulas futuras sem expor o aluno desnecessariamente.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-lilas"></div>
+      <div class="dica-body">
+        <p><strong>Repetição com variação de contexto.</strong> Após a pronúncia isolada, peça que o aluno use a palavra numa frase. A pronúncia em contexto natural é o objetivo final — não a repetição mecânica.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-lilas"></div>
+      <div class="dica-body">
+        <p><strong>Em grupos, use a rodada em sequência.</strong> "Vamos cada um dizer essa palavra — começa com [nome]." Isso mantém todos atentos (nunca sabem quando serão chamados) e garante que todos pratiquem.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="aviso aviso-verde" style="margin-top:14px;">
+    <div>💡</div>
+    <p><strong>Dica:</strong> em aulas online, peça que os demais mantenham o microfone desligado durante a pronúncia individual de um colega. Isso melhora muito a qualidade do que o professor consegue escutar.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ 5. AULAS ONLINE · CÂMERAS ═══════════════ -->
+<div class="secao" id="online">
+  <div class="secao-topo">
+    <span class="secao-num">05</span>
+    <div class="icone-secao bg-teal">📷</div>
+    <div class="secao-titulo-wrap">
+      <h2>Câmeras ligadas nas aulas online</h2>
+      <span>Presença visual é parte do processo de aprendizado</span>
+    </div>
+  </div>
+
+  <div class="dicas">
+    <div class="dica">
+      <div class="dica-pip pip-teal"></div>
+      <div class="dica-body">
+        <p><strong>Câmera ligada é postura profissional.</strong> Orientamos os alunos desde o início que manter a câmera ligada faz parte da dinâmica das aulas do Enlace Brasil — assim como comparecer presencialmente é uma escolha de comprometimento.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-teal"></div>
+      <div class="dica-body">
+        <p><strong>Por que isso importa pedagogicamente.</strong> A expressão facial do aluno é uma fonte de informação essencial: o professor consegue perceber confusão, dúvida, compreensão e engajamento — e ajustar a aula em tempo real.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-teal"></div>
+      <div class="dica-body">
+        <p><strong>Como lidar com resistência.</strong> Se um aluno tiver dificuldade técnica genuína (internet instável, privacidade real), acolha com empatia e busque uma solução juntos. A regra existe para favorecer, não punir.</p>
+      </div>
+    </div>
+    <div class="dica">
+      <div class="dica-pip pip-teal"></div>
+      <div class="dica-body">
+        <p><strong>O professor também se beneficia.</strong> Voz + imagem = comunicação completa. Ensinar para câmeras desligadas é como falar para uma parede. Sua energia e qualidade de presença também aumentam quando você é visto.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="regra-box">
+    <div class="regra-titulo">Combinado de câmera nas aulas Enlace Brasil</div>
+    <div class="regra-lista">
+      <div class="regra-item">
+        <span class="regra-check">✓</span>
+        <span>Câmera ligada durante toda a aula como padrão</span>
+      </div>
+      <div class="regra-item">
+        <span class="regra-check">✓</span>
+        <span>Microfone desligado quando não estiver falando (evita ruído)</span>
+      </div>
+      <div class="regra-item">
+        <span class="regra-check">✓</span>
+        <span>Ambiente com iluminação adequada — rosto visível e bem iluminado</span>
+      </div>
+      <div class="regra-item">
+        <span class="regra-x">✗</span>
+        <span>Câmera desligada sem justificativa — comunique ao professor se houver problema técnico</span>
+      </div>
+      <div class="regra-item">
+        <span class="regra-x">✗</span>
+        <span>Câmera apontada para o teto, parede ou completamente fora de enquadramento</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 6. CELULAR EM AULA ═══════════════ -->
+<div class="secao" id="celular">
+  <div class="secao-topo">
+    <span class="secao-num">06</span>
+    <div class="icone-secao bg-amber">📱</div>
+    <div class="secao-titulo-wrap">
+      <h2>Uso do celular durante a aula</h2>
+      <span>Ferramenta pedagógica, não distração</span>
+    </div>
+  </div>
+
+  <div class="dica" style="margin-bottom:14px;">
+    <div class="dica-pip pip-amber"></div>
+    <div class="dica-body">
+      <p>O celular do <strong>professor</strong> tem uma função específica em aula: enviar materiais, links e recursos aos alunos. Fora disso, deve permanecer guardado — o professor distante da tela é um modelo de presença para os alunos.</p>
+    </div>
+  </div>
+
+  <div class="cards cols2">
+    <div class="card bl-amber">
+      <div class="card-head"><span class="card-emoji">✅</span><h3>Usos permitidos (professor)</h3></div>
+      <p>Enviar materiais no grupo da turma · compartilhar links de exercícios ou leituras · registrar observações rápidas pós-aula · verificar horário ou relógio</p>
+    </div>
+    <div class="card bl-amber">
+      <div class="card-head"><span class="card-emoji">🚫</span><h3>Evitar durante a aula</h3></div>
+      <p>Responder mensagens pessoais · navegar em redes sociais · atender ligações (exceto urgências) · verificar notificações sem necessidade pedagógica</p>
+    </div>
+  </div>
+
+  <div class="aviso aviso-coral" style="margin-top:14px;">
+    <div>🔴</div>
+    <p><strong>Para os alunos:</strong> o mesmo princípio se aplica. Se o aluno usar o celular durante a aula, aborde com leveza mas com clareza: "Aqui estamos em modo foco — celular guardado, por favor." Consistência é mais eficaz do que tolerância irregular.</p>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="badge badge-azul">Sugestão de combinado no início do curso</div>
+  <div class="dicas">
+    <div class="dica">
+      <div class="dica-pip pip-azul"></div>
+      <div class="dica-body">
+        <p>Na primeira aula, apresente brevemente as "regras do espaço" — câmera ligada, celular guardado, um fala de cada vez. Quando os combinados são feitos juntos no início, o grupo sente que participou da construção. É mais fácil mantê-los depois.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ 7. ROTINA DIÁRIA ═══════════════ -->
+<div class="secao" id="rotina">
+  <div class="secao-topo">
+    <span class="secao-num">07</span>
+    <div class="icone-secao bg-teal">🌿</div>
+    <div class="secao-titulo-wrap">
+      <h2>Rotina de cuidado diário</h2>
+      <span>Para dias com carga intensa de aulas</span>
+    </div>
+  </div>
+
+  <div class="cards cols3">
+    <div class="card bl-teal">
+      <div class="card-head"><span class="card-emoji">🌅</span><h3>Manhã</h3></div>
+      <p>Água morna com mel e gengibre · aquecimento vocal de 2–3 min · revisar plano de aula · checar materiais e links antes de entrar</p>
+    </div>
+    <div class="card bl-teal">
+      <div class="card-head"><span class="card-emoji">☀️</span><h3>Entre aulas</h3></div>
+      <p>5 min de silêncio vocal · hidratação · alongar pescoço, ombros e punhos · anotar brevemente o que retomar na próxima aula</p>
+    </div>
+    <div class="card bl-teal">
+      <div class="card-head"><span class="card-emoji">🌙</span><h3>Noite</h3></div>
+      <p>Inalação com soro fisiológico (dias intensos) · evitar falar alto após trabalho pesado · sono reparador — as cordas vocais se recuperam durante o descanso</p>
+    </div>
+  </div>
+
+  <div class="aviso aviso-verde" style="margin-top:16px;">
+    <div>💚</div>
+    <p><strong>Lembre-se:</strong> professor saudável ensina melhor. Cuidar da voz, da postura e da energia não é egoísmo — é profissionalismo. Os alunos percebem e respondem à qualidade da sua presença.</p>
+  </div>
+</div>
+
+</div><!-- /conteudo -->
+
+<!-- ═══════════════ RODAPÉ ═══════════════ -->
+<div class="rodape">
+  <p><strong>Enlace Brasil</strong> · Instituto de Língua e Cultura Brasileira</p>
+  <p>Cidade do México · WhatsApp: 55 7321-7496</p>
+  <p style="margin-top:6px; font-size:11px; opacity:0.5;">Cartilha de uso interno · Equipe de professores</p>
+</div>
+
+</body>
+</html>
