@@ -2,581 +2,477 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#002776">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Enlace Brasil — Aula 10 · Corpo Humano e Saúde</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 10 — Preposições & Contrações · Aluno | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-:root{--vd:#009C3B;--am:#F5C518;--az:#002776;--rs:#e8336d;--bg:#eaf5f0;--text:#1a1a1a;--muted:#888;--radius:14px}
-html,body{font-family:Nunito,sans-serif;background:var(--bg);color:var(--text);-webkit-overflow-scrolling:touch}
-.topbar{background:var(--az);color:#fff;padding:14px 16px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;padding-top:max(14px,env(safe-area-inset-top,14px))}
-.tb-logo{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.4);object-fit:cover;flex-shrink:0}
-.tb-text{flex:1}.tb-title{font-family:"Baloo 2",sans-serif;font-size:15px;font-weight:800;line-height:1.1}
-.tb-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:1px}
-.tb-pts{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:4px 10px;font-size:12px;font-weight:700}
-.idx-bar{background:#fff;border-bottom:2px solid #eee;display:flex;overflow-x:auto;position:sticky;top:62px;z-index:99}
-.idx-bar::-webkit-scrollbar{display:none}
-.idx-btn{flex-shrink:0;padding:10px 14px;font-size:11px;font-weight:700;color:var(--muted);border:none;background:none;font-family:Nunito,sans-serif;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
-.idx-btn.active{color:var(--az);border-bottom-color:var(--az)}
-.section{padding:16px 14px 8px}
-.section-title{font-family:"Baloo 2",sans-serif;font-size:20px;font-weight:800;color:var(--az);margin-bottom:14px}
-.hero{background:linear-gradient(135deg,var(--az),#1a4fa0);border-radius:16px;padding:20px;color:#fff;margin:14px 14px 0}
-.hero-tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:10px;font-weight:700;padding:3px 10px;border-radius:14px;display:inline-block;margin-bottom:10px;letter-spacing:.5px}
-.hero-title{font-family:"Baloo 2",sans-serif;font-size:24px;font-weight:800;line-height:1.1;margin-bottom:6px}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--tl:#0e7490;--cl:#0e7490;--am:#f59e0b;--vd:#059669;--rs:#e11d48;--az:#1e3a5f}
+body{background:#f0f9ff;font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:40px}
+.topbar{background:linear-gradient(135deg,#073344,var(--tl));padding:clamp(10px,2vh,16px) clamp(14px,3vw,24px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.tb-wrap{display:flex;align-items:center;gap:10px}
+.tb-logo{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.5);flex-shrink:0}
+.tb-logo img{width:100%;height:100%;object-fit:cover}
+.tb-title{font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:clamp(13px,2vw,17px)}
+.tb-sub{color:rgba(255,255,255,.6);font-size:clamp(9px,1.3vw,12px)}
+.tb-pts{background:rgba(245,158,11,.2);border:1.5px solid rgba(245,158,11,.5);color:var(--am);font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:4px 12px;border-radius:20px}
+.idx-bar{background:#fff;border-bottom:2px solid #bae6fd;display:flex;overflow-x:auto;gap:4px;padding:8px 12px;position:sticky;top:62px;z-index:90;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.idx-bar::-webkit-scrollbar{height:3px}.idx-bar::-webkit-scrollbar-thumb{background:var(--tl);border-radius:2px}
+.idx-btn{background:none;border:1.5px solid #7dd3fc;color:#555;font-size:clamp(10px,1.4vw,13px);font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.idx-btn:hover,.idx-btn.active{background:var(--tl);border-color:var(--tl);color:#fff}
+.hero{background:linear-gradient(135deg,#073344 0%,var(--tl) 60%,#0891b2 100%);padding:clamp(28px,5vh,48px) clamp(16px,4vw,32px);text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'🔗';position:absolute;font-size:180px;opacity:.07;top:-20px;right:-20px}
+.hero-badge{background:rgba(245,158,11,.25);border:1.5px solid rgba(245,158,11,.6);color:var(--am);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:12px}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(26px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
 .hero-title span{color:var(--am)}
-.hero-desc{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5}
-.pill-row{display:flex;flex-wrap:wrap;gap:6px}
-.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
-.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px}
-.card.vd{border-left:4px solid var(--vd)}.card.az{border-left:4px solid var(--az)}
-.card-title{font-size:11px;font-weight:700;color:var(--az);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
-.rule-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #f0f0f0}
-.rule-sym{font-family:"Baloo 2",sans-serif;font-size:14px;font-weight:800;color:var(--az);min-width:90px}
-.rule-txt{font-size:12px;color:#444}
-.sound-card{border-radius:12px;padding:14px;margin-bottom:10px}
-.c1{background:linear-gradient(135deg,var(--az),#1a4fa0);color:#fff}
-.c2{background:linear-gradient(135deg,#007a2e,var(--vd));color:#fff}
-.c3{background:linear-gradient(135deg,#856404,#a07808);color:#fff}
-.c4{background:linear-gradient(135deg,#72243E,var(--rs));color:#fff}
-.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.sc-sym{font-family:"Baloo 2",sans-serif;font-size:22px;font-weight:800}
-.sc-badge{background:rgba(255,255,255,.2);font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px}
-.sc-play{background:rgba(255,255,255,.25);border:none;border-radius:50%;width:36px;height:36px;color:#fff;font-size:14px;cursor:pointer;flex-shrink:0}
-.sc-rule{font-size:11px;opacity:.8;margin-bottom:8px;line-height:1.4}
-.sc-exs{display:flex;flex-wrap:wrap;gap:6px}
-.sc-ex{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:700;cursor:pointer}
-.sc-ex:active{background:rgba(255,255,255,.35)}
-.tip{background:#E1F5EE;border-radius:10px;padding:10px 12px;margin-bottom:10px}
-.tip.am{background:#FFF3CD}
-.tip-lbl{font-size:10px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
-.tip.am .tip-lbl{color:#856404}
-.tip-txt{font-size:12px;color:#333;line-height:1.5}
-.tip-txt em{color:var(--az);font-style:normal;font-weight:700}
-.marcas-grid{display:flex;flex-direction:column;gap:6px}
-.marca-item{display:flex;align-items:center;gap:10px;background:#f6fbf8;border-radius:10px;padding:10px 12px;cursor:pointer;transition:background .15s}
-.marca-item:active{background:#E1F5EE}
-.marca-orig{font-size:13px;font-weight:700;color:var(--az);min-width:80px}
-.marca-pt{font-size:13px;color:#444;flex:1;font-style:italic}
-.marca-play{background:var(--vd);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
-.ditado-list{display:flex;flex-direction:column;gap:8px}
-.ditado-item{display:flex;align-items:flex-start;gap:10px;background:#f6fbf8;border-radius:10px;padding:10px 12px;cursor:pointer;transition:background .15s}
-.ditado-item:active{background:#E1F5EE}
-.ditado-num{font-family:"Baloo 2",sans-serif;font-size:16px;font-weight:800;color:var(--az);min-width:22px;flex-shrink:0}
-.ditado-play{background:var(--vd);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
-.ditado-txt{font-size:12px;color:#333;line-height:1.5;flex:1}
-.play-btn{background:rgba(0,39,118,.1);border:2px solid var(--az);border-radius:12px;padding:10px;color:var(--az);font-size:13px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
-.play-btn.playing{background:var(--am);color:#333;border-color:var(--am)}
-.score-banner{background:linear-gradient(135deg,var(--vd),#007a2e);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;color:#fff;margin-bottom:10px}
-.sb-label{font-size:11px;opacity:.8;font-weight:600}
-.sb-score{font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800;line-height:1}
-.sb-stars{font-size:13px;margin-top:1px}
-.blank-card{background:#fff;border-radius:14px;padding:14px;border-left:4px solid var(--vd);margin-bottom:10px}
-.blank-q{font-size:13px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:10px}
-.blank-q .gap{display:inline-block;min-width:60px;border-bottom:2px dashed var(--vd);color:var(--vd);text-align:center;padding:0 4px}
-.blank-q .gap.correct{color:#0F6E56;border-bottom:2px solid #0F6E56;font-weight:700}
-.options-row{display:flex;flex-wrap:wrap;gap:6px}
-.opt{background:#f6fbf8;border:2px solid #ddd;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;color:#444;cursor:pointer;transition:all .15s}
-.opt:active{transform:scale(.95)}
-.opt.selected{background:#E1F5EE;border-color:var(--vd);color:#0F6E56}
-.opt.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D;animation:shake .3s ease}
+.hero-desc{font-size:clamp(13px,2vw,17px);color:rgba(255,255,255,.85);margin-bottom:16px}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:clamp(11px,1.5vw,14px);font-weight:700;padding:5px 14px;border-radius:20px}
+.section{padding:clamp(20px,3vh,32px) clamp(14px,4vw,28px);max-width:860px;margin:0 auto}
+.sec-title{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--tl),transparent)}
+.tip{border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(12px,2vw,18px);margin-bottom:16px}
+.tip.tl{background:#e0f2fe;border-left:4px solid var(--tl)}
+.tip.am{background:#fff8e1;border-left:4px solid var(--am)}
+.tip.vd{background:#d1fae5;border-left:4px solid var(--vd)}
+.tip.rs{background:#fef2f2;border-left:4px solid var(--rs)}
+.tip-lbl{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
+.tip.tl .tip-lbl{color:var(--tl)}.tip.am .tip-lbl{color:#b36b00}.tip.vd .tip-lbl{color:var(--vd)}.tip.rs .tip-lbl{color:var(--rs)}
+.tip-txt{font-size:clamp(12px,1.7vw,16px);color:#333;line-height:1.6}
+/* Prep cards */
+.prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.prep-card{background:#fff;border-radius:14px;padding:clamp(12px,2vh,18px) 10px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid var(--tl)}
+.prep-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(14,116,144,.18)}
+.prep-card.playing{border-top-color:var(--am);background:#fff8e1}
+.prep-word{font-family:'Baloo 2',sans-serif;font-size:clamp(20px,3.5vw,30px);font-weight:800;color:var(--tl)}
+.prep-uso{font-size:clamp(11px,1.5vw,14px);color:#555;margin:4px 0}
+.prep-ex{font-size:clamp(11px,1.4vw,13px);color:#888;font-style:italic}
+/* Contração table */
+.contr-wrap{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px}
+.contr-table{width:100%;border-collapse:collapse;font-size:clamp(12px,1.7vw,16px)}
+.contr-table th{padding:10px 12px;font-weight:700;text-align:center}
+.contr-table td{padding:10px 12px;border-bottom:1px solid #e0f2fe;text-align:center;cursor:pointer;transition:all .2s}
+.contr-table td:hover{background:#e0f2fe}
+.contr-table tr:nth-child(even) td{background:#f0f9ff}
+.th-prep{background:var(--tl);color:#fff}.th-def{background:#0891b2;color:#fff;font-size:.9em}.th-ind{background:var(--vd);color:#fff;font-size:.9em}
+.cc-p{color:var(--tl);font-weight:800}.cc-v{color:var(--tl);font-weight:700}.cc-i{color:var(--vd);font-weight:600}
+/* Plural table */
+.plural-table{width:100%;border-collapse:collapse;font-size:clamp(12px,1.7vw,16px);margin-bottom:16px}
+.plural-table th{padding:10px 14px;font-weight:700}
+.plural-table td{padding:10px 14px;border-bottom:1px solid #e0f2fe;color:#222}
+.plural-table tr:nth-child(even) td{background:#f8feff}
+.th-reg{background:var(--tl);color:#fff}.th-sing{background:#e0f2fe;color:var(--az)}.th-pl{background:#d1fae5;color:var(--vd)}
+.sing-c{color:#555}.pl-c{color:var(--tl);font-weight:700}.tip-c{color:var(--am);font-weight:700}
+/* Pont grid */
+.pont-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.pont-card{background:#fff;border-radius:14px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.pont-sym{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:800;color:var(--tl);line-height:1}
+.pont-nome{font-size:clamp(11px,1.4vw,14px);font-weight:700;color:var(--az);margin:4px 0}
+.pont-desc{font-size:clamp(10px,1.3vw,13px);color:#666;line-height:1.4}
+/* Atividades */
+.ativ-card{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,24px);margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:4px solid var(--tl)}
+.ativ-card.am{border-top-color:var(--am)}.ativ-card.vd{border-top-color:var(--vd)}.ativ-card.rs{border-top-color:var(--rs)}
+.ativ-title{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;color:var(--az);margin-bottom:6px}
+.ativ-sub{font-size:clamp(12px,1.6vw,15px);color:#666;margin-bottom:14px;font-style:italic}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.score-txt{font-size:14px;color:#555;font-weight:700}.stars{font-size:18px;letter-spacing:2px}
+/* Gap */
+.gap-sent{font-size:clamp(14px,2.2vw,19px);color:#222;line-height:2.4;margin-bottom:10px}
+.gap{display:inline-block;min-width:70px;border-bottom:2.5px solid var(--tl);text-align:center;padding:2px 8px;font-weight:800;color:var(--tl);cursor:pointer;border-radius:4px 4px 0 0}
+.gap.correct{background:#e0f2fe;color:var(--tl);border-color:var(--tl)}
+.gap.wrong{background:#fef2f2;color:var(--rs);border-color:var(--rs);animation:shake .3s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-.btn{width:100%;padding:13px;border-radius:12px;border:none;font-size:14px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
-.btn-verde{background:var(--vd);color:#fff}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,39,118,.9);color:#fff;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;z-index:200}
-.toast.show{opacity:1}
-@media(min-width:768px){
-  .section,.hero{max-width:860px;margin-left:auto;margin-right:auto}
-  .hero{padding:28px 32px;margin-top:16px}
-  .section{padding:20px 24px 12px}
-  .section-title{font-size:24px}
-  .marcas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .tip-txt{font-size:14px}
-  .blank-q{font-size:15px}
-  .opt{font-size:14px;padding:10px 18px}
-}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.opt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:20px;padding:6px 16px;font-size:clamp(12px,1.7vw,16px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:'Nunito',sans-serif}
+.opt:hover{border-color:var(--tl);background:#e0f2fe}
+.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+/* Quiz */
+.quiz-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.quiz-opt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:12px;padding:12px 16px;font-size:clamp(13px,1.8vw,17px);cursor:pointer;transition:all .2s;text-align:left;font-family:'Nunito',sans-serif;font-weight:600}
+.quiz-opt:hover{border-color:var(--tl);background:#e0f2fe}
+.quiz-opt.correct{border-color:var(--vd);background:#d1fae5;color:var(--vd);pointer-events:none}
+.quiz-opt.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);pointer-events:none}
+.quiz-explain{display:none;background:#f0f9ff;border-radius:8px;padding:10px 14px;font-size:clamp(12px,1.6vw,15px);color:#333;line-height:1.5;margin-top:8px}
+.btn{border:none;border-radius:10px;padding:9px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.btn-tl{background:var(--tl);color:#fff}.btn-vd{background:var(--vd);color:#fff}
+.btn-am{background:var(--am);color:#fff}.btn-gray{background:#888;color:#fff}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#333;color:#fff;padding:10px 22px;border-radius:22px;font-size:14px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
-
-<style>
-.abp{transition:opacity .2s,filter .2s}
-.abp:hover{opacity:.7!important}
-</style>
 <div class="topbar">
-  <img class="tb-logo" src="data:image/jpeg;base64,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" alt="EB">
-  <div class="tb-text">
-    <div class="tb-title">Enlace Brasil</div>
-    <div class="tb-sub">Aula 10 — Corpo Humano e Saúde</div>
+  <div class="tb-wrap">
+    <div class="tb-logo"><img id="tblogo" src="" alt="EB"></div>
+    <div><div class="tb-title">Enlace Brasil</div><div class="tb-sub">Aula 10 · Preposições & Contrações · A1</div></div>
   </div>
   <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
 </div>
 <div class="idx-bar">
-  <button class="idx-btn active" onclick="scrollTo_('s-corpo',this)">🫀 Corpo</button>
-  <button class="idx-btn" onclick="scrollTo_('s-sintomas',this)">🤒 Sintomas</button>
-  <button class="idx-btn" onclick="scrollTo_('s-consulta',this)">🏥 Consulta</button>
-  <button class="idx-btn" onclick="scrollTo_('s-farmacia',this)">💊 Farmácia</button>
-  <button class="idx-btn" onclick="scrollTo_('s-emergencia',this)">🚨 Emergência</button>
-  <button class="idx-btn" onclick="scrollTo_('s-ativ',this)">✏️ Atividades</button>
+  <button class="idx-btn active" onclick="go('s-prep',this)">🔗 Prep.</button>
+  <button class="idx-btn" onclick="go('s-em',this)">em+art</button>
+  <button class="idx-btn" onclick="go('s-de',this)">de+art</button>
+  <button class="idx-btn" onclick="go('s-aopor',this)">ao/pelo</button>
+  <button class="idx-btn" onclick="go('s-tabela',this)">📋 Tabela</button>
+  <button class="idx-btn" onclick="go('s-pont',this)">📝 Pont.</button>
+  <button class="idx-btn" onclick="go('s-plural',this)">📚 Plural</button>
+  <button class="idx-btn" onclick="go('s-a1',this)">✏️ Ativ.1</button>
+  <button class="idx-btn" onclick="go('s-a2',this)">✏️ Ativ.2</button>
+  <button class="idx-btn" onclick="go('s-a3',this)">✏️ Ativ.3</button>
+  <button class="idx-btn" onclick="go('s-quiz',this)">🎮 Quiz</button>
 </div>
-
 <div class="hero">
-  <div class="hero-tag">AULA 10 · NÍVEL A2</div>
-  <div class="hero-title">Corpo Humano<br><span>e Saúde</span></div>
-  <div class="hero-desc">Toque nas partes do corpo para ouvir!</div>
+  <div class="hero-badge">AULA 10 · NÍVEL A1</div>
+  <div class="hero-title">Preposições &<br><span>🔗 Contrações</span></div>
+  <div class="hero-desc">em+artigo · de+artigo · ao/à · pelo/pela · Pontuação · Plural</div>
   <div class="pill-row">
-    <span class="pill">🫀 Partes do corpo</span>
-    <span class="pill">🤒 Sintomas</span>
-    <span class="pill">🚨 Emergência</span>
+    <span class="pill">no Brasil</span><span class="pill">da escola</span>
+    <span class="pill">ao banco</span><span class="pill">pelo metrô</span>
+    <span class="pill">os homens</span>
   </div>
 </div>
 
-<!-- CORPO INTERATIVO -->
-<div class="section" id="s-corpo">
-  <div class="section-title">🫀 Partes do Corpo — Toque para Ouvir!</div>
-
-  <!-- CORPO SVG INTERATIVO -->
-  <div style="background:linear-gradient(135deg,#f0f9f4,#e8f4fd);border-radius:16px;padding:16px;margin-bottom:10px">
-    <div id="active-label" style="text-align:center;min-height:52px;margin-bottom:12px;background:#002776;border-radius:10px;padding:8px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center">
-      <div style="font-size:11px;opacity:.7">👆 Toque em qualquer parte do corpo</div>
-      <div id="aluno-label-pt" style="font-family:'Baloo 2',sans-serif;font-size:22px;font-weight:800"></div>
-      <div id="aluno-label-es" style="font-size:12px;opacity:.8"></div>
-    </div>
-    <div style="display:flex;justify-content:center">
-      <svg viewBox="0 0 160 340" style="height:360px;max-width:180px" xmlns="http://www.w3.org/2000/svg">
-        <!-- Cabeça -->
-        <ellipse cx="80" cy="30" rx="28" ry="32" fill="#FDDBB4" stroke="#c8956c" stroke-width="1.5" class="abp" data-id="cabeca" style="cursor:pointer"/>
-        <ellipse cx="80" cy="12" rx="28" ry="14" fill="#5C3317" class="abp" data-id="cabelo" style="cursor:pointer"/>
-        <ellipse cx="70" cy="26" rx="5" ry="4" fill="#fff" stroke="#555" stroke-width="1"/>
-        <ellipse cx="90" cy="26" rx="5" ry="4" fill="#fff" stroke="#555" stroke-width="1"/>
-        <circle cx="70" cy="27" r="3" fill="#3a6bc8" class="abp" data-id="olho" style="cursor:pointer"/>
-        <circle cx="90" cy="27" r="3" fill="#3a6bc8" class="abp" data-id="olho" style="cursor:pointer"/>
-        <ellipse cx="80" cy="33" rx="4" ry="5" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="nariz" style="cursor:pointer"/>
-        <path d="M72 42 Q80 48 88 42" fill="none" stroke="#c8956c" stroke-width="2" class="abp" data-id="boca" style="cursor:pointer"/>
-        <ellipse cx="52" cy="32" rx="7" ry="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="orelha" style="cursor:pointer"/>
-        <ellipse cx="108" cy="32" rx="7" ry="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="orelha" style="cursor:pointer"/>
-        <rect x="70" y="58" width="20" height="18" rx="4" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="pescoco" style="cursor:pointer"/>
-        <ellipse cx="45" cy="90" rx="20" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="ombro" style="cursor:pointer"/>
-        <ellipse cx="115" cy="90" rx="20" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="ombro" style="cursor:pointer"/>
-        <rect x="52" y="76" width="56" height="80" rx="10" fill="#FDDBB4" stroke="#c8956c" stroke-width="1.5" class="abp" data-id="torax" style="cursor:pointer"/>
-        <ellipse cx="80" cy="135" rx="22" ry="18" fill="#f5c99e" stroke="#c8956c" stroke-width="1" class="abp" data-id="abdomen" style="cursor:pointer"/>
-        <circle cx="80" cy="138" r="3" fill="#c8956c" class="abp" data-id="abdomen" style="cursor:pointer"/>
-        <rect x="22" y="78" width="22" height="70" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="braco" style="cursor:pointer"/>
-        <rect x="116" y="78" width="22" height="70" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="braco" style="cursor:pointer"/>
-        <ellipse cx="33" cy="138" rx="11" ry="9" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="cotovelo" style="cursor:pointer"/>
-        <ellipse cx="127" cy="138" rx="11" ry="9" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="cotovelo" style="cursor:pointer"/>
-        <rect x="22" y="148" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="antebraco" style="cursor:pointer"/>
-        <rect x="116" y="148" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="antebraco" style="cursor:pointer"/>
-        <ellipse cx="33" cy="205" rx="10" ry="7" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="pulso" style="cursor:pointer"/>
-        <ellipse cx="127" cy="205" rx="10" ry="7" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="pulso" style="cursor:pointer"/>
-        <ellipse cx="33" cy="222" rx="13" ry="16" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="mao" style="cursor:pointer"/>
-        <ellipse cx="127" cy="222" rx="13" ry="16" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="mao" style="cursor:pointer"/>
-        <ellipse cx="80" cy="165" rx="30" ry="14" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="quadril" style="cursor:pointer"/>
-        <rect x="55" y="172" width="22" height="80" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="coxa" style="cursor:pointer"/>
-        <rect x="83" y="172" width="22" height="80" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="coxa" style="cursor:pointer"/>
-        <ellipse cx="66" cy="252" rx="12" ry="10" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="joelho" style="cursor:pointer"/>
-        <ellipse cx="94" cy="252" rx="12" ry="10" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="joelho" style="cursor:pointer"/>
-        <rect x="55" y="262" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="canela" style="cursor:pointer"/>
-        <rect x="83" y="262" width="22" height="55" rx="11" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="canela" style="cursor:pointer"/>
-        <ellipse cx="66" cy="320" rx="11" ry="8" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="tornozelo" style="cursor:pointer"/>
-        <ellipse cx="94" cy="320" rx="11" ry="8" fill="#f0c090" stroke="#c8956c" stroke-width="1" class="abp" data-id="tornozelo" style="cursor:pointer"/>
-        <ellipse cx="63" cy="334" rx="16" ry="8" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="pe" style="cursor:pointer"/>
-        <ellipse cx="97" cy="334" rx="16" ry="8" fill="#FDDBB4" stroke="#c8956c" stroke-width="1" class="abp" data-id="pe" style="cursor:pointer"/>
-      </svg>
-    </div>
-  </div>
-
-  <!-- GRID DE PARTES -->
-  <div class="card vd">
-    <div class="card-title">Toque nos botões também!</div>
-    <div id="part-buttons" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"></div>
+<!-- PREPOSIÇÕES -->
+<div class="section" id="s-prep">
+  <div class="sec-title">🔗 Preposições Básicas A1</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Para que servem</div><div class="tip-txt">Preposições indicam <strong>lugar, origem, direção, companhia</strong>. Em português, quando se juntam com artigos, formam <strong>contrações obrigatórias</strong>!</div></div>
+  <div class="prep-grid">
+    <div class="prep-card" onclick="spkC(this,'em casa')"><div class="prep-word">em</div><div class="prep-uso">lugar / estado</div><div class="prep-ex">em casa · em SP 🔊</div></div>
+    <div class="prep-card" onclick="spkC(this,'de onde você é')"><div class="prep-word">de</div><div class="prep-uso">origem / posse</div><div class="prep-ex">sou de México 🔊</div></div>
+    <div class="prep-card" onclick="spkC(this,'vou a escola')"><div class="prep-word">a</div><div class="prep-uso">direção / hora</div><div class="prep-ex">vou à escola 🔊</div></div>
+    <div class="prep-card" onclick="spkC(this,'estudo com amigos')"><div class="prep-word">com</div><div class="prep-uso">companhia</div><div class="prep-ex">com amigos 🔊</div></div>
+    <div class="prep-card" onclick="spkC(this,'passo pelo parque')"><div class="prep-word">por</div><div class="prep-uso">causa / passagem</div><div class="prep-ex">pelo parque 🔊</div></div>
+    <div class="prep-card" onclick="spkC(this,'vou para o Brasil')"><div class="prep-word">para</div><div class="prep-uso">destino / fim</div><div class="prep-ex">para o Brasil 🔊</div></div>
   </div>
 </div>
 
-<!-- SINTOMAS -->
-<div class="section" id="s-sintomas">
-  <div class="section-title">🤒 Sintomas</div>
-  <div class="card vd">
-    <div class="card-title">TER + sintoma — toque para ouvir</div>
-    <div class="marcas-grid">
-      <div class="marca-item" onclick="spk('Eu tenho febre.')"><span class="marca-orig">ter febre</span><span class="marca-pt">tener fiebre</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho dor de cabeça.')"><span class="marca-orig">ter dor de cabeça</span><span class="marca-pt">dolor de cabeza</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho tosse.')"><span class="marca-orig">ter tosse</span><span class="marca-pt">tener tos</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho enjoo.')"><span class="marca-orig">ter enjoo</span><span class="marca-pt">náuseas</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho tontura.')"><span class="marca-orig">ter tontura</span><span class="marca-pt">mareos</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho calafrio.')"><span class="marca-orig">ter calafrio</span><span class="marca-pt">escalofríos</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho falta de ar.')"><span class="marca-orig">falta de ar</span><span class="marca-pt">falta de aliento</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho inchaço.')"><span class="marca-orig">inchaço</span><span class="marca-pt">hinchazón</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho cansaço.')"><span class="marca-orig">cansaço / fadiga</span><span class="marca-pt">cansancio</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho formigamento.')"><span class="marca-orig">formigamento</span><span class="marca-pt">hormigueo</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu tenho pressão alta.')"><span class="marca-orig">pressão alta</span><span class="marca-pt">presión alta</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Eu vomitei.')"><span class="marca-orig">vômito</span><span class="marca-pt">vómito</span><span class="marca-play">▶</span></div>
+<!-- EM + ARTIGO -->
+<div class="section" id="s-em">
+  <div class="sec-title">🔗 em + artigo</div>
+  <div class="tip rs"><div class="tip-lbl">⚠️ Obrigatório!</div><div class="tip-txt">Em português <strong>NÃO</strong> se diz "em o Brasil" — é sempre <strong>no</strong> Brasil! A contração é obrigatória.</div></div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px">
+    <div onclick="spk('no')" style="background:#fff;border:2px solid #7dd3fc;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="color:#aaa;font-size:13px">em + o =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--tl)">no</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Moro <strong>no</strong> Brasil.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('na')" style="background:#fff;border:2px solid #7dd3fc;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="color:#aaa;font-size:13px">em + a =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--tl)">na</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Ela está <strong>na</strong> casa.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('nos')" style="background:#fff;border:2px solid #7dd3fc;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="color:#aaa;font-size:13px">em + os =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--tl)">nos</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Estamos <strong>nos</strong> EUA.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('nas')" style="background:#fff;border:2px solid #7dd3fc;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="color:#aaa;font-size:13px">em + as =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--tl)">nas</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Estudo <strong>nas</strong> manhãs.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
     </div>
   </div>
-  <div class="card az" style="margin-top:8px">
-    <div class="card-title">Dor de + parte — toque para ouvir</div>
-    <div class="marcas-grid">
-      <div class="marca-item" onclick="spk('Estou com dor de cabeça.')"><span class="marca-orig">dor de cabeça</span><span class="marca-pt">dolor de cabeza</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Estou com dor de garganta.')"><span class="marca-orig">dor de garganta</span><span class="marca-pt">dolor de garganta</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Estou com dor de barriga.')"><span class="marca-orig">dor de barriga</span><span class="marca-pt">dolor de barriga</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Estou com dor de dente.')"><span class="marca-orig">dor de dente</span><span class="marca-pt">dolor de muela</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Estou com dor nas costas.')"><span class="marca-orig">dor nas costas</span><span class="marca-pt">dolor de espalda</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('Estou com dor no peito.')"><span class="marca-orig">dor no peito</span><span class="marca-pt">dolor en el pecho</span><span class="marca-play">▶</span></div>
-    </div>
-  </div>
+  <div class="tip tl"><div class="tip-lbl">🇪🇸 Diferença ES</div><div class="tip-txt">PT: Moro <strong>no</strong> Brasil · ES: Vivo <em>en</em> Brasil (sem artigo, sem contração!)</div></div>
 </div>
 
-<!-- CONSULTA -->
-<div class="section" id="s-consulta">
-  <div class="section-title">🏥 Consulta Médica</div>
-  <div class="card vd">
-    <div class="card-title">Frases da consulta — toque para ouvir · ♀ Ana e 🩺 Médico</div>
-    <div class="ditado-list">
-      <div class="ditado-item" onclick="spkG('Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.','F')">
-        <span class="ditado-num" style="color:#e8336d">♀</span>
-        <span class="ditado-play" style="background:#e8336d">▶</span>
-        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.</span>
-      </div>
-      <div class="ditado-item" onclick="spkG('Qual é o seu problema? Tem tosse? Está com coriza?','M')">
-        <span class="ditado-num" style="color:var(--az)">🩺</span>
-        <span class="ditado-play" style="background:var(--az)">▶</span>
-        <span class="ditado-txt"><strong style="color:var(--az)">Dr.:</strong> Qual é o seu problema? Tem tosse? Está com coriza?</span>
-      </div>
-      <div class="ditado-item" onclick="spkG('Sim, tenho tosse seca e estou com muita dor de cabeça também.','F')">
-        <span class="ditado-num" style="color:#e8336d">♀</span>
-        <span class="ditado-play" style="background:#e8336d">▶</span>
-        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Sim, tenho tosse seca e estou com muita dor de cabeça também.</span>
-      </div>
-      <div class="ditado-item" onclick="spkG('Desde quando você está assim? A febre é alta?','M')">
-        <span class="ditado-num" style="color:var(--az)">🩺</span>
-        <span class="ditado-play" style="background:var(--az)">▶</span>
-        <span class="ditado-txt"><strong style="color:var(--az)">Dr.:</strong> Desde quando você está assim? A febre é alta?</span>
-      </div>
-      <div class="ditado-item" onclick="spkG('Desde ontem à noite. A febre estava em trinta e oito e meio.','F')">
-        <span class="ditado-num" style="color:#e8336d">♀</span>
-        <span class="ditado-play" style="background:#e8336d">▶</span>
-        <span class="ditado-txt"><strong style="color:#e8336d">Ana:</strong> Desde ontem à noite. A febre estava em 38,5.</span>
-      </div>
-      <div class="ditado-item" onclick="spkG('É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.','M')">
-        <span class="ditado-num" style="color:var(--az)">🩺</span>
-        <span class="ditado-play" style="background:var(--az)">▶</span>
-        <span class="ditado-txt"><strong style="color:var(--az)">Dr.:</strong> É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.</span>
+<!-- DE + ARTIGO -->
+<div class="section" id="s-de">
+  <div class="sec-title">🔗 de + artigo</div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px">
+    <div onclick="spk('do')" style="background:#fff;border:2px solid #6ee7b7;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--vd)'" onmouseout="this.style.borderColor='#6ee7b7'">
+      <div style="color:#aaa;font-size:13px">de + o =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--vd)">do</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Sou <strong>do</strong> México.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('da')" style="background:#fff;border:2px solid #6ee7b7;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--vd)'" onmouseout="this.style.borderColor='#6ee7b7'">
+      <div style="color:#aaa;font-size:13px">de + a =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--vd)">da</div>
+      <div style="font-size:13px;color:#555;font-style:italic">O livro é <strong>da</strong> professora.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('dos')" style="background:#fff;border:2px solid #6ee7b7;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--vd)'" onmouseout="this.style.borderColor='#6ee7b7'">
+      <div style="color:#aaa;font-size:13px">de + os =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--vd)">dos</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Venho <strong>dos</strong> EUA.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('das')" style="background:#fff;border:2px solid #6ee7b7;border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--vd)'" onmouseout="this.style.borderColor='#6ee7b7'">
+      <div style="color:#aaa;font-size:13px">de + as =</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;color:var(--vd)">das</div>
+      <div style="font-size:13px;color:#555;font-style:italic">Garota <strong>de</strong> Ipanema é <strong>da</strong> Bossa Nova.</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+  </div>
+  <div class="tip vd"><div class="tip-lbl">🇪🇸 Diferença ES</div><div class="tip-txt">PT: Sou <strong>do</strong> México · ES: Soy <em>de</em> México (sem artigo!)<br>PT: O livro é <strong>da</strong> professora · ES: El libro es <em>de la</em> profesora</div></div>
+</div>
+
+<!-- AO/À e PELO/PELA -->
+<div class="section" id="s-aopor">
+  <div class="sec-title">🔗 ao/à e pelo/pela</div>
+  <div class="tip am"><div class="tip-lbl">📌 Dois mais</div><div class="tip-txt"><strong>a + artigo</strong> = direção · <strong>por + artigo</strong> = causa, passagem, troca</div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+    <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid var(--am)">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--am);font-size:clamp(14px,2vw,18px);margin-bottom:10px">a + artigo</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div onclick="spk('ao banco')" style="cursor:pointer;padding:8px;background:#fff8e1;border-radius:8px;font-size:clamp(13px,1.8vw,16px)">a+o = <strong style="color:var(--am)">ao</strong> · Vou <strong>ao</strong> banco 🔊</div>
+        <div onclick="spk('à escola')" style="cursor:pointer;padding:8px;background:#fff8e1;border-radius:8px;font-size:clamp(13px,1.8vw,16px)">a+a = <strong style="color:var(--am)">à</strong> · Vou <strong>à</strong> escola 🔊</div>
+        <div onclick="spk('às oito horas')" style="cursor:pointer;padding:8px;background:#fff8e1;border-radius:8px;font-size:clamp(13px,1.8vw,16px)">a+as = <strong style="color:var(--am)">às</strong> · Chego <strong>às</strong> 8h 🔊</div>
       </div>
     </div>
-    <button class="play-btn" id="dialogo-btn" onclick="playDialogo()" style="margin-top:12px">▶ Ouvir consulta completa ♀🩺</button>
-  </div>
-</div>
-
-<!-- FARMÁCIA -->
-<div class="section" id="s-farmacia">
-  <div class="section-title">💊 Farmácia</div>
-  <div class="card vd">
-    <div class="card-title">Formas de remédio — toque para ouvir</div>
-    <div class="marcas-grid">
-      <div class="marca-item" onclick="spk('comprimido')"><span class="marca-orig">💊 comprimido</span><span class="marca-pt">pastilla</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('cápsula')"><span class="marca-orig">🔴 cápsula</span><span class="marca-pt">cápsula</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('xarope')"><span class="marca-orig">🍶 xarope</span><span class="marca-pt">jarabe</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('injetável')"><span class="marca-orig">💉 injetável</span><span class="marca-pt">inyectable</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('colírio')"><span class="marca-orig">👁️ colírio</span><span class="marca-pt">colirio</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('pomada')"><span class="marca-orig">🧴 pomada</span><span class="marca-pt">pomada</span><span class="marca-play">▶</span></div>
-    </div>
-  </div>
-  <div class="card am" style="margin-top:8px">
-    <div class="card-title">Instruções de uso — toque para ouvir</div>
-    <div class="marcas-grid">
-      <div class="marca-item" onclick="spk('tome de oito em oito horas.')"><span class="marca-orig">de 8 em 8 horas</span><span class="marca-pt">cada 8 horas</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('tome em jejum.')"><span class="marca-orig">em jejum</span><span class="marca-pt">en ayunas</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('tome após as refeições.')"><span class="marca-orig">após as refeições</span><span class="marca-pt">después de comer</span><span class="marca-play">▶</span></div>
-      <div class="marca-item" onclick="spk('tome com bastante água.')"><span class="marca-orig">tomar com água</span><span class="marca-pt">tomar con agua</span><span class="marca-play">▶</span></div>
+    <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid var(--rs)">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--rs);font-size:clamp(14px,2vw,18px);margin-bottom:10px">por + artigo</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div onclick="spk('pelo metrô')" style="cursor:pointer;padding:8px;background:#fef2f2;border-radius:8px;font-size:clamp(13px,1.8vw,16px)">por+o = <strong style="color:var(--rs)">pelo</strong> · Passo <strong>pelo</strong> parque 🔊</div>
+        <div onclick="spk('pela rua')" style="cursor:pointer;padding:8px;background:#fef2f2;border-radius:8px;font-size:clamp(13px,1.8vw,16px)">por+a = <strong style="color:var(--rs)">pela</strong> · Pelas ruas 🔊</div>
+        <div onclick="spk('Vou ao trabalho de metrô')" style="cursor:pointer;padding:8px;background:#fef2f2;border-radius:8px;font-size:clamp(13px,1.8vw,16px)">Vou ao trabalho <strong>de</strong> metrô 🔊</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- EMERGÊNCIA -->
-<div class="section" id="s-emergencia">
-  <div class="section-title">🚨 Emergência</div>
-  <div class="card" style="border-left:4px solid #CC0000;background:#FFF5F5">
-    <div class="card-title" style="color:#CC0000">Frases essenciais — toque para ouvir</div>
-    <div class="ditado-list">
-      <div class="ditado-item" onclick="spk('Preciso de ajuda!')"><span class="ditado-num" style="color:#CC0000">🚨</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Preciso de ajuda!</span></div>
-      <div class="ditado-item" onclick="spk('Chame uma ambulância!')"><span class="ditado-num" style="color:#CC0000">🚑</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Chame uma ambulância!</span></div>
-      <div class="ditado-item" onclick="spk('É uma emergência!')"><span class="ditado-num" style="color:#CC0000">❗</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">É uma emergência!</span></div>
-      <div class="ditado-item" onclick="spk('Ele desmaiou!')"><span class="ditado-num" style="color:#CC0000">😵</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Ele desmaiou!</span></div>
-      <div class="ditado-item" onclick="spk('Não consigo respirar!')"><span class="ditado-num" style="color:#CC0000">😮‍💨</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Não consigo respirar!</span></div>
-      <div class="ditado-item" onclick="spk('Estou com muita dor no peito!')"><span class="ditado-num" style="color:#CC0000">💔</span><span class="ditado-play" style="background:#CC0000">▶</span><span class="ditado-txt">Estou com muita dor no peito!</span></div>
-    </div>
+<!-- TABELA COMPLETA -->
+<div class="section" id="s-tabela">
+  <div class="sec-title">📋 Tabela Completa de Contrações</div>
+  <div class="tip tl"><div class="tip-lbl">🔊 Interativo</div><div class="tip-txt">Toque em qualquer contração para ouvir a pronúncia!</div></div>
+  <div class="contr-wrap">
+    <table class="contr-table">
+      <thead>
+        <tr>
+          <th class="th-prep" rowspan="2">Prep.</th>
+          <th class="th-def" colspan="4">Artigos Definidos</th>
+          <th class="th-ind" colspan="4">Artigos Indefinidos</th>
+        </tr>
+        <tr>
+          <th class="th-def">o</th><th class="th-def">a</th><th class="th-def">os</th><th class="th-def">as</th>
+          <th class="th-ind">um</th><th class="th-ind">uma</th><th class="th-ind">uns</th><th class="th-ind">umas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cc-p">A</td>
+          <td class="cc-v" onclick="spk('ao')">ao</td><td class="cc-v" onclick="spk('à')">à</td>
+          <td class="cc-v" onclick="spk('aos')">aos</td><td class="cc-v" onclick="spk('às')">às</td>
+          <td colspan="4" style="color:#ccc;font-size:.85em">—</td>
+        </tr>
+        <tr>
+          <td class="cc-p">DE</td>
+          <td class="cc-v" onclick="spk('do')">do</td><td class="cc-v" onclick="spk('da')">da</td>
+          <td class="cc-v" onclick="spk('dos')">dos</td><td class="cc-v" onclick="spk('das')">das</td>
+          <td class="cc-i" onclick="spk('dum')">dum</td><td class="cc-i" onclick="spk('duma')">duma</td>
+          <td class="cc-i" onclick="spk('duns')">duns</td><td class="cc-i" onclick="spk('dumas')">dumas</td>
+        </tr>
+        <tr>
+          <td class="cc-p">EM</td>
+          <td class="cc-v" onclick="spk('no')">no</td><td class="cc-v" onclick="spk('na')">na</td>
+          <td class="cc-v" onclick="spk('nos')">nos</td><td class="cc-v" onclick="spk('nas')">nas</td>
+          <td class="cc-i" onclick="spk('num')">num</td><td class="cc-i" onclick="spk('numa')">numa</td>
+          <td class="cc-i" onclick="spk('nuns')">nuns</td><td class="cc-i" onclick="spk('numas')">numas</td>
+        </tr>
+        <tr>
+          <td class="cc-p">POR</td>
+          <td class="cc-v" onclick="spk('pelo')">pelo</td><td class="cc-v" onclick="spk('pela')">pela</td>
+          <td class="cc-v" onclick="spk('pelos')">pelos</td><td class="cc-v" onclick="spk('pelas')">pelas</td>
+          <td colspan="4" style="color:#ccc;font-size:.85em">—</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="tip rs" style="margin-top:8px">
-    <div class="tip-lbl">📞 Números no Brasil</div>
-    <div class="tip-txt"><strong>SAMU 192</strong> · Bombeiros 193 · Polícia 190 · CVV 188</div>
+  <div class="tip tl"><div class="tip-lbl">🇪🇸 PT vs ES</div><div class="tip-txt">
+    🇧🇷 <strong>no</strong> Brasil = 🇪🇸 en Brasil &nbsp;|&nbsp; 🇧🇷 <strong>do</strong> México = 🇪🇸 de México<br>
+    🇧🇷 <strong>ao</strong> banco = 🇪🇸 al banco &nbsp;|&nbsp; 🇧🇷 <strong>pelo</strong> parque = 🇪🇸 por el parque
+  </div></div>
+</div>
+
+<!-- PONTUAÇÃO -->
+<div class="section" id="s-pont">
+  <div class="sec-title">📝 Pontuação Básica</div>
+  <div class="pont-grid">
+    <div class="pont-card"><div class="pont-sym">.</div><div class="pont-nome">Ponto final</div><div class="pont-desc"><em>Eu moro no Brasil.</em></div></div>
+    <div class="pont-card"><div class="pont-sym">?</div><div class="pont-nome">Interrogação</div><div class="pont-desc"><em>Você mora aqui?</em></div></div>
+    <div class="pont-card"><div class="pont-sym">!</div><div class="pont-nome">Exclamação</div><div class="pont-desc"><em>Que legal!</em></div></div>
+    <div class="pont-card"><div class="pont-sym">,</div><div class="pont-nome">Vírgula</div><div class="pont-desc"><em>Moro no Brasil, mas trabalho no México.</em></div></div>
+    <div class="pont-card"><div class="pont-sym">...</div><div class="pont-nome">Reticências</div><div class="pont-desc"><em>Não sei...</em></div></div>
+    <div class="pont-card" style="border:2px solid #fca5a5"><div class="pont-sym" style="color:var(--rs)">¿¡</div><div class="pont-nome" style="color:var(--rs)">❌ Não usamos!</div><div class="pont-desc">Em PT não usamos ¿ ¡ no início da frase!</div></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-tl" onclick="spk('Eu moro no Brasil. Você mora no México? Que legal!')">🔊 Ouvir exemplos</button>
   </div>
 </div>
 
-<!-- ATIVIDADES -->
-<div class="section" id="s-ativ">
-  <div class="section-title">✏️ Atividades</div>
-  <div class="score-banner">
-    <div><div class="sb-label">Pontuação</div><div class="sb-stars" id="stars">☆☆☆☆☆☆☆☆</div></div>
-    <div class="sb-score" id="score-disp">0/8</div>
-  </div>
+<!-- PLURAL -->
+<div class="section" id="s-plural">
+  <div class="sec-title">📚 Plural em Português</div>
+  <div class="tip tl"><div class="tip-lbl">👉 Regra básica</div><div class="tip-txt">A maioria das palavras: acrescenta <strong>-S</strong> · o aluno → os alunos · a casa → as casas</div></div>
 
-  <div class="blank-card" id="bq-0">
-    <div class="blank-q">Minha temperatura é 39°. Estou com ___.</div>
-    <div class="options-row" id="opts-0">
-      <div class="opt" onclick="check(0,this,'tontura','febre')">tontura</div>
-      <div class="opt" onclick="check(0,this,'febre','febre')">febre</div>
-      <div class="opt" onclick="check(0,this,'tosse','febre')">tosse</div>
+  <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);font-size:clamp(15px,2.2vw,20px);margin-bottom:10px">✅ Regra básica — Acrescenta -S</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:20px">
+    <div onclick="spk('os alunos')" style="background:#fff;border:2px solid #7dd3fc;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="font-size:13px;color:#aaa">o aluno →</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);font-size:clamp(15px,2.2vw,20px)">os alunos</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('as casas')" style="background:#fff;border:2px solid #7dd3fc;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="font-size:13px;color:#aaa">a casa →</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);font-size:clamp(15px,2.2vw,20px)">as casas</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
+    </div>
+    <div onclick="spk('os celulares')" style="background:#fff;border:2px solid #7dd3fc;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--tl)'" onmouseout="this.style.borderColor='#7dd3fc'">
+      <div style="font-size:13px;color:#aaa">o celular →</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);font-size:clamp(15px,2.2vw,20px)">os celulares</div>
+      <div style="font-size:10px;color:#aaa">🔊 toque</div>
     </div>
   </div>
 
-  <div class="blank-card" id="bq-1">
-    <div class="blank-q">"Estou ___ dor de cabeça."</div>
-    <div class="options-row" id="opts-1">
-      <div class="opt" onclick="check(1,this,'com','com')">com</div>
-      <div class="opt" onclick="check(1,this,'de','com')">de</div>
-      <div class="opt" onclick="check(1,this,'em','com')">em</div>
-    </div>
-  </div>
-
-  <div class="blank-card" id="bq-2">
-    <div class="blank-q">O joelho está maior que o normal. Tem ___.</div>
-    <div class="options-row" id="opts-2">
-      <div class="opt" onclick="check(2,this,'tontura','inchaço')">tontura</div>
-      <div class="opt" onclick="check(2,this,'inchaço','inchaço')">inchaço</div>
-      <div class="opt" onclick="check(2,this,'febre','inchaço')">febre</div>
-    </div>
-  </div>
-
-  <div class="blank-card" id="bq-3">
-    <div class="blank-q">Como se chama o remédio líquido para tosse?</div>
-    <div class="options-row" id="opts-3">
-      <div class="opt" onclick="check(3,this,'comprimido','xarope')">comprimido</div>
-      <div class="opt" onclick="check(3,this,'colírio','xarope')">colírio</div>
-      <div class="opt" onclick="check(3,this,'xarope','xarope')">xarope</div>
-    </div>
-  </div>
-
-  <div class="blank-card" id="bq-4">
-    <div class="blank-q">Qual é o número do SAMU no Brasil?</div>
-    <div class="options-row" id="opts-4">
-      <div class="opt" onclick="check(4,this,'190','192')">190</div>
-      <div class="opt" onclick="check(4,this,'192','192')">192</div>
-      <div class="opt" onclick="check(4,this,'193','192')">193</div>
-    </div>
-  </div>
-
-  <div class="blank-card" id="bq-5">
-    <div class="blank-q">Sinto o mundo girando. Tenho ___.</div>
-    <div class="options-row" id="opts-5">
-      <div class="opt" onclick="check(5,this,'tontura','tontura')">tontura</div>
-      <div class="opt" onclick="check(5,this,'febre','tontura')">febre</div>
-      <div class="opt" onclick="check(5,this,'tosse','tontura')">tosse</div>
-    </div>
-  </div>
-
-  <div class="blank-card" id="bq-6">
-    <div class="blank-q">"Tome ___ as refeições" = después de comer</div>
-    <div class="options-row" id="opts-6">
-      <div class="opt" onclick="check(6,this,'antes de','após as')">antes de</div>
-      <div class="opt" onclick="check(6,this,'após as','após as')">após as</div>
-      <div class="opt" onclick="check(6,this,'durante as','após as')">durante as</div>
-    </div>
-  </div>
-
-  <div class="blank-card" id="bq-7">
-    <div class="blank-q">Para pedir ambulância no Brasil você liga para:</div>
-    <div class="options-row" id="opts-7">
-      <div class="opt" onclick="check(7,this,'911','192')">911</div>
-      <div class="opt" onclick="check(7,this,'192','192')">192 (SAMU)</div>
-      <div class="opt" onclick="check(7,this,'112','192')">112</div>
-    </div>
-  </div>
-
-  <button class="btn btn-verde" onclick="resetAct()">🔄 Recomeçar</button>
+  <div style="font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--rs);font-size:clamp(15px,2.2vw,20px);margin-bottom:10px">⚠️ Casos especiais</div>
+  <table class="plural-table" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07)">
+    <thead><tr><th class="th-reg">Terminação</th><th class="th-sing">Singular</th><th class="th-pl">Plural</th><th class="th-reg" style="background:#fff8e1;color:var(--am)">Regra</th></tr></thead>
+    <tbody>
+      <tr><td class="tip-c">-m</td><td class="sing-c">o homem</td><td class="pl-c" onclick="spk('os homens')" style="cursor:pointer">os homens 🔊</td><td style="font-size:.9em;color:var(--am)">-m → -ns</td></tr>
+      <tr><td class="tip-c">-l</td><td class="sing-c">o animal</td><td class="pl-c" onclick="spk('os animais')" style="cursor:pointer">os animais 🔊</td><td style="font-size:.9em;color:var(--am)">-l → -is</td></tr>
+      <tr><td class="tip-c">-ão</td><td class="sing-c">o irmão</td><td class="pl-c" onclick="spk('os irmãos')" style="cursor:pointer">os irmãos 🔊</td><td style="font-size:.9em;color:var(--am)">-ão → -ãos</td></tr>
+      <tr><td class="tip-c">-ão</td><td class="sing-c">o pão</td><td class="pl-c" onclick="spk('os pães')" style="cursor:pointer">os pães 🔊</td><td style="font-size:.9em;color:var(--am)">-ão → -ães</td></tr>
+      <tr><td class="tip-c">-ão</td><td class="sing-c">o coração</td><td class="pl-c" onclick="spk('os corações')" style="cursor:pointer">os corações 🔊</td><td style="font-size:.9em;color:var(--am)">-ão → -ões</td></tr>
+      <tr><td class="tip-c">-z</td><td class="sing-c">a luz</td><td class="pl-c" onclick="spk('as luzes')" style="cursor:pointer">as luzes 🔊</td><td style="font-size:.9em;color:var(--am)">-z → -zes</td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ATIVIDADE 1 - CONTRAÇÕES -->
+<div class="section" id="s-a1">
+  <div class="ativ-card">
+    <div class="ativ-title">✏️ Atividade 1 — Contrações com EM</div>
+    <div class="ativ-sub">Complete com no / na / nos / nas!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc1">0</span>/6</span><span class="stars" id="st1">☆☆☆☆☆☆</span></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Moro <span class="gap" id="g0">___</span> Brasil.</div><div class="opts-row" id="o0"><span class="opt" onclick="so(this,0,'no')">no</span><span class="opt" onclick="so(this,0,'na')">na</span><span class="opt" onclick="so(this,0,'nos')">nos</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Ela está <span class="gap" id="g1">___</span> casa.</div><div class="opts-row" id="o1"><span class="opt" onclick="so(this,1,'na')">na</span><span class="opt" onclick="so(this,1,'no')">no</span><span class="opt" onclick="so(this,1,'nas')">nas</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Trabalho <span class="gap" id="g2">___</span> empresa grande.</div><div class="opts-row" id="o2"><span class="opt" onclick="so(this,2,'numa')">numa</span><span class="opt" onclick="so(this,2,'no')">no</span><span class="opt" onclick="so(this,2,'na')">na</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Estudo <span class="gap" id="g3">___</span> manhãs.</div><div class="opts-row" id="o3"><span class="opt" onclick="so(this,3,'nas')">nas</span><span class="opt" onclick="so(this,3,'nos')">nos</span><span class="opt" onclick="so(this,3,'na')">na</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Eles moram <span class="gap" id="g4">___</span> Estados Unidos.</div><div class="opts-row" id="o4"><span class="opt" onclick="so(this,4,'nos')">nos</span><span class="opt" onclick="so(this,4,'no')">no</span><span class="opt" onclick="so(this,4,'nas')">nas</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Você quer morar <span class="gap" id="g5">___</span> Japão?</div><div class="opts-row" id="o5"><span class="opt" onclick="so(this,5,'no')">no</span><span class="opt" onclick="so(this,5,'na')">na</span><span class="opt" onclick="so(this,5,'num')">num</span></div></div>
+    <button class="btn btn-gray" onclick="resetA1()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 2 - DE + AO + PELO -->
+<div class="section" id="s-a2">
+  <div class="ativ-card am">
+    <div class="ativ-title">✏️ Atividade 2 — do / da / ao / pelo</div>
+    <div class="ativ-sub">Complete com a contração correta!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc2">0</span>/5</span><span class="stars" id="st2">☆☆☆☆☆</span></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Sou <span class="gap" id="h0">___</span> México.</div><div class="opts-row" id="ho0"><span class="opt" onclick="ho(this,0,'do')">do</span><span class="opt" onclick="ho(this,0,'da')">da</span><span class="opt" onclick="ho(this,0,'no')">no</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">O livro é <span class="gap" id="h1">___</span> professora.</div><div class="opts-row" id="ho1"><span class="opt" onclick="ho(this,1,'da')">da</span><span class="opt" onclick="ho(this,1,'do')">do</span><span class="opt" onclick="ho(this,1,'na')">na</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Vou <span class="gap" id="h2">___</span> banco agora.</div><div class="opts-row" id="ho2"><span class="opt" onclick="ho(this,2,'ao')">ao</span><span class="opt" onclick="ho(this,2,'do')">do</span><span class="opt" onclick="ho(this,2,'no')">no</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Passo <span class="gap" id="h3">___</span> parque todo dia.</div><div class="opts-row" id="ho3"><span class="opt" onclick="ho(this,3,'pelo')">pelo</span><span class="opt" onclick="ho(this,3,'no')">no</span><span class="opt" onclick="ho(this,3,'do')">do</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">Ela saiu <span class="gap" id="h4">___</span> escritório às 18h.</div><div class="opts-row" id="ho4"><span class="opt" onclick="ho(this,4,'do')">do</span><span class="opt" onclick="ho(this,4,'da')">da</span><span class="opt" onclick="ho(this,4,'no')">no</span></div></div>
+    <button class="btn btn-gray" onclick="resetA2()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 3 - PLURAL -->
+<div class="section" id="s-a3">
+  <div class="ativ-card vd">
+    <div class="ativ-title">✏️ Atividade 3 — Plural</div>
+    <div class="ativ-sub">Escolha o plural correto!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc3">0</span>/6</span><span class="stars" id="st3">☆☆☆☆☆☆</span></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">o homem → <span class="gap" id="p0">___</span></div><div class="opts-row" id="po0"><span class="opt" onclick="pl(this,0,'errado')">os homems</span><span class="opt" onclick="pl(this,0,'os homens')">os homens</span><span class="opt" onclick="pl(this,0,'errado')">os homeos</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">o animal → <span class="gap" id="p1">___</span></div><div class="opts-row" id="po1"><span class="opt" onclick="pl(this,1,'os animais')">os animais</span><span class="opt" onclick="pl(this,1,'errado')">os animals</span><span class="opt" onclick="pl(this,1,'errado')">os animales</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">o pão → <span class="gap" id="p2">___</span></div><div class="opts-row" id="po2"><span class="opt" onclick="pl(this,2,'errado')">os pãos</span><span class="opt" onclick="pl(this,2,'errado')">os pãões</span><span class="opt" onclick="pl(this,2,'os pães')">os pães</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">o coração → <span class="gap" id="p3">___</span></div><div class="opts-row" id="po3"><span class="opt" onclick="pl(this,3,'os corações')">os corações</span><span class="opt" onclick="pl(this,3,'errado')">os coraçãos</span><span class="opt" onclick="pl(this,3,'errado')">os corazones</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">a luz → <span class="gap" id="p4">___</span></div><div class="opts-row" id="po4"><span class="opt" onclick="pl(this,4,'errado')">as luzs</span><span class="opt" onclick="pl(this,4,'as luzes')">as luzes</span><span class="opt" onclick="pl(this,4,'errado')">as lúzias</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">o professor → <span class="gap" id="p5">___</span></div><div class="opts-row" id="po5"><span class="opt" onclick="pl(this,5,'os professores')">os professores</span><span class="opt" onclick="pl(this,5,'errado')">os professors</span><span class="opt" onclick="pl(this,5,'errado')">os professoris</span></div></div>
+    <button class="btn btn-gray" onclick="resetA3()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- QUIZ FINAL -->
+<div class="section" id="s-quiz">
+  <div class="ativ-card rs">
+    <div class="ativ-title">🎮 Quiz Final — Contrações & Plural</div>
+    <div class="ativ-sub">4 perguntas — tudo o que aprendemos hoje!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="scQ">0</span>/4</span><span class="stars" id="stQ">☆☆☆☆</span></div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">1. Como se diz "en la casa" em português?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(1,this,false)">A. em a casa</button>
+        <button class="quiz-opt" onclick="chk(1,this,true)">B. na casa (em + a = na)</button>
+        <button class="quiz-opt" onclick="chk(1,this,false)">C. en la casa</button>
+      </div>
+      <div class="quiz-explain" id="qe1">✅ <strong>na casa</strong> = em + a. Em PT a contração é obrigatória!</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fef2f2">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">2. "Vou ___ banco" — qual contração?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(2,this,false)">A. no banco</button>
+        <button class="quiz-opt" onclick="chk(2,this,true)">B. ao banco (a + o = ao)</button>
+        <button class="quiz-opt" onclick="chk(2,this,false)">C. do banco</button>
+      </div>
+      <div class="quiz-explain" id="qe2">✅ <strong>ao banco</strong> = a + o. "No" seria em + o (lugar). "Vou ao" indica direção!</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fef2f2">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">3. Qual é o plural de "o homem"?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(3,this,false)">A. os homems</button>
+        <button class="quiz-opt" onclick="chk(3,this,true)">B. os homens (-m → -ns)</button>
+        <button class="quiz-opt" onclick="chk(3,this,false)">C. os homeos</button>
+      </div>
+      <div class="quiz-explain" id="qe3">✅ Terminações em <strong>-m</strong> viram <strong>-ns</strong> no plural: homem → <strong>homens</strong></div>
+    </div>
+
+    <div style="padding-top:16px;border-top:2px solid #fef2f2">
+      <div style="font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px">4. Em português, usamos ¿ e ¡?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(4,this,false)">A. Sim, igual ao espanhol</button>
+        <button class="quiz-opt" onclick="chk(4,this,true)">B. Não! Em PT só usamos ? e ! no final</button>
+        <button class="quiz-opt" onclick="chk(4,this,false)">C. Só ¿, nunca ¡</button>
+      </div>
+      <div class="quiz-explain" id="qe4">✅ Em português <strong>não</strong> usamos ¿ ¡. Apenas ? e ! no final da frase.</div>
+    </div>
+    <div id="final-msg" style="display:none;background:linear-gradient(135deg,var(--tl),#0891b2);border-radius:12px;padding:16px;text-align:center;margin-top:16px;color:#fff;font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,22px);font-weight:800">
+      🎉 Parabéns! Você domina as contrações! 🔗
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 <script>
-var points=0,score=0,total=8,done=new Array(8).fill(false);
+var pts=0;
+const lb='data:image/jpeg;base64,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';
+if(lb.length>50){document.getElementById('tblogo').src=lb;}
+function addPts(n){pts+=n;document.getElementById('tb-pts').textContent='⭐ '+pts+' pts';}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+function go(id,btn){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.idx-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+function spkC(el,w){document.querySelectorAll('.prep-card').forEach(c=>c.classList.remove('playing'));el.classList.add('playing');spk(w);setTimeout(()=>el.classList.remove('playing'),1500);addPts(5);toast('🔊 +5 pts');}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();document.addEventListener('touchstart',function u(){var x=new SpeechSynthesisUtterance('');x.volume=0;speechSynthesis.speak(x);document.removeEventListener('touchstart',u);},{once:true});}
 
-var bodyData={
-  cabeca:{pt:"a cabeça",es:"la cabeza"},
-  cabelo:{pt:"o cabelo",es:"el pelo"},
-  olho:{pt:"os olhos",es:"los ojos"},
-  nariz:{pt:"o nariz",es:"la nariz"},
-  boca:{pt:"a boca",es:"la boca"},
-  orelha:{pt:"a orelha",es:"la oreja"},
-  pescoco:{pt:"o pescoço",es:"el cuello"},
-  ombro:{pt:"o ombro",es:"el hombro"},
-  torax:{pt:"o tórax / peito",es:"el tórax / pecho"},
-  abdomen:{pt:"o abdômen / barriga",es:"el abdomen"},
-  braco:{pt:"o braço",es:"el brazo"},
-  cotovelo:{pt:"o cotovelo",es:"el codo"},
-  antebraco:{pt:"o antebraço",es:"el antebrazo"},
-  pulso:{pt:"o pulso",es:"la muñeca"},
-  mao:{pt:"a mão",es:"la mano"},
-  quadril:{pt:"o quadril",es:"la cadera"},
-  coxa:{pt:"a coxa",es:"el muslo"},
-  joelho:{pt:"o joelho",es:"la rodilla"},
-  canela:{pt:"a canela",es:"la canilla"},
-  tornozelo:{pt:"o tornozelo",es:"el tobillo"},
-  pe:{pt:"o pé",es:"el pie"}
-};
+// A1 - em+artigo
+var ans1=['no','na','numa','nas','nos','no'],done1=Array(6).fill(false),sc1v=0;
+function so(el,i,v){if(done1[i])return;var g=document.getElementById('g'+i);if(v===ans1[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done1[i]=true;sc1v++;document.getElementById('sc1').textContent=sc1v;var s=[];for(var j=0;j<6;j++)s.push(j<sc1v?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(12);toast('✅ +12 pts');spk(v);if(sc1v===6)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA1(){sc1v=0;done1=Array(6).fill(false);document.getElementById('sc1').textContent='0';document.getElementById('st1').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){var el=document.getElementById('g'+i);if(el){el.textContent='___';el.className='gap';}document.getElementById('o'+i).querySelectorAll('.opt').forEach(o=>o.className='opt');}}
 
-var currentPart=null;
+// A2 - de/ao/pelo
+var ans2=['do','da','ao','pelo','do'],done2=Array(5).fill(false),sc2v=0;
+function ho(el,i,v){if(done2[i])return;var g=document.getElementById('h'+i);if(v===ans2[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done2[i]=true;sc2v++;document.getElementById('sc2').textContent=sc2v;var s=[];for(var j=0;j<5;j++)s.push(j<sc2v?'⭐':'☆');document.getElementById('st2').textContent=s.join('');addPts(12);toast('✅ +12 pts');spk(v);if(sc2v===5)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA2(){sc2v=0;done2=Array(5).fill(false);document.getElementById('sc2').textContent='0';document.getElementById('st2').textContent='☆☆☆☆☆';for(var i=0;i<5;i++){var el=document.getElementById('h'+i);if(el){el.textContent='___';el.className='gap';}document.getElementById('ho'+i).querySelectorAll('.opt').forEach(o=>o.className='opt');}}
 
-// Build part buttons
-var btnGrid=document.getElementById('part-buttons');
-var mainParts=['cabeca','olho','nariz','boca','orelha','pescoco','ombro','torax','abdomen','braco','cotovelo','mao','quadril','coxa','joelho','pe','tornozelo','pe'];
-var seen={};
-Object.keys(bodyData).forEach(function(id){
-  if(seen[id])return; seen[id]=true;
-  var btn=document.createElement('button');
-  btn.style.cssText='background:#F6FBF8;border:2px solid #d0e8d8;border-radius:8px;padding:6px 4px;font-family:Nunito,sans-serif;font-size:11px;font-weight:700;color:#002776;cursor:pointer;text-align:center;transition:all .15s';
-  btn.innerHTML=bodyData[id].pt.replace(/^(o|a|os|as) /,'');
-  btn.id='pbtn-'+id;
-  btn.onclick=function(){activatePart(id);};
-  btnGrid.appendChild(btn);
-});
+// A3 - plural
+var ans3=['os homens','os animais','os pães','os corações','as luzes','os professores'],done3=Array(6).fill(false),sc3v=0;
+function pl(el,i,v){if(done3[i])return;var g=document.getElementById('p'+i);if(v===ans3[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done3[i]=true;sc3v++;document.getElementById('sc3').textContent=sc3v;var s=[];for(var j=0;j<6;j++)s.push(j<sc3v?'⭐':'☆');document.getElementById('st3').textContent=s.join('');addPts(12);toast('✅ +12 pts');spk(v);if(sc3v===6)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA3(){sc3v=0;done3=Array(6).fill(false);document.getElementById('sc3').textContent='0';document.getElementById('st3').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){var el=document.getElementById('p'+i);if(el){el.textContent='___';el.className='gap';}document.getElementById('po'+i).querySelectorAll('.opt').forEach(o=>o.className='opt');}}
 
-// SVG click handlers
-document.querySelectorAll('.abp').forEach(function(el){
-  el.addEventListener('click',function(){
-    activatePart(el.dataset.id);
-  });
-});
-
-function activatePart(id){
-  if(!bodyData[id])return;
-  // Reset previous
-  if(currentPart){
-    document.querySelectorAll('.abp').forEach(function(el){
-      if(el.dataset.id===currentPart){el.style.opacity='';el.style.filter='';}
-    });
-    var prevBtn=document.getElementById('pbtn-'+currentPart);
-    if(prevBtn){prevBtn.style.background='#F6FBF8';prevBtn.style.borderColor='#d0e8d8';prevBtn.style.color='#002776';}
-  }
-  if(currentPart===id){currentPart=null;document.getElementById('aluno-label-pt').textContent='';document.getElementById('aluno-label-es').textContent='';return;}
-  currentPart=id;
-  // Highlight SVG parts
-  document.querySelectorAll('.abp').forEach(function(el){
-    if(el.dataset.id===id){el.style.opacity='.5';el.style.filter='drop-shadow(0 0 5px #009C3B)';}
-  });
-  // Highlight button
-  var btn=document.getElementById('pbtn-'+id);
-  if(btn){btn.style.background='#002776';btn.style.borderColor='#002776';btn.style.color='#fff';}
-  // Update label
-  document.getElementById('aluno-label-pt').textContent=bodyData[id].pt;
-  document.getElementById('aluno-label-es').textContent=bodyData[id].es;
-  // Speak
-  spk(bodyData[id].pt.replace(/^(o|a|os|as) /,''));
-}
-
-function scrollTo_(id,btn){
-  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
-  document.querySelectorAll('.idx-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-}
-
-function getBRVoices(){
-  var all=speechSynthesis.getVoices();
-  var br=all.filter(function(x){return x.lang==='pt-BR';});
-  if(br.length)return br;
-  var pt=all.filter(function(x){return x.lang.startsWith('pt');});
-  return pt.length?pt:all;
-}
-function getMaleVoice(voices){
-  var mv=voices.find(function(x){return /male|man|masculin|ricardo|daniel|felipe/i.test(x.name)&&!/female/i.test(x.name);});
-  if(!mv)mv=voices.find(function(x){return /male|masculin/i.test(x.name);});
-  return mv||null;
-}
-function spk(txt){
-  if(!window.speechSynthesis)return;
-  speechSynthesis.cancel();
-  var u=new SpeechSynthesisUtterance(txt);
-  u.lang='pt-BR';u.rate=0.88;
-  var brv=getBRVoices();
-  if(brv.length)u.voice=brv[0];
-  speechSynthesis.speak(u);
-}
-function spkG(txt,gender){
-  if(!window.speechSynthesis)return;
-  speechSynthesis.cancel();
-  var u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';
-  var brv=getBRVoices();
-  if(gender==='F'){
-    u.pitch=1.4;u.rate=1.05;
-    var fv=brv.find(function(x){return /female|woman|francisca|vitoria|luciana/i.test(x.name);});
-    if(!fv)fv=brv.find(function(x){return !/male|masculin/i.test(x.name);});
-    if(fv)u.voice=fv;else if(brv.length)u.voice=brv[0];
-  } else {
-    var mv=getMaleVoice(brv);
-    if(mv){u.voice=mv;u.pitch=0.85;u.rate=1.12;}
-    else{u.pitch=1.15;u.rate=1.1;var fv2=brv.find(function(x){return /female|woman/i.test(x.name);});if(!fv2&&brv.length)fv2=brv[0];if(fv2)u.voice=fv2;}
-  }
-  speechSynthesis.speak(u);
-}
-
-var dialogoLines=[
-  {txt:'Doutor, estou me sentindo muito mal. Tenho febre há dois dias e dor de garganta.',g:'F'},
-  {txt:'Qual é o seu problema? Tem tosse? Está com coriza?',g:'M'},
-  {txt:'Sim, tenho tosse seca e estou com muita dor de cabeça também.',g:'F'},
-  {txt:'Desde quando você está assim? A febre é alta?',g:'M'},
-  {txt:'Desde ontem à noite. A febre estava em trinta e oito e meio.',g:'F'},
-  {txt:'É uma infecção bacteriana. Vou receitar um antibiótico e um antifebril.',g:'M'}
-];
-function playDialogo(){
-  var btn=document.getElementById('dialogo-btn');
-  if(btn.classList.contains('playing')){speechSynthesis.cancel();btn.classList.remove('playing');btn.innerHTML='▶ Ouvir consulta completa ♀🩺';return;}
-  btn.classList.add('playing');btn.innerHTML='■ Parar';
-  var i=0;
-  function next(){
-    if(i>=dialogoLines.length){btn.classList.remove('playing');btn.innerHTML='▶ Ouvir consulta completa ♀🩺';return;}
-    var line=dialogoLines[i];
-    var u=new SpeechSynthesisUtterance(line.txt);u.lang='pt-BR';
-    var brv=getBRVoices();
-    if(line.g==='F'){u.pitch=1.4;u.rate=1.05;var fv=brv.find(function(x){return /female|woman|francisca/i.test(x.name);});if(!fv&&brv.length)fv=brv[0];if(fv)u.voice=fv;}
-    else{var mv=getMaleVoice(brv);if(mv){u.voice=mv;u.pitch=0.85;u.rate=1.12;}else{u.pitch=1.15;u.rate=1.1;if(brv.length)u.voice=brv[0];}}
-    u.onend=function(){i++;setTimeout(next,450);};
-    speechSynthesis.speak(u);
-  }
-  speechSynthesis.getVoices();setTimeout(next,100);
-}
-
-var toastT;
-function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('show');},1800);}
-
-function check(idx,el,chosen,correct){
-  if(done[idx])return;
-  if(chosen===correct){
-    el.classList.add('selected');
-    document.getElementById('opts-'+idx).querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});
-    done[idx]=true;score++;points+=10;
-    document.getElementById('tb-pts').textContent='⭐ '+points+' pts';
-    document.getElementById('score-disp').textContent=score+'/'+total;
-    document.getElementById('stars').textContent='⭐'.repeat(score)+'☆'.repeat(total-score);
-    toast('✅ Correto! +10 pts');
-    if(score===total)setTimeout(function(){toast('🏆 Perfeito! Parabéns!');},400);
-  } else {
-    el.classList.add('wrong');setTimeout(function(){el.classList.remove('wrong');},500);toast('❌ Tente novamente!');
-  }
-}
-function resetAct(){
-  score=0;points=0;done.fill(false);
-  for(var i=0;i<total;i++){document.getElementById('opts-'+i).querySelectorAll('.opt').forEach(function(o){o.className='opt';o.style.pointerEvents='';});}
-  document.getElementById('score-disp').textContent='0/'+total;
-  document.getElementById('stars').textContent='☆'.repeat(total);
-  document.getElementById('tb-pts').textContent='⭐ 0 pts';
-}
-
-if(window.speechSynthesis){
-  speechSynthesis.getVoices();
-  speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};
-  document.addEventListener('touchstart',function iosUnlock(){
-    var u=new SpeechSynthesisUtterance('');u.volume=0;speechSynthesis.speak(u);
-    document.removeEventListener('touchstart',iosUnlock);
-  },{once:true});
-}
+// Quiz
+var scQv=0,doneQ={};
+function chk(n,el,correct){if(doneQ[n])return;doneQ[n]=true;el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.style.pointerEvents='none');if(correct){el.classList.add('correct');scQv++;document.getElementById('scQ').textContent=scQv;var s=[];for(var j=0;j<4;j++)s.push(j<scQv?'⭐':'☆');document.getElementById('stQ').textContent=s.join('');addPts(20);toast('✅ +20 pts');}else{el.classList.add('wrong');toast('❌ Veja a explicação!');}var exp=document.getElementById('qe'+n);if(exp)exp.style.display='block';if(scQv===4)setTimeout(()=>{document.getElementById('final-msg').style.display='block';document.getElementById('final-msg').scrollIntoView({behavior:'smooth'});},400);}
 </script>
 </body>
 </html>
