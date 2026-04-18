@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 12 — Dias da Semana, Meses & Frequência · Professor | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--vd:#1a5c2a;--tl:#1d7a8a;--am:#e8a020;--rs:#c0392b;--az:#1e3a5f;--cl:#4ade80}
+html,body{height:100%;background:#0a1f10;font-family:'Nunito',sans-serif;overflow:hidden}
+.stage{width:100vw;height:100vh;height:100dvh;position:relative;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity .65s ease;pointer-events:none;display:flex;flex-direction:column;z-index:0}
+.scene.active{opacity:1;pointer-events:auto;z-index:1}
+.pbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.28) saturate(1.2)}
+.ov{position:absolute;inset:0}
+.ov-vd{background:linear-gradient(140deg,rgba(26,92,42,.88),rgba(29,122,138,.25))}
+.ov-az{background:linear-gradient(140deg,rgba(30,58,95,.85),rgba(29,122,138,.3))}
+.ov-rs{background:linear-gradient(140deg,rgba(150,30,20,.82),rgba(192,57,43,.28))}
+.ov-am{background:linear-gradient(140deg,rgba(160,110,0,.8),rgba(232,160,32,.2))}
+.ov-dark{background:rgba(0,0,0,.62)}
+.lbar{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:clamp(8px,1.4vh,16px) clamp(14px,2vw,28px);background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
+.lwrap{display:flex;align-items:center;gap:10px}
+.limg{width:clamp(36px,4vw,48px);height:clamp(36px,4vw,48px);border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;flex-shrink:0}
+.lname{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(12px,1.6vw,17px);color:#fff;line-height:1.1}
+.lsub{font-size:clamp(9px,1vw,11px);color:rgba(255,255,255,.5)}
+.sbadge{background:rgba(74,222,128,.15);border:1.5px solid rgba(74,222,128,.4);color:var(--cl);font-size:clamp(9px,1.1vw,12px);font-weight:700;letter-spacing:.7px;padding:4px 12px;border-radius:14px;white-space:nowrap}
+.cnt{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(64px,9vh,84px) clamp(14px,3vw,48px) clamp(30px,5vh,50px);gap:clamp(8px,1.4vh,16px)}
+.sc-tag{font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--am);background:rgba(232,160,32,.15);border:1.5px solid rgba(232,160,32,.4);padding:4px 14px;border-radius:16px;text-align:center}
+.sc-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,5vw,54px);font-weight:800;color:#fff;text-align:center;line-height:1.05;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.go{color:var(--am)}.gr{color:var(--cl)}.rs{color:#f87171}
+.sc-sub{font-size:clamp(13px,2vw,21px);color:rgba(255,255,255,.85);text-align:center;line-height:1.5;max-width:820px}
+.sc-sub strong{color:var(--am)}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.a1{animation:fu .5s .05s both}.a2{animation:fu .5s .18s both}
+.a3{animation:fu .5s .32s both}.a4{animation:fu .5s .46s both}.as{animation:si .55s .1s both}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.1vw,16px);width:100%;max-width:880px}
+.cbox{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);border-radius:14px;padding:clamp(11px,1.6vh,20px) clamp(13px,1.5vw,20px);backdrop-filter:blur(6px)}
+.ct{font-size:clamp(11px,1.4vw,14px);font-weight:700;color:var(--am);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.cbox ul{list-style:none;display:flex;flex-direction:column;gap:clamp(5px,.7vh,9px)}
+.cbox ul li{font-size:clamp(12px,1.6vw,17px);color:rgba(255,255,255,.9);line-height:1.4;display:flex;gap:7px;align-items:flex-start}
+/* Parte banner */
+.parte-box{background:rgba(0,0,0,.4);border:2px solid rgba(74,222,128,.35);border-radius:20px;padding:clamp(20px,3vh,36px) clamp(24px,4vw,48px);text-align:center;backdrop-filter:blur(8px)}
+.parte-num{font-size:clamp(12px,1.6vw,16px);font-weight:700;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.parte-title{font-family:'Baloo 2',sans-serif;font-size:clamp(24px,5vw,52px);font-weight:800;color:#fff;line-height:1.1}
+.parte-sub{font-size:clamp(13px,1.8vw,19px);color:rgba(255,255,255,.7);margin-top:8px}
+/* Dias grid */
+.dias-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(5px,.8vw,10px);width:100%;max-width:900px}
+.dia-card{border-radius:12px;padding:clamp(8px,1.2vh,16px) 4px;text-align:center;backdrop-filter:blur(5px);cursor:pointer;transition:all .2s}
+.dia-card:hover{transform:scale(1.06)}
+.dia-card.dom{background:rgba(192,57,43,.45);border:2px solid rgba(248,113,113,.4)}
+.dia-card.sab{background:rgba(232,160,32,.35);border:2px solid rgba(245,158,11,.4)}
+.dia-card.util{background:rgba(29,122,138,.45);border:2px solid rgba(74,222,128,.3)}
+.dia-num{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,36px);font-weight:800;color:#fff;line-height:1}
+.dia-pt{font-size:clamp(9px,1.1vw,13px);font-weight:700;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.2}
+.dia-es{font-size:clamp(8px,.9vw,11px);color:rgba(255,255,255,.45);font-style:italic;margin-top:2px}
+/* Meses grid */
+.meses-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,.9vw,12px);width:100%;max-width:860px}
+.mes-card{border-radius:12px;padding:clamp(8px,1.2vh,15px) 8px;text-align:center;backdrop-filter:blur(5px);cursor:pointer;transition:all .2s;border:1.5px solid rgba(255,255,255,.15)}
+.mes-card:hover{border-color:var(--am);background:rgba(232,160,32,.2)}
+.mes-num{font-size:clamp(10px,1.3vw,14px);color:rgba(255,255,255,.4);font-weight:700}
+.mes-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,22px);font-weight:800;color:#fff}
+.mes-es{font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.5);font-style:italic;margin-top:2px}
+/* Frequência bar */
+.freq-list{display:flex;flex-direction:column;gap:clamp(6px,.9vh,10px);width:100%;max-width:820px}
+.freq-item{display:grid;grid-template-columns:160px 1fr 55px;align-items:center;gap:clamp(6px,.9vw,12px)}
+.freq-label{font-family:'Baloo 2',sans-serif;font-size:clamp(13px,1.9vw,19px);font-weight:800;color:#fff;cursor:pointer;transition:all .2s}
+.freq-label:hover{color:var(--am)}
+.freq-bar-wrap{background:rgba(255,255,255,.12);border-radius:20px;height:clamp(18px,2.5vh,28px);overflow:hidden}
+.freq-bar{height:100%;border-radius:20px;transition:width .8s ease;display:flex;align-items:center;padding-left:8px}
+.freq-es{font-size:clamp(9px,1.1vw,12px);color:rgba(255,255,255,.45);font-style:italic;white-space:nowrap}
+.freq-pct{font-size:clamp(12px,1.6vw,16px);font-weight:800;color:var(--am);text-align:right}
+/* Expressões */
+.expr-table{width:100%;max-width:820px;border-collapse:collapse;font-size:clamp(12px,1.7vw,17px)}
+.expr-table th{padding:clamp(7px,1vh,12px) clamp(10px,1.3vw,16px);font-weight:700;text-align:center}
+.expr-table td{padding:clamp(7px,1vh,12px) clamp(10px,1.3vw,16px);border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.9)}
+.expr-table tr:nth-child(even) td{background:rgba(255,255,255,.05)}
+.th-pt{background:rgba(29,122,138,.7);color:#fff}.th-es{background:rgba(192,57,43,.6);color:#fff}
+.pt-c{color:var(--cl);font-weight:700;cursor:pointer}
+/* Origem */
+.orig-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);width:100%;max-width:800px}
+.orig-item{background:rgba(255,255,255,.09);border-left:4px solid var(--am);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,20px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);line-height:1.5}
+.orig-item .detalhe{display:block;font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.5);font-style:italic;margin-top:4px}
+/* Exercício */
+.exerc-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);width:100%;max-width:820px}
+.exerc-item{background:rgba(255,255,255,.09);border-radius:12px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,22px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);line-height:1.5;cursor:pointer;transition:all .2s}
+.exerc-item:hover{background:rgba(255,255,255,.14)}
+.exerc-item .resp{display:none;font-size:clamp(10px,1.3vw,14px);color:var(--cl);margin-top:6px;border-top:1px solid rgba(255,255,255,.12);padding-top:6px;font-weight:700}
+.exerc-item.open .resp{display:block}
+/* Pronbtns */
+.pronbtns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pbtn{background:rgba(232,160,32,.2);border:1.5px solid rgba(232,160,32,.5);color:var(--am);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:clamp(11px,1.4vw,14px);padding:5px 12px;border-radius:10px;cursor:pointer;transition:all .15s}
+.pbtn:hover{background:rgba(232,160,32,.38)}
+/* Nav */
+.pbar{position:fixed;bottom:0;left:0;height:3px;background:var(--cl);z-index:300;transition:width .3s}
+.dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:200;flex-wrap:wrap;justify-content:center;max-width:92vw}
+.dot{width:clamp(4px,.6vw,6px);height:clamp(4px,.6vw,6px);border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .25s}
+.dot.active{background:var(--am);transform:scale(1.5)}
+.ctrl{position:fixed;bottom:7px;right:11px;display:flex;gap:6px;z-index:200}
+.cbtn{width:clamp(32px,4vw,42px);height:clamp(32px,4vw,42px);border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:clamp(12px,1.5vw,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:all .2s}
+.cbtn:hover{background:rgba(255,255,255,.2)}
+.scnt{position:fixed;top:clamp(10px,1.3vh,16px);right:clamp(12px,1.5vw,20px);font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.4);font-weight:700;z-index:200}
+@media(max-width:600px){.meses-grid{grid-template-columns:repeat(3,1fr)}.freq-item{grid-template-columns:120px 1fr 44px}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="pbar" id="prog"></div>
+<div class="scnt" id="scnt">1 / 18</div>
+<div class="dots" id="dots"></div>
+<div class="ctrl">
+  <button class="cbtn" onclick="prev()">◀</button>
+  <button class="cbtn" onclick="next()">▶</button>
+</div>
+
+<!-- S1: CAPA -->
+<div class="scene active">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Aula 12 · A1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">Aula 12 · Nível A1</div>
+    <div class="sc-h1 a2">Dias da Semana,<br>Meses <span class="go">&</span> Frequência 📅</div>
+    <div class="sc-sub a3">Português com comparações ao Espanhol<br>sempre · às vezes · nunca · segunda-feira · janeiro</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Segunda-feira, terça-feira, quarta-feira, quinta-feira, sexta-feira, sábado, domingo.')">🔊 Dias</button>
+      <button class="pbtn" onclick="spk('Sempre, às vezes, nunca.')">🔊 Frequência</button>
+    </div>
+  </div>
+</div>
+
+<!-- S2: DIAS DA SEMANA COMPARATIVO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📅 Dias</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📅 Dias da Semana — PT × ES</div>
+    <div class="dias-grid as">
+      <div class="dia-card dom" onclick="spk('domingo')"><div class="dia-num">1º</div><div class="dia-pt">domingo</div><div class="dia-es">domingo</div></div>
+      <div class="dia-card util" onclick="spk('segunda-feira')"><div class="dia-num">2º</div><div class="dia-pt">segunda-feira</div><div class="dia-es">lunes</div></div>
+      <div class="dia-card util" onclick="spk('terça-feira')"><div class="dia-num">3º</div><div class="dia-pt">terça-feira</div><div class="dia-es">martes</div></div>
+      <div class="dia-card util" onclick="spk('quarta-feira')"><div class="dia-num">4º</div><div class="dia-pt">quarta-feira</div><div class="dia-es">miércoles</div></div>
+      <div class="dia-card util" onclick="spk('quinta-feira')"><div class="dia-num">5º</div><div class="dia-pt">quinta-feira</div><div class="dia-es">jueves</div></div>
+      <div class="dia-card util" onclick="spk('sexta-feira')"><div class="dia-num">6º</div><div class="dia-pt">sexta-feira</div><div class="dia-es">viernes</div></div>
+      <div class="dia-card sab" onclick="spk('sábado')"><div class="dia-num">7º</div><div class="dia-pt">sábado</div><div class="dia-es">sábado</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,15px)">💡 Toque em cada dia para ouvir · Azul = dias úteis · Vermelho = domingo · Dourado = sábado</div>
+  </div>
+</div>
+
+<!-- S3: POR QUE FEIRA? -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">❓ Por que feira?</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">❓ Por que se chama "feira"?</div>
+    <div class="orig-list as">
+      <div class="orig-item">⛪ <strong>Origem religiosa</strong> — Concílio de Braga (563 d.C.)<div class="detalhe">Feria = dia de descanso ou dia livre (latim)</div></div>
+      <div class="orig-item">✝️ Bispo <strong>Martinho de Braga</strong> substituiu os nomes pagãos por numerais<div class="detalhe">Nomenclaturas numéricas durante a Semana Santa viraram padrão</div></div>
+      <div class="orig-item">🌍 Português é <strong>único</strong> entre as línguas românicas nesse aspecto!<div class="detalhe">Espanhol, francês e italiano mantiveram nomes de planetas/deuses</div></div>
+      <div class="orig-item">🕍 <strong>Sábado</strong> vem do hebraico <em>Shabbat</em> (dia de descanso)<div class="detalhe">🙏 Domingo vem do latim Dominicus = Dia do Senhor</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S4: OUTROS IDIOMAS -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🌍 Outros idiomas</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🌍 Os outros idiomas usam deuses e planetas</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">Terça-feira — "Marte"</div>
+        <ul>
+          <li>🇧🇷 PT: <strong style="color:var(--cl)">terça-feira</strong> (3º dia)</li>
+          <li>🇪🇸 ES: <strong style="color:#fca5a5">martes</strong> (Marte)</li>
+          <li>🇫🇷 FR: <strong style="color:#fca5a5">mardi</strong> (Marte)</li>
+          <li>🇮🇹 IT: <strong style="color:#fca5a5">martedì</strong> (Marte)</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">Quarta-feira — "Mercúrio"</div>
+        <ul>
+          <li>🇧🇷 PT: <strong style="color:var(--cl)">quarta-feira</strong> (4º dia)</li>
+          <li>🇪🇸 ES: <strong style="color:#fca5a5">miércoles</strong> (Mercúrio)</li>
+          <li>🇫🇷 FR: <strong style="color:#fca5a5">mercredi</strong> (Mercúrio)</li>
+          <li>🇬🇧 EN: <strong style="color:#fca5a5">Wednesday</strong> (Odin/Wotan)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(12px,1.5vw,16px)">💡 Só o português usa números ordinais + <em>feira</em>. Isso é exclusividade do PT!</div>
+  </div>
+</div>
+
+<!-- S5: POR QUE SEGUNDA, TERÇA...? -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🔢 Números ordinais</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🔢 Por que segunda, terça, quarta...?</div>
+    <div class="dias-grid as">
+      <div class="dia-card dom" onclick="spk('domingo, primeiro dia')"><div class="dia-num">1º</div><div class="dia-pt">domingo</div><div class="dia-es">Dia do Senhor</div></div>
+      <div class="dia-card util" onclick="spk('segunda-feira, segundo dia')"><div class="dia-num">2ª</div><div class="dia-pt">segunda</div><div class="dia-es">2º dia</div></div>
+      <div class="dia-card util" onclick="spk('terça-feira, terceiro dia')"><div class="dia-num">3ª</div><div class="dia-pt">terça</div><div class="dia-es">3º dia</div></div>
+      <div class="dia-card util" onclick="spk('quarta-feira, quarto dia')"><div class="dia-num">4ª</div><div class="dia-pt">quarta</div><div class="dia-es">4º dia</div></div>
+      <div class="dia-card util" onclick="spk('quinta-feira, quinto dia')"><div class="dia-num">5ª</div><div class="dia-pt">quinta</div><div class="dia-es">5º dia</div></div>
+      <div class="dia-card util" onclick="spk('sexta-feira, sexto dia')"><div class="dia-num">6ª</div><div class="dia-pt">sexta</div><div class="dia-es">6º dia</div></div>
+      <div class="dia-card sab" onclick="spk('sábado, shabbat')"><div class="dia-num">7º</div><div class="dia-pt">sábado</div><div class="dia-es">Shabbat</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(12px,1.5vw,16px)">📌 Domingo = 1º · <strong>sábado e domingo não são "feira"</strong> — têm nomes próprios religiosos</div>
+  </div>
+</div>
+
+<!-- S6: ABREVIAÇÕES -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✂️ Abreviações</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✂️ Abreviações — Uso no dia a dia</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">Forma curta</div>
+        <ul>
+          <li><strong style="color:var(--cl)">seg.</strong> — segunda-feira</li>
+          <li><strong style="color:var(--cl)">ter.</strong> — terça-feira</li>
+          <li><strong style="color:var(--cl)">qua.</strong> — quarta-feira</li>
+          <li><strong style="color:var(--cl)">qui.</strong> — quinta-feira</li>
+          <li><strong style="color:var(--cl)">sex.</strong> — sexta-feira</li>
+          <li><strong style="color:var(--cl)">sáb.</strong> — sábado</li>
+          <li><strong style="color:var(--cl)">dom.</strong> — domingo</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">Uso no calendário (D S T Q Q S S)</div>
+        <ul>
+          <li><strong style="color:#f87171">D</strong> — Domingo</li>
+          <li><strong style="color:var(--cl)">S</strong> — Segunda</li>
+          <li><strong style="color:var(--cl)">T</strong> — Terça</li>
+          <li><strong style="color:var(--cl)">Q</strong> — Quarta</li>
+          <li><strong style="color:var(--cl)">Q</strong> — Quinta</li>
+          <li><strong style="color:var(--cl)">S</strong> — Sexta</li>
+          <li><strong style="color:var(--am)">S</strong> — Sábado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7: PARTE 2 MESES -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1490750967868-88df5691cc2b?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Parte 2</span></div>
+  <div class="cnt">
+    <div class="parte-box as">
+      <div class="parte-num">PARTE 2 DE 3</div>
+      <div class="parte-title">📆 Meses do Ano</div>
+      <div class="parte-sub">Muito similares ao espanhol — toque para ouvir!</div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: MESES -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1490750967868-88df5691cc2b?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📆 Meses</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📆 Meses do Ano · Toque para ouvir!</div>
+    <div class="meses-grid as">
+      <div class="mes-card" style="background:rgba(192,57,43,.3)" onclick="spk('janeiro')"><div class="mes-num">01</div><div class="mes-pt">janeiro</div><div class="mes-es">enero</div></div>
+      <div class="mes-card" style="background:rgba(192,57,43,.25)" onclick="spk('fevereiro')"><div class="mes-num">02</div><div class="mes-pt">fevereiro</div><div class="mes-es">febrero</div></div>
+      <div class="mes-card" style="background:rgba(232,160,32,.25)" onclick="spk('março')"><div class="mes-num">03</div><div class="mes-pt">março</div><div class="mes-es">marzo</div></div>
+      <div class="mes-card" style="background:rgba(232,160,32,.2)" onclick="spk('abril')"><div class="mes-num">04</div><div class="mes-pt">abril</div><div class="mes-es">abril ✅</div></div>
+      <div class="mes-card" style="background:rgba(74,222,128,.2)" onclick="spk('maio')"><div class="mes-num">05</div><div class="mes-pt">maio</div><div class="mes-es">mayo</div></div>
+      <div class="mes-card" style="background:rgba(74,222,128,.25)" onclick="spk('junho')"><div class="mes-num">06</div><div class="mes-pt">junho</div><div class="mes-es">junio</div></div>
+      <div class="mes-card" style="background:rgba(29,122,138,.3)" onclick="spk('julho')"><div class="mes-num">07</div><div class="mes-pt">julho</div><div class="mes-es">julio</div></div>
+      <div class="mes-card" style="background:rgba(29,122,138,.25)" onclick="spk('agosto')"><div class="mes-num">08</div><div class="mes-pt">agosto</div><div class="mes-es">agosto ✅</div></div>
+      <div class="mes-card" style="background:rgba(100,50,150,.3)" onclick="spk('setembro')"><div class="mes-num">09</div><div class="mes-pt">setembro</div><div class="mes-es">septiembre</div></div>
+      <div class="mes-card" style="background:rgba(100,50,150,.25)" onclick="spk('outubro')"><div class="mes-num">10</div><div class="mes-pt">outubro</div><div class="mes-es">octubre</div></div>
+      <div class="mes-card" style="background:rgba(192,57,43,.3)" onclick="spk('novembro')"><div class="mes-num">11</div><div class="mes-pt">novembro</div><div class="mes-es">noviembre</div></div>
+      <div class="mes-card" style="background:rgba(192,57,43,.35)" onclick="spk('dezembro')"><div class="mes-num">12</div><div class="mes-pt">dezembro</div><div class="mes-es">diciembre</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,14px)">💡 Em PT os meses são escritos com <strong>letra minúscula</strong>! · ✅ = idêntico ao ES</div>
+  </div>
+</div>
+
+<!-- S9: DATAS — COMO DIZER -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1490750967868-88df5691cc2b?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📅 Datas</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📅 Como dizer datas em PT</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">Estrutura</div>
+        <ul>
+          <li><strong style="color:var(--cl)">dia + de + mês</strong></li>
+          <li onclick="spk('Hoje é cinco de abril.')" style="cursor:pointer">Hoje é <strong style="color:var(--am)">5 de abril</strong>. 🔊</li>
+          <li onclick="spk('Meu aniversário é em julho.')" style="cursor:pointer">Meu aniversário é <strong style="color:var(--am)">em julho</strong>. 🔊</li>
+          <li onclick="spk('A reunião é na segunda-feira.')" style="cursor:pointer">A reunião é <strong style="color:var(--am)">na segunda-feira</strong>. 🔊</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🇪🇸 Comparativo ES</div>
+        <ul>
+          <li>PT: <strong style="color:var(--cl)">5 de abril</strong> · ES: 5 de abril ✅</li>
+          <li>PT: <strong style="color:var(--cl)">em julho</strong> · ES: en julio</li>
+          <li>PT: <strong style="color:var(--cl)">na segunda</strong> · ES: el lunes</li>
+          <li>PT: Em PT <strong>não</strong> usamos artigo antes de dias da semana sem contexto</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Hoje é segunda-feira, cinco de abril.')">🔊 Frase completa</button>
+    </div>
+  </div>
+</div>
+
+<!-- S10: PARTE 3 FREQUÊNCIA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Parte 3</span></div>
+  <div class="cnt">
+    <div class="parte-box as">
+      <div class="parte-num">PARTE 3 DE 3</div>
+      <div class="parte-title">🔁 Advérbios de<br>Frequência</div>
+      <div class="parte-sub">sempre · às vezes · nunca · frequentemente...</div>
+    </div>
+  </div>
+</div>
+
+<!-- S11: FREQUÊNCIA BARRA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🔁 Frequência</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🔁 Advérbios de Frequência · Toque para ouvir!</div>
+    <div class="freq-list as">
+      <div class="freq-item"><div class="freq-label" onclick="spk('sempre')">sempre</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:100%;background:linear-gradient(to right,#16a34a,#4ade80)"><span style="font-size:11px;color:rgba(255,255,255,.7)">siempre</span></div></div><div class="freq-pct">100%</div></div>
+      <div class="freq-item"><div class="freq-label" onclick="spk('quase sempre')">quase sempre</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:90%;background:linear-gradient(to right,#16a34a,#86efac)"><span style="font-size:11px;color:rgba(255,255,255,.7)">casi siempre</span></div></div><div class="freq-pct">90%</div></div>
+      <div class="freq-item"><div class="freq-label" onclick="spk('frequentemente')">frequentemente</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:70%;background:linear-gradient(to right,#ca8a04,#fde047)"><span style="font-size:11px;color:rgba(0,0,0,.6)">frecuentemente</span></div></div><div class="freq-pct">70%</div></div>
+      <div class="freq-item"><div class="freq-label" onclick="spk('às vezes')">às vezes</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:50%;background:linear-gradient(to right,#0891b2,#67e8f9)"><span style="font-size:11px;color:rgba(0,0,0,.6)">a veces</span></div></div><div class="freq-pct">50%</div></div>
+      <div class="freq-item"><div class="freq-label" onclick="spk('raramente')">raramente</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:20%;background:linear-gradient(to right,#ea580c,#fb923c)"><span style="font-size:11px;color:rgba(255,255,255,.8)">raramente</span></div></div><div class="freq-pct">20%</div></div>
+      <div class="freq-item"><div class="freq-label" onclick="spk('quase nunca')">quase nunca</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:10%;background:linear-gradient(to right,#dc2626,#f87171)"></div></div><div class="freq-pct">10%</div></div>
+      <div class="freq-item"><div class="freq-label" onclick="spk('nunca')">nunca</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:3%;background:#dc2626"></div></div><div class="freq-pct">0%</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S12: EXPRESSÕES DE FREQUÊNCIA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🔁 Expressões</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🔁 Outras Expressões de Frequência</div>
+    <table class="expr-table as">
+      <thead><tr><th class="th-pt">🇧🇷 Português</th><th class="th-es">🇪🇸 Espanhol</th></tr></thead>
+      <tbody>
+        <tr><td class="pt-c" onclick="spk('todos os dias')">todos os dias</td><td style="color:rgba(255,255,255,.65)">todos los días</td></tr>
+        <tr><td class="pt-c" onclick="spk('uma vez por semana')">uma vez por semana</td><td style="color:rgba(255,255,255,.65)">una vez por semana</td></tr>
+        <tr><td class="pt-c" onclick="spk('duas vezes por mês')">duas vezes por mês</td><td style="color:rgba(255,255,255,.65)">dos veces al mes</td></tr>
+        <tr><td class="pt-c" onclick="spk('de vez em quando')">de vez em quando</td><td style="color:rgba(255,255,255,.65)">de vez en cuando</td></tr>
+        <tr><td class="pt-c" onclick="spk('normalmente')">normalmente</td><td style="color:rgba(255,255,255,.65)">normalmente ✅</td></tr>
+        <tr><td class="pt-c" onclick="spk('geralmente')">geralmente</td><td style="color:rgba(255,255,255,.65)">generalmente</td></tr>
+        <tr><td class="pt-c" onclick="spk('habitualmente')">habitualmente</td><td style="color:rgba(255,255,255,.65)">habitualmente ✅</td></tr>
+      </tbody>
+    </table>
+    <div class="sc-sub a3" style="font-size:clamp(11px,1.4vw,14px)">💡 Toque na coluna PT para ouvir! · ✅ = idêntico ao espanhol</div>
+  </div>
+</div>
+
+<!-- S13: POSIÇÃO NA FRASE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📌 Posição</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📌 Posição dos Advérbios de Frequência</div>
+    <div class="orig-list as">
+      <div class="orig-item" onclick="spk('Eu sempre estudo de manhã.')" style="cursor:pointer">
+        🔁 <strong>Antes do verbo principal:</strong> Eu <strong style="color:var(--cl)">sempre</strong> estudo de manhã. 🔊
+        <span class="detalhe">= Yo siempre estudio de mañana.</span>
+      </div>
+      <div class="orig-item" onclick="spk('Ela raramente chega tarde.')" style="cursor:pointer">
+        🔁 Ela <strong style="color:var(--cl)">raramente</strong> chega tarde. 🔊
+        <span class="detalhe">= Ella raramente llega tarde.</span>
+      </div>
+      <div class="orig-item" onclick="spk('Às vezes eu faço exercício.')" style="cursor:pointer">
+        🔁 <strong>"às vezes"</strong> pode vir no início: <strong style="color:var(--cl)">Às vezes</strong> eu faço exercício. 🔊
+        <span class="detalhe">= A veces hago ejercicio.</span>
+      </div>
+      <div class="orig-item" onclick="spk('Eu nunca bebo café.')" style="cursor:pointer">
+        ❌ <strong>"nunca"</strong> antes do verbo: Eu <strong style="color:#f87171">nunca</strong> bebo café. 🔊
+        <span class="detalhe">= Yo nunca bebo café. (igual ao ES!)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S14: EXERCÍCIO DIAS -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 1 — Traduzir os dias da semana · Toque!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">1. lunes → ?<div class="resp">✅ <strong>segunda-feira</strong> (2º dia da semana)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">2. jueves → ?<div class="resp">✅ <strong>quinta-feira</strong> (5º dia da semana)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">3. miércoles → ?<div class="resp">✅ <strong>quarta-feira</strong> (4º dia da semana)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">4. viernes → ?<div class="resp">✅ <strong>sexta-feira</strong> (6º dia da semana)</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">5. Em espanhol, que planeta é "martes"?<div class="resp">✅ <strong>Marte</strong>! Em português dizemos <em>terça-feira</em> (3º dia)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S15: EXERCÍCIO FREQUÊNCIA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 2</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 2 — Complete com advérbio de frequência</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">1. Eu ___ faço exercício — todos os dias sem falta! (100%)<div class="resp">✅ <strong>sempre</strong> faço exercício.</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">2. Ela ___ chega atrasada — só uma vez por mês. (10%)<div class="resp">✅ <strong>quase nunca</strong> chega atrasada.</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">3. Nós ___ saímos no fim de semana — umas 2x por mês. (50%)<div class="resp">✅ <strong>às vezes</strong> saímos no fim de semana.</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">4. Ele ___ come pizza — odeia! (0%)<div class="resp">✅ <strong>nunca</strong> come pizza.</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">5. Vocês ___ estudam português — quase todo dia. (90%)<div class="resp">✅ <strong>quase sempre</strong> estudam português.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S16: METAS PARA O ANO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎯 Metas</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎯 Metas para o Ano — Futuro com IR + Infinitivo</div>
+    <div class="orig-list as">
+      <div class="orig-item" onclick="spk('Em janeiro vou estudar mais.')" style="cursor:pointer">
+        📌 <strong>Estrutura:</strong> <em>IR (presente)</em> + infinitivo
+        <span class="detalhe">= Voy a + infinitivo em ES</span>
+      </div>
+      <div class="orig-item" onclick="spk('Em março vou viajar para o Brasil.')" style="cursor:pointer">
+        🗓️ Em <strong style="color:var(--cl)">março</strong>, vou <strong style="color:var(--am)">viajar</strong> para o Brasil. 🔊
+        <span class="detalhe">En marzo voy a viajar a Brasil.</span>
+      </div>
+      <div class="orig-item" onclick="spk('Na segunda-feira vou fazer exercício.')" style="cursor:pointer">
+        📅 Na <strong style="color:var(--cl)">segunda-feira</strong>, vou <strong style="color:var(--am)">fazer</strong> exercício. 🔊
+        <span class="detalhe">El lunes voy a hacer ejercicio.</span>
+      </div>
+      <div class="orig-item" onclick="spk('Sempre vou estudar português.')" style="cursor:pointer">
+        🔁 <strong style="color:var(--cl)">Sempre</strong> vou <strong style="color:var(--am)">estudar</strong> português. 🔊
+        <span class="detalhe">Siempre voy a estudiar portugués.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S17: RESUMO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Resumo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Resumo da Aula 12</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">📅 Dias da Semana</div>
+        <ul>
+          <li>Origem: <strong>Concílio de Braga</strong> (563 d.C.)</li>
+          <li>Domingo = 1º · <strong>-feira</strong> = dias úteis</li>
+          <li>Sábado (Shabbat) · Domingo (Dominicus)</li>
+          <li>ES usa planetas, PT usa números!</li>
+        </ul>
+        <div class="ct" style="margin-top:10px">📆 Meses</div>
+        <ul><li>Muito similares ao ES · <strong>minúscula</strong> em PT!</li></ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🔁 Frequência</div>
+        <ul>
+          <li><strong>sempre</strong> (100%) · <strong>às vezes</strong> (50%) · <strong>nunca</strong> (0%)</li>
+          <li>Vai antes do verbo: Eu <em>sempre</em> estudo.</li>
+          <li>"às vezes" pode ir no início da frase</li>
+        </ul>
+        <div class="ct" style="margin-top:10px">🎯 Metas — IR + Infinitivo</div>
+        <ul><li>Em março <em>vou viajar</em> para o Brasil.</li></ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Na segunda-feira sempre vou à academia.')">🔊 Frase modelo</button>
+      <button class="pbtn" onclick="spk('Até a próxima aula!')">🔊 Até a próxima!</button>
+    </div>
+  </div>
+</div>
+
+<!-- S18: ENCERRAMENTO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎉 Fim</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎉 Parabéns!</div>
+    <div class="sc-h1 a2">Você conhece os<br><span class="go">dias & meses!</span> 📅</div>
+    <div class="sc-sub a3">segunda · terça · quarta · quinta · sexta · sábado · domingo<br><strong>sempre</strong> estude português!</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Eu sempre estudo português na segunda-feira.')">🔊 Frase final</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const LOGO='data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>
