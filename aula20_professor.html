@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 20 — Vocabulário de Sobrevivência · Professor | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--tl:#1a7a6e;--cl:#22d3c8;--am:#f59e0b;--vd:#16a34a;--rs:#e11d48;--az:#1e3a5f}
+html,body{height:100%;background:#071a18;font-family:'Nunito',sans-serif;overflow:hidden}
+.stage{width:100vw;height:100vh;height:100dvh;position:relative;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none;display:flex;flex-direction:column;z-index:0}
+.scene.active{opacity:1;pointer-events:auto;z-index:1}
+.pbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.28) saturate(1.2)}
+.ov{position:absolute;inset:0}
+.ov-tl{background:linear-gradient(140deg,rgba(26,122,110,.85),rgba(34,211,200,.2))}
+.ov-rs{background:linear-gradient(140deg,rgba(150,20,50,.82),rgba(225,29,72,.22))}
+.ov-am{background:linear-gradient(140deg,rgba(160,100,0,.8),rgba(245,158,11,.22))}
+.ov-vd{background:linear-gradient(140deg,rgba(22,163,74,.8),rgba(34,197,94,.22))}
+.ov-az{background:linear-gradient(140deg,rgba(30,58,95,.85),rgba(30,100,180,.25))}
+.ov-dark{background:rgba(0,0,0,.62)}
+.lbar{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:clamp(8px,1.4vh,16px) clamp(14px,2vw,28px);background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
+.lwrap{display:flex;align-items:center;gap:10px}
+.limg{width:clamp(36px,4vw,48px);height:clamp(36px,4vw,48px);border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;flex-shrink:0}
+.lname{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(12px,1.6vw,17px);color:#fff}
+.lsub{font-size:clamp(9px,1vw,11px);color:rgba(255,255,255,.5)}
+.sbadge{background:rgba(34,211,200,.15);border:1.5px solid rgba(34,211,200,.4);color:var(--cl);font-size:clamp(9px,1.1vw,12px);font-weight:700;letter-spacing:.7px;padding:4px 12px;border-radius:14px;white-space:nowrap}
+.cnt{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(64px,9vh,84px) clamp(14px,3vw,48px) clamp(30px,5vh,50px);gap:clamp(8px,1.4vh,16px)}
+.sc-tag{font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--am);background:rgba(245,158,11,.15);border:1.5px solid rgba(245,158,11,.4);padding:4px 14px;border-radius:16px;text-align:center}
+.sc-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,5vw,54px);font-weight:800;color:#fff;text-align:center;line-height:1.05;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.go{color:var(--am)}.gr{color:var(--cl)}
+.sc-sub{font-size:clamp(13px,2vw,20px);color:rgba(255,255,255,.85);text-align:center;line-height:1.5;max-width:820px}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.a1{animation:fu .5s .05s both}.a2{animation:fu .5s .18s both}
+.a3{animation:fu .5s .32s both}.a4{animation:fu .5s .46s both}.as{animation:si .55s .1s both}
+/* Layout */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.1vw,16px);width:100%;max-width:880px}
+.cbox{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);border-radius:14px;padding:clamp(11px,1.6vh,20px) clamp(13px,1.5vw,20px);backdrop-filter:blur(6px)}
+.ct{font-size:clamp(11px,1.4vw,14px);font-weight:700;color:var(--am);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.cbox ul{list-style:none;display:flex;flex-direction:column;gap:clamp(5px,.7vh,9px)}
+.cbox ul li{font-size:clamp(12px,1.6vw,17px);color:rgba(255,255,255,.9);line-height:1.4;cursor:pointer;transition:color .15s;border-radius:6px;padding:2px 6px}
+.cbox ul li:hover{color:var(--cl);background:rgba(34,211,200,.1)}
+/* Situação banner */
+.sit-banner{border-radius:16px;padding:clamp(10px,1.5vh,18px) clamp(16px,2.5vw,28px);display:inline-flex;align-items:center;gap:10px;font-family:'Baloo 2',sans-serif;font-size:clamp(16px,2.5vw,28px);font-weight:800;color:#fff;margin-bottom:4px}
+.sit-banner.rest{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.sit-banner.hotel{background:linear-gradient(135deg,#0891b2,#06b6d4)}
+.sit-banner.transp{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+.sit-banner.saude{background:linear-gradient(135deg,#dc2626,#ef4444)}
+/* Vocab grid */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:clamp(6px,.9vw,11px);width:100%;max-width:860px}
+.vocab-card{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:12px;padding:clamp(10px,1.4vh,16px) 8px;text-align:center;backdrop-filter:blur(5px);cursor:pointer;transition:all .2s}
+.vocab-card:hover{background:rgba(34,211,200,.25);border-color:var(--cl);transform:translateY(-2px)}
+.vocab-emoji{font-size:clamp(22px,3.2vw,34px)}
+.vocab-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.7vw,17px);font-weight:800;color:#fff;margin-top:4px}
+.vocab-es{font-size:clamp(9px,1.1vw,12px);color:rgba(255,255,255,.5);font-style:italic;margin-top:2px}
+/* Diálogo */
+.dialog-box{background:rgba(0,0,0,.4);border:2px solid rgba(34,211,200,.3);border-radius:16px;padding:clamp(12px,1.8vh,22px);width:100%;max-width:780px;backdrop-filter:blur(8px)}
+.dialog-line{display:flex;gap:10px;margin-bottom:clamp(8px,1.2vh,14px);align-items:flex-start}
+.dialog-line:last-child{margin-bottom:0}
+.d-who{font-weight:800;font-size:clamp(11px,1.4vw,14px);min-width:80px;padding-top:2px}
+.d-who.g{color:var(--cl)}.d-who.c{color:var(--am)}
+.d-txt{font-size:clamp(12px,1.8vw,18px);color:#fff;line-height:1.5;cursor:pointer;transition:color .2s}
+.d-txt:hover{color:var(--cl)}
+.d-txt em{color:var(--cl);font-style:normal;font-weight:700}
+/* Estruturas */
+.estruct-list{display:flex;flex-direction:column;gap:clamp(6px,.9vh,11px);width:100%;max-width:820px}
+.estruct-item{background:rgba(255,255,255,.09);border-left:4px solid var(--cl);border-radius:10px;padding:clamp(9px,1.3vh,15px) clamp(12px,1.5vw,20px);font-size:clamp(13px,1.9vw,20px);color:#fff;backdrop-filter:blur(4px);cursor:pointer;transition:all .2s}
+.estruct-item:hover{background:rgba(34,211,200,.15);border-left-color:var(--am)}
+.estruct-item .es{display:block;font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.5);font-style:italic;margin-top:3px}
+/* Saúde */
+.saude-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:clamp(7px,1vw,12px);width:100%;max-width:860px}
+.saude-card{background:rgba(220,38,38,.3);border:1.5px solid rgba(248,113,113,.35);border-radius:12px;padding:clamp(10px,1.5vh,17px) 10px;text-align:center;backdrop-filter:blur(5px);cursor:pointer;transition:all .2s}
+.saude-card:hover{background:rgba(220,38,38,.45);transform:translateY(-2px)}
+.saude-emoji{font-size:clamp(22px,3.2vw,34px)}
+.saude-pt{font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.7vw,16px);font-weight:800;color:#fff;margin-top:4px}
+.saude-frase{font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.65);margin-top:3px;font-style:italic}
+/* Exercício */
+.exerc-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,11px);width:100%;max-width:820px}
+.exerc-item{background:rgba(255,255,255,.09);border-radius:12px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,22px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);cursor:pointer;transition:all .2s}
+.exerc-item:hover{background:rgba(255,255,255,.14)}
+.exerc-item .resp{display:none;font-size:clamp(10px,1.3vw,14px);color:var(--cl);margin-top:5px;border-top:1px solid rgba(255,255,255,.12);padding-top:5px;font-weight:700}
+.exerc-item.open .resp{display:block}
+/* Pronbtns */
+.pronbtns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pbtn{background:rgba(245,158,11,.2);border:1.5px solid rgba(245,158,11,.5);color:var(--am);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:clamp(11px,1.4vw,14px);padding:5px 12px;border-radius:10px;cursor:pointer;transition:all .15s}
+.pbtn:hover{background:rgba(245,158,11,.38)}
+/* Nav */
+.pbar{position:fixed;bottom:0;left:0;height:3px;background:var(--cl);z-index:300;transition:width .3s}
+.dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:200;flex-wrap:wrap;justify-content:center;max-width:92vw}
+.dot{width:clamp(4px,.6vw,6px);height:clamp(4px,.6vw,6px);border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .25s}
+.dot.active{background:var(--am);transform:scale(1.5)}
+.ctrl{position:fixed;bottom:7px;right:11px;display:flex;gap:6px;z-index:200}
+.cbtn{width:clamp(32px,4vw,42px);height:clamp(32px,4vw,42px);border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:clamp(12px,1.5vw,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:all .2s}
+.cbtn:hover{background:rgba(255,255,255,.2)}
+.scnt{position:fixed;top:clamp(10px,1.3vh,16px);right:clamp(12px,1.5vw,20px);font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.4);font-weight:700;z-index:200}
+@media(max-width:560px){.twocol{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="pbar" id="prog"></div>
+<div class="scnt" id="scnt">1 / 20</div>
+<div class="dots" id="dots"></div>
+<div class="ctrl">
+  <button class="cbtn" onclick="prev()">◀</button>
+  <button class="cbtn" onclick="next()">▶</button>
+</div>
+
+<!-- S1: CAPA -->
+<div class="scene active">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Aula 20 · A1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">Aula 20 · Nível A1</div>
+    <div class="sc-h1 a2">Vocabulário de<br><span class="go">Sobrevivência</span> 🇧🇷🧳</div>
+    <div class="sc-sub a3">Restaurante · Hotel · Transporte · Saúde<br>Frases essenciais para se virar no Brasil!</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Pode repetir, por favor?')">🔊 Pode repetir?</button>
+      <button class="pbtn" onclick="spk('Não entendi. Fale mais devagar.')">🔊 Não entendi</button>
+    </div>
+  </div>
+</div>
+
+<!-- S2: FRASES DE EMERGÊNCIA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🆘 Frases Essenciais</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🆘 Frases de Emergência — Toque para ouvir!</div>
+    <div class="estruct-list as">
+      <div class="estruct-item" onclick="spk('Pode repetir, por favor?')">🔁 <strong>Pode repetir, por favor?</strong><span class="es">¿Puede repetir, por favor?</span></div>
+      <div class="estruct-item" onclick="spk('Não entendi.')">❓ <strong>Não entendi.</strong><span class="es">No entendí.</span></div>
+      <div class="estruct-item" onclick="spk('Fale mais devagar, por favor.')">🐢 <strong>Fale mais devagar, por favor.</strong><span class="es">Hable más despacio, por favor.</span></div>
+      <div class="estruct-item" onclick="spk('Quanto custa?')">💰 <strong>Quanto custa?</strong><span class="es">¿Cuánto cuesta?</span></div>
+      <div class="estruct-item" onclick="spk('Onde fica?')">📍 <strong>Onde fica?</strong><span class="es">¿Dónde queda?</span></div>
+      <div class="estruct-item" onclick="spk('Pode me ajudar, por favor?')">🙏 <strong>Pode me ajudar, por favor?</strong><span class="es">¿Me puede ayudar, por favor?</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- S3: SITUAÇÃO 1 - RESTAURANTE VOCAB -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🍽️ Restaurante</span></div>
+  <div class="cnt">
+    <div class="sit-banner rest as">🍽️ Situação 1 — No Restaurante</div>
+    <div class="vocab-grid a2">
+      <div class="vocab-card" onclick="spk('cardápio')"><div class="vocab-emoji">📋</div><div class="vocab-pt">cardápio</div><div class="vocab-es">menú</div></div>
+      <div class="vocab-card" onclick="spk('garçom')"><div class="vocab-emoji">🧑‍🍳</div><div class="vocab-pt">garçom</div><div class="vocab-es">mesero</div></div>
+      <div class="vocab-card" onclick="spk('conta')"><div class="vocab-emoji">🧾</div><div class="vocab-pt">conta</div><div class="vocab-es">la cuenta</div></div>
+      <div class="vocab-card" onclick="spk('água')"><div class="vocab-emoji">💧</div><div class="vocab-pt">água</div><div class="vocab-es">agua</div></div>
+      <div class="vocab-card" onclick="spk('café')"><div class="vocab-emoji">☕</div><div class="vocab-pt">café</div><div class="vocab-es">café ✅</div></div>
+      <div class="vocab-card" onclick="spk('suco')"><div class="vocab-emoji">🥤</div><div class="vocab-pt">suco</div><div class="vocab-es">jugo</div></div>
+      <div class="vocab-card" onclick="spk('frango')"><div class="vocab-emoji">🍗</div><div class="vocab-pt">frango</div><div class="vocab-es">pollo</div></div>
+      <div class="vocab-card" onclick="spk('carne')"><div class="vocab-emoji">🥩</div><div class="vocab-pt">carne</div><div class="vocab-es">carne ✅</div></div>
+      <div class="vocab-card" onclick="spk('peixe')"><div class="vocab-emoji">🐟</div><div class="vocab-pt">peixe</div><div class="vocab-es">pescado</div></div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Eu quero um frango com arroz, por favor.')">🔊 Eu quero...</button>
+    </div>
+  </div>
+</div>
+
+<!-- S4: SITUAÇÃO 1 - DIÁLOGO RESTAURANTE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🍽️ Diálogo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🍽️ Mini Diálogo — No Restaurante · Toque para ouvir!</div>
+    <div class="twocol as" style="max-width:860px">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who g">Garçom:</span><span class="d-txt" onclick="spk('Boa tarde!')">Boa tarde! 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Cliente:</span><span class="d-txt" onclick="spk('Boa tarde! Eu quero um café, por favor.')">Boa tarde! <em>Eu quero</em> um café, por favor. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Garçom:</span><span class="d-txt" onclick="spk('Mais alguma coisa?')">Mais alguma coisa? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Cliente:</span><span class="d-txt" onclick="spk('Não, obrigada. A conta, por favor.')">Não, obrigada. <em>A conta, por favor.</em> 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Estruturas</div>
+        <ul>
+          <li onclick="spk('Eu quero um suco de laranja.')">Eu quero… 🔊</li>
+          <li onclick="spk('Para mim, um café.')">Para mim… 🔊</li>
+          <li onclick="spk('A conta, por favor.')">A conta, por favor. 🔊</li>
+          <li onclick="spk('Quanto custa?')">Quanto custa? 🔊</li>
+          <li onclick="spk('Tem cardápio em inglês?')">Tem cardápio em inglês? 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: SITUAÇÃO 2 - HOTEL VOCAB -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏨 Hotel</span></div>
+  <div class="cnt">
+    <div class="sit-banner hotel as">🏨 Situação 2 — No Hotel</div>
+    <div class="vocab-grid a2">
+      <div class="vocab-card" onclick="spk('reserva')"><div class="vocab-emoji">📅</div><div class="vocab-pt">reserva</div><div class="vocab-es">reserva ✅</div></div>
+      <div class="vocab-card" onclick="spk('quarto')"><div class="vocab-emoji">🛏️</div><div class="vocab-pt">quarto</div><div class="vocab-es">habitación</div></div>
+      <div class="vocab-card" onclick="spk('chave')"><div class="vocab-emoji">🗝️</div><div class="vocab-pt">chave</div><div class="vocab-es">llave</div></div>
+      <div class="vocab-card" onclick="spk('banheiro')"><div class="vocab-emoji">🚿</div><div class="vocab-pt">banheiro</div><div class="vocab-es">baño</div></div>
+      <div class="vocab-card" onclick="spk('Wi-Fi')"><div class="vocab-emoji">📶</div><div class="vocab-pt">Wi-Fi</div><div class="vocab-es">Wi-Fi ✅</div></div>
+      <div class="vocab-card" onclick="spk('café da manhã')"><div class="vocab-emoji">🥐</div><div class="vocab-pt">café da manhã</div><div class="vocab-es">desayuno</div></div>
+      <div class="vocab-card" onclick="spk('recepção')"><div class="vocab-emoji">🏢</div><div class="vocab-pt">recepção</div><div class="vocab-es">recepción ✅</div></div>
+      <div class="vocab-card" onclick="spk('senha')"><div class="vocab-emoji">🔑</div><div class="vocab-pt">senha</div><div class="vocab-es">contraseña</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S6: SITUAÇÃO 2 - DIÁLOGO HOTEL -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏨 Diálogo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏨 Mini Diálogo — No Hotel · Toque para ouvir!</div>
+    <div class="twocol as" style="max-width:860px">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who g">Recep.:</span><span class="d-txt" onclick="spk('Boa noite! Bem-vindo.')">Boa noite! Bem-vindo. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Hóspede:</span><span class="d-txt" onclick="spk('Boa noite! Eu tenho uma reserva.')">Boa noite! <em>Eu tenho uma reserva.</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Recep.:</span><span class="d-txt" onclick="spk('Qual é o seu nome?')">Qual é o seu nome? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Hóspede:</span><span class="d-txt" onclick="spk('O Wi-Fi é grátis? Qual é a senha?')"><em>O Wi-Fi é grátis?</em> Qual é a senha? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Recep.:</span><span class="d-txt" onclick="spk('Sim, é grátis. A senha é brasil123.')">Sim, é grátis. A senha é brasil123. 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Estruturas</div>
+        <ul>
+          <li onclick="spk('Eu tenho uma reserva.')">Eu tenho uma reserva. 🔊</li>
+          <li onclick="spk('Qual é o número do quarto?')">Qual é o número do quarto? 🔊</li>
+          <li onclick="spk('O Wi-Fi é grátis?')">O Wi-Fi é grátis? 🔊</li>
+          <li onclick="spk('A senha, por favor.')">A senha, por favor. 🔊</li>
+          <li onclick="spk('O café da manhã está incluído?')">Café da manhã incluído? 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7: SITUAÇÃO 3 - TRANSPORTE VOCAB -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🚌 Transporte</span></div>
+  <div class="cnt">
+    <div class="sit-banner as" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">🚌 Situação 3 — No Transporte / Rua</div>
+    <div class="vocab-grid a2">
+      <div class="vocab-card" onclick="spk('ônibus')"><div class="vocab-emoji">🚌</div><div class="vocab-pt">ônibus</div><div class="vocab-es">autobús/camión</div></div>
+      <div class="vocab-card" onclick="spk('metrô')"><div class="vocab-emoji">🚇</div><div class="vocab-pt">metrô</div><div class="vocab-es">metro ✅</div></div>
+      <div class="vocab-card" onclick="spk('táxi')"><div class="vocab-emoji">🚕</div><div class="vocab-pt">táxi</div><div class="vocab-es">taxi ✅</div></div>
+      <div class="vocab-card" onclick="spk('aeroporto')"><div class="vocab-emoji">✈️</div><div class="vocab-pt">aeroporto</div><div class="vocab-es">aeropuerto</div></div>
+      <div class="vocab-card" onclick="spk('centro')"><div class="vocab-emoji">🏙️</div><div class="vocab-pt">centro</div><div class="vocab-es">centro ✅</div></div>
+      <div class="vocab-card" onclick="spk('direita')"><div class="vocab-emoji">➡️</div><div class="vocab-pt">direita</div><div class="vocab-es">derecha</div></div>
+      <div class="vocab-card" onclick="spk('esquerda')"><div class="vocab-emoji">⬅️</div><div class="vocab-pt">esquerda</div><div class="vocab-es">izquierda</div></div>
+      <div class="vocab-card" onclick="spk('perto')"><div class="vocab-emoji">📍</div><div class="vocab-pt">perto</div><div class="vocab-es">cerca</div></div>
+      <div class="vocab-card" onclick="spk('longe')"><div class="vocab-emoji">🗺️</div><div class="vocab-pt">longe</div><div class="vocab-es">lejos</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: SITUAÇÃO 3 - DIREÇÕES -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🗺️ Direções</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🗺️ Como dar e pedir direções</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">📍 Perguntar</div>
+        <ul>
+          <li onclick="spk('Onde fica o metrô?')" >Onde fica o metrô? 🔊</li>
+          <li onclick="spk('É longe?')">É longe? 🔊</li>
+          <li onclick="spk('Pode me ajudar?')">Pode me ajudar? 🔊</li>
+          <li onclick="spk('Quanto custa até o centro?')">Quanto custa até o centro? 🔊</li>
+          <li onclick="spk('Como chego ao aeroporto?')">Como chego ao aeroporto? 🔊</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗺️ Responder</div>
+        <ul>
+          <li onclick="spk('Vire à direita.')">Vire à <strong style="color:var(--cl)">direita</strong>. ➡️ 🔊</li>
+          <li onclick="spk('Vire à esquerda.')">Vire à <strong style="color:var(--am)">esquerda</strong>. ⬅️ 🔊</li>
+          <li onclick="spk('Siga em frente.')">Siga em <strong style="color:var(--cl)">frente</strong>. ⬆️ 🔊</li>
+          <li onclick="spk('É perto, fica a dois quarteirões.')">É <strong style="color:#4ade80">perto</strong>. 🔊</li>
+          <li onclick="spk('É longe, melhor pegar um táxi.')">É <strong style="color:#f87171">longe</strong>. 🔊</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Vire à direita, siga em frente e está perto.')">🔊 Direções completas</button>
+    </div>
+  </div>
+</div>
+
+<!-- S9: SITUAÇÃO 3 - DIÁLOGO TRANSPORTE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🚌 Diálogo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🚌 Mini Diálogo — No Táxi</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who c">Pass.:</span><span class="d-txt" onclick="spk('Boa tarde! Para o aeroporto, por favor.')">Boa tarde! <em>Para o aeroporto, por favor.</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Taxi:</span><span class="d-txt" onclick="spk('Claro! Fica a vinte minutos.')">Claro! Fica a 20 minutos. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Pass.:</span><span class="d-txt" onclick="spk('Quanto custa até o aeroporto?')"><em>Quanto custa</em> até lá? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Taxi:</span><span class="d-txt" onclick="spk('Uns cinquenta reais.')">Uns 50 reais. 🔊</span></div>
+      </div>
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who c">Turista:</span><span class="d-txt" onclick="spk('Com licença! Onde fica o metrô?')">Com licença! <em>Onde fica o metrô?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Pessoa:</span><span class="d-txt" onclick="spk('Vire à direita e siga em frente.')">Vire à direita e siga em frente. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Turista:</span><span class="d-txt" onclick="spk('É longe?')"><em>É longe?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Pessoa:</span><span class="d-txt" onclick="spk('Não, é perto. Uns cinco minutos a pé.')">Não, é perto! 5 min. a pé. 🔊</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S10: SITUAÇÃO 4 - SAÚDE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏥 Saúde</span></div>
+  <div class="cnt">
+    <div class="sit-banner saude as">🏥 Situação 4 — Saúde</div>
+    <div class="saude-grid a2">
+      <div class="saude-card" onclick="spk('Estou com dor de cabeça.')"><div class="saude-emoji">🤕</div><div class="saude-pt">dor de cabeça</div><div class="saude-frase">Estou com dor de cabeça.</div></div>
+      <div class="saude-card" onclick="spk('Estou com dor de estômago.')"><div class="saude-emoji">🤢</div><div class="saude-pt">dor de estômago</div><div class="saude-frase">Estou com dor de estômago.</div></div>
+      <div class="saude-card" onclick="spk('Estou com dor de garganta.')"><div class="saude-emoji">😷</div><div class="saude-pt">dor de garganta</div><div class="saude-frase">Estou com dor de garganta.</div></div>
+      <div class="saude-card" onclick="spk('Estou com febre.')"><div class="saude-emoji">🌡️</div><div class="saude-pt">febre</div><div class="saude-frase">Estou com febre.</div></div>
+      <div class="saude-card" onclick="spk('Estou com tosse.')"><div class="saude-emoji">😮‍💨</div><div class="saude-pt">tosse</div><div class="saude-frase">Estou com tosse.</div></div>
+      <div class="saude-card" onclick="spk('Estou com gripe.')"><div class="saude-emoji">🤧</div><div class="saude-pt">gripe</div><div class="saude-frase">Estou com gripe.</div></div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(13px,1.8vw,19px)">
+      📌 Estrutura: <strong style="color:var(--cl)">Estou com</strong> + dor de + parte do corpo
+    </div>
+  </div>
+</div>
+
+<!-- S11: SAÚDE - DIÁLOGO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏥 Diálogo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏥 Na Farmácia / Pronto-Socorro</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who g">Farm.:</span><span class="d-txt" onclick="spk('Posso ajudar?')">Posso ajudar? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Pac.:</span><span class="d-txt" onclick="spk('Estou com dor de cabeça e febre.')"><em>Estou com dor de cabeça</em> e febre. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Farm.:</span><span class="d-txt" onclick="spk('Há quanto tempo?')">Há quanto tempo? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who c">Pac.:</span><span class="d-txt" onclick="spk('Desde ontem.')">Desde ontem. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who g">Farm.:</span><span class="d-txt" onclick="spk('Você é alérgico a algum remédio?')">Você é alérgico a algum remédio? 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Estruturas</div>
+        <ul>
+          <li onclick="spk('Estou com dor de cabeça.')">Estou com dor de cabeça. 🔊</li>
+          <li onclick="spk('Preciso de um médico.')">Preciso de um médico. 🔊</li>
+          <li onclick="spk('Onde fica a farmácia?')">Onde fica a farmácia? 🔊</li>
+          <li onclick="spk('Tem remédio para dor?')">Tem remédio para dor? 🔊</li>
+          <li onclick="spk('Chame uma ambulância!')">Chame uma ambulância! 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S12: REVISÃO GERAL -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Revisão</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Revisão — Uma frase para cada situação</div>
+    <div class="estruct-list as">
+      <div class="estruct-item" onclick="spk('Eu quero um frango com arroz, por favor.')">🍽️ <strong>Restaurante:</strong> Eu quero um frango com arroz, por favor.<span class="es">Quiero un pollo con arroz, por favor.</span></div>
+      <div class="estruct-item" onclick="spk('Eu tenho uma reserva. Qual é o número do quarto?')">🏨 <strong>Hotel:</strong> Eu tenho uma reserva. Qual é o número do quarto?<span class="es">Tengo una reserva. ¿Cuál es el número de la habitación?</span></div>
+      <div class="estruct-item" onclick="spk('Onde fica o metrô? É longe?')">🚌 <strong>Transporte:</strong> Onde fica o metrô? É longe?<span class="es">¿Dónde queda el metro? ¿Está lejos?</span></div>
+      <div class="estruct-item" onclick="spk('Estou com dor de cabeça e febre. Preciso de um médico.')">🏥 <strong>Saúde:</strong> Estou com dor de cabeça e febre. Preciso de um médico.<span class="es">Tengo dolor de cabeza y fiebre. Necesito un médico.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- S13-17: EXERCÍCIOS -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 1 — Em qual situação você diria isso? Toque!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"A conta, por favor."<div class="resp">🍽️ No RESTAURANTE</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Eu tenho uma reserva."<div class="resp">🏨 No HOTEL</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Estou com febre."<div class="resp">🏥 NA FARMÁCIA / SAÚDE</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Vire à direita e siga em frente."<div class="resp">🗺️ NO TRANSPORTE / RUA</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"O Wi-Fi é grátis? Qual é a senha?"<div class="resp">🏨 No HOTEL</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Para mim, um suco de maracujá."<div class="resp">🍽️ No RESTAURANTE</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S14: EXERCÍCIO 2 -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 2</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 2 — Expressões de direção · Toque!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Vire à ___" — para o lado do coração ❤️<div class="resp">✅ Vire à <strong>esquerda</strong>! ⬅️</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Siga em ___" — continue reto ⬆️<div class="resp">✅ Siga em <strong>frente</strong>!</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"É ___" — não é longe 📍<div class="resp">✅ É <strong>perto</strong>!</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Fica ao ___ do supermercado" — ao lado<div class="resp">✅ Fica ao <strong>lado</strong> do supermercado.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S15: CRIAR DIÁLOGO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎭 Produção</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎭 Produção — Crie um mini diálogo!</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">📌 Escolha uma situação</div>
+        <ul>
+          <li>🍽️ Você está no restaurante</li>
+          <li>🏨 Você não encontra o hotel</li>
+          <li>🏥 Você está com dor</li>
+          <li>🚕 Você precisa de um táxi</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">✍️ Escreva 5 frases</div>
+        <ul>
+          <li>No restaurante, eu digo…</li>
+          <li>No hotel, eu digo…</li>
+          <li>Se estou doente, eu digo…</li>
+          <li>Se não entendo, eu digo…</li>
+          <li>Se preciso de ajuda, eu digo…</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Pode me ajudar? Eu não entendi. Fale mais devagar, por favor.')">🔊 Modelo</button>
+    </div>
+  </div>
+</div>
+
+<!-- S16: RESUMO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Resumo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 Resumo da Aula 20</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">🍽️🏨 Restaurante & Hotel</div>
+        <ul>
+          <li>Eu quero… / Para mim…</li>
+          <li>A conta, por favor.</li>
+          <li>Eu tenho uma reserva.</li>
+          <li>O Wi-Fi é grátis?</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🚌🏥 Transporte & Saúde</div>
+        <ul>
+          <li>Onde fica? / É longe?</li>
+          <li>Vire à direita/esquerda.</li>
+          <li>Estou com dor de…</li>
+          <li>Preciso de um médico.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Pode repetir, por favor? Não entendi. Fale mais devagar.')">🔊 Frases de emergência</button>
+      <button class="pbtn" onclick="spk('Até a próxima aula!')">🔊 Até a próxima!</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const LOGO='data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=16;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>
