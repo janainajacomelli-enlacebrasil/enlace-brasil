@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Missão no Brasil | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0e1f1c;font-family:"Nunito",sans-serif;overflow:hidden}
+.wrap{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:600px;margin:0 auto}
+.top{background:linear-gradient(135deg,#071a18,#1a7a6e);padding:8px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.tl{display:flex;align-items:center;gap:8px}
+.tlogo{width:34px;height:34px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.tlogo img{width:100%;height:100%;object-fit:cover}
+.ttitle{font-family:"Baloo 2",sans-serif;font-size:15px;font-weight:800;color:#fff;line-height:1.1}
+.tsub{font-size:10px;color:rgba(255,255,255,.5)}
+.tpts{background:rgba(245,158,11,.25);border:1.5px solid rgba(245,158,11,.5);color:#f59e0b;font-weight:800;font-size:14px;padding:4px 10px;border-radius:16px}
+.miss{background:#fff;border-bottom:2px solid #99f6e4;padding:8px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.micon{font-size:24px;flex-shrink:0}
+.mtxt{flex:1;min-width:0}
+.mlabel{font-size:10px;font-weight:800;color:#1a7a6e;text-transform:uppercase;letter-spacing:.5px}
+.mdesc{font-size:13px;font-weight:700;color:#222;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mprog{font-size:12px;color:#aaa;font-weight:700;flex-shrink:0}
+.mapa{flex:1;min-height:0;overflow:hidden;background:#c8e6c9}
+.mapa svg{width:100%;height:100%;display:block}
+.ctrl{background:#0e1f1c;padding:8px 0 10px;display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
+.crow{display:flex;gap:8px;align-items:center;justify-content:center}
+.cb{width:56px;height:56px;border-radius:14px;border:none;background:linear-gradient(135deg,#1a7a6e,#0891b2);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation;-webkit-tap-highlight-color:transparent;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+.cb:active{transform:scale(.88)}
+.cb.ent{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.cb.ent.gl{animation:gl .7s infinite alternate}
+@keyframes gl{from{box-shadow:0 0 4px rgba(245,158,11,.3)}to{box-shadow:0 0 18px rgba(245,158,11,.9),0 0 6px #fff2}}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.ov.hid{display:none}
+.pan{background:#fff;border-radius:20px 20px 0 0;padding:18px 16px 32px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;animation:up .22s ease}
+@keyframes up{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.ph{width:40px;height:4px;background:#e5e7eb;border-radius:2px;margin:0 auto 12px}
+.pchip{display:inline-flex;align-items:center;gap:5px;border-radius:16px;padding:4px 12px;font-size:11px;font-weight:800;color:#fff;margin-bottom:10px}
+.pchip.rest{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.pchip.hotel{background:linear-gradient(135deg,#0891b2,#06b6d4)}
+.pchip.transp{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+.pchip.saude{background:linear-gradient(135deg,#dc2626,#ef4444)}
+.psc{font-size:36px;display:block;margin-bottom:8px}
+.ptit{font-family:"Baloo 2",sans-serif;font-size:20px;font-weight:800;color:#1e3a5f;margin-bottom:8px}
+.pq{font-size:15px;color:#444;line-height:1.6;background:#f0fdf4;border-left:4px solid #1a7a6e;border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:14px}
+.popts{display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
+.popt{background:#f8fffe;border:2.5px solid #5eead4;border-radius:12px;padding:13px 14px;font-size:15px;cursor:pointer;text-align:left;font-family:"Nunito",sans-serif;font-weight:700;color:#222;line-height:1.4;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.popt:active{border-color:#1a7a6e;background:#ccfbf1}
+.popt.ok{border-color:#16a34a;background:#dcfce7;color:#166534;pointer-events:none}
+.popt.er{border-color:#e11d48;background:#fef2f2;color:#991b1b;pointer-events:none;text-decoration:line-through}
+.pfb{border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:12px;display:none;line-height:1.6}
+.pfb.ok{background:#dcfce7;border:2px solid #4ade80;color:#166534}
+.pfb.er{background:#fef2f2;border:2px solid #fca5a5;color:#991b1b}
+.paud{display:none;align-items:center;gap:6px;font-size:14px;color:#1a7a6e;font-weight:700;cursor:pointer;padding:8px 14px;background:#ccfbf1;border-radius:10px;margin-bottom:10px;border:none;font-family:"Nunito",sans-serif;touch-action:manipulation;width:auto}
+.pnxt{width:100%;padding:14px;background:#1a7a6e;color:#fff;border:none;border-radius:12px;font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:800;cursor:pointer;display:none;touch-action:manipulation}
+.fim{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 20px;height:100vh;background:#0e1f1c;overflow-y:auto}
+.femi{font-size:60px;margin-bottom:12px;animation:bou .9s infinite alternate}
+@keyframes bou{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+.ftit{font-family:"Baloo 2",sans-serif;font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
+.fpts{font-family:"Baloo 2",sans-serif;font-size:46px;font-weight:800;color:#f59e0b;margin-bottom:10px}
+.fmsg{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:18px}
+.fbox{background:rgba(255,255,255,.08);border-radius:14px;padding:14px;width:100%;max-width:400px;text-align:left;margin-bottom:18px}
+.fbt{font-family:"Baloo 2",sans-serif;color:#f59e0b;font-size:14px;font-weight:800;margin-bottom:8px}
+.ff{font-size:13px;color:rgba(255,255,255,.8);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:6px;line-height:1.4}
+.fbbtn{background:linear-gradient(135deg,#1a7a6e,#0891b2);color:#fff;border:none;border-radius:14px;padding:14px 28px;font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:800;cursor:pointer;touch-action:manipulation}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+  <div class="top">
+    <div class="tl">
+      <div class="tlogo"><img src="data:image/jpeg;base64,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" alt="EB"></div>
+      <div><div class="ttitle">Missão no Brasil 🗺️</div><div class="tsub">Aula 20 · Role-play</div></div>
+    </div>
+    <div class="tpts">⭐ <span id="pts">0</span></div>
+  </div>
+  <div class="miss">
+    <div class="micon" id="micon">🎯</div>
+    <div class="mtxt"><div class="mlabel">Missão</div><div class="mdesc" id="mdesc">Vá ao Restaurante!</div></div>
+    <div class="mprog" id="mprog">0/6</div>
+  </div>
+  <div class="mapa">
+    <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" fill="#c8e6c9"/>
+      <rect x="0" y="100" width="300" height="18" fill="#bdbdbd"/>
+      <line x1="0" y1="109" x2="300" y2="109" stroke="white" stroke-width="1.2" stroke-dasharray="10,7" opacity=".7"/>
+      <rect x="0" y="192" width="300" height="18" fill="#bdbdbd"/>
+      <line x1="0" y1="201" x2="300" y2="201" stroke="white" stroke-width="1.2" stroke-dasharray="10,7" opacity=".7"/>
+      <rect x="100" y="0" width="18" height="300" fill="#bdbdbd"/>
+      <line x1="109" y1="0" x2="109" y2="300" stroke="white" stroke-width="1.2" stroke-dasharray="10,7" opacity=".7"/>
+      <rect x="192" y="0" width="18" height="300" fill="#bdbdbd"/>
+      <line x1="201" y1="0" x2="201" y2="300" stroke="white" stroke-width="1.2" stroke-dasharray="10,7" opacity=".7"/>
+      <text x="50" y="97" text-anchor="middle" fill="#888" font-size="8" font-family="Nunito">Av. Paulista</text>
+      <text x="150" y="97" text-anchor="middle" fill="#888" font-size="8" font-family="Nunito">R. Augusta</text>
+      <rect x="122" y="122" width="66" height="66" rx="8" fill="#81c784" opacity=".6"/>
+      <text x="155" y="151" text-anchor="middle" fill="#2e7d32" font-size="9" font-weight="bold" font-family="Nunito">Praça da Sé</text>
+      <circle cx="134" cy="134" r="7" fill="#4caf50" opacity=".5"/>
+      <circle cx="176" cy="134" r="7" fill="#4caf50" opacity=".5"/>
+      <circle cx="134" cy="176" r="6" fill="#4caf50" opacity=".4"/>
+      <circle cx="176" cy="176" r="6" fill="#4caf50" opacity=".4"/>
+      <g id="loc-restaurante"><rect id="r-restaurante" x="3" y="3" width="94" height="94" rx="10" fill="#2e7d32" opacity=".92"/><text x="50" y="36" text-anchor="middle" font-size="26">🍽️</text><text x="50" y="57" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="Nunito">RESTAURANTE</text><text x="50" y="70" text-anchor="middle" fill="#c8e6c9" font-size="8" font-family="Nunito">Bom Sabor</text><text id="badge-restaurante" x="50" y="89" text-anchor="middle" font-size="13"></text></g>
+      <g id="loc-hotel"><rect id="r-hotel" x="213" y="3" width="84" height="94" rx="10" fill="#0277bd" opacity=".92"/><text x="255" y="36" text-anchor="middle" font-size="26">🏨</text><text x="255" y="57" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Nunito">HOTEL</text><text x="255" y="70" text-anchor="middle" fill="#b3e5fc" font-size="8" font-family="Nunito">Hotel Brasil</text><text id="badge-hotel" x="255" y="89" text-anchor="middle" font-size="13"></text></g>
+      <g id="loc-metro"><rect id="r-metro" x="3" y="121" width="94" height="68" rx="10" fill="#6a1b9a" opacity=".92"/><text x="50" y="149" text-anchor="middle" font-size="22">🚇</text><text x="50" y="167" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Nunito">METRÔ</text><text x="50" y="180" text-anchor="middle" fill="#e1bee7" font-size="8" font-family="Nunito">Estação Sé</text><text id="badge-metro" x="50" y="185" text-anchor="middle" font-size="13"></text></g>
+      <g id="loc-farmacia"><rect id="r-farmacia" x="213" y="121" width="84" height="68" rx="10" fill="#b71c1c" opacity=".92"/><text x="256" y="149" text-anchor="middle" font-size="22">💊</text><text x="256" y="167" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Nunito">FARMÁCIA</text><text x="256" y="180" text-anchor="middle" fill="#ffcdd2" font-size="8" font-family="Nunito">Drogaria SP</text><text id="badge-farmacia" x="256" y="185" text-anchor="middle" font-size="13"></text></g>
+      <g id="loc-padaria"><rect id="r-padaria" x="3" y="213" width="94" height="84" rx="10" fill="#e65100" opacity=".92"/><text x="50" y="244" text-anchor="middle" font-size="24">☕</text><text x="50" y="263" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Nunito">PADARIA</text><text x="50" y="276" text-anchor="middle" fill="#ffe0b2" font-size="8" font-family="Nunito">Café Central</text><text id="badge-padaria" x="50" y="291" text-anchor="middle" font-size="13"></text></g>
+      <g id="loc-aeroporto"><rect id="r-aeroporto" x="121" y="213" width="68" height="84" rx="10" fill="#827717" opacity=".92"/><text x="155" y="244" text-anchor="middle" font-size="24">✈️</text><text x="155" y="263" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Nunito">AEROPORTO</text><text x="155" y="276" text-anchor="middle" fill="#f9fbe7" font-size="8" font-family="Nunito">Guarulhos</text><text id="badge-aeroporto" x="155" y="291" text-anchor="middle" font-size="13"></text></g>
+      <circle id="vcc" cx="155" cy="155" r="16" fill="#fbbf24" stroke="white" stroke-width="2.5"/>
+      <text id="vce" x="155" y="162" text-anchor="middle" font-size="16">😊</text>
+      <text id="vcl" x="155" y="179" text-anchor="middle" fill="#1a7a6e" font-size="9" font-weight="bold" font-family="Nunito">VOCÊ</text>
+    </svg>
+  </div>
+  <div class="ctrl">
+    <div class="crow"><button class="cb" id="bu">⬆️</button></div>
+    <div class="crow"><button class="cb" id="bl">⬅️</button><button class="cb ent" id="be">🚪</button><button class="cb" id="br">➡️</button></div>
+    <div class="crow"><button class="cb" id="bd">⬇️</button></div>
+  </div>
+</div>
+<div class="fim" id="fim">
+  <div class="femi">🏆</div>
+  <div class="ftit">Missão Cumprida!</div>
+  <div class="fpts" id="fpts">0 pts</div>
+  <div class="fmsg">Você sobreviveu no Brasil! 🇧🇷</div>
+  <div class="fbox"><div class="fbt">📚 Frases aprendidas:</div><div id="flista"></div></div>
+  <button class="fbbtn" id="fbbtn">🔄 Jogar de novo</button>
+</div>
+<div class="ov hid" id="ov">
+  <div class="pan">
+    <div class="ph"></div>
+    <div class="pchip" id="pchip">🍽️</div>
+    <span class="psc" id="psc">🍽️</span>
+    <div class="ptit" id="ptit"></div>
+    <div class="pq" id="pq"></div>
+    <div class="popts" id="popts"></div>
+    <div class="pfb" id="pfb"></div>
+    <button class="paud" id="paud">🔊 Ouvir frase correta</button>
+    <button class="pnxt" id="pnxt">✅ Continuar!</button>
+  </div>
+</div>
+
+<script>
+var LOC = {
+  restaurante:{sit:"rest",lb:"Restaurante",sc:"🍽️",ti:"No Restaurante Bom Sabor",
+    q:'O garçom chega: "Boa tarde! O que vai querer?"',
+    op:["Eu quero um frango com arroz, por favor.","Tengo hambre, señor.","Onde fica o banheiro?","A senha do Wi-Fi?"],
+    c:0,fr:"Eu quero um frango com arroz, por favor.",
+    ex:"Correto! 'Eu quero...' ou 'Para mim...' são as formas certas!",
+    bo:"Dica: A conta, por favor! 🧾"},
+  hotel:{sit:"hotel",lb:"Hotel",sc:"🏨",ti:"No Hotel Brasil",
+    q:'Recepcionista: "Boa noite!" Você chegou para se hospedar.',
+    op:["Onde fica o restaurante?","Boa noite! Eu tenho uma reserva.","Estou com febre.","A conta, por favor!"],
+    c:1,fr:"Boa noite! Eu tenho uma reserva.",
+    ex:"Correto! 'Eu tenho uma reserva' é sempre a primeira frase no hotel!",
+    bo:"Dica: O Wi-Fi é grátis? Qual é a senha? 📶"},
+  metro:{sit:"transp",lb:"Metrô",sc:"🚇",ti:"Na Estação de Metrô",
+    q:"Você está perdido. Como chegar ao aeroporto?",
+    op:["Com licença! Como chego ao aeroporto?","Vire à direita!","Eu tenho uma reserva.","Não entendi nada."],
+    c:0,fr:"Com licença! Como chego ao aeroporto?",
+    ex:"Correto! 'Com licença!' + pergunta clara — educado e direto!",
+    bo:"Dica: Pode repetir? Fale mais devagar, por favor. 🐢"},
+  farmacia:{sit:"saude",lb:"Farmácia",sc:"💊",ti:"Na Farmácia",
+    q:'Farmacêutico: "Posso ajudar?" Você tem dor de cabeça e febre.',
+    op:["Eu quero um café.","Vire à esquerda.","Estou com dor de cabeça e febre. Tem remédio?","Onde fica o hotel?"],
+    c:2,fr:"Estou com dor de cabeça e febre. Tem remédio?",
+    ex:"Correto! 'Estou com + sintoma' — estrutura certa para saúde!",
+    bo:"Dica: Preciso de um médico! 🚑"},
+  padaria:{sit:"rest",lb:"Padaria",sc:"☕",ti:"No Café Central",
+    q:'Atendente: "O que vai ser?" Você quer café e pão de queijo.',
+    op:["Para mim, um café e um pão de queijo, por favor.","Estou com tosse.","Eu tenho uma reserva.","Para o aeroporto!"],
+    c:0,fr:"Para mim, um café e um pão de queijo, por favor.",
+    ex:"Correto! 'Para mim...' — forma natural e educada de pedir!",
+    bo:"Pão de queijo é típico do Brasil! 🧀"},
+  aeroporto:{sit:"transp",lb:"Aeroporto",sc:"✈️",ti:"No Aeroporto",
+    q:"O segurança fala rápido e você não entendeu. O que diz?",
+    op:["Obrigado, tchau!","Não entendi. Pode repetir mais devagar, por favor?","A conta, por favor!","Estou com dor."],
+    c:1,fr:"Não entendi. Pode repetir mais devagar, por favor?",
+    ex:"Correto! 'Não entendi. Pode repetir?' — a frase que salva tudo!",
+    bo:"Parabéns! Missão completa! 🎉"}
+};
+var MISS=["restaurante","hotel","metro","farmacia","padaria","aeroporto"];
+var GRID={"0,0":"restaurante","2,0":"hotel","0,1":"metro","2,1":"farmacia","0,2":"padaria","1,2":"aeroporto"};
+var POS={
+  "0,0":{x:50,y:50},"1,0":{x:155,y:50},"2,0":{x:256,y:50},
+  "0,1":{x:50,y:155},"1,1":{x:155,y:155},"2,1":{x:256,y:155},
+  "0,2":{x:50,y:256},"1,2":{x:155,y:256},"2,2":{x:256,y:256}
+};
+var ICONS={restaurante:"🍽️",hotel:"🏨",metro:"🚇",farmacia:"💊",padaria:"☕",aeroporto:"✈️"};
+var DESCS={restaurante:"Vá ao Restaurante!",hotel:"Vá ao Hotel!",metro:"Vá ao Metrô!",farmacia:"Vá à Farmácia!",padaria:"Vá à Padaria!",aeroporto:"Vá ao Aeroporto!"};
+
+var col=1,row=1,pts=0,midx=0,local=null;
+var vis=new Set();
+
+function key(){return col+","+row;}
+
+function mover(dc,dr){
+  var nc=col+dc,nr=row+dr;
+  if(nc<0||nc>2||nr<0||nr>2)return;
+  col=nc;row=nr;
+  var p=POS[key()];
+  document.getElementById("vcc").setAttribute("cx",p.x);
+  document.getElementById("vcc").setAttribute("cy",p.y);
+  document.getElementById("vce").setAttribute("x",p.x);
+  document.getElementById("vce").setAttribute("y",p.y+7);
+  document.getElementById("vcl").setAttribute("x",p.x);
+  document.getElementById("vcl").setAttribute("y",p.y+22);
+  var gr=GRID[key()];
+  var be=document.getElementById("be");
+  if(gr&&!vis.has(gr)){be.classList.add("gl");}
+  else{be.classList.remove("gl");}
+}
+
+function entrar(){
+  var gr=GRID[key()];
+  if(!gr){alert("💡 Mova-se até um local colorido!");return;}
+  if(MISS[midx]!==gr){alert("⭐ Missão: "+document.getElementById("mdesc").textContent);return;}
+  local=gr;
+  var d=LOC[gr];
+  // preenche modal
+  var ch=document.getElementById("pchip");
+  ch.className="pchip "+d.sit;
+  ch.textContent=ICONS[gr]+" "+d.lb;
+  document.getElementById("psc").textContent=d.sc;
+  document.getElementById("ptit").textContent=d.ti;
+  document.getElementById("pq").textContent=d.q;
+  // opções embaralhadas
+  var idx=[0,1,2,3];
+  for(var i=3;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=idx[i];idx[i]=idx[j];idx[j]=t;}
+  var cont=document.getElementById("popts");
+  cont.innerHTML="";
+  var lets=["A","B","C","D"];
+  idx.forEach(function(oi,i){
+    var b=document.createElement("button");
+    b.className="popt";
+    b.textContent=lets[i]+". "+d.op[oi];
+    var isc=(oi===d.c);
+    b.onclick=function(){resp(isc,d,b,cont);};
+    cont.appendChild(b);
+  });
+  document.getElementById("pfb").style.display="none";
+  document.getElementById("paud").style.display="none";
+  document.getElementById("pnxt").style.display="none";
+  document.getElementById("ov").classList.remove("hid");
+  // voz
+  setTimeout(function(){fala(d.q);},500);
+}
+
+function resp(isc,d,b,cont){
+  cont.querySelectorAll(".popt").forEach(function(x){x.style.pointerEvents="none";});
+  var fb=document.getElementById("pfb");
+  fb.style.display="block";
+  if(isc){
+    b.className="popt ok";
+    pts+=20;
+    document.getElementById("pts").textContent=pts;
+    fb.className="pfb ok";
+    fb.innerHTML="<strong>🎉 Correto! +20 pts</strong><br>"+d.ex+"<br>"+d.bo;
+  } else {
+    b.className="popt er";
+    cont.querySelectorAll(".popt").forEach(function(x){
+      if(x.textContent.slice(3)===d.op[d.c])x.className="popt ok";
+    });
+    pts+=5;
+    document.getElementById("pts").textContent=pts;
+    fb.className="pfb er";
+    fb.innerHTML="<strong>❌ Quase! +5 pts</strong><br>"+d.ex+"<br>"+d.bo;
+  }
+  document.getElementById("paud").style.display="flex";
+  document.getElementById("pnxt").style.display="block";
+  fala(d.fr);
+}
+
+function fechar(){
+  vis.add(local);
+  var badge=document.getElementById("badge-"+local);
+  if(badge)badge.textContent="✅";
+  var r=document.getElementById("r-"+local);
+  if(r){r.setAttribute("opacity","0.3");r.style.filter="";}
+  document.getElementById("ov").classList.add("hid");
+  if(midx<MISS.length&&MISS[midx]===local)midx++;
+  document.getElementById("mprog").textContent=vis.size+"/6";
+  if(vis.size>=6){setTimeout(fim,400);return;}
+  atuMiss();
+  var gr=GRID[key()];
+  var be=document.getElementById("be");
+  if(gr&&!vis.has(gr)){be.classList.add("gl");}else{be.classList.remove("gl");}
+}
+
+function atuMiss(){
+  if(midx>=MISS.length){fim();return;}
+  var m=MISS[midx];
+  document.getElementById("micon").textContent=ICONS[m];
+  document.getElementById("mdesc").textContent=DESCS[m];
+  document.getElementById("mprog").textContent=vis.size+"/6";
+  Object.keys(LOC).forEach(function(n){
+    var r=document.getElementById("r-"+n);if(!r)return;
+    if(vis.has(n)){r.setAttribute("opacity","0.3");r.style.filter="";}
+    else if(n===m){r.setAttribute("opacity","1");r.style.filter="drop-shadow(0 0 10px rgba(245,158,11,.9))";}
+    else{r.setAttribute("opacity","0.9");r.style.filter="";}
+  });
+}
+
+function fim(){
+  document.getElementById("wrap").style.display="none";
+  var f=document.getElementById("fim");f.style.display="flex";f.style.flexDirection="column";
+  document.getElementById("fpts").textContent=pts+" pts";
+  var lista=document.getElementById("flista");lista.innerHTML="";
+  Object.values(LOC).forEach(function(d){
+    var div=document.createElement("div");div.className="ff";
+    div.innerHTML=d.sc+" <span>"+d.fr+"</span>";
+    lista.appendChild(div);
+  });
+}
+
+function reiniciar(){
+  pts=0;col=1;row=1;vis.clear();midx=0;local=null;
+  document.getElementById("pts").textContent="0";
+  document.getElementById("fim").style.display="none";
+  document.getElementById("wrap").style.display="flex";
+  Object.keys(LOC).forEach(function(n){
+    var b=document.getElementById("badge-"+n);if(b)b.textContent="";
+    var r=document.getElementById("r-"+n);if(r){r.setAttribute("opacity","0.92");r.style.filter="";}
+  });
+  mover(0,0);
+  atuMiss();
+}
+
+// ÁUDIO
+function getBRV(){
+  var a=speechSynthesis.getVoices();
+  var b=a.filter(function(x){return x.lang==="pt-BR";});
+  return b.length?b:a.filter(function(x){return x.lang.startsWith("pt");});
+}
+function fala(t){
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(t);
+  u.lang="pt-BR";u.rate=0.85;u.pitch=1.1;
+  var v=getBRV();if(v.length)u.voice=v[0];
+  speechSynthesis.speak(u);
+}
+if(window.speechSynthesis){
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};
+  document.addEventListener("touchstart",function once(){
+    var x=new SpeechSynthesisUtterance("");x.volume=0;
+    speechSynthesis.speak(x);
+    document.removeEventListener("touchstart",once);
+  },{once:true,passive:true});
+}
+
+// BOTÕES
+function reg(id,fn){
+  var el=document.getElementById(id);if(!el)return;
+  el.addEventListener("touchstart",function(e){e.preventDefault();fn();},{passive:false});
+  el.addEventListener("click",function(e){e.preventDefault();fn();});
+}
+reg("bu",function(){mover(0,-1);});
+reg("bd",function(){mover(0,1);});
+reg("bl",function(){mover(-1,0);});
+reg("br",function(){mover(1,0);});
+reg("be",function(){entrar();});
+reg("paud",function(){if(local)fala(LOC[local].fr);});
+reg("pnxt",function(){fechar();});
+reg("fbbtn",function(){reiniciar();});
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowUp")mover(0,-1);
+  else if(e.key==="ArrowDown")mover(0,1);
+  else if(e.key==="ArrowLeft")mover(-1,0);
+  else if(e.key==="ArrowRight")mover(1,0);
+  else if(e.key==="Enter")entrar();
+});
+
+// INIT
+atuMiss();
+</script>
+
+</body>
+</html>
