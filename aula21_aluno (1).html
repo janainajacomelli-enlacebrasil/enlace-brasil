@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 21 — Situações do Cotidiano · Aluno | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--tl:#0e7490;--am:#f59e0b;--vd:#059669;--rs:#e11d48;--pu:#7c3aed;--az:#1e3a5f}
+body{background:#f0f9ff;font-family:'Nunito',sans-serif;min-height:100vh;padding-bottom:40px}
+.topbar{background:linear-gradient(135deg,#071520,#0e7490);padding:clamp(10px,2vh,16px) clamp(14px,3vw,24px);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.tb-wrap{display:flex;align-items:center;gap:10px}
+.tb-logo{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.5);flex-shrink:0}
+.tb-logo img{width:100%;height:100%;object-fit:cover}
+.tb-title{font-family:'Baloo 2',sans-serif;font-weight:800;color:#fff;font-size:clamp(13px,2vw,17px)}
+.tb-sub{color:rgba(255,255,255,.6);font-size:clamp(9px,1.3vw,12px)}
+.tb-pts{background:rgba(245,158,11,.2);border:1.5px solid rgba(245,158,11,.5);color:var(--am);font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:4px 12px;border-radius:20px}
+.idx-bar{background:#fff;border-bottom:2px solid #bae6fd;display:flex;overflow-x:auto;gap:4px;padding:8px 12px;position:sticky;top:62px;z-index:90;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.idx-bar::-webkit-scrollbar{height:3px}.idx-bar::-webkit-scrollbar-thumb{background:var(--tl);border-radius:2px}
+.idx-btn{background:none;border:1.5px solid #7dd3fc;color:#555;font-size:clamp(10px,1.4vw,13px);font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.idx-btn:hover,.idx-btn.active{background:var(--tl);border-color:var(--tl);color:#fff}
+.hero{background:linear-gradient(135deg,#071520 0%,#0e7490 60%,#0891b2 100%);padding:clamp(28px,5vh,48px) clamp(16px,4vw,32px);text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'🇧🇷';position:absolute;font-size:180px;opacity:.07;top:-20px;right:-20px}
+.hero-badge{background:rgba(245,158,11,.25);border:1.5px solid rgba(245,158,11,.6);color:var(--am);font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:12px}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(26px,6vw,52px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.hero-title span{color:var(--am)}
+.hero-desc{font-size:clamp(13px,2vw,17px);color:rgba(255,255,255,.85);margin-bottom:16px}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:clamp(11px,1.5vw,14px);font-weight:700;padding:5px 14px;border-radius:20px}
+.section{padding:clamp(20px,3vh,32px) clamp(14px,4vw,28px);max-width:860px;margin:0 auto}
+.sec-title{font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--tl);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--tl),transparent)}
+/* Diálogo */
+.dialog-box{background:#fff;border-radius:14px;padding:clamp(14px,2vh,22px);box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:14px}
+.dialog-line{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.dialog-line:last-child{margin-bottom:0}
+.d-who{font-weight:800;font-size:clamp(11px,1.4vw,14px);min-width:80px;padding-top:2px;flex-shrink:0}
+.d-who.a{color:var(--tl)}.d-who.b{color:var(--am)}.d-who.c{color:var(--vd)}
+.d-txt{font-size:clamp(13px,1.9vw,17px);color:#333;line-height:1.5;cursor:pointer;padding:3px 8px;border-radius:6px;transition:all .2s}
+.d-txt:hover{color:var(--tl);background:#e0f2fe}
+.d-txt em{color:var(--tl);font-style:normal;font-weight:700}
+.d-txt strong{color:var(--am)}
+/* Tips */
+.tip{border-radius:12px;padding:clamp(10px,1.5vh,16px) clamp(12px,2vw,18px);margin-bottom:16px}
+.tip.tl{background:#e0f2fe;border-left:4px solid var(--tl)}
+.tip.am{background:#fff8e1;border-left:4px solid var(--am)}
+.tip.vd{background:#d1fae5;border-left:4px solid var(--vd)}
+.tip.rs{background:#fef2f2;border-left:4px solid var(--rs)}
+.tip-lbl{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px}
+.tip.tl .tip-lbl{color:var(--tl)}.tip.am .tip-lbl{color:#b36b00}.tip.vd .tip-lbl{color:var(--vd)}.tip.rs .tip-lbl{color:var(--rs)}
+.tip-txt{font-size:clamp(12px,1.7vw,16px);color:#333;line-height:1.6}
+/* Vocab cards */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.vocab-card{background:#fff;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:3px solid var(--tl)}
+.vocab-card:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(14,116,144,.15)}
+.vocab-card.playing{background:#e0f2fe;border-top-color:var(--am)}
+.vocab-pt{font-family:'Baloo 2',sans-serif;font-weight:800;color:var(--tl);font-size:clamp(13px,1.9vw,16px)}
+.vocab-es{font-size:clamp(10px,1.3vw,13px);color:#888;font-style:italic;margin-top:3px}
+/* Atividades */
+.ativ-card{background:#fff;border-radius:16px;padding:clamp(16px,2.5vh,24px);margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:4px solid var(--tl)}
+.ativ-card.am{border-top-color:var(--am)}.ativ-card.vd{border-top-color:var(--vd)}.ativ-card.rs{border-top-color:var(--rs)}.ativ-card.pu{border-top-color:var(--pu)}
+.ativ-title{font-family:'Baloo 2',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:800;color:var(--az);margin-bottom:6px}
+.ativ-sub{font-size:clamp(12px,1.6vw,15px);color:#666;margin-bottom:14px;font-style:italic}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.score-txt{font-size:14px;color:#555;font-weight:700}.stars{font-size:18px;letter-spacing:2px}
+/* Gap fill */
+.gap-sent{font-size:clamp(14px,2.2vw,19px);color:#222;line-height:2.6;margin-bottom:10px}
+.gap{display:inline-block;min-width:120px;border-bottom:2.5px solid var(--tl);text-align:center;padding:2px 8px;font-weight:800;color:var(--tl);cursor:pointer;border-radius:4px 4px 0 0}
+.gap.correct{background:#e0f2fe;color:var(--tl)}.gap.wrong{background:#fef2f2;color:var(--rs);animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.opt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:20px;padding:6px 14px;font-size:clamp(12px,1.7vw,15px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:'Nunito',sans-serif}
+.opt:hover{border-color:var(--tl);background:#e0f2fe}
+.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+/* V/F */
+.vf-item{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,.07);border-left:4px solid #ccc}
+.vf-q{font-size:clamp(13px,1.8vw,17px);color:#222;margin-bottom:8px;font-weight:600}
+.vf-btns{display:flex;gap:8px}
+.vf-btn{flex:1;padding:8px;border:2px solid;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;font-size:14px;touch-action:manipulation}
+.vf-btn.v{border-color:#6ee7b7;background:#f0fdf4;color:var(--vd)}
+.vf-btn.f{border-color:#fca5a5;background:#fef2f2;color:var(--rs)}
+.vf-exp{display:none;margin-top:8px;font-size:13px;color:#333;background:#f0f9ff;border-radius:6px;padding:8px;border-left:3px solid var(--tl)}
+/* Quiz */
+.quiz-q{font-size:clamp(14px,2vw,18px);font-weight:700;color:var(--az);margin-bottom:8px}
+.quiz-opts{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.quiz-opt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:10px;padding:10px 14px;font-size:clamp(13px,1.8vw,16px);cursor:pointer;text-align:left;font-family:'Nunito',sans-serif;font-weight:600;transition:all .2s;touch-action:manipulation}
+.quiz-opt:hover{border-color:var(--tl);background:#e0f2fe}
+.quiz-opt.correct{border-color:var(--vd);background:#d1fae5;color:var(--vd);pointer-events:none}
+.quiz-opt.wrong{border-color:var(--rs);background:#fef2f2;color:var(--rs);pointer-events:none}
+.quiz-explain{display:none;background:#f0f9ff;border-radius:8px;padding:10px 14px;font-size:clamp(12px,1.6vw,15px);color:#333;line-height:1.5;margin-top:6px;border-left:3px solid var(--tl)}
+/* Role-play cards */
+.rp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.rp-card{border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;text-align:center}
+.rp-card:hover{transform:translateY(-2px)}
+.rp-emoji{font-size:clamp(28px,5vw,40px);margin-bottom:8px}
+.rp-title{font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:800;color:#fff;margin-bottom:4px}
+.rp-hint{font-size:clamp(11px,1.4vw,14px);color:rgba(255,255,255,.75)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{border:none;border-radius:10px;padding:9px 20px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;touch-action:manipulation}
+.btn-tl{background:var(--tl);color:#fff}.btn-gray{background:#888;color:#fff}.btn-am{background:var(--am);color:#fff}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#333;color:#fff;padding:10px 22px;border-radius:22px;font-size:14px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:500px){.rp-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-wrap">
+    <div class="tb-logo"><img id="tblogo" src="data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=20;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>" alt="EB"></div>
+    <div><div class="tb-title">Enlace Brasil</div><div class="tb-sub">Aula 21 · Situações do Cotidiano · A1</div></div>
+  </div>
+  <div class="tb-pts" id="tb-pts">⭐ 0 pts</div>
+</div>
+<div class="idx-bar">
+  <button class="idx-btn active" onclick="go('s-super',this)">🛒 Compras</button>
+  <button class="idx-btn" onclick="go('s-banco',this)">🏦 Banco</button>
+  <button class="idx-btn" onclick="go('s-medico',this)">🏥 Médico</button>
+  <button class="idx-btn" onclick="go('s-aniv',this)">🎂 Aniversário</button>
+  <button class="idx-btn" onclick="go('s-trab',this)">💼 Trabalho</button>
+  <button class="idx-btn" onclick="go('s-familia',this)">👨‍👩‍👧 Família</button>
+  <button class="idx-btn" onclick="go('s-rest',this)">🍽️ Restaurante</button>
+  <button class="idx-btn" onclick="go('s-hotel',this)">🏨 Hotel</button>
+  <button class="idx-btn" onclick="go('s-transp',this)">🚌 Transporte</button>
+  <button class="idx-btn" onclick="go('s-saude',this)">🏥 Saúde</button>
+  <button class="idx-btn" onclick="go('s-a1',this)">✏️ Ativ.1</button>
+  <button class="idx-btn" onclick="go('s-a2',this)">✏️ Ativ.2</button>
+  <button class="idx-btn" onclick="go('s-vf',this)">✅ V/F</button>
+  <button class="idx-btn" onclick="go('s-rp',this)">🎭 Role-Play</button>
+  <button class="idx-btn" onclick="go('s-quiz',this)">🎮 Quiz</button>
+</div>
+<div class="hero">
+  <div class="hero-badge">AULA 21 · A1 · CONVERSAÇÃO</div>
+  <div class="hero-title">Situações do<br><span>Cotidiano</span> 🇧🇷</div>
+  <div class="hero-desc">Diálogos reais · 9 situações · Cotidiano em português</div>
+  <div class="pill-row">
+    <span class="pill">🛒 Compras</span><span class="pill">🏦 Banco</span><span class="pill">🏥 Médico</span>
+    <span class="pill">🎂 Festa</span><span class="pill">💼 Trabalho</span><span class="pill">👨‍👩‍👧 Família</span>
+  </div>
+</div>
+
+<!-- SUPERMERCADO -->
+<div class="section" id="s-super">
+  <div class="sec-title">🛒 No Supermercado</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Frases-chave</div><div class="tip-txt"><strong>Onde fica...? · Quanto custa...? · Você tem...? · Posso pagar com cartão?</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Com licença! Onde fica o arroz?')">Com licença! <em>Onde fica</em> o arroz? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Func.:</span><span class="d-txt" onclick="spkC(this,'Fica no corredor três, do lado esquerdo.')">Fica no corredor 3, do lado esquerdo. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Quanto custa este queijo?')"><em>Quanto custa</em> este queijo? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Func.:</span><span class="d-txt" onclick="spkC(this,'Custa doze reais o quilo.')">Custa <strong>R$12,00</strong> o quilo. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Posso pagar com cartão de crédito?')">Posso <em>pagar com cartão</em>? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Func.:</span><span class="d-txt" onclick="spkC(this,'Sim, aceitamos todos os cartões.')">Sim, aceitamos todos os cartões. 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'corredor')"><div class="vocab-pt">corredor</div><div class="vocab-es">pasillo</div></div>
+    <div class="vocab-card" onclick="spkV(this,'sacola')"><div class="vocab-pt">sacola</div><div class="vocab-es">bolsa</div></div>
+    <div class="vocab-card" onclick="spkV(this,'desconto')"><div class="vocab-pt">desconto</div><div class="vocab-es">descuento</div></div>
+    <div class="vocab-card" onclick="spkV(this,'troco')"><div class="vocab-pt">troco</div><div class="vocab-es">cambio</div></div>
+    <div class="vocab-card" onclick="spkV(this,'caixa')"><div class="vocab-pt">caixa</div><div class="vocab-es">caja</div></div>
+    <div class="vocab-card" onclick="spkV(this,'promoção')"><div class="vocab-pt">promoção</div><div class="vocab-es">promoción</div></div>
+  </div>
+</div>
+
+<!-- BANCO -->
+<div class="section" id="s-banco">
+  <div class="sec-title">🏦 No Banco / Correios</div>
+  <div class="tip am"><div class="tip-lbl">💡 Frases-chave</div><div class="tip-txt"><strong>Quero abrir uma conta · Preciso sacar · Qual é o saldo? · Quero fazer uma transferência</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who b">👨 Atend.:</span><span class="d-txt" onclick="spkC(this,'Bom dia! Posso ajudar?')">Bom dia! <em>Posso ajudar?</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Quero abrir uma conta corrente.')"><em>Quero abrir</em> uma conta corrente. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Atend.:</span><span class="d-txt" onclick="spkC(this,'Precisa de documento com foto e comprovante de endereço.')">Precisa de documento e comprovante. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Também preciso sacar duzentos reais.')">Também preciso <em>sacar R$200</em>. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Atend.:</span><span class="d-txt" onclick="spkC(this,'O caixa eletrônico fica à direita.')">O caixa eletrônico fica <em>à direita</em>. 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'conta corrente')"><div class="vocab-pt">conta corrente</div><div class="vocab-es">cuenta corriente</div></div>
+    <div class="vocab-card" onclick="spkV(this,'saldo')"><div class="vocab-pt">saldo</div><div class="vocab-es">saldo ✅</div></div>
+    <div class="vocab-card" onclick="spkV(this,'boleto')"><div class="vocab-pt">boleto</div><div class="vocab-es">recibo/factura</div></div>
+    <div class="vocab-card" onclick="spkV(this,'senha')"><div class="vocab-pt">senha</div><div class="vocab-es">contraseña</div></div>
+    <div class="vocab-card" onclick="spkV(this,'transferência')"><div class="vocab-pt">transferência</div><div class="vocab-es">transferencia</div></div>
+    <div class="vocab-card" onclick="spkV(this,'agência')"><div class="vocab-pt">agência</div><div class="vocab-es">sucursal</div></div>
+  </div>
+</div>
+
+<!-- MÉDICO -->
+<div class="section" id="s-medico">
+  <div class="sec-title">🏥 No Médico / Farmácia</div>
+  <div class="tip rs"><div class="tip-lbl">💡 Estrutura</div><div class="tip-txt"><strong>Estou com + sintoma</strong> · Estou com dor de cabeça / febre / tosse...</div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who b">👨‍⚕️ Méd.:</span><span class="d-txt" onclick="spkC(this,'O que você está sentindo?')"><em>O que você está sentindo?</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Pac.:</span><span class="d-txt" onclick="spkC(this,'Estou com dor de cabeça e febre há dois dias.')"><em>Estou com dor de cabeça</em> e febre há 2 dias. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨‍⚕️ Méd.:</span><span class="d-txt" onclick="spkC(this,'Você é alérgico a algum remédio?')">Você é <em>alérgico</em> a algum remédio? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Pac.:</span><span class="d-txt" onclick="spkC(this,'Não, não sou alérgica a nada.')">Não, não sou alérgica a nada. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨‍⚕️ Méd.:</span><span class="d-txt" onclick="spkC(this,'Vou receitar um antitérmico. Tome a cada oito horas.')">Vou <em>receitar</em> um antitérmico. Tome a cada 8h. 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'febre')"><div class="vocab-pt">febre</div><div class="vocab-es">fiebre</div></div>
+    <div class="vocab-card" onclick="spkV(this,'tosse')"><div class="vocab-pt">tosse</div><div class="vocab-es">tos</div></div>
+    <div class="vocab-card" onclick="spkV(this,'remédio')"><div class="vocab-pt">remédio</div><div class="vocab-es">medicamento</div></div>
+    <div class="vocab-card" onclick="spkV(this,'receita')"><div class="vocab-pt">receita</div><div class="vocab-es">receta</div></div>
+    <div class="vocab-card" onclick="spkV(this,'consulta')"><div class="vocab-pt">consulta</div><div class="vocab-es">consulta ✅</div></div>
+    <div class="vocab-card" onclick="spkV(this,'alergia')"><div class="vocab-pt">alergia</div><div class="vocab-es">alergia ✅</div></div>
+  </div>
+</div>
+
+<!-- ANIVERSÁRIO -->
+<div class="section" id="s-aniv">
+  <div class="sec-title">🎂 Aniversário / Festas</div>
+  <div class="tip am"><div class="tip-lbl">🎉 Expressões</div><div class="tip-txt"><strong>Parabéns! · Feliz aniversário! · Quantos anos você faz? · Que bom te ver! · Saúde!</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who a">👩 Ana:</span><span class="d-txt" onclick="spkC(this,'Parabéns! Feliz aniversário!')"><em>Parabéns! Feliz aniversário!</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Carlos:</span><span class="d-txt" onclick="spkC(this,'Muito obrigado! Que bom que você veio!')">Muito obrigado! <em>Que bom que você veio!</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Ana:</span><span class="d-txt" onclick="spkC(this,'Quantos anos você está fazendo?')"><em>Quantos anos</em> você está fazendo? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Carlos:</span><span class="d-txt" onclick="spkC(this,'Estou fazendo trinta anos!')">Estou fazendo <strong>30 anos!</strong> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Ana:</span><span class="d-txt" onclick="spkC(this,'Que festa linda! A comida está deliciosa!')">Que festa linda! A comida está <em>deliciosa!</em> 🔊</span></div>
+  </div>
+  <div class="tip tl"><div class="tip-lbl">🎵 Parabéns pra Você</div><div class="tip-txt">No Brasil cantamos: <strong>"Parabéns pra você, nessa data querida, muitas felicidades, muitos anos de vida!"</strong></div></div>
+</div>
+
+<!-- TRABALHO -->
+<div class="section" id="s-trab">
+  <div class="sec-title">💼 No Trabalho</div>
+  <div class="tip vd"><div class="tip-lbl">💡 Frases-chave</div><div class="tip-txt"><strong>Posso...? · Preciso de... · Tem reunião às... · Vou terminar até...</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who b">👨 Chefe:</span><span class="d-txt" onclick="spkC(this,'Bom dia! Você pode terminar o relatório hoje?')">Bom dia! <em>Você pode terminar</em> o relatório hoje? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Func.:</span><span class="d-txt" onclick="spkC(this,'Sim, termino até às três da tarde.')">Sim, termino <em>até às 15h</em>. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Chefe:</span><span class="d-txt" onclick="spkC(this,'Tem reunião às quatorze horas.')">Tem <em>reunião às 14h</em>. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Func.:</span><span class="d-txt" onclick="spkC(this,'Posso trabalhar de casa amanhã?')"><em>Posso trabalhar de casa</em> amanhã? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Chefe:</span><span class="d-txt" onclick="spkC(this,'Pode sim. Até amanhã!')">Pode sim. <em>Até amanhã!</em> 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'reunião')"><div class="vocab-pt">reunião</div><div class="vocab-es">reunión</div></div>
+    <div class="vocab-card" onclick="spkV(this,'prazo')"><div class="vocab-pt">prazo</div><div class="vocab-es">plazo</div></div>
+    <div class="vocab-card" onclick="spkV(this,'folga')"><div class="vocab-pt">folga</div><div class="vocab-es">día libre</div></div>
+    <div class="vocab-card" onclick="spkV(this,'relatório')"><div class="vocab-pt">relatório</div><div class="vocab-es">informe</div></div>
+    <div class="vocab-card" onclick="spkV(this,'salário')"><div class="vocab-pt">salário</div><div class="vocab-es">salario ✅</div></div>
+    <div class="vocab-card" onclick="spkV(this,'colega')"><div class="vocab-pt">colega</div><div class="vocab-es">colega ✅</div></div>
+  </div>
+</div>
+
+<!-- FAMÍLIA -->
+<div class="section" id="s-familia">
+  <div class="sec-title">👨‍👩‍👧 Em Família / Em Casa</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Frases-chave</div><div class="tip-txt"><strong>O que você vai fazer? · O jantar está pronto · Que cheiro bom! · Minha favorita!</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who b">👩 Mãe:</span><span class="d-txt" onclick="spkC(this,'O que você vai fazer no fim de semana?')"><em>O que você vai fazer</em> no fim de semana? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👦 Filho:</span><span class="d-txt" onclick="spkC(this,'Vou visitar o avô com minha irmã.')">Vou <em>visitar o avô</em> com minha irmã. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👩 Mãe:</span><span class="d-txt" onclick="spkC(this,'Que ótimo! O jantar está pronto.')">Que ótimo! O <em>jantar está pronto</em>. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👦 Filho:</span><span class="d-txt" onclick="spkC(this,'Que cheiro bom! O que você fez?')"><em>Que cheiro bom!</em> O que você fez? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👩 Mãe:</span><span class="d-txt" onclick="spkC(this,'Fiz arroz com feijão e frango grelhado.')">Fiz <em>arroz com feijão</em> e frango grelhado. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👦 Filho:</span><span class="d-txt" onclick="spkC(this,'Minha comida favorita!')"><em>Minha comida favorita!</em> 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'avô')"><div class="vocab-pt">avô / avó</div><div class="vocab-es">abuelo/a</div></div>
+    <div class="vocab-card" onclick="spkV(this,'sobrinho')"><div class="vocab-pt">sobrinho/a</div><div class="vocab-es">sobrino/a</div></div>
+    <div class="vocab-card" onclick="spkV(this,'cunhado')"><div class="vocab-pt">cunhado/a</div><div class="vocab-es">cuñado/a</div></div>
+    <div class="vocab-card" onclick="spkV(this,'sogro')"><div class="vocab-pt">sogro / sogra</div><div class="vocab-es">suegro/a</div></div>
+    <div class="vocab-card" onclick="spkV(this,'neto')"><div class="vocab-pt">neto / neta</div><div class="vocab-es">nieto/a</div></div>
+    <div class="vocab-card" onclick="spkV(this,'primo')"><div class="vocab-pt">primo / prima</div><div class="vocab-es">primo/a ✅</div></div>
+  </div>
+</div>
+
+
+<!-- REVISÃO RESTAURANTE -->
+<div class="section" id="s-rest">
+  <div class="sec-title">🍽️ Revisão — Restaurante</div>
+  <div class="tip vd"><div class="tip-lbl">💡 Lembre-se</div><div class="tip-txt"><strong>Eu quero... · Para mim... · A conta, por favor! · Quanto custa?</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who b">👨 Garçom:</span><span class="d-txt" onclick="spkC(this,'Boa tarde! O que vai querer?')">Boa tarde! O que vai querer? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Eu quero um frango com arroz e um suco, por favor.')"><em>Eu quero</em> um frango com arroz e um suco, por favor. 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Garçom:</span><span class="d-txt" onclick="spkC(this,'Mais alguma coisa?')">Mais alguma coisa? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spkC(this,'Não, obrigada. A conta, por favor.')">Não, obrigada. <em>A conta, por favor.</em> 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'cardápio')"><div class="vocab-pt">cardápio</div><div class="vocab-es">menú</div></div>
+    <div class="vocab-card" onclick="spkV(this,'garçom')"><div class="vocab-pt">garçom</div><div class="vocab-es">mesero</div></div>
+    <div class="vocab-card" onclick="spkV(this,'conta')"><div class="vocab-pt">conta</div><div class="vocab-es">la cuenta</div></div>
+    <div class="vocab-card" onclick="spkV(this,'sobremesa')"><div class="vocab-pt">sobremesa</div><div class="vocab-es">postre</div></div>
+  </div>
+</div>
+
+<!-- REVISÃO HOTEL -->
+<div class="section" id="s-hotel">
+  <div class="sec-title">🏨 Revisão — Hotel</div>
+  <div class="tip tl"><div class="tip-lbl">💡 Lembre-se</div><div class="tip-txt"><strong>Eu tenho uma reserva · O Wi-Fi é grátis? · Qual é a senha? · Café da manhã incluído?</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who a">👩 Hósp.:</span><span class="d-txt" onclick="spkC(this,'Boa noite! Eu tenho uma reserva.')">Boa noite! <em>Eu tenho uma reserva.</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Recep.:</span><span class="d-txt" onclick="spkC(this,'Qual é o seu nome?')">Qual é o seu nome? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Hósp.:</span><span class="d-txt" onclick="spkC(this,'O Wi-Fi é grátis? Qual é a senha?')"><em>O Wi-Fi é grátis?</em> Qual é a senha? 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Recep.:</span><span class="d-txt" onclick="spkC(this,'Sim, é grátis. A senha é brasil123.')">Sim! A senha é brasil123. 🔊</span></div>
+  </div>
+</div>
+
+<!-- REVISÃO TRANSPORTE -->
+<div class="section" id="s-transp">
+  <div class="sec-title">🚌 Revisão — Transporte e Direções</div>
+  <div class="tip am"><div class="tip-lbl">💡 Direções</div><div class="tip-txt"><strong>Vire à direita · Vire à esquerda · Siga em frente · É perto / longe</strong></div></div>
+  <div class="dialog-box">
+    <div class="dialog-line"><span class="d-who a">👩 Turista:</span><span class="d-txt" onclick="spkC(this,'Com licença! Onde fica o metrô?')">Com licença! <em>Onde fica o metrô?</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Pessoa:</span><span class="d-txt" onclick="spkC(this,'Vire à direita e siga em frente.')">Vire à direita e <em>siga em frente.</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who a">👩 Turista:</span><span class="d-txt" onclick="spkC(this,'É longe?')"><em>É longe?</em> 🔊</span></div>
+    <div class="dialog-line"><span class="d-who b">👨 Pessoa:</span><span class="d-txt" onclick="spkC(this,'Não, é perto. Uns cinco minutos a pé.')">Não, é perto! 5 min. a pé. 🔊</span></div>
+  </div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'ônibus')"><div class="vocab-pt">ônibus</div><div class="vocab-es">autobús</div></div>
+    <div class="vocab-card" onclick="spkV(this,'metrô')"><div class="vocab-pt">metrô</div><div class="vocab-es">metro ✅</div></div>
+    <div class="vocab-card" onclick="spkV(this,'táxi')"><div class="vocab-pt">táxi</div><div class="vocab-es">taxi ✅</div></div>
+    <div class="vocab-card" onclick="spkV(this,'aeroporto')"><div class="vocab-pt">aeroporto</div><div class="vocab-es">aeropuerto</div></div>
+  </div>
+</div>
+
+<!-- REVISÃO SAÚDE -->
+<div class="section" id="s-saude">
+  <div class="sec-title">🏥 Revisão — Saúde e Emergências</div>
+  <div class="tip rs"><div class="tip-lbl">💡 Estrutura</div><div class="tip-txt"><strong>Estou com + dor de + parte do corpo</strong><br>Estou com dor de cabeça / febre / tosse / gripe...</div></div>
+  <div class="vocab-grid">
+    <div class="vocab-card" onclick="spkV(this,'Estou com dor de cabeça.')"><div class="vocab-pt">dor de cabeça</div><div class="vocab-es">dolor de cabeza</div></div>
+    <div class="vocab-card" onclick="spkV(this,'Estou com febre.')"><div class="vocab-pt">febre</div><div class="vocab-es">fiebre</div></div>
+    <div class="vocab-card" onclick="spkV(this,'Estou com dor de garganta.')"><div class="vocab-pt">dor de garganta</div><div class="vocab-es">dolor de garganta</div></div>
+    <div class="vocab-card" onclick="spkV(this,'Estou com tosse.')"><div class="vocab-pt">tosse</div><div class="vocab-es">tos</div></div>
+    <div class="vocab-card" onclick="spkV(this,'Estou com gripe.')"><div class="vocab-pt">gripe</div><div class="vocab-es">gripe ✅</div></div>
+    <div class="vocab-card" onclick="spkV(this,'Preciso de um médico.')"><div class="vocab-pt">médico</div><div class="vocab-es">médico ✅</div></div>
+  </div>
+  <div class="tip tl"><div class="tip-lbl">🆘 Emergência</div><div class="tip-txt"><strong>Preciso de um médico! · Chame uma ambulância! · Pode repetir? · Fale mais devagar.</strong></div></div>
+</div>
+<!-- ATIVIDADE 1 -->
+<div class="section" id="s-a1">
+  <div class="ativ-card">
+    <div class="ativ-title">✏️ Atividade 1 — Complete o diálogo</div>
+    <div class="ativ-sub">Escolha a palavra certa para cada situação!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc1">0</span>/6</span><span class="stars" id="st1">☆☆☆☆☆☆</span></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">🛒 "Com licença! <span class="gap" id="g0">___</span> o pão de queijo?" </div><div class="opts-row" id="o0"><span class="opt" onclick="so(this,0,'Onde fica')">Onde fica</span><span class="opt" onclick="so(this,0,'errado')">Como é</span><span class="opt" onclick="so(this,0,'errado')">Quando tem</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">🏦 "Preciso <span class="gap" id="g1">___</span> duzentos reais."</div><div class="opts-row" id="o1"><span class="opt" onclick="so(this,1,'sacar')">sacar</span><span class="opt" onclick="so(this,1,'errado')">comer</span><span class="opt" onclick="so(this,1,'errado')">abrir</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">🏥 "Estou <span class="gap" id="g2">___</span> dor de cabeça."</div><div class="opts-row" id="o2"><span class="opt" onclick="so(this,2,'errado')">sendo</span><span class="opt" onclick="so(this,2,'com')">com</span><span class="opt" onclick="so(this,2,'errado')">em</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">🎂 "<span class="gap" id="g3">___</span> anos você está fazendo?"</div><div class="opts-row" id="o3"><span class="opt" onclick="so(this,3,'errado')">Quanto</span><span class="opt" onclick="so(this,3,'Quantos')">Quantos</span><span class="opt" onclick="so(this,3,'errado')">Quais</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">💼 "<span class="gap" id="g4">___</span> trabalhar de casa amanhã?"</div><div class="opts-row" id="o4"><span class="opt" onclick="so(this,4,'Posso')">Posso</span><span class="opt" onclick="so(this,4,'errado')">Sou</span><span class="opt" onclick="so(this,4,'errado')">Faço</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">👨‍👩‍👧 "O jantar <span class="gap" id="g5">___</span> pronto!"</div><div class="opts-row" id="o5"><span class="opt" onclick="so(this,5,'errado')">é</span><span class="opt" onclick="so(this,5,'está')">está</span><span class="opt" onclick="so(this,5,'errado')">tem</span></div></div>
+    <button class="btn btn-gray" onclick="resetA1()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ATIVIDADE 2 -->
+<div class="section" id="s-a2">
+  <div class="ativ-card am">
+    <div class="ativ-title">✏️ Atividade 2 — Qual é a situação?</div>
+    <div class="ativ-sub">Onde você diria cada frase? Escolha!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc2">0</span>/5</span><span class="stars" id="st2">☆☆☆☆☆</span></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">"Você tem sacola de pano?" → <span class="gap" id="h0">___</span></div><div class="opts-row" id="ho0"><span class="opt" onclick="ho(this,0,'🛒 Supermercado')">🛒 Supermercado</span><span class="opt" onclick="ho(this,0,'errado')">🏦 Banco</span><span class="opt" onclick="ho(this,0,'errado')">💼 Trabalho</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">"Qual é o meu saldo?" → <span class="gap" id="h1">___</span></div><div class="opts-row" id="ho1"><span class="opt" onclick="ho(this,1,'errado')">🏥 Médico</span><span class="opt" onclick="ho(this,1,'🏦 Banco')">🏦 Banco</span><span class="opt" onclick="ho(this,1,'errado')">🎂 Festa</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">"Vou receitar um remédio para a febre." → <span class="gap" id="h2">___</span></div><div class="opts-row" id="ho2"><span class="opt" onclick="ho(this,2,'errado')">🛒 Compras</span><span class="opt" onclick="ho(this,2,'errado')">💼 Trabalho</span><span class="opt" onclick="ho(this,2,'🏥 Médico')">🏥 Médico</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">"Tem reunião às 14h." → <span class="gap" id="h3">___</span></div><div class="opts-row" id="ho3"><span class="opt" onclick="ho(this,3,'💼 Trabalho')">💼 Trabalho</span><span class="opt" onclick="ho(this,3,'errado')">👨‍👩‍👧 Família</span><span class="opt" onclick="ho(this,3,'errado')">🎂 Festa</span></div></div>
+    <div style="margin-bottom:12px"><div class="gap-sent">"O jantar está pronto! Fiz feijão." → <span class="gap" id="h4">___</span></div><div class="opts-row" id="ho4"><span class="opt" onclick="ho(this,4,'errado')">🏥 Médico</span><span class="opt" onclick="ho(this,4,'👨‍👩‍👧 Família')">👨‍👩‍👧 Família</span><span class="opt" onclick="ho(this,4,'errado')">🏦 Banco</span></div></div>
+    <button class="btn btn-gray" onclick="resetA2()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- VERDADEIRO / FALSO -->
+<div class="section" id="s-vf">
+  <div class="ativ-card vd">
+    <div class="ativ-title">✅ Verdadeiro ou Falso?</div>
+    <div class="ativ-sub">Leia e marque V ou F!</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="sc3">0</span>/5</span><span class="stars" id="st3">☆☆☆☆☆</span></div>
+    <div id="vf-container"></div>
+    <button class="btn btn-gray" onclick="resetVF()">🔄 Recomeçar</button>
+  </div>
+</div>
+
+<!-- ROLE-PLAY -->
+<div class="section" id="s-rp">
+  <div class="sec-title">🎭 Role-Play — Em duplas!</div>
+  <div class="tip tl"><div class="tip-lbl">📌 Como usar</div><div class="tip-txt">Escolha uma situação. Um aluno é o <strong>cliente/visitante</strong>, o outro é o <strong>atendente/anfitrião</strong>. Usem pelo menos 5 frases cada!</div></div>
+  <div class="rp-grid">
+    <div class="rp-card" style="background:linear-gradient(135deg,#059669,#10b981)" onclick="spk('Situação um. No supermercado. Cliente pergunta onde fica o produto e o preço.')">
+      <div class="rp-emoji">🛒</div><div class="rp-title">Supermercado</div><div class="rp-hint">A pede ajuda · B é funcionário</div>
+    </div>
+    <div class="rp-card" style="background:linear-gradient(135deg,#0e7490,#0891b2)" onclick="spk('Situação dois. No banco. Cliente quer abrir uma conta e sacar dinheiro.')">
+      <div class="rp-emoji">🏦</div><div class="rp-title">Banco</div><div class="rp-hint">A quer conta · B é atendente</div>
+    </div>
+    <div class="rp-card" style="background:linear-gradient(135deg,#dc2626,#ef4444)" onclick="spk('Situação três. No médico. Paciente descreve sintomas.')">
+      <div class="rp-emoji">🏥</div><div class="rp-title">Médico</div><div class="rp-hint">A está doente · B é médico</div>
+    </div>
+    <div class="rp-card" style="background:linear-gradient(135deg,#b45309,#d97706)" onclick="spk('Situação quatro. Festa de aniversário. Cumprimentos e conversas.')">
+      <div class="rp-emoji">🎂</div><div class="rp-title">Aniversário</div><div class="rp-hint">A parabeniza · B é aniversariante</div>
+    </div>
+    <div class="rp-card" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6)" onclick="spk('Situação cinco. No trabalho. Funcionário pede folga ao chefe.')">
+      <div class="rp-emoji">💼</div><div class="rp-title">Trabalho</div><div class="rp-hint">A pede folga · B é chefe</div>
+    </div>
+    <div class="rp-card" style="background:linear-gradient(135deg,#0e7490,#0891b2)" onclick="spk('Situação seis. Em casa. Família conversa sobre o fim de semana.')">
+      <div class="rp-emoji">👨‍👩‍👧</div><div class="rp-title">Família</div><div class="rp-hint">Conversa em casa</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ FINAL -->
+<div class="section" id="s-quiz">
+  <div class="ativ-card rs">
+    <div class="ativ-title">🎮 Quiz Final — Revisão A1!</div>
+    <div class="ativ-sub">5 perguntas para fechar o nível com chave de ouro! 🏆</div>
+    <div class="score-bar"><span class="score-txt">Pontos: <span id="scQ">0</span>/5</span><span class="stars" id="stQ">☆☆☆☆☆</span></div>
+
+    <div style="margin-bottom:18px">
+      <div class="quiz-q">1. No supermercado, como você pergunta o preço de um produto?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(1,this,false)">A. Como é o produto?</button>
+        <button class="quiz-opt" onclick="chk(1,this,true)">B. Quanto custa este produto?</button>
+        <button class="quiz-opt" onclick="chk(1,this,false)">C. Onde fica o produto?</button>
+      </div>
+      <div class="quiz-explain" id="qe1">✅ <strong>Quanto custa?</strong> = ¿Cuánto cuesta? — a pergunta de preço em PT!</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fef2f2">
+      <div class="quiz-q">2. No médico, como você diz que tem febre?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(2,this,false)">A. Tengo fiebre.</button>
+        <button class="quiz-opt" onclick="chk(2,this,true)">B. Estou com febre.</button>
+        <button class="quiz-opt" onclick="chk(2,this,false)">C. Sou com febre.</button>
+      </div>
+      <div class="quiz-explain" id="qe2">✅ <strong>Estou com + sintoma</strong> — sempre ESTAR, nunca SER para sintomas!</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fef2f2">
+      <div class="quiz-q">3. Como se diz "feliz cumpleaños" em português?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(3,this,false)">A. Bom aniversário!</button>
+        <button class="quiz-opt" onclick="chk(3,this,true)">B. Feliz aniversário! / Parabéns!</button>
+        <button class="quiz-opt" onclick="chk(3,this,false)">C. Feliz cumpleaños!</button>
+      </div>
+      <div class="quiz-explain" id="qe3">✅ <strong>Feliz aniversário!</strong> ou simplesmente <strong>Parabéns!</strong> — os dois são corretos!</div>
+    </div>
+
+    <div style="margin-bottom:18px;padding-top:16px;border-top:2px solid #fef2f2">
+      <div class="quiz-q">4. No trabalho, como você pede permissão ao chefe?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(4,this,true)">A. Posso trabalhar de casa amanhã?</button>
+        <button class="quiz-opt" onclick="chk(4,this,false)">B. Trabalho de casa amanhã!</button>
+        <button class="quiz-opt" onclick="chk(4,this,false)">C. Quero casa amanhã.</button>
+      </div>
+      <div class="quiz-explain" id="qe4">✅ <strong>Posso + infinitivo?</strong> é a forma correta para pedir permissão!</div>
+    </div>
+
+    <div style="padding-top:16px;border-top:2px solid #fef2f2">
+      <div class="quiz-q">5. "Avô" em espanhol é...?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="chk(5,this,false)">A. avú</button>
+        <button class="quiz-opt" onclick="chk(5,this,true)">B. abuelo</button>
+        <button class="quiz-opt" onclick="chk(5,this,false)">C. ancião</button>
+      </div>
+      <div class="quiz-explain" id="qe5">✅ <strong>avô = abuelo</strong>. Cuidado — não é igual!</div>
+    </div>
+
+    <div id="final-msg" style="display:none;background:linear-gradient(135deg,#059669,#0e7490);border-radius:12px;padding:20px;text-align:center;margin-top:16px;color:#fff">
+      <div style="font-size:40px;margin-bottom:8px">🏆🎉</div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800">Parabéns! Você domina as situações do cotidiano!</div>
+      <div style="font-size:15px;color:rgba(255,255,255,.8);margin-top:6px">Ótimo trabalho! Você já domina as situações do cotidiano em português! 🇧🇷 🇧🇷</div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+var pts=0;
+const lb='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAB4AHgDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAAAAUGBwgBAgQDCf/EAEMQAAEDAwEFBQQIAgcJAAAAAAECAwQABREGBxIhMVETIkFhkRRScYEIFSMyYqGx0UKSFhczU6LB4TQ1Q1RjgpOy0v/EABkBAAIDAQAAAAAAAAAAAAAAAAQFAAEDAv/EADMRAAEDAgMDDAEEAwAAAAAAAAEAAgMEERIhMUFRgQUTFBUyQmFxkaHB0TMGIrHhI1Lw/9oADAMBAAIRAxEAPwCqlFFZqKLFbtNrdWENpKlqOAAMk0oWa0SLq/uMjdbT99wjgn/XyqaNmWzKdfXi1ZIoS0g7r89/ghPlnxP4R86Np6N0o5x5wsG0/CEnq2xHA0YnbgostukpT4C5qxHR7vNX7Cn5pfZhKuoSbTYplwH98tJ3P5jhNWq0dsl07p8IelMC6Thx7aUkFKT+FHIfPJ86kJKUoSEpACRwAAwBW3SaaDKFmI73fSwFPUTZyvsNw+1Vu17CtSrQN+PaoI6LdBI/lB/Wlb+oa/7v+87T8PtP/mrH1kVXWs+yw4K+q4Drc8VVa7bC9StoViHa56ejboBPyUB+tRpqfZq9aiRdLNNth8HNwhB+fFJ9avrWjrTbram3UJW2oYKVDII8xUHKRdlMwO4WU6vwfieWr5qXPSkyMCuIRKb590YV6ePypurSpBKVAhQ4EEYIr6Bay2PWC+JcetiPqmceIUwn7JR/E3y+YxVatpOzabZpRYvkTsXFZDM1rvNu/A+PwOCK66PBUi9ObO/1Pwq6TNTm1QLt3j5UH0V33a2yLZJLUlHA8UrH3VDqK4KWvY5hwuFimDXB4xNNwiiiiuV0ilOx2ty6zA033WxxcX7o/euBptTriW0AqWo4AHiannY3oBd9use1t5QwgB+dITzSnoPM/dHzPhRtHTtlJfJkxuZ+kJVzmIBrO07T7Tm2ObLjqMtvyELjWCOrClJ4KkKHNKT+qvkOPK0tugRbZBZhwGG48VlIS222MBIrNthxrdBYhwWUMxmEBDbaBgJA5Ct2pLLzjiGnW1rbOFpSsEpPQ45VxVVTqh25o0CumpmwDPNx1K9azWM0UKilmgUUVFFmisZrNRRFcF6tUG9W16Dc4yJMV0YU2sfmOh8xXdRVgkZhUQCLFVD2x7MF6dcUFBcmyyFYYkEd5pXuq/F0PiKrvdrc7bJio7wzjilQ5KHWvpte7VEvVrk2+4sh6LIQULQf1HQjmD1qlO13Qsiy3SVanwVus/axHyMdq2eXrjB8xTUO6fGQfyN9x9pbboUmX43exUI0VspJSSCCCDjFFKUzTl0RAD05ctwdyOO7n3j+wzV7NiulxpvRkdbzYTPn4kvkjiAR3EfJOPmTVV9iGnhd7xYbetG8iVI7Z4f9NPeP+FP51dTUM4WyxzJSeBaaO4B7x4JHqRTGqcKemZFv/cfhLYP8k75jo3IfKY+qdqDUC6P2yxWx+6ymDuurbJCEkHBHAEnHLPLNRhpGY5Y7lcZunpUyRcZA7Ps125bnZAr3lF0AjKuGOHUnypsSyy5YPq6Vc2YE6TJTMy9v7jre6QA4pIOOJKkgg5yTw4ZsNs3atNy0Pb2I1wYujjDQbfktZC+0HPIPeHQb3EgCl8tPMynbUszJ0ByHhn4oKn5ytlD5H2tmPDyzHukC16+1RDY9ovllalQkkhb0NtbS0AcyUL/0qSbNdol5hIkwlqKFAEpWkpWnyIPKmjOQhlZQpw9rGSUBog/aYyRg8hnzpqafu8+0z4S0tyHIr7QcSstKUlQ3QVICgPu8QATjiPGs+S6vrZkh5sMcywyN778thCY1OPk6RjXvL2v8LW/pSvfr9a9PxW5N6msw2HF9mlbpwCrBOPQGktGvdLLiIlJvkP2Zb3s6XCohJcxndzjng5pmbe9+fpSxvQkPOINwae3mmS4Up3Sd7dA8OnypC1E01quDpiC5KnXVhV5LUl5y2mIUoW37oSBge9TGGmY5oc463v4W4fKuWpe1xa0DK3/a/CmC46ls1ukyY824MMvxo/tbqFHihrON8+WTilCLLjyobUuO6lyM6gOIcHJSSMg/DFVwm2+/MTNVwLuw++/C0+YDMlLSiJKEvILagQOKik/HhTxkawSvZc3ZrIxcVXswmIIQqG6gJWsBBIUU44ceNR9GABhN7+nmqZWEk4ha11KFk1FaL7Eek2iexLYZVuOLbVwQcZ458uNJ0XXulpcp2PGvkJ11pC3FBC8jdQMqIPI4AJ4VDH1HqCzvXvTzFpMFN7tSUMNx3u2QXmQAcrAASVpCxg+Kh1p2WG+2l3Z6dPx7bNi3dq1vNLYXAWnccS0d4lW7jvHPjxziun0jG5tNxw03lU2qeciLevoFIFk1rpu+Tkw7Rd4suUpJWG2ySSBzPKmlt80wL3pBdxYRmda8vAgcVNfxp9O98qSdhdwLMW322VNnKf8AZlAQnbWWkMEKyT2+6Crh4E+NTA+0h9pbTqQptaSlSTyIPAisnHos4LNnv/C0aOlQkP2r5o6ygiLdC62MNSBvj4+P7/OinttesJtUu5wSO9bpakJPVGcD8ik0V3XxhkxLdDmOKqhkL4QHajI8FL30Y7ek6uW5gYh287vkVFKf3qbtrRdTs/ujjH9o12Tv8riVH9KiT6MW7/SK9dTERj4b9WDnxGZ0J+JJQFsPoLbiT4pIwavlZoM5YdLAeyHoml9KQMi66pZtAQpV7VdYqCLfPCVMkckKCQFNHopJHLoQeVOXZXpR+8xXLxC1U3ZTFc7OQEKUh5IPEbpyAQoZxnxB6Up6ksk/Qt1fhz4rc6zSjgB5OWpCRyP4Vjy4j4V2af0jZrlCcm2U3C2JdBQpiS2H2XBzxgkKKc8iDkEcKG6/ZS03MTuwWFg4i4PntHpZCUsD6mQhrbyDVunEHSycuoNXQI61sxJglyyni4F9oG0JHFxxY4EgDPDma5bPtDt94UzBYDjbi2sqaUjdSnHNPn8qj3UunpLC3ILV707GZOCttDrqVr6BZUCT1xnFcmitPJlambgwrkibIUlSXFxUKS1HQeCnFurAAAHQHJwBXf6fpKGiie8PxOebk6/Fl3XyVlS4CSwIyA2D5Uzaj1Jc7Lsw0xLtktyKt+QGlOFIcV2WV45g54AHzrmja1vXsOsRGvPt0e3xEuxZT0dLL4WSM/ZkDKeJ4kY5dadWrbDZL3YbXaI9+iW9q3ONraKVocPcTugYKh8a4l6Jh3R68S7jqhE+53GL7H26ENIS0jI5ISeJ4DxoGaVpkLgbX8Vs+Gox/sNxYbfAjfv8Ej6N1dfJepNPRWL0m9tTmS5cGPZ0pMLh7yR16/5iva8a6u8bW5ltSANKx7ii1vI3Qd5ZT3l554BPXwpwsaARDlWadZbuYc+BGER11DKVJlIAwN9ORx/06VyK2Q2RzTa4LilKuiwSq5EHfKyrO9u72PKqbcjIqczVhmHaM9fAZb9b3SZrTU93ga4eg3C8SdP2QNp9klNQg8h1RAzvqIPDOeXT51tdtV3iNqa6w411S/EY08ZrTiG07q3QkEODhyPPHKl276Hvdzt6rdI1Y8bc60hp1pUJtRO6kAlKicjOM/EmvJzZ1BYlyHmrmthhdpNpS2tCTuJxjfzkZPjio4luZKt0VS4nDfM7/PLXT0Tg2dXGVdtFWidcHi9KfZ33F4A3jvEchw8KcmRTA0pZ5GlvY47mq3JlsZSWmoRiNoCieWFjicHjjNP1BKk5Ixnwrpjw4ZG6YQ4wwCQWIVS/pM29Lesrxup/2qE29jz3cfqiilb6T+7/AEwHUWwZ9V0U+kjEkUZduS6GQskkA3rX6MlxSnWCUZ4TbeQnzKd1X+Rq0XhxqiWxbUItFyslxUrCYMkIdx/dngf8Kj6VeSY+4mIlyIntSVIxgZ7pIyR14caG5RGIslHeA9VtQHCHxHuk+izPhRbhGXHmx2pDC+bbqQoH5Go31ds3ZlpV9XzNQNIP/BjvocbHlhagQPnT7VcpaWyRa31K5BIV/n0rRVwn+zPFNtc7ZJASCeCs5/TA9fClhYwuDnNBI3o17A8WKgNzZFckvcLZeJjefuqlRowV8SCs+lbP6C1kiMmLA0naYkNB3g0l5LxUr3lla+8rzI4eGKnt6fcNxlTdtXlacqSTkoO9y9ONCrlODal/VLpAHLfGSemMUZ0q4wuYCOP2gjydFawy9PpV9TpzXML+0068Uj/l2Y5HoAaylvVKD9ppu6gjxNrQv8wE1YRUyeiQoewb7KjhBSrBHLJPr+R8q8XbvKZLaHLa7vrUU5B7vjy4eVDyMppM3Qt9/wC1XV9uzIQoMYl6tZP2OnbmfjAeR+i8V3tXjXJOGtLXBZ/El5A/xGpoRc5YDy3ba8htIJRk5JwB4Drn8q2buEpasKtjyRvJTkkeJ4n4DnQpoaEm5hC3ZDMzITOUVw07R5wAGn4UQH+OVLPD5BWfypwW7RuqJKwu86ijxE+LVsiJ3v8AyOAkelPFVymp4C1vEhQBIPDGcH8uPy+GfUTpRWvFue3QkEZIG8Tj9MmtWQU0ecULAfK/83WwY/vPceP1ZeNk09brP347a3JKhhUmQ4p15XxWrJHwGBSwKS13GVuEotcjeHDBI58fUcOfmK6Ezgi3uS5jaoyG0qWsOfwpAyTWhJcc13YNCqj9Je4pd1leylQIjRG44Pnu5x6roqONrV8XdJE6Ys/aXGWp3HROcgem6KKZ1rzEWRN7oF/NL6FokDpT3iU09EzxHuSozh+zkDd4+Chy/arzbDdUjUGkG4khzeuFtAYcBPFSP4Fegx8RXz2QsoUFJJCgcgjwqcNkOvH7Lc412jkrW2OymRwcdqg8/wBMg9RVU9qqA0/eGY+QqqL08wqB2Tkfgq8FFcNlukO82uNcLc8HoshIWhY/Q9CORFdtLSCDYpiCCLhZoooqlayaxmisVFFmiiiooiiisVFFmoo+kFqkWrTIs0ZzE2591QB4pZH3j8z3fWpD1JfIWnbNJuVyd7OOynPmtXglPUk8BVJNq+tZV1uMu5Sl7s2X3WWweDLY4AD4D1OTR9DCLmeTst9zsCBrZTYQx9p38b1HOr54m3ZSUHLTA7NPmfE+v6UUhk5ooWWUyvL3alFRRiJgY3YsV32e5PWyYh9k5HJSDyUOhrgorhjyxwc3ULpzQ8FrtCrK7H9p7mnHErbK5VlfUDIjA95tXipPRXlyPoatZY7xAvttan2uS3JiuDgtJ5HoRzBHQ18zLVcpFsfDsZeM8FJPEKHQipd2d7RplpmCRZZZiyVf2sVzvNu/EclfEYIpoRHXi4OGT2KWjnKE27UfuFeeioq0ftnsd1Shi+A2mZyKlkqZUfJX8P8A3etSfEksS2EvRXm32VcQttQUk/MUumgkhNpBZHxTxzC7Dde1FFHjWS1RRRXLcZ8S2x1P3CSxFYTzcecCE+pqAXyCokDMrqpJ1Jf7bpy1uT7vJSwwnlnipZ91I8T5VG+sNtlqgoWxpxo3OVyDygUMpPXqr5YHnVbNf7QpVynLk3aYqfP4hDQOENDoAOCR5DjTCKgNucnOFvufJAy1wJ5uAYneyc+1zaW9qGT7VMyxAZJESEFcSfePVR8TyHIecBXKc9cJi5EhWVq5AckjwAouM6RcJKnpS99R4AeAHQCuSuKqqEgEcYswaBaU1MYyZHm7zqUUUUUEi0UUUVFEVslRSoEEgjkRRRUUS/bNUzoiQh0iS0PBw94fP96eOn9of1e4HIM+dbHfHslqSD/Lz+Yooo+KvmYMJNxuOaDloYZDitY+GSkK17cNRsoSlvUMaSnpIaQo+uAaVzt41Ju49qs4/F2Iz/70UU0iEUjcTo2+iWS85GcLXn1SNdtt+oX0FLmo2IyT4Rm0JPqATUc3zXyJjxdkyZtyf995ZP5q/aiihZ6t1OcMTQOCJho2zjFK4nimjc9TT5wUhKhHaP8AC3zPxPOkInNFFK5ZXynE83TKOJkQwsFliiiisloiiiioov/Z';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=20;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=20;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=20;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>';
+if(lb.length>50){document.getElementById('tblogo').src=lb;}
+function addPts(n){pts+=n;document.getElementById('tb-pts').textContent='⭐ '+pts+' pts';}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+function go(id,btn){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var top=el.getBoundingClientRect().top+window.scrollY-120;
+  window.scrollTo({top:top,behavior:'smooth'});
+  document.querySelectorAll('.idx-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+function spkV(el,w){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('playing'));el.classList.add('playing');spk(w);setTimeout(()=>el.classList.remove('playing'),1600);addPts(5);toast('🔊 +5 pts');}
+function spkC(el,w){spk(w);addPts(5);toast('🔊 +5 pts');}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();document.addEventListener('touchstart',function u(){var x=new SpeechSynthesisUtterance('');x.volume=0;speechSynthesis.speak(x);document.removeEventListener('touchstart',u);},{once:true});}
+
+// A1
+var ans1=['Onde fica','sacar','com','Quantos','Posso','está'],done1=Array(6).fill(false),sc1v=0;
+function so(el,i,v){if(done1[i])return;var g=document.getElementById('g'+i);if(v===ans1[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done1[i]=true;sc1v++;document.getElementById('sc1').textContent=sc1v;var s=[];for(var j=0;j<6;j++)s.push(j<sc1v?'⭐':'☆');document.getElementById('st1').textContent=s.join('');addPts(12);toast('✅ +12 pts');spk(v);if(sc1v===6)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA1(){sc1v=0;done1=Array(6).fill(false);document.getElementById('sc1').textContent='0';document.getElementById('st1').textContent='☆☆☆☆☆☆';for(var i=0;i<6;i++){var el=document.getElementById('g'+i);if(el){el.textContent='___';el.className='gap';}document.getElementById('o'+i).querySelectorAll('.opt').forEach(o=>o.className='opt');}}
+
+// A2
+var ans2=['🛒 Supermercado','🏦 Banco','🏥 Médico','💼 Trabalho','👨‍👩‍👧 Família'],done2=Array(5).fill(false),sc2v=0;
+function ho(el,i,v){if(done2[i])return;var g=document.getElementById('h'+i);if(v===ans2[i]){g.textContent=v;g.className='gap correct';el.classList.add('used');done2[i]=true;sc2v++;document.getElementById('sc2').textContent=sc2v;var s=[];for(var j=0;j<5;j++)s.push(j<sc2v?'⭐':'☆');document.getElementById('st2').textContent=s.join('');addPts(12);toast('✅ +12 pts');if(sc2v===5)setTimeout(()=>toast('🏆 Perfeito!'),600);}else{g.textContent=v;g.className='gap wrong';setTimeout(()=>{g.textContent='___';g.className='gap';},700);toast('❌ Tente de novo!');}}
+function resetA2(){sc2v=0;done2=Array(5).fill(false);document.getElementById('sc2').textContent='0';document.getElementById('st2').textContent='☆☆☆☆☆';for(var i=0;i<5;i++){var el=document.getElementById('h'+i);if(el){el.textContent='___';el.className='gap';}document.getElementById('ho'+i).querySelectorAll('.opt').forEach(o=>o.className='opt');}}
+
+// V/F
+var vfData=[
+  {q:'No supermercado, "troco" significa o dinheiro que você recebe de volta.',ans:true,exp:'✅ VERDADEIRO! Troco = cambio. O dinheiro que sobra após o pagamento.'},
+  {q:'"Estou com febre" usa o verbo SER.',ans:false,exp:'❌ FALSO! Usamos ESTAR: "Estou com febre." Nunca "Sou com febre"!'},
+  {q:'No Brasil, "Parabéns!" é usado só em aniversários.',ans:false,exp:'❌ FALSO! "Parabéns" é usado em aniversários, formatura, aprovação — qualquer conquista!'},
+  {q:'"Posso trabalhar de casa?" é uma forma educada de pedir permissão.',ans:true,exp:'✅ VERDADEIRO! "Posso + infinitivo?" é a forma correta de pedir permissão.'},
+  {q:'"Sogra" em português significa a mãe do seu chefe.',ans:false,exp:'❌ FALSO! "Sogra" é a mãe do seu marido ou esposa (suegra em espanhol).'}
+];
+var sc3v=0,vfDone=Array(5).fill(false);
+function buildVF(){
+  var c=document.getElementById('vf-container');c.innerHTML='';
+  vfData.forEach((item,i)=>{
+    var d=document.createElement('div');d.className='vf-item';d.id='vf'+i;
+    d.innerHTML='<div class="vf-q">'+(i+1)+'. '+item.q+'</div><div class="vf-btns"><button class="vf-btn v" onclick="chkVF('+i+',true)">✅ Verdadeiro</button><button class="vf-btn f" onclick="chkVF('+i+',false)">❌ Falso</button></div><div class="vf-exp" id="vfexp'+i+'"></div>';
+    c.appendChild(d);
+  });
+  document.getElementById('sc3').textContent='0';document.getElementById('st3').textContent='☆☆☆☆☆';
+}
+function chkVF(i,resp){
+  if(vfDone[i])return;vfDone[i]=true;
+  var correct=resp===vfData[i].ans;
+  document.getElementById('vf'+i).querySelectorAll('.vf-btn').forEach(b=>b.style.pointerEvents='none');
+  var d=document.getElementById('vf'+i);
+  if(correct){d.style.borderLeftColor='var(--vd)';sc3v++;document.getElementById('sc3').textContent=sc3v;var s=[];for(var j=0;j<5;j++)s.push(j<sc3v?'⭐':'☆');document.getElementById('st3').textContent=s.join('');addPts(15);toast('✅ +15 pts');}
+  else{d.style.borderLeftColor='var(--rs)';toast('❌ Veja a explicação!');}
+  var exp=document.getElementById('vfexp'+i);exp.textContent=vfData[i].exp;exp.style.display='block';
+  if(sc3v===5)setTimeout(()=>toast('🏆 Perfeito!'),600);
+}
+function resetVF(){sc3v=0;vfDone=Array(5).fill(false);buildVF();}
+buildVF();
+
+// Quiz
+var scQv=0,doneQ={};
+function chk(n,el,correct){if(doneQ[n])return;doneQ[n]=true;el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.style.pointerEvents='none');if(correct){el.classList.add('correct');scQv++;document.getElementById('scQ').textContent=scQv;var s=[];for(var j=0;j<5;j++)s.push(j<scQv?'⭐':'☆');document.getElementById('stQ').textContent=s.join('');addPts(20);toast('✅ +20 pts');}else{el.classList.add('wrong');toast('❌ Veja a explicação!');}var exp=document.getElementById('qe'+n);if(exp)exp.style.display='block';if(scQv===5)setTimeout(()=>{document.getElementById('final-msg').style.display='block';document.getElementById('final-msg').scrollIntoView({behavior:'smooth'});},400);}
+</script>
+</body>
+</html>
