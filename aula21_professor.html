@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Aula 21 — Situações do Cotidiano · Professor | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--tl:#0e7490;--am:#f59e0b;--vd:#059669;--rs:#e11d48;--pu:#7c3aed;--az:#1e3a5f}
+html,body{height:100%;background:#071520;font-family:'Nunito',sans-serif;overflow:hidden}
+.stage{width:100vw;height:100vh;height:100dvh;position:relative;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none;display:flex;flex-direction:column;z-index:0}
+.scene.active{opacity:1;pointer-events:auto;z-index:1}
+.pbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.25) saturate(1.2)}
+.ov{position:absolute;inset:0}
+.ov-tl{background:linear-gradient(140deg,rgba(14,116,144,.85),rgba(34,211,238,.2))}
+.ov-vd{background:linear-gradient(140deg,rgba(5,150,105,.82),rgba(16,185,129,.2))}
+.ov-am{background:linear-gradient(140deg,rgba(160,100,0,.82),rgba(245,158,11,.2))}
+.ov-rs{background:linear-gradient(140deg,rgba(150,20,50,.82),rgba(225,29,72,.2))}
+.ov-pu{background:linear-gradient(140deg,rgba(109,40,217,.82),rgba(167,139,250,.2))}
+.ov-az{background:linear-gradient(140deg,rgba(30,58,95,.88),rgba(59,130,246,.2))}
+.ov-dark{background:rgba(0,0,0,.65)}
+.lbar{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:clamp(8px,1.4vh,16px) clamp(14px,2vw,28px);background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent)}
+.lwrap{display:flex;align-items:center;gap:10px}
+.limg{width:clamp(36px,4vw,46px);height:clamp(36px,4vw,46px);border-radius:50%;border:2px solid rgba(255,255,255,.5);object-fit:cover;flex-shrink:0}
+.lname{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(12px,1.6vw,16px);color:#fff}
+.lsub{font-size:clamp(9px,1vw,11px);color:rgba(255,255,255,.5)}
+.sbadge{background:rgba(245,158,11,.15);border:1.5px solid rgba(245,158,11,.4);color:var(--am);font-size:clamp(9px,1.1vw,12px);font-weight:700;letter-spacing:.7px;padding:4px 12px;border-radius:14px;white-space:nowrap}
+.cnt{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(64px,9vh,84px) clamp(14px,3vw,48px) clamp(30px,5vh,50px);gap:clamp(8px,1.4vh,16px)}
+.sc-tag{font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--am);background:rgba(245,158,11,.15);border:1.5px solid rgba(245,158,11,.4);padding:4px 14px;border-radius:16px;text-align:center}
+.sc-h1{font-family:'Baloo 2',sans-serif;font-size:clamp(22px,5vw,54px);font-weight:800;color:#fff;text-align:center;line-height:1.05;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.go{color:var(--am)}.gr{color:#22d3ee}
+.sc-sub{font-size:clamp(13px,2vw,20px);color:rgba(255,255,255,.85);text-align:center;line-height:1.5;max-width:820px}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.a1{animation:fu .5s .05s both}.a2{animation:fu .5s .18s both}
+.a3{animation:fu .5s .32s both}.a4{animation:fu .5s .46s both}.as{animation:si .55s .1s both}
+/* Diálogo */
+.dialog-box{background:rgba(0,0,0,.4);border:1.5px solid rgba(255,255,255,.15);border-radius:16px;padding:clamp(12px,1.8vh,22px);width:100%;max-width:800px;backdrop-filter:blur(8px)}
+.dialog-line{display:flex;gap:10px;margin-bottom:clamp(7px,1vh,13px);align-items:flex-start}
+.dialog-line:last-child{margin-bottom:0}
+.d-who{font-weight:800;font-size:clamp(11px,1.4vw,14px);min-width:80px;padding-top:2px;flex-shrink:0}
+.d-who.a{color:#22d3ee}.d-who.b{color:var(--am)}.d-who.c{color:#4ade80}
+.d-txt{font-size:clamp(12px,1.8vw,18px);color:#fff;line-height:1.5;cursor:pointer;transition:color .2s;padding:2px 6px;border-radius:6px}
+.d-txt:hover{color:#22d3ee;background:rgba(34,211,238,.1)}
+.d-txt em{color:#22d3ee;font-style:normal;font-weight:700}
+.d-txt strong{color:var(--am)}
+/* Twocol */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.1vw,16px);width:100%;max-width:880px}
+.cbox{background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);border-radius:14px;padding:clamp(11px,1.6vh,20px) clamp(13px,1.5vw,20px);backdrop-filter:blur(6px)}
+.ct{font-size:clamp(11px,1.4vw,14px);font-weight:700;color:var(--am);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.cbox ul{list-style:none;display:flex;flex-direction:column;gap:clamp(5px,.7vh,9px)}
+.cbox ul li{font-size:clamp(12px,1.6vw,17px);color:rgba(255,255,255,.9);line-height:1.4;cursor:pointer;padding:2px 6px;border-radius:6px;transition:all .15s}
+.cbox ul li:hover{color:#22d3ee;background:rgba(34,211,238,.1)}
+/* Parte banner */
+.parte-box{background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.2);border-radius:20px;padding:clamp(20px,3vh,36px) clamp(24px,4vw,48px);text-align:center;backdrop-filter:blur(8px)}
+.parte-title{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,6vw,58px);font-weight:800;color:#fff;line-height:1.1}
+.parte-sub{font-size:clamp(13px,1.8vw,19px);color:rgba(255,255,255,.7);margin-top:8px}
+/* Vocab chips */
+.vocab-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:820px}
+.vchip{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px;font-size:clamp(12px,1.6vw,16px);color:#fff;cursor:pointer;transition:all .2s;font-weight:600}
+.vchip:hover{background:rgba(245,158,11,.3);border-color:var(--am);color:var(--am)}
+/* Exercício */
+.exerc-list{display:flex;flex-direction:column;gap:clamp(7px,1vh,11px);width:100%;max-width:820px}
+.exerc-item{background:rgba(255,255,255,.09);border-radius:12px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,22px);font-size:clamp(12px,1.8vw,18px);color:#fff;backdrop-filter:blur(4px);cursor:pointer;transition:all .2s;line-height:1.5}
+.exerc-item:hover{background:rgba(255,255,255,.14)}
+.exerc-item .resp{display:none;font-size:clamp(10px,1.3vw,14px);color:#22d3ee;margin-top:5px;border-top:1px solid rgba(255,255,255,.12);padding-top:5px;font-weight:700}
+.exerc-item.open .resp{display:block}
+/* Role-play cards */
+.rp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.1vw,14px);width:100%;max-width:880px}
+.rp-card{border-radius:14px;padding:clamp(12px,1.8vh,20px);text-align:center;cursor:pointer;transition:all .2s;backdrop-filter:blur(5px)}
+.rp-card:hover{transform:translateY(-3px)}
+.rp-emoji{font-size:clamp(26px,4vw,42px);margin-bottom:8px}
+.rp-title{font-family:'Baloo 2',sans-serif;font-size:clamp(12px,1.6vw,17px);font-weight:800;color:#fff;margin-bottom:4px}
+.rp-hint{font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.6);font-style:italic}
+/* Pronbtns */
+.pronbtns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pbtn{background:rgba(245,158,11,.2);border:1.5px solid rgba(245,158,11,.5);color:var(--am);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:clamp(11px,1.4vw,14px);padding:5px 12px;border-radius:10px;cursor:pointer;transition:all .15s}
+.pbtn:hover{background:rgba(245,158,11,.38)}
+/* Nav */
+.pbar{position:fixed;bottom:0;left:0;height:3px;background:var(--am);z-index:300;transition:width .3s}
+.dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:200;flex-wrap:wrap;justify-content:center;max-width:92vw}
+.dot{width:clamp(4px,.6vw,6px);height:clamp(4px,.6vw,6px);border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .25s}
+.dot.active{background:var(--am);transform:scale(1.5)}
+.ctrl{position:fixed;bottom:7px;right:11px;display:flex;gap:6px;z-index:200}
+.cbtn{width:clamp(32px,4vw,42px);height:clamp(32px,4vw,42px);border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:clamp(12px,1.5vw,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:all .2s}
+.cbtn:hover{background:rgba(255,255,255,.2)}
+.scnt{position:fixed;top:clamp(10px,1.3vh,16px);right:clamp(12px,1.5vw,20px);font-size:clamp(10px,1.2vw,13px);color:rgba(255,255,255,.4);font-weight:700;z-index:200}
+@media(max-width:560px){.twocol,.rp-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="pbar" id="prog"></div>
+<div class="scnt" id="scnt">1 / 18</div>
+<div class="dots" id="dots"></div>
+<div class="ctrl">
+  <button class="cbtn" onclick="prev()">◀</button>
+  <button class="cbtn" onclick="next()">▶</button>
+</div>
+
+<!-- S1: CAPA -->
+<div class="scene active">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">Aula 21 · A1 · Revisão Final</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">Aula 21 · Nível A1 · Conversação</div>
+    <div class="sc-h1 a2">Situações do<br><span class="go">Cotidiano</span> 🇧🇷</div>
+    <div class="sc-sub a3">Diálogos reais · 9 situações · Revisão final do A1</div>
+    <div class="vocab-row a4">
+      <span class="vchip">🛒 Compras</span><span class="vchip">🏦 Banco</span><span class="vchip">🏥 Saúde</span>
+      <span class="vchip">🎂 Aniversário</span><span class="vchip">💼 Trabalho</span><span class="vchip">👨‍👩‍👧 Família</span>
+    </div>
+  </div>
+</div>
+
+<!-- S2: OBJETIVO DA AULA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎯 Objetivos</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎯 O que vamos praticar hoje?</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">📚 Situações</div>
+        <ul>
+          <li>🛒 No supermercado / loja</li>
+          <li>🏦 No banco / correios</li>
+          <li>🏥 No médico / farmácia</li>
+          <li>🎂 Aniversário / festas</li>
+          <li>💼 No trabalho</li>
+          <li>👨‍👩‍👧 Em família / em casa</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Habilidades</div>
+        <ul>
+          <li>Fazer e responder perguntas</li>
+          <li>Pedir informações</li>
+          <li>Expressar preferências</li>
+          <li>Contar sobre rotinas</li>
+          <li>Cumprimentar e despedir</li>
+          <li>Resolver situações do dia a dia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sc-sub a3" style="font-size:clamp(13px,1.8vw,18px)">Pratique os diálogos e use o português no dia a dia! 💬</div>
+  </div>
+</div>
+
+<!-- S3: SITUAÇÃO 1 - SUPERMERCADO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🛒 Compras</span></div>
+  <div class="cnt">
+    <div class="parte-box as" style="border-color:rgba(74,222,128,.4)">
+      <div class="parte-title">🛒 No Supermercado</div>
+      <div class="parte-sub">Fazer compras · Perguntar preços · Pedir ajuda</div>
+    </div>
+  </div>
+</div>
+
+<!-- S4: DIÁLOGO SUPERMERCADO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=85')"></div>
+  <div class="ov ov-dark"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🛒 Diálogo</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🛒 No Supermercado · Toque para ouvir!</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Com licença! Onde fica o arroz?')">Com licença! <em>Onde fica</em> o arroz? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Func.:</span><span class="d-txt" onclick="spk('Fica no corredor três, do lado esquerdo.')">Fica no corredor 3, <em>do lado esquerdo</em>. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Quanto custa este queijo?')"><em>Quanto custa</em> este queijo? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Func.:</span><span class="d-txt" onclick="spk('Custa doze reais o quilo.')">Custa <strong>R$12</strong> o quilo. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Você tem sacola de pano?')">Você tem <em>sacola de pano</em>? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Func.:</span><span class="d-txt" onclick="spk('Sim! Custa dois reais.')">Sim! Custa R$2. 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Frases-chave</div>
+        <ul>
+          <li onclick="spk('Onde fica?')">Onde fica? 🔊</li>
+          <li onclick="spk('Quanto custa?')">Quanto custa? 🔊</li>
+          <li onclick="spk('Você tem?')">Você tem...? 🔊</li>
+          <li onclick="spk('Pode me ajudar?')">Pode me ajudar? 🔊</li>
+          <li onclick="spk('Quero pagar com cartão.')">Quero pagar com cartão. 🔊</li>
+          <li onclick="spk('Tem desconto?')">Tem desconto? 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: SITUAÇÃO 2 - BANCO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏦 Banco</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏦 No Banco / Correios</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who b">👨 Atend.:</span><span class="d-txt" onclick="spk('Bom dia! Posso ajudar?')">Bom dia! <em>Posso ajudar?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Quero abrir uma conta.')">Quero <em>abrir uma conta</em>. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Atend.:</span><span class="d-txt" onclick="spk('Precisa de documento com foto e comprovante de endereço.')">Precisa de documento com foto e comprovante. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Preciso sacar dinheiro também.')">Preciso <em>sacar dinheiro</em> também. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Atend.:</span><span class="d-txt" onclick="spk('O caixa eletrônico fica à direita.')">O caixa eletrônico fica <em>à direita</em>. 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Vocabulário</div>
+        <ul>
+          <li onclick="spk('conta corrente')">conta corrente 🔊</li>
+          <li onclick="spk('transferência')">transferência 🔊</li>
+          <li onclick="spk('saldo')">saldo 🔊</li>
+          <li onclick="spk('senha')">senha 🔊</li>
+          <li onclick="spk('boleto')">boleto 🔊</li>
+          <li onclick="spk('caixa eletrônico')">caixa eletrônico 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S6: SITUAÇÃO 3 - MÉDICO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏥 Médico</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏥 No Médico / Farmácia</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who b">👨‍⚕️ Méd.:</span><span class="d-txt" onclick="spk('O que está sentindo?')"><em>O que está sentindo?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Pac.:</span><span class="d-txt" onclick="spk('Estou com dor de cabeça e febre há dois dias.')"><em>Estou com dor de cabeça</em> e febre há 2 dias. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨‍⚕️ Méd.:</span><span class="d-txt" onclick="spk('Você é alérgico a algum remédio?')">Você é <em>alérgico</em> a algum remédio? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Pac.:</span><span class="d-txt" onclick="spk('Não, não sou alérgica a nada.')">Não, não sou alérgica a nada. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨‍⚕️ Méd.:</span><span class="d-txt" onclick="spk('Vou receitar um antitérmico. Tome a cada 8 horas.')">Vou <em>receitar</em> um antitérmico. 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Sintomas</div>
+        <ul>
+          <li onclick="spk('Estou com dor de cabeça.')">Estou com dor de cabeça 🔊</li>
+          <li onclick="spk('Estou com febre.')">Estou com febre 🔊</li>
+          <li onclick="spk('Estou com tosse.')">Estou com tosse 🔊</li>
+          <li onclick="spk('Estou enjoado.')">Estou enjoado/a 🔊</li>
+          <li onclick="spk('Estou cansado.')">Estou cansado/a 🔊</li>
+          <li onclick="spk('Me dói o estômago.')">Me dói o estômago 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7: SITUAÇÃO 4 - ANIVERSÁRIO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=1200&q=85')"></div>
+  <div class="ov ov-am"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎂 Aniversário</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎂 Aniversário / Festas</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who a">👩 Ana:</span><span class="d-txt" onclick="spk('Parabéns! Feliz aniversário!')"><em>Parabéns! Feliz aniversário!</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Carlos:</span><span class="d-txt" onclick="spk('Muito obrigado! Que bom que você veio!')">Muito obrigado! <em>Que bom que você veio!</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Ana:</span><span class="d-txt" onclick="spk('Quantos anos você está fazendo?')"><em>Quantos anos</em> você está fazendo? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Carlos:</span><span class="d-txt" onclick="spk('Estou fazendo trinta anos!')">Estou fazendo <strong>30 anos!</strong> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Ana:</span><span class="d-txt" onclick="spk('Que festa linda! A comida está deliciosa!')">Que festa linda! A <em>comida está deliciosa!</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Carlos:</span><span class="d-txt" onclick="spk('Que você tenha um ótimo dia!')"><em>Que você tenha</em> um ótimo dia! 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🎉 Expressões de festa</div>
+        <ul>
+          <li onclick="spk('Parabéns!')">Parabéns! 🔊</li>
+          <li onclick="spk('Feliz aniversário!')">Feliz aniversário! 🔊</li>
+          <li onclick="spk('Que bom te ver!')">Que bom te ver! 🔊</li>
+          <li onclick="spk('Saúde!')">Saúde! (brinde) 🔊</li>
+          <li onclick="spk('Que delícia!')">Que delícia! 🔊</li>
+          <li onclick="spk('Foi um prazer!')">Foi um prazer! 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: SITUAÇÃO 5 - TRABALHO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85')"></div>
+  <div class="ov ov-pu"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">💼 Trabalho</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">💼 No Trabalho / Escritório</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who b">👨 Chefe:</span><span class="d-txt" onclick="spk('Bom dia! Você pode terminar o relatório hoje?')">Bom dia! <em>Você pode terminar</em> o relatório hoje? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Func.:</span><span class="d-txt" onclick="spk('Sim, termino até às três da tarde.')">Sim, termino <em>até às 15h</em>. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Chefe:</span><span class="d-txt" onclick="spk('Tem reunião às 14 horas.')">Tem <em>reunião às 14h</em>. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Func.:</span><span class="d-txt" onclick="spk('Tudo bem. Posso trabalhar de casa amanhã?')">Tudo bem. <em>Posso trabalhar de casa</em> amanhã? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Chefe:</span><span class="d-txt" onclick="spk('Pode sim. Até amanhã!')">Pode sim. <em>Até amanhã!</em> 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">💼 Vocabulário</div>
+        <ul>
+          <li onclick="spk('reunião')">reunião 🔊</li>
+          <li onclick="spk('prazo')">prazo 🔊</li>
+          <li onclick="spk('relatório')">relatório 🔊</li>
+          <li onclick="spk('home office')">home office 🔊</li>
+          <li onclick="spk('colega de trabalho')">colega de trabalho 🔊</li>
+          <li onclick="spk('folga')">folga 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S9: SITUAÇÃO 6 - FAMÍLIA -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1511895426328-dc8714191011?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">👨‍👩‍👧 Família</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">👨‍👩‍👧 Em Família / Em Casa</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who b">👩 Mãe:</span><span class="d-txt" onclick="spk('O que você vai fazer no fim de semana?')"><em>O que você vai fazer</em> no fim de semana? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👦 Filho:</span><span class="d-txt" onclick="spk('Vou visitar o avô com minha irmã.')">Vou <em>visitar o avô</em> com minha irmã. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👩 Mãe:</span><span class="d-txt" onclick="spk('Que ótimo! O jantar está pronto.')">Que ótimo! O <em>jantar está pronto</em>. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👦 Filho:</span><span class="d-txt" onclick="spk('Que cheiro bom! O que você fez?')">Que cheiro bom! <em>O que você fez?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👩 Mãe:</span><span class="d-txt" onclick="spk('Fiz arroz com feijão e frango grelhado.')">Fiz arroz com feijão e frango grelhado. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👦 Filho:</span><span class="d-txt" onclick="spk('Minha comida favorita!')"><em>Minha comida favorita!</em> 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">👨‍👩‍👧 Família</div>
+        <ul>
+          <li onclick="spk('avô, avó')">avô / avó 🔊</li>
+          <li onclick="spk('sobrinho, sobrinha')">sobrinho/a 🔊</li>
+          <li onclick="spk('cunhado, cunhada')">cunhado/a 🔊</li>
+          <li onclick="spk('sogro, sogra')">sogro / sogra 🔊</li>
+          <li onclick="spk('neto, neta')">neto / neta 🔊</li>
+          <li onclick="spk('primo, prima')">primo / prima 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- S11: REVISÃO - RESTAURANTE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🍽️ Revisão</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🍽️ Revisão — No Restaurante</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who b">👨 Garçom:</span><span class="d-txt" onclick="spk('Boa tarde! O que vai querer?')">Boa tarde! O que vai querer? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Eu quero um frango com arroz e um suco, por favor.')"><em>Eu quero</em> um frango com arroz e um suco. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Garçom:</span><span class="d-txt" onclick="spk('Mais alguma coisa?')">Mais alguma coisa? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Cliente:</span><span class="d-txt" onclick="spk('Não, obrigada. A conta, por favor.')">Não, obrigada. <em>A conta, por favor.</em> 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Lembre-se!</div>
+        <ul>
+          <li onclick="spk('Eu quero...')">Eu quero... 🔊</li>
+          <li onclick="spk('Para mim...')">Para mim... 🔊</li>
+          <li onclick="spk('A conta, por favor.')">A conta, por favor. 🔊</li>
+          <li onclick="spk('Tem cardápio em inglês?')">Tem cardápio em inglês? 🔊</li>
+          <li onclick="spk('Quanto custa?')">Quanto custa? 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S12: REVISÃO - HOTEL -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏨 Revisão</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏨 Revisão — No Hotel</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who b">👨 Recep.:</span><span class="d-txt" onclick="spk('Boa noite! Bem-vindo.')">Boa noite! Bem-vindo. 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Hósp.:</span><span class="d-txt" onclick="spk('Boa noite! Eu tenho uma reserva.')">Boa noite! <em>Eu tenho uma reserva.</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Hósp.:</span><span class="d-txt" onclick="spk('O Wi-Fi é grátis? Qual é a senha?')"><em>O Wi-Fi é grátis?</em> Qual é a senha? 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Recep.:</span><span class="d-txt" onclick="spk('Sim, é grátis. A senha é brasil123.')">Sim! A senha é brasil123. 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Lembre-se!</div>
+        <ul>
+          <li onclick="spk('Eu tenho uma reserva.')">Eu tenho uma reserva. 🔊</li>
+          <li onclick="spk('Qual é o número do quarto?')">Qual é o número do quarto? 🔊</li>
+          <li onclick="spk('O Wi-Fi é grátis?')">O Wi-Fi é grátis? 🔊</li>
+          <li onclick="spk('O café da manhã está incluído?')">Café da manhã incluído? 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S13: REVISÃO - TRANSPORTE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&q=85')"></div>
+  <div class="ov ov-pu"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🚌 Revisão</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🚌 Revisão — Transporte e Direções</div>
+    <div class="twocol as">
+      <div class="dialog-box">
+        <div class="dialog-line"><span class="d-who a">👩 Turista:</span><span class="d-txt" onclick="spk('Com licença! Onde fica o metrô?')">Com licença! <em>Onde fica o metrô?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Pessoa:</span><span class="d-txt" onclick="spk('Vire à direita e siga em frente.')">Vire à direita e <em>siga em frente.</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who a">👩 Turista:</span><span class="d-txt" onclick="spk('É longe?')"><em>É longe?</em> 🔊</span></div>
+        <div class="dialog-line"><span class="d-who b">👨 Pessoa:</span><span class="d-txt" onclick="spk('Não, é perto. Uns cinco minutos a pé.')">Não, é perto! 5 min. a pé. 🔊</span></div>
+      </div>
+      <div class="cbox">
+        <div class="ct">🗣️ Direções</div>
+        <ul>
+          <li onclick="spk('Vire à direita.')">Vire à direita. ➡️ 🔊</li>
+          <li onclick="spk('Vire à esquerda.')">Vire à esquerda. ⬅️ 🔊</li>
+          <li onclick="spk('Siga em frente.')">Siga em frente. ⬆️ 🔊</li>
+          <li onclick="spk('É perto.')">É perto. 🔊</li>
+          <li onclick="spk('É longe.')">É longe. 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S14: REVISÃO - SAÚDE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=85')"></div>
+  <div class="ov ov-rs"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏥 Revisão</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏥 Revisão — Saúde e Emergências</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">😷 Sintomas</div>
+        <ul>
+          <li onclick="spk('Estou com dor de cabeça.')">Estou com dor de cabeça 🔊</li>
+          <li onclick="spk('Estou com febre.')">Estou com febre 🔊</li>
+          <li onclick="spk('Estou com dor de garganta.')">Estou com dor de garganta 🔊</li>
+          <li onclick="spk('Estou com tosse.')">Estou com tosse 🔊</li>
+          <li onclick="spk('Estou com gripe.')">Estou com gripe 🔊</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🆘 Emergências</div>
+        <ul>
+          <li onclick="spk('Preciso de um médico!')">Preciso de um médico! 🔊</li>
+          <li onclick="spk('Chame uma ambulância!')">Chame uma ambulância! 🔊</li>
+          <li onclick="spk('Onde fica a farmácia?')">Onde fica a farmácia? 🔊</li>
+          <li onclick="spk('Pode repetir, por favor?')">Pode repetir, por favor? 🔊</li>
+          <li onclick="spk('Fale mais devagar.')">Fale mais devagar. 🔊</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- S10: EXERCÍCIO 1 -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 1 — Em qual situação? Toque!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Quanto custa este produto?"<div class="resp">🛒 No SUPERMERCADO / LOJA</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Preciso sacar dinheiro."<div class="resp">🏦 No BANCO / CAIXA ELETRÔNICO</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Estou com dor de cabeça há dois dias."<div class="resp">🏥 No MÉDICO / FARMÁCIA</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Parabéns! Feliz aniversário!"<div class="resp">🎂 Em uma FESTA / ANIVERSÁRIO</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"Posso trabalhar de casa amanhã?"<div class="resp">💼 No TRABALHO / ESCRITÓRIO</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">"O jantar está pronto!"<div class="resp">👨‍👩‍👧 Em CASA / COM A FAMÍLIA</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S11: EXERCÍCIO 2 - COMPLETE -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=85')"></div>
+  <div class="ov ov-tl"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">✏️ Exercício 2</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">✏️ Exercício 2 — Complete o diálogo · Toque!</div>
+    <div class="exerc-list as">
+      <div class="exerc-item" onclick="this.classList.toggle('open')">— "Com licença! _______ o pão de queijo?"<br><em style="color:rgba(255,255,255,.5)">perguntando onde fica</em><div class="resp">✅ "Com licença! <strong>Onde fica</strong> o pão de queijo?"</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">— "Bom dia! _______ uma conta corrente."<br><em style="color:rgba(255,255,255,.5)">falando o que quer no banco</em><div class="resp">✅ "Bom dia! <strong>Quero abrir</strong> uma conta corrente."</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">— "Doutor, _______ com dor de estômago."<br><em style="color:rgba(255,255,255,.5)">descrevendo sintoma</em><div class="resp">✅ "Doutor, <strong>estou com</strong> dor de estômago."</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">— "_______ anos você está fazendo?"<br><em style="color:rgba(255,255,255,.5)">perguntando a idade no aniversário</em><div class="resp">✅ "<strong>Quantos</strong> anos você está fazendo?"</div></div>
+      <div class="exerc-item" onclick="this.classList.toggle('open')">— "_______ trabalhar de casa na sexta?"<br><em style="color:rgba(255,255,255,.5)">pedindo permissão no trabalho</em><div class="resp">✅ "<strong>Posso</strong> trabalhar de casa na sexta?"</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S12: ROLE-PLAY -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🎭 Role-Play</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🎭 Role-Play — Em duplas!</div>
+    <div class="rp-grid as">
+      <div class="rp-card" style="background:rgba(5,150,105,.4);border:1.5px solid rgba(74,222,128,.3)">
+        <div class="rp-emoji">🛒</div>
+        <div class="rp-title">Supermercado</div>
+        <div class="rp-hint">A pede ajuda · B é funcionário</div>
+      </div>
+      <div class="rp-card" style="background:rgba(14,116,144,.4);border:1.5px solid rgba(34,211,238,.3)">
+        <div class="rp-emoji">🏦</div>
+        <div class="rp-title">Banco</div>
+        <div class="rp-hint">A quer sacar · B é atendente</div>
+      </div>
+      <div class="rp-card" style="background:rgba(192,57,43,.35);border:1.5px solid rgba(248,113,113,.3)">
+        <div class="rp-emoji">🏥</div>
+        <div class="rp-title">Médico</div>
+        <div class="rp-hint">A está doente · B é médico</div>
+      </div>
+      <div class="rp-card" style="background:rgba(160,100,0,.4);border:1.5px solid rgba(245,158,11,.3)">
+        <div class="rp-emoji">🎂</div>
+        <div class="rp-title">Aniversário</div>
+        <div class="rp-hint">A parabeniza · B é aniversariante</div>
+      </div>
+      <div class="rp-card" style="background:rgba(109,40,217,.35);border:1.5px solid rgba(167,139,250,.3)">
+        <div class="rp-emoji">💼</div>
+        <div class="rp-title">Trabalho</div>
+        <div class="rp-hint">A pede folga · B é chefe</div>
+      </div>
+      <div class="rp-card" style="background:rgba(14,116,144,.4);border:1.5px solid rgba(34,211,238,.3)">
+        <div class="rp-emoji">👨‍👩‍👧</div>
+        <div class="rp-title">Família</div>
+        <div class="rp-hint">A chega em casa · B é familiar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S13: REVISÃO GERAL -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-az"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">📋 Revisão A1</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">📋 O que você sabe fazer em A1?</div>
+    <div class="twocol as">
+      <div class="cbox">
+        <div class="ct">✅ Você já consegue...</div>
+        <ul>
+          <li>👋 Cumprimentar e apresentar-se</li>
+          <li>🔢 Contar, dar horas e datas</li>
+          <li>🗺️ Pedir e dar direções</li>
+          <li>🛒 Fazer compras simples</li>
+          <li>🍽️ Pedir em restaurantes</li>
+          <li>🏥 Descrever sintomas</li>
+          <li>💬 Falar da família e rotina</li>
+          <li>📅 Falar de planos futuros</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <div class="ct">🚀 Próximos passos (A2)</div>
+        <ul>
+          <li>Pretérito Perfeito completo</li>
+          <li>Pretérito Imperfeito</li>
+          <li>Pronomes oblíquos</li>
+          <li>Comparativos e superlativos</li>
+          <li>Expressões idiomáticas</li>
+          <li>Textos mais longos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pronbtns a3">
+      <button class="pbtn" onclick="spk('Parabéns! Você concluiu o nível A1!')">🔊 Parabéns!</button>
+    </div>
+  </div>
+</div>
+
+<!-- S14: ENCERRAMENTO -->
+<div class="scene">
+  <div class="pbg" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85')"></div>
+  <div class="ov ov-vd"></div>
+  <div class="lbar"><div class="lwrap"><img class="limg lgo" src="" alt="EB"><div><div class="lname">Enlace Brasil</div><div class="lsub">Instituto de Língua e Cultura Brasileira · CDMX</div></div></div><span class="sbadge">🏆 Fim do A1!</span></div>
+  <div class="cnt">
+    <div class="sc-tag a1">🏆 Parabéns!</div>
+    <div class="sc-h1 a2">Você está quase lá!<br><span class="go">Continue assim!</span> 💪</div>
+    <div class="sc-sub a3">Ótimo trabalho! Você já domina as situações do cotidiano em português! 🇧🇷</div>
+    <div class="pronbtns a4">
+      <button class="pbtn" onclick="spk('Muito bem! Continue praticando!')">🔊 Parabéns!</button>
+      <button class="pbtn" onclick="spk('Até o próximo nível!')">🔊 Até o A2!</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const LOGO='data:image/jpeg;base64,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';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>';
+if(LOGO.length>50){document.querySelectorAll('.lgo').forEach(el=>el.src=LOGO);}
+const scenes=document.querySelectorAll('.scene');
+const N=18;let cur=0;
+const dotsEl=document.getElementById('dots');
+scenes.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){scenes[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=Math.max(0,Math.min(N-1,n));scenes[cur].classList.add('active');dotsEl.children[cur].classList.add('active');document.getElementById('scnt').textContent=(cur+1)+' / '+N;document.getElementById('prog').style.width=((cur+1)/N*100)+'%';}
+function next(){goTo(cur+1);}function prev(){goTo(cur-1);}
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(x=>x.lang==='pt-BR');return b.length?b:a.filter(x=>x.lang.startsWith('pt'));}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){dx<0?next():prev();}},{passive:true});
+goTo(0);
+</script>
+</body>
+</html>
