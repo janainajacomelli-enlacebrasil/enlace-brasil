@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula 21 - Situações do Cotidiano | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f0f9ff;font-family:Nunito,sans-serif;padding-bottom:40px}
+.top{background:linear-gradient(135deg,#071520,#0e7490);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.tl{display:flex;align-items:center;gap:8px}
+.tlogo{width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.tlogo img{width:100%;height:100%;object-fit:cover}
+.ttitle{font-family:"Baloo 2",sans-serif;font-weight:800;color:#fff;font-size:15px}
+.tsub{color:rgba(255,255,255,.55);font-size:10px}
+.tpts{background:rgba(245,158,11,.2);border:1.5px solid rgba(245,158,11,.5);color:#f59e0b;font-weight:800;font-size:13px;padding:4px 10px;border-radius:16px}
+.ibar{background:#fff;border-bottom:2px solid #bae6fd;display:flex;overflow-x:auto;gap:4px;padding:8px 10px;position:sticky;top:58px;z-index:90}
+.ibar::-webkit-scrollbar{height:3px}.ibar::-webkit-scrollbar-thumb{background:#0e7490;border-radius:2px}
+.ibtn{background:none;border:1.5px solid #7dd3fc;color:#555;font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;white-space:nowrap;cursor:pointer;font-family:Nunito,sans-serif;flex-shrink:0}
+.ibtn.on,.ibtn:hover{background:#0e7490;border-color:#0e7490;color:#fff}
+.hero{background:linear-gradient(135deg,#071520,#0e7490,#0891b2);padding:36px 20px;text-align:center;color:#fff}
+.hbadge{background:rgba(245,158,11,.25);border:1.5px solid rgba(245,158,11,.6);color:#f59e0b;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:10px}
+.htit{font-family:"Baloo 2",sans-serif;font-size:clamp(26px,6vw,48px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.htit span{color:#f59e0b}
+.hsub{font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,.85);margin-bottom:14px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:13px;font-weight:700;padding:5px 13px;border-radius:18px}
+.sec{padding:20px 14px;max-width:860px;margin:0 auto}
+.stit{font-family:"Baloo 2",sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800;color:#0e7490;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.stit::after{content:"";flex:1;height:2px;background:linear-gradient(to right,#0e7490,transparent)}
+.tip{border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:clamp(12px,1.7vw,15px);line-height:1.6}
+.tip.tl{background:#e0f2fe;border-left:4px solid #0e7490;color:#0c4a6e}
+.tip.am{background:#fff8e1;border-left:4px solid #f59e0b;color:#78350f}
+.tip.rs{background:#fef2f2;border-left:4px solid #e11d48;color:#881337}
+.tip.vd{background:#d1fae5;border-left:4px solid #059669;color:#064e3b}
+.tip b{font-weight:800}
+.dbox{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:14px}
+.dline{display:flex;gap:8px;margin-bottom:9px;align-items:flex-start}
+.dline:last-child{margin-bottom:0}
+.dwho{font-weight:800;font-size:13px;min-width:75px;padding-top:2px;flex-shrink:0}
+.dwho.a{color:#0e7490}.dwho.b{color:#f59e0b}.dwho.c{color:#059669}
+.dtxt{font-size:clamp(13px,1.9vw,16px);color:#333;line-height:1.5;cursor:pointer;padding:2px 6px;border-radius:5px;transition:all .2s}
+.dtxt:hover,.dtxt.play{color:#0e7490;background:#e0f2fe}
+.dtxt em{color:#0e7490;font-style:normal;font-weight:700}
+.dtxt strong{color:#f59e0b}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:9px;margin-bottom:14px}
+.vc{background:#fff;border-radius:11px;padding:11px 8px;text-align:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.07);border-top:3px solid #0e7490;transition:all .2s}
+.vc:hover,.vc.play{transform:translateY(-2px);background:#e0f2fe}
+.vpt{font-family:"Baloo 2",sans-serif;font-weight:800;color:#0e7490;font-size:clamp(12px,1.8vw,15px)}
+.ves{font-size:clamp(9px,1.2vw,12px);color:#888;font-style:italic;margin-top:2px}
+.acard{background:#fff;border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid #0e7490}
+.acard.am{border-top-color:#f59e0b}.acard.vd{border-top-color:#059669}.acard.rs{border-top-color:#e11d48}
+.atit{font-family:"Baloo 2",sans-serif;font-size:clamp(15px,2.2vw,19px);font-weight:800;color:#1e3a5f;margin-bottom:5px}
+.asub{font-size:13px;color:#666;margin-bottom:12px;font-style:italic}
+.sbar{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;color:#555;font-weight:700}
+.gsent{font-size:clamp(14px,2vw,18px);color:#222;line-height:2.8;margin-bottom:8px}
+.gap{display:inline-block;min-width:110px;border-bottom:2.5px solid #0e7490;text-align:center;padding:2px 8px;font-weight:800;color:#0e7490;border-radius:4px 4px 0 0;cursor:pointer}
+.gap.ok{background:#e0f2fe}.gap.err{background:#fef2f2;color:#e11d48;animation:shk .3s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.orow{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.opt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:18px;padding:5px 13px;font-size:clamp(12px,1.6vw,14px);font-weight:700;cursor:pointer;transition:all .2s;color:#333;font-family:Nunito,sans-serif}
+.opt:hover{border-color:#0e7490;background:#e0f2fe}.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+.vfi{background:#fff;border-radius:11px;padding:12px;margin-bottom:9px;border-left:4px solid #ccc;box-shadow:0 2px 5px rgba(0,0,0,.06)}
+.vfq{font-size:clamp(13px,1.8vw,16px);color:#222;margin-bottom:7px;font-weight:600}
+.vfbtns{display:flex;gap:8px}
+.vfbtn{flex:1;padding:8px;border:2px solid;border-radius:8px;font-weight:700;cursor:pointer;font-family:Nunito,sans-serif;font-size:14px;touch-action:manipulation}
+.vfbtn.v{border-color:#6ee7b7;background:#f0fdf4;color:#059669}.vfbtn.f{border-color:#fca5a5;background:#fef2f2;color:#e11d48}
+.vfexp{display:none;margin-top:8px;font-size:13px;background:#f0f9ff;border-radius:6px;padding:8px;border-left:3px solid #0e7490;color:#333}
+.qopt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:10px;padding:11px 13px;font-size:clamp(13px,1.8vw,15px);cursor:pointer;text-align:left;font-family:Nunito,sans-serif;font-weight:600;transition:all .2s;display:block;width:100%;margin-bottom:7px;touch-action:manipulation}
+.qopt:hover{border-color:#0e7490;background:#e0f2fe}
+.qopt.ok{border-color:#059669;background:#d1fae5;color:#059669;pointer-events:none}
+.qopt.err{border-color:#e11d48;background:#fef2f2;color:#e11d48;pointer-events:none}
+.qexp{display:none;background:#f0f9ff;border-radius:8px;padding:10px 13px;font-size:13px;color:#333;margin-bottom:10px;border-left:3px solid #0e7490}
+.rpgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.rpc{border-radius:13px;padding:16px;text-align:center;cursor:pointer;transition:all .2s}
+.rpc:hover{transform:translateY(-2px)}
+.rpemi{font-size:clamp(26px,4vw,38px);margin-bottom:6px}
+.rpnam{font-family:"Baloo 2",sans-serif;font-size:clamp(13px,1.9vw,17px);font-weight:800;color:#fff;margin-bottom:3px}
+.rphin{font-size:clamp(10px,1.3vw,13px);color:rgba(255,255,255,.75)}
+.btn{border:none;border-radius:9px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:Nunito,sans-serif;touch-action:manipulation}
+.btn-gray{background:#9ca3af;color:#fff}
+.fmsg{display:none;background:linear-gradient(135deg,#059669,#0e7490);border-radius:12px;padding:20px;text-align:center;margin-top:14px;color:#fff}
+.fmoji{font-size:40px;margin-bottom:8px}
+.ftit{font-family:"Baloo 2",sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#222;color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.on{transform:translateX(-50%) translateY(0)}
+@media(max-width:480px){.rpgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="tl">
+    <div class="tlogo"><img src="data:image/jpeg;base64,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" alt="EB"></div>
+    <div><div class="ttitle">Enlace Brasil</div><div class="tsub">Aula 21 · Situações do Cotidiano · A1</div></div>
+  </div>
+  <div class="tpts">⭐ <span id="pts">0</span> pts</div>
+</div>
+<div class="ibar" id="ibar">
+  <button class="ibtn" data-target="s-super">🛒 Compras</button>
+  <button class="ibtn" data-target="s-banco">🏦 Banco</button>
+  <button class="ibtn" data-target="s-medico">🏥 Médico</button>
+  <button class="ibtn" data-target="s-aniv">🎂 Aniversário</button>
+  <button class="ibtn" data-target="s-trab">💼 Trabalho</button>
+  <button class="ibtn" data-target="s-familia">👨‍👩‍👧 Família</button>
+  <button class="ibtn" data-target="s-rest">🍽️ Restaurante</button>
+  <button class="ibtn" data-target="s-hotel">🏨 Hotel</button>
+  <button class="ibtn" data-target="s-transp">🚌 Transporte</button>
+  <button class="ibtn" data-target="s-saude">🏥 Saúde</button>
+  <button class="ibtn" data-target="s-a1">✏️ Ativ.1</button>
+  <button class="ibtn" data-target="s-a2">✏️ Ativ.2</button>
+  <button class="ibtn" data-target="s-vf">✅ V/F</button>
+  <button class="ibtn" data-target="s-quiz">🎮 Quiz</button>
+</div>
+<div class="hero">
+  <div class="hbadge">AULA 21 · A1 · REVISÃO FINAL</div>
+  <div class="htit">Situações do<br><span>Cotidiano</span> 🇧🇷</div>
+  <div class="hsub">Diálogos reais · 9 situações · Cotidiano em português</div>
+  <div class="pills">
+    <span class="pill">🛒 Compras</span><span class="pill">🏦 Banco</span><span class="pill">🏥 Médico</span>
+    <span class="pill">🎂 Festa</span><span class="pill">💼 Trabalho</span><span class="pill">👨‍👩‍👧 Família</span>
+  </div>
+</div>
+<div class="sec" id="s-super">
+  <div class="stit">🛒 No Supermercado</div>
+  <div class="tip tl"><b>Frases-chave:</b> Onde fica? · Quanto custa? · Você tem? · Posso pagar com cartão?</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Com licença! Onde fica o arroz?">Com licença! <em>Onde fica</em> o arroz? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Func.:</span><span class="dtxt" data-spk="Fica no corredor três, do lado esquerdo.">Fica no corredor 3, <em>do lado esquerdo</em>. 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Quanto custa este queijo?"><em>Quanto custa</em> este queijo? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Func.:</span><span class="dtxt" data-spk="Custa doze reais o quilo.">Custa <strong>R$12,00</strong> o quilo. 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Posso pagar com cartão?">Posso <em>pagar com cartão</em>? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Func.:</span><span class="dtxt" data-spk="Sim, aceitamos todos os cartões.">Sim, aceitamos todos os cartões. 🔊</span></div>
+  </div>
+  <div class="vgrid">
+  <div class="vc" data-spk="corredor"><div class="vpt">corredor</div><div class="ves">pasillo</div></div>
+  <div class="vc" data-spk="sacola"><div class="vpt">sacola</div><div class="ves">bolsa</div></div>
+  <div class="vc" data-spk="desconto"><div class="vpt">desconto</div><div class="ves">descuento</div></div>
+  <div class="vc" data-spk="troco"><div class="vpt">troco</div><div class="ves">cambio</div></div>
+  <div class="vc" data-spk="caixa"><div class="vpt">caixa</div><div class="ves">caja</div></div>
+  <div class="vc" data-spk="promoção"><div class="vpt">promoção</div><div class="ves">promoción</div></div>
+  </div>
+</div>
+<div class="sec" id="s-banco">
+  <div class="stit">🏦 No Banco</div>
+  <div class="tip am"><b>Frases-chave:</b> Quero abrir uma conta · Preciso sacar · Qual é o saldo? · caixa eletrônico</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho b">👨 Atend.:</span><span class="dtxt" data-spk="Bom dia! Posso ajudar?">Bom dia! <em>Posso ajudar?</em> 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Quero abrir uma conta corrente."><em>Quero abrir</em> uma conta corrente. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Atend.:</span><span class="dtxt" data-spk="Precisa de documento e comprovante de endereço.">Precisa de documento e comprovante de endereço. 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Também preciso sacar duzentos reais.">Também preciso <em>sacar R$200</em>. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Atend.:</span><span class="dtxt" data-spk="O caixa eletrônico fica à direita.">O caixa eletrônico fica <em>à direita</em>. 🔊</span></div>
+  </div>
+  <div class="vgrid">
+  <div class="vc" data-spk="conta corrente"><div class="vpt">conta corrente</div><div class="ves">cuenta corriente</div></div>
+  <div class="vc" data-spk="saldo"><div class="vpt">saldo</div><div class="ves">saldo</div></div>
+  <div class="vc" data-spk="boleto"><div class="vpt">boleto</div><div class="ves">recibo</div></div>
+  <div class="vc" data-spk="senha"><div class="vpt">senha</div><div class="ves">contraseña</div></div>
+  <div class="vc" data-spk="transferência"><div class="vpt">transferência</div><div class="ves">transferencia</div></div>
+  <div class="vc" data-spk="agência"><div class="vpt">agência</div><div class="ves">sucursal</div></div>
+  </div>
+</div>
+<div class="sec" id="s-medico">
+  <div class="stit">🏥 No Médico</div>
+  <div class="tip rs"><b>Estrutura:</b> Estou com + dor de + parte do corpo · Estou com febre / tosse / gripe...</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho b">👨‍⚕️ Méd.:</span><span class="dtxt" data-spk="O que você está sentindo?"><em>O que você está sentindo?</em> 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Pac.:</span><span class="dtxt" data-spk="Estou com dor de cabeça e febre há dois dias."><em>Estou com dor de cabeça</em> e febre há 2 dias. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨‍⚕️ Méd.:</span><span class="dtxt" data-spk="Você é alérgico a algum remédio?">Você é <em>alérgico</em> a algum remédio? 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Pac.:</span><span class="dtxt" data-spk="Não, não sou alérgica a nada.">Não, não sou alérgica a nada. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨‍⚕️ Méd.:</span><span class="dtxt" data-spk="Vou receitar um antitérmico. Tome a cada oito horas.">Vou <em>receitar</em> um antitérmico. Tome a cada 8h. 🔊</span></div>
+  </div>
+  <div class="vgrid">
+  <div class="vc" data-spk="febre"><div class="vpt">febre</div><div class="ves">fiebre</div></div>
+  <div class="vc" data-spk="tosse"><div class="vpt">tosse</div><div class="ves">tos</div></div>
+  <div class="vc" data-spk="remédio"><div class="vpt">remédio</div><div class="ves">medicamento</div></div>
+  <div class="vc" data-spk="receita"><div class="vpt">receita</div><div class="ves">receta</div></div>
+  <div class="vc" data-spk="consulta"><div class="vpt">consulta</div><div class="ves">consulta</div></div>
+  <div class="vc" data-spk="alergia"><div class="vpt">alergia</div><div class="ves">alergia</div></div>
+  </div>
+</div>
+<div class="sec" id="s-aniv">
+  <div class="stit">🎂 Aniversário / Festas</div>
+  <div class="tip am"><b>Expressões:</b> Parabéns! · Feliz aniversário! · Quantos anos você faz? · Saúde!</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho a">👩 Ana:</span><span class="dtxt" data-spk="Parabéns! Feliz aniversário!"><em>Parabéns! Feliz aniversário!</em> 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Carlos:</span><span class="dtxt" data-spk="Muito obrigado! Que bom que você veio!">Muito obrigado! <em>Que bom que você veio!</em> 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Ana:</span><span class="dtxt" data-spk="Quantos anos você está fazendo?"><em>Quantos anos</em> você está fazendo? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Carlos:</span><span class="dtxt" data-spk="Estou fazendo trinta anos!">Estou fazendo <strong>30 anos!</strong> 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Ana:</span><span class="dtxt" data-spk="Que festa linda! A comida está deliciosa!">Que festa linda! A comida está <em>deliciosa!</em> 🔊</span></div>
+  </div>
+  <div class="tip tl"><b>🎵 No Brasil cantamos:</b> "Parabéns pra você, nessa data querida, muitas felicidades, muitos anos de vida!"</div>
+</div>
+<div class="sec" id="s-trab">
+  <div class="stit">💼 No Trabalho</div>
+  <div class="tip vd"><b>Frases-chave:</b> Posso...? · Preciso de... · Tem reunião às... · Vou terminar até...</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho b">👨 Chefe:</span><span class="dtxt" data-spk="Bom dia! Você pode terminar o relatório hoje?">Bom dia! <em>Você pode terminar</em> o relatório hoje? 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Func.:</span><span class="dtxt" data-spk="Sim, termino até às quinze horas.">Sim, termino <em>até às 15h</em>. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Chefe:</span><span class="dtxt" data-spk="Tem reunião às quatorze horas.">Tem <em>reunião às 14h</em>. 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Func.:</span><span class="dtxt" data-spk="Posso trabalhar de casa amanhã?"><em>Posso trabalhar de casa</em> amanhã? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Chefe:</span><span class="dtxt" data-spk="Pode sim. Até amanhã!">Pode sim. <em>Até amanhã!</em> 🔊</span></div>
+  </div>
+  <div class="vgrid">
+  <div class="vc" data-spk="reunião"><div class="vpt">reunião</div><div class="ves">reunión</div></div>
+  <div class="vc" data-spk="prazo"><div class="vpt">prazo</div><div class="ves">plazo</div></div>
+  <div class="vc" data-spk="folga"><div class="vpt">folga</div><div class="ves">día libre</div></div>
+  <div class="vc" data-spk="relatório"><div class="vpt">relatório</div><div class="ves">informe</div></div>
+  <div class="vc" data-spk="salário"><div class="vpt">salário</div><div class="ves">salario</div></div>
+  <div class="vc" data-spk="colega"><div class="vpt">colega</div><div class="ves">colega</div></div>
+  </div>
+</div>
+<div class="sec" id="s-familia">
+  <div class="stit">👨‍👩‍👧 Em Família</div>
+  <div class="tip tl"><b>Frases-chave:</b> O que você vai fazer? · O jantar está pronto · Que cheiro bom!</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho b">👩 Mãe:</span><span class="dtxt" data-spk="O que você vai fazer no fim de semana?"><em>O que você vai fazer</em> no fim de semana? 🔊</span></div>
+    <div class="dline"><span class="dwho a">👦 Filho:</span><span class="dtxt" data-spk="Vou visitar o avô com minha irmã.">Vou <em>visitar o avô</em> com minha irmã. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👩 Mãe:</span><span class="dtxt" data-spk="Que ótimo! O jantar está pronto.">Que ótimo! O <em>jantar está pronto</em>. 🔊</span></div>
+    <div class="dline"><span class="dwho a">👦 Filho:</span><span class="dtxt" data-spk="Que cheiro bom! O que você fez?"><em>Que cheiro bom!</em> O que você fez? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👩 Mãe:</span><span class="dtxt" data-spk="Fiz arroz com feijão e frango grelhado.">Fiz <em>arroz com feijão</em> e frango grelhado. 🔊</span></div>
+    <div class="dline"><span class="dwho a">👦 Filho:</span><span class="dtxt" data-spk="Minha comida favorita!"><em>Minha comida favorita!</em> 🔊</span></div>
+  </div>
+  <div class="vgrid">
+  <div class="vc" data-spk="avô"><div class="vpt">avô/avó</div><div class="ves">abuelo/a</div></div>
+  <div class="vc" data-spk="sobrinho"><div class="vpt">sobrinho/a</div><div class="ves">sobrino/a</div></div>
+  <div class="vc" data-spk="cunhado"><div class="vpt">cunhado/a</div><div class="ves">cuñado/a</div></div>
+  <div class="vc" data-spk="sogro"><div class="vpt">sogro/a</div><div class="ves">suegro/a</div></div>
+  <div class="vc" data-spk="neto"><div class="vpt">neto/a</div><div class="ves">nieto/a</div></div>
+  <div class="vc" data-spk="primo"><div class="vpt">primo/a</div><div class="ves">primo/a</div></div>
+  </div>
+</div>
+<div class="sec" id="s-rest">
+  <div class="stit">🍽️ Revisão — Restaurante</div>
+  <div class="tip vd"><b>Lembre-se:</b> Eu quero... · Para mim... · A conta, por favor! · Quanto custa?</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho b">👨 Garçom:</span><span class="dtxt" data-spk="Boa tarde! O que vai querer?">Boa tarde! O que vai querer? 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Eu quero um frango com arroz, por favor."><em>Eu quero</em> um frango com arroz, por favor. 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Garçom:</span><span class="dtxt" data-spk="Mais alguma coisa?">Mais alguma coisa? 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Cliente:</span><span class="dtxt" data-spk="Não, obrigada. A conta, por favor.">Não, obrigada. <em>A conta, por favor.</em> 🔊</span></div>
+  </div>
+</div>
+<div class="sec" id="s-hotel">
+  <div class="stit">🏨 Revisão — Hotel</div>
+  <div class="tip tl"><b>Lembre-se:</b> Eu tenho uma reserva · O Wi-Fi é grátis? · Qual é a senha?</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho a">👩 Hósp.:</span><span class="dtxt" data-spk="Boa noite! Eu tenho uma reserva.">Boa noite! <em>Eu tenho uma reserva.</em> 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Recep.:</span><span class="dtxt" data-spk="Qual é o seu nome?">Qual é o seu nome? 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Hósp.:</span><span class="dtxt" data-spk="O Wi-Fi é grátis? Qual é a senha?"><em>O Wi-Fi é grátis?</em> Qual é a senha? 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Recep.:</span><span class="dtxt" data-spk="Sim! A senha é brasil123.">Sim! A senha é brasil123. 🔊</span></div>
+  </div>
+</div>
+<div class="sec" id="s-transp">
+  <div class="stit">🚌 Revisão — Transporte</div>
+  <div class="tip am"><b>Direções:</b> Vire à direita · Vire à esquerda · Siga em frente · É perto/longe</div>
+  <div class="dbox">
+    <div class="dline"><span class="dwho a">👩 Turista:</span><span class="dtxt" data-spk="Com licença! Onde fica o metrô?">Com licença! <em>Onde fica o metrô?</em> 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Pessoa:</span><span class="dtxt" data-spk="Vire à direita e siga em frente.">Vire à direita e <em>siga em frente.</em> 🔊</span></div>
+    <div class="dline"><span class="dwho a">👩 Turista:</span><span class="dtxt" data-spk="É longe?"><em>É longe?</em> 🔊</span></div>
+    <div class="dline"><span class="dwho b">👨 Pessoa:</span><span class="dtxt" data-spk="Não, é perto! Cinco minutos a pé.">Não, é perto! 5 min. a pé. 🔊</span></div>
+  </div>
+</div>
+<div class="sec" id="s-saude">
+  <div class="stit">🏥 Revisão — Saúde</div>
+  <div class="tip rs"><b>Estrutura:</b> Estou com + sintoma · Preciso de um médico! · Pode repetir?</div>
+  <div class="vgrid">
+  <div class="vc" data-spk="Estou com dor de cabeça."><div class="vpt">dor de cabeça</div><div class="ves">dolor de cabeza</div></div>
+  <div class="vc" data-spk="Estou com febre."><div class="vpt">febre</div><div class="ves">fiebre</div></div>
+  <div class="vc" data-spk="Estou com dor de garganta."><div class="vpt">dor de garganta</div><div class="ves">dolor de garganta</div></div>
+  <div class="vc" data-spk="Estou com tosse."><div class="vpt">tosse</div><div class="ves">tos</div></div>
+  <div class="vc" data-spk="Estou com gripe."><div class="vpt">gripe</div><div class="ves">gripe</div></div>
+  <div class="vc" data-spk="Onde fica a farmácia?"><div class="vpt">farmácia</div><div class="ves">farmacia</div></div>
+  </div>
+</div>
+<div class="sec" id="s-a1">
+  <div class="acard">
+    <div class="atit">✏️ Atividade 1 — Complete o diálogo</div>
+    <div class="asub">Escolha a palavra certa!</div>
+    <div class="sbar">Pontos: <span id="sc1">0</span>/6 <span id="st1">☆☆☆☆☆☆</span></div>
+    <div><div class="gsent">🛒 "Com licença! ___ o pão de queijo?" <span class="gap" id="g0">___</span></div>
+    <div class="orow" id="o0">
+      <span class="opt" data-idx="0" data-ans="Onde fica" data-val="Onde fica">Onde fica</span>
+      <span class="opt" data-idx="0" data-ans="Onde fica" data-val="Como é">Como é</span>
+      <span class="opt" data-idx="0" data-ans="Onde fica" data-val="Quando tem">Quando tem</span>
+    </div></div>
+    <div><div class="gsent">🏦 "Preciso ___ duzentos reais." <span class="gap" id="g1">___</span></div>
+    <div class="orow" id="o1">
+      <span class="opt" data-idx="1" data-ans="sacar" data-val="sacar">sacar</span>
+      <span class="opt" data-idx="1" data-ans="sacar" data-val="comer">comer</span>
+      <span class="opt" data-idx="1" data-ans="sacar" data-val="abrir">abrir</span>
+    </div></div>
+    <div><div class="gsent">🏥 "Estou ___ dor de cabeça." <span class="gap" id="g2">___</span></div>
+    <div class="orow" id="o2">
+      <span class="opt" data-idx="2" data-ans="com" data-val="sendo">sendo</span>
+      <span class="opt" data-idx="2" data-ans="com" data-val="com">com</span>
+      <span class="opt" data-idx="2" data-ans="com" data-val="em">em</span>
+    </div></div>
+    <div><div class="gsent">🎂 "___ anos você está fazendo?" <span class="gap" id="g3">___</span></div>
+    <div class="orow" id="o3">
+      <span class="opt" data-idx="3" data-ans="Quantos" data-val="Quanto">Quanto</span>
+      <span class="opt" data-idx="3" data-ans="Quantos" data-val="Quantos">Quantos</span>
+      <span class="opt" data-idx="3" data-ans="Quantos" data-val="Quais">Quais</span>
+    </div></div>
+    <div><div class="gsent">💼 "___ trabalhar de casa amanhã?" <span class="gap" id="g4">___</span></div>
+    <div class="orow" id="o4">
+      <span class="opt" data-idx="4" data-ans="Posso" data-val="Posso">Posso</span>
+      <span class="opt" data-idx="4" data-ans="Posso" data-val="Sou">Sou</span>
+      <span class="opt" data-idx="4" data-ans="Posso" data-val="Faço">Faço</span>
+    </div></div>
+    <div><div class="gsent">👨‍👩‍👧 "O jantar ___ pronto!" <span class="gap" id="g5">___</span></div>
+    <div class="orow" id="o5">
+      <span class="opt" data-idx="5" data-ans="está" data-val="é">é</span>
+      <span class="opt" data-idx="5" data-ans="está" data-val="está">está</span>
+      <span class="opt" data-idx="5" data-ans="está" data-val="tem">tem</span>
+    </div></div>
+    <button class="btn btn-gray" id="rst1">🔄 Recomeçar</button>
+  </div>
+</div>
+<div class="sec" id="s-a2">
+  <div class="acard am">
+    <div class="atit">✏️ Atividade 2 — Qual é a situação?</div>
+    <div class="asub">Onde você diria cada frase?</div>
+    <div class="sbar">Pontos: <span id="sc2">0</span>/5 <span id="st2">☆☆☆☆☆</span></div>
+    <div><div class="gsent">"Você tem sacola de pano?" → <span class="gap" id="h0">___</span></div>
+    <div class="orow" id="ho0">
+      <span class="opt" data-idx2="0" data-ans="🛒 Supermercado" data-val="🛒 Supermercado">🛒 Supermercado</span>
+      <span class="opt" data-idx2="0" data-ans="🛒 Supermercado" data-val="🏦 Banco">🏦 Banco</span>
+      <span class="opt" data-idx2="0" data-ans="🛒 Supermercado" data-val="💼 Trabalho">💼 Trabalho</span>
+    </div></div>
+    <div><div class="gsent">"Qual é o meu saldo?" → <span class="gap" id="h1">___</span></div>
+    <div class="orow" id="ho1">
+      <span class="opt" data-idx2="1" data-ans="🏦 Banco" data-val="🏥 Médico">🏥 Médico</span>
+      <span class="opt" data-idx2="1" data-ans="🏦 Banco" data-val="🏦 Banco">🏦 Banco</span>
+      <span class="opt" data-idx2="1" data-ans="🏦 Banco" data-val="🎂 Festa">🎂 Festa</span>
+    </div></div>
+    <div><div class="gsent">"Vou receitar um remédio." → <span class="gap" id="h2">___</span></div>
+    <div class="orow" id="ho2">
+      <span class="opt" data-idx2="2" data-ans="🏥 Médico" data-val="🛒 Compras">🛒 Compras</span>
+      <span class="opt" data-idx2="2" data-ans="🏥 Médico" data-val="💼 Trabalho">💼 Trabalho</span>
+      <span class="opt" data-idx2="2" data-ans="🏥 Médico" data-val="🏥 Médico">🏥 Médico</span>
+    </div></div>
+    <div><div class="gsent">"Tem reunião às 14h." → <span class="gap" id="h3">___</span></div>
+    <div class="orow" id="ho3">
+      <span class="opt" data-idx2="3" data-ans="💼 Trabalho" data-val="💼 Trabalho">💼 Trabalho</span>
+      <span class="opt" data-idx2="3" data-ans="💼 Trabalho" data-val="👨‍👩‍👧 Família">👨‍👩‍👧 Família</span>
+      <span class="opt" data-idx2="3" data-ans="💼 Trabalho" data-val="🎂 Festa">🎂 Festa</span>
+    </div></div>
+    <div><div class="gsent">"O jantar está pronto!" → <span class="gap" id="h4">___</span></div>
+    <div class="orow" id="ho4">
+      <span class="opt" data-idx2="4" data-ans="👨‍👩‍👧 Família" data-val="🏥 Médico">🏥 Médico</span>
+      <span class="opt" data-idx2="4" data-ans="👨‍👩‍👧 Família" data-val="👨‍👩‍👧 Família">👨‍👩‍👧 Família</span>
+      <span class="opt" data-idx2="4" data-ans="👨‍👩‍👧 Família" data-val="🏦 Banco">🏦 Banco</span>
+    </div></div>
+    <button class="btn btn-gray" id="rst2">🔄 Recomeçar</button>
+  </div>
+</div>
+<div class="sec" id="s-vf">
+  <div class="acard vd">
+    <div class="atit">✅ Verdadeiro ou Falso?</div>
+    <div class="asub">Marque V ou F!</div>
+    <div class="sbar">Pontos: <span id="sc3">0</span>/5 <span id="st3">☆☆☆☆☆</span></div>
+    <div id="vfc"></div>
+    <button class="btn btn-gray" id="rst3">🔄 Recomeçar</button>
+  </div>
+</div>
+<div class="sec" id="s-quiz">
+  <div class="acard rs">
+    <div class="atit">🎮 Quiz Final — Revisão A1!</div>
+    <div class="asub">5 perguntas para fechar o nível com chave de ouro! 🏆</div>
+    <div class="sbar">Pontos: <span id="scQ">0</span>/5 <span id="stQ">☆☆☆☆☆</span></div>
+  <div style="margin-bottom:16px;padding-top:0;">
+    <div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">1. No supermercado, como você pergunta o preço?</div>
+    <button class="qopt" data-qi="0" data-oi="0" data-ci="1">A. Como é o produto?</button>
+    <button class="qopt" data-qi="0" data-oi="1" data-ci="1">B. Quanto custa este produto?</button>
+    <button class="qopt" data-qi="0" data-oi="2" data-ci="1">C. Onde fica o produto?</button>
+    <div class="qexp" id="qe0">✅ Quanto custa? = ¿Cuánto cuesta? — a pergunta de preço em PT!</div>
+  </div>
+  <div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #fef2f2">
+    <div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">2. No médico, como você diz que tem febre?</div>
+    <button class="qopt" data-qi="1" data-oi="0" data-ci="1">A. Tengo fiebre.</button>
+    <button class="qopt" data-qi="1" data-oi="1" data-ci="1">B. Estou com febre.</button>
+    <button class="qopt" data-qi="1" data-oi="2" data-ci="1">C. Sou com febre.</button>
+    <div class="qexp" id="qe1">✅ Estou com + sintoma — sempre ESTAR, nunca SER para sintomas!</div>
+  </div>
+  <div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #fef2f2">
+    <div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">3. Como se diz "feliz cumpleaños" em português?</div>
+    <button class="qopt" data-qi="2" data-oi="0" data-ci="1">A. Bom aniversário!</button>
+    <button class="qopt" data-qi="2" data-oi="1" data-ci="1">B. Feliz aniversário! / Parabéns!</button>
+    <button class="qopt" data-qi="2" data-oi="2" data-ci="1">C. Feliz cumpleaños!</button>
+    <div class="qexp" id="qe2">✅ Feliz aniversário! ou simplesmente Parabéns! — os dois são corretos!</div>
+  </div>
+  <div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #fef2f2">
+    <div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">4. No trabalho, como você pede permissão ao chefe?</div>
+    <button class="qopt" data-qi="3" data-oi="0" data-ci="0">A. Posso trabalhar de casa amanhã?</button>
+    <button class="qopt" data-qi="3" data-oi="1" data-ci="0">B. Trabalho de casa amanhã!</button>
+    <button class="qopt" data-qi="3" data-oi="2" data-ci="0">C. Quero casa amanhã.</button>
+    <div class="qexp" id="qe3">✅ Posso + infinitivo? — forma correta de pedir permissão!</div>
+  </div>
+  <div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #fef2f2">
+    <div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">5. "Avô" em espanhol é...?</div>
+    <button class="qopt" data-qi="4" data-oi="0" data-ci="1">A. avú</button>
+    <button class="qopt" data-qi="4" data-oi="1" data-ci="1">B. abuelo</button>
+    <button class="qopt" data-qi="4" data-oi="2" data-ci="1">C. ancião</button>
+    <div class="qexp" id="qe4">✅ avô = abuelo. Cuidado — não é igual!</div>
+  </div>
+  <div class="fmsg" id="fmsg"><div class="fmoji">🏆🎉</div><div class="ftit">Parabéns! Você concluiu o Nível A1!</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px">Você já se comunica em português no cotidiano! 🇧🇷</div></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var pts=0,sc1v=0,sc2v=0,sc3v=0,scQv=0;
+var done1=Array(6).fill(false),done2=Array(5).fill(false),done3=Array(5).fill(false),doneQ={};
+
+function addPts(n){pts+=n;document.getElementById("pts").textContent=pts;}
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on");},1800);}
+
+// Navigation
+function goTo(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var top=el.getBoundingClientRect().top+window.pageYOffset-115;
+  window.scrollTo({top:top,behavior:"smooth"});
+}
+document.querySelectorAll(".ibtn").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll(".ibtn").forEach(function(b){b.classList.remove("on");});
+    btn.classList.add("on");
+    goTo(btn.getAttribute("data-target"));
+  });
+});
+
+// Dialog audio
+document.querySelectorAll(".dtxt").forEach(function(el){
+  el.addEventListener("click",function(){
+    document.querySelectorAll(".dtxt").forEach(function(e){e.classList.remove("play");});
+    el.classList.add("play");
+    spk(el.getAttribute("data-spk"));
+    addPts(5);toast("🔊 +5 pts");
+    setTimeout(function(){el.classList.remove("play");},1800);
+  });
+});
+
+// Vocab cards
+document.querySelectorAll(".vc").forEach(function(el){
+  el.addEventListener("click",function(){
+    document.querySelectorAll(".vc").forEach(function(e){e.classList.remove("play");});
+    el.classList.add("play");
+    spk(el.getAttribute("data-spk"));
+    addPts(5);toast("🔊 +5 pts");
+    setTimeout(function(){el.classList.remove("play");},1600);
+  });
+});
+
+// Role-play cards
+document.querySelectorAll(".rpc").forEach(function(el){
+  el.addEventListener("click",function(){spk(el.getAttribute("data-spk"));});
+});
+
+// Atividade 1
+document.querySelectorAll(".opt[data-idx]").forEach(function(el){
+  el.addEventListener("click",function(){
+    var i=parseInt(el.getAttribute("data-idx"));
+    if(done1[i])return;
+    var g=document.getElementById("g"+i);
+    var v=el.getAttribute("data-val");
+    var ans=el.getAttribute("data-ans");
+    if(v===ans){
+      g.textContent=v;g.className="gap ok";
+      el.classList.add("used");done1[i]=true;sc1v++;
+      document.getElementById("sc1").textContent=sc1v;
+      var s="";for(var j=0;j<6;j++)s+=j<sc1v?"⭐":"☆";
+      document.getElementById("st1").textContent=s;
+      addPts(12);toast("✅ +12 pts");spk(v);
+      if(sc1v===6)setTimeout(function(){toast("🏆 Perfeito!");},600);
+    } else {
+      g.textContent=v;g.className="gap err";
+      setTimeout(function(){g.textContent="___";g.className="gap";},700);
+      toast("❌ Tente de novo!");
+    }
+  });
+});
+document.getElementById("rst1").addEventListener("click",function(){
+  sc1v=0;done1=Array(6).fill(false);
+  document.getElementById("sc1").textContent="0";
+  document.getElementById("st1").textContent="☆☆☆☆☆☆";
+  for(var i=0;i<6;i++){
+    var g=document.getElementById("g"+i);if(g){g.textContent="___";g.className="gap";}
+    document.querySelectorAll(".opt[data-idx='"+i+"']").forEach(function(o){o.className="opt";});
+  }
+});
+
+// Atividade 2
+document.querySelectorAll(".opt[data-idx2]").forEach(function(el){
+  el.addEventListener("click",function(){
+    var i=parseInt(el.getAttribute("data-idx2"));
+    if(done2[i])return;
+    var g=document.getElementById("h"+i);
+    var v=el.getAttribute("data-val");
+    var ans=el.getAttribute("data-ans");
+    if(v===ans){
+      g.textContent=v;g.className="gap ok";
+      el.classList.add("used");done2[i]=true;sc2v++;
+      document.getElementById("sc2").textContent=sc2v;
+      var s="";for(var j=0;j<5;j++)s+=j<sc2v?"⭐":"☆";
+      document.getElementById("st2").textContent=s;
+      addPts(12);toast("✅ +12 pts");
+      if(sc2v===5)setTimeout(function(){toast("🏆 Perfeito!");},600);
+    } else {
+      g.textContent=v;g.className="gap err";
+      setTimeout(function(){g.textContent="___";g.className="gap";},700);
+      toast("❌ Tente de novo!");
+    }
+  });
+});
+document.getElementById("rst2").addEventListener("click",function(){
+  sc2v=0;done2=Array(5).fill(false);
+  document.getElementById("sc2").textContent="0";
+  document.getElementById("st2").textContent="☆☆☆☆☆";
+  for(var i=0;i<5;i++){
+    var g=document.getElementById("h"+i);if(g){g.textContent="___";g.className="gap";}
+    document.querySelectorAll(".opt[data-idx2='"+i+"']").forEach(function(o){o.className="opt";});
+  }
+});
+
+// VF
+var VF=[
+  {q:"No supermercado, troco é o dinheiro que você recebe de volta.",ans:true,exp:"✅ VERDADEIRO! Troco = cambio. O dinheiro que sobra após o pagamento."},
+  {q:"Para dizer que você tem febre usamos: Sou com febre.",ans:false,exp:"❌ FALSO! Usamos ESTAR: Estou com febre. Nunca Sou com febre!"},
+  {q:"No Brasil, Parabéns é usado só em aniversários.",ans:false,exp:"❌ FALSO! Parabéns é usado em aniversários, formatura, aprovação — qualquer conquista!"},
+  {q:"Posso trabalhar de casa? é uma forma educada de pedir permissão.",ans:true,exp:"✅ VERDADEIRO! Posso + infinitivo é a forma correta de pedir permissão."},
+  {q:"Sogra significa a mãe do seu marido ou esposa.",ans:true,exp:"✅ VERDADEIRO! Sogra = suegra. A mãe do cônjuge."}
+];
+function buildVF(){
+  var c=document.getElementById("vfc");c.innerHTML="";
+  VF.forEach(function(item,i){
+    var d=document.createElement("div");d.className="vfi";d.id="vf"+i;
+    d.innerHTML='<div class="vfq">'+(i+1)+". "+item.q+"</div>"
+      +'<div class="vfbtns">'
+      +'<button class="vfbtn v" data-vfi="'+i+'" data-resp="true">✅ Verdadeiro</button>'
+      +'<button class="vfbtn f" data-vfi="'+i+'" data-resp="false">❌ Falso</button>'
+      +'</div><div class="vfexp" id="vfexp'+i+'"></div>';
+    c.appendChild(d);
+  });
+  document.querySelectorAll(".vfbtn").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var i=parseInt(btn.getAttribute("data-vfi"));
+      if(done3[i])return;
+      done3[i]=true;
+      var resp=btn.getAttribute("data-resp")==="true";
+      document.querySelectorAll(".vfbtn[data-vfi='"+i+"']").forEach(function(b){b.style.pointerEvents="none";});
+      var ok=resp===VF[i].ans;
+      var d=document.getElementById("vf"+i);
+      if(ok){d.style.borderLeftColor="#059669";sc3v++;document.getElementById("sc3").textContent=sc3v;var s="";for(var j=0;j<5;j++)s+=j<sc3v?"⭐":"☆";document.getElementById("st3").textContent=s;addPts(15);toast("✅ +15 pts");}
+      else{d.style.borderLeftColor="#e11d48";toast("❌ Veja a explicação!");}
+      var exp=document.getElementById("vfexp"+i);exp.textContent=VF[i].exp;exp.style.display="block";
+      if(sc3v===5)setTimeout(function(){toast("🏆 Perfeito!");},600);
+    });
+  });
+}
+buildVF();
+document.getElementById("rst3").addEventListener("click",function(){
+  sc3v=0;done3=Array(5).fill(false);
+  document.getElementById("sc3").textContent="0";
+  document.getElementById("st3").textContent="☆☆☆☆☆";
+  buildVF();
+});
+
+// Quiz
+document.querySelectorAll(".qopt").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var qi=parseInt(btn.getAttribute("data-qi"));
+    if(doneQ[qi])return;
+    doneQ[qi]=true;
+    var oi=parseInt(btn.getAttribute("data-oi"));
+    var ci=parseInt(btn.getAttribute("data-ci"));
+    var correct=(oi===ci);
+    document.querySelectorAll(".qopt[data-qi='"+qi+"']").forEach(function(b){b.style.pointerEvents="none";});
+    if(correct){btn.className="qopt ok";scQv++;document.getElementById("scQ").textContent=scQv;var s="";for(var j=0;j<5;j++)s+=j<scQv?"⭐":"☆";document.getElementById("stQ").textContent=s;addPts(20);toast("✅ +20 pts");}
+    else{btn.className="qopt err";toast("❌ Veja a explicação!");}
+    var exp=document.getElementById("qe"+qi);if(exp)exp.style.display="block";
+    if(scQv===5){setTimeout(function(){var fm=document.getElementById("fmsg");fm.style.display="block";fm.scrollIntoView({behavior:"smooth"});},400);}
+  });
+});
+
+// Audio
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(function(x){return x.lang==="pt-BR";});return b.length?b:a.filter(function(x){return x.lang.startsWith("pt");});}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="pt-BR";u.rate=0.85;u.pitch=1.1;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};}
+
+</script>
+</body>
+</html>
