@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula 13 A1 — Horas, Rotina e Advérbios · Aluno | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f0f9ff;font-family:Nunito,sans-serif;padding-bottom:40px}
+.top{background:linear-gradient(135deg,#0d3b6e,#1a9a8a);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.tl{display:flex;align-items:center;gap:8px}
+.tlogo{width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.tlogo img{width:100%;height:100%;object-fit:cover}
+.ttitle{font-family:"Baloo 2",sans-serif;font-weight:800;color:#fff;font-size:15px}
+.tsub{color:rgba(255,255,255,.55);font-size:10px}
+.tpts{background:rgba(245,158,11,.2);border:1.5px solid rgba(245,158,11,.5);color:#f59e0b;font-weight:800;font-size:13px;padding:4px 10px;border-radius:16px}
+.ibar{background:#fff;border-bottom:2px solid #bae6fd;display:flex;overflow-x:auto;gap:4px;padding:8px 10px;position:sticky;top:58px;z-index:90}
+.ibar::-webkit-scrollbar{height:3px}.ibar::-webkit-scrollbar-thumb{background:#0d3b6e;border-radius:2px}
+.ibtn{background:none;border:1.5px solid #7dd3fc;color:#555;font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;white-space:nowrap;cursor:pointer;font-family:Nunito,sans-serif;flex-shrink:0}
+.ibtn.on,.ibtn:hover{background:#0d3b6e;border-color:#0d3b6e;color:#fff}
+.hero{background:linear-gradient(135deg,#0d3b6e,#1a9a8a,#059669);padding:36px 20px;text-align:center;color:#fff}
+.hbadge{background:rgba(245,158,11,.25);border:1.5px solid rgba(245,158,11,.6);color:#f59e0b;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:10px}
+.htit{font-family:"Baloo 2",sans-serif;font-size:clamp(26px,6vw,48px);font-weight:800;line-height:1.1;margin-bottom:8px}
+.htit span{color:#f59e0b}
+.hsub{font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,.85);margin-bottom:14px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:13px;font-weight:700;padding:5px 13px;border-radius:18px}
+.sec{padding:18px 14px;max-width:860px;margin:0 auto}
+.stit{font-family:"Baloo 2",sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800;color:#0d3b6e;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.stit::after{content:"";flex:1;height:2px;background:linear-gradient(to right,#0d3b6e,transparent)}
+.tip{border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:clamp(12px,1.7vw,15px);line-height:1.6}
+.tip.az{background:#dbeafe;border-left:4px solid #0d3b6e;color:#1e3a5f}
+.tip.tl{background:#ccfbf1;border-left:4px solid #1a9a8a;color:#065f46}
+.tip.am{background:#fff8e1;border-left:4px solid #f59e0b;color:#78350f}
+.tip.vd{background:#d1fae5;border-left:4px solid #059669;color:#064e3b}
+.tip.rs{background:#fef2f2;border-left:4px solid #dc2626;color:#7f1d1d}
+.tip b{font-weight:800}
+.hora-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:9px;margin-bottom:14px}
+.hc{background:#fff;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.07);border-top:3px solid #0d3b6e;transition:all .2s}
+.hc:hover,.hc.play{transform:translateY(-2px);background:#dbeafe}
+.hnum{font-family:"Baloo 2",sans-serif;font-size:clamp(18px,3vw,28px);font-weight:800;color:#0d3b6e}
+.htxt{font-size:clamp(10px,1.4vw,14px);color:#555;margin-top:4px}
+.freq-wrap{margin-bottom:14px}
+.fbar{display:flex;align-items:center;margin-bottom:8px;gap:10px;cursor:pointer;padding:8px 12px;border-radius:10px;transition:all .2s;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.fbar:hover,.fbar.play{background:#f0f9ff}
+.fword{font-family:"Baloo 2",sans-serif;font-size:clamp(13px,2vw,18px);font-weight:800;min-width:110px}
+.ftrack{flex:1;height:12px;border-radius:6px;background:#e5e7eb;overflow:hidden}
+.ffill{height:100%;border-radius:6px;transition:width .5s}
+.fex{font-size:clamp(10px,1.3vw,13px);color:#888;font-style:italic;min-width:180px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:9px;margin-bottom:14px}
+.vc{background:#fff;border-radius:11px;padding:11px 8px;text-align:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.07);border-top:3px solid #1a9a8a;transition:all .2s}
+.vc:hover,.vc.play{transform:translateY(-2px);background:#ccfbf1}
+.vpt{font-family:"Baloo 2",sans-serif;font-weight:800;color:#0d3b6e;font-size:clamp(12px,1.8vw,16px)}
+.ves{font-size:clamp(9px,1.2vw,12px);color:#888;font-style:italic;margin-top:2px}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.comp-card{border-radius:12px;padding:14px}
+.comp-title{font-family:"Baloo 2",sans-serif;font-size:clamp(18px,3vw,26px);font-weight:800;text-align:center;margin-bottom:6px}
+.comp-badge{font-size:11px;font-weight:800;text-align:center;padding:3px 10px;border-radius:8px;display:block;margin-bottom:8px;letter-spacing:.5px}
+.comp-ex{font-size:clamp(12px,1.7vw,15px);line-height:1.8}
+.comp-ex li{cursor:pointer;padding:2px 4px;border-radius:4px;list-style:none;transition:all .15s}
+.comp-ex li:hover{background:rgba(0,0,0,.06)}
+.acard{background:#fff;border-radius:14px;padding:18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid #0d3b6e}
+.acard.am{border-top-color:#f59e0b}.acard.vd{border-top-color:#059669}.acard.rs{border-top-color:#dc2626}
+.atit{font-family:"Baloo 2",sans-serif;font-size:clamp(15px,2.2vw,19px);font-weight:800;color:#1e3a5f;margin-bottom:5px}
+.asub{font-size:13px;color:#666;margin-bottom:12px;font-style:italic}
+.sbar{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;color:#555;font-weight:700}
+.gsent{font-size:clamp(14px,2vw,18px);color:#222;line-height:2.8;margin-bottom:8px}
+.gap{display:inline-block;min-width:100px;border-bottom:2.5px solid #0d3b6e;text-align:center;padding:2px 8px;font-weight:800;color:#0d3b6e;border-radius:4px 4px 0 0;cursor:pointer}
+.gap.ok{background:#dbeafe}.gap.err{background:#fef2f2;color:#dc2626;animation:shk .3s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.orow{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.opt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:18px;padding:5px 13px;font-size:clamp(12px,1.6vw,14px);font-weight:700;cursor:pointer;color:#333;font-family:Nunito,sans-serif;transition:all .2s;touch-action:manipulation}
+.opt:hover{border-color:#0d3b6e;background:#dbeafe}.opt.used{opacity:.4;pointer-events:none;text-decoration:line-through}
+.qopt{background:#f0f9ff;border:2px solid #7dd3fc;border-radius:10px;padding:11px 13px;font-size:clamp(13px,1.8vw,15px);cursor:pointer;text-align:left;font-family:Nunito,sans-serif;font-weight:600;display:block;width:100%;margin-bottom:7px;touch-action:manipulation;transition:all .2s}
+.qopt:hover{border-color:#0d3b6e;background:#dbeafe}
+.qopt.ok{border-color:#059669;background:#d1fae5;color:#059669;pointer-events:none}
+.qopt.err{border-color:#dc2626;background:#fef2f2;color:#dc2626;pointer-events:none}
+.qexp{display:none;background:#f0f9ff;border-radius:8px;padding:10px 13px;font-size:13px;color:#333;margin-bottom:10px;border-left:3px solid #0d3b6e}
+.fmsg{display:none;background:linear-gradient(135deg,#0d3b6e,#1a9a8a);border-radius:12px;padding:20px;text-align:center;margin-top:14px;color:#fff}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#222;color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:700;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.on{transform:translateX(-50%) translateY(0)}
+@media(max-width:480px){.comp-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top"><div class="tl"><div class="tlogo"><img src="data:image/jpeg;base64,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" alt="EB"></div><div><div class="ttitle">Enlace Brasil</div><div class="tsub">Aula 13 · Horas, Rotina e Advérbios · A1</div></div></div><div class="tpts">⭐ <span id="pts">0</span></div></div>
+<div class="ibar" id="ibar">
+<button class="ibtn" data-target="s-horas">⏰ Horas</button>
+<button class="ibtn" data-target="s-rotina">📅 Rotina</button>
+<button class="ibtn" data-target="s-freq">📊 Frequência</button>
+<button class="ibtn" data-target="s-tempo">🕐 Tempo</button>
+<button class="ibtn" data-target="s-lugar">📍 Lugar</button>
+<button class="ibtn" data-target="s-simnao">✅ Sim/Não</button>
+<button class="ibtn" data-target="s-bemxbom">BEM×BOM</button>
+<button class="ibtn" data-target="s-mauxmal">MAU×MAL</button>
+<button class="ibtn" data-target="s-todo">TODO×TUDO</button>
+<button class="ibtn" data-target="s-maisxmas">MAIS×MAS</button>
+<button class="ibtn" data-target="s-a1">✏️ Ativ.1</button>
+<button class="ibtn" data-target="s-a2">✏️ Ativ.2</button>
+<button class="ibtn" data-target="s-a3">✏️ Ativ.3</button>
+<button class="ibtn" data-target="s-quiz">🎮 Quiz</button>
+</div>
+<div class="hero"><div class="hbadge">AULA 13 · A1 · GRAMÁTICA</div><div class="htit">Horas, Rotina<br>e <span>Advérbios</span> ⏰</div><div class="hsub">Aprender as horas · Rotina diária · Palavras confusas</div><div class="pills"><span class="pill">⏰ Horas</span><span class="pill">📊 Sempre/Nunca</span><span class="pill">📅 Ontem/Hoje</span><span class="pill">BEM×BOM</span><span class="pill">TODO×TUDO</span></div></div>
+<div class="sec" id="s-horas"><div class="stit">⏰ As Horas</div>
+<div class="tip az"><b>É/São + hora:</b> É = 1h e meio-dia · São = todas as outras</div>
+<div class="hora-grid">
+<div class="hc" data-spk="É uma hora"><div class="hnum">1:00</div><div class="htxt">É uma hora</div></div>
+<div class="hc" data-spk="São duas horas"><div class="hnum">2:00</div><div class="htxt">São duas horas</div></div>
+<div class="hc" data-spk="É meio-dia"><div class="hnum">12:00</div><div class="htxt">É meio-dia</div></div>
+<div class="hc" data-spk="É meia-noite"><div class="hnum">00:00</div><div class="htxt">É meia-noite</div></div>
+<div class="hc" data-spk="São quatro e meia"><div class="hnum">4:30</div><div class="htxt">São quatro e meia</div></div>
+<div class="hc" data-spk="São três e quinze"><div class="hnum">3:15</div><div class="htxt">São três e quinze</div></div>
+<div class="hc" data-spk="São dez para as oito"><div class="hnum">7:50</div><div class="htxt">São dez para as oito</div></div>
+<div class="hc" data-spk="São quinze para o meio-dia"><div class="hnum">11:45</div><div class="htxt">Quinze para o meio-dia</div></div>
+</div>
+<div class="tip tl"><b>Fórmula:</b> 1–30 min → hora + E + min &nbsp;·&nbsp; 31–59 min → (60-min) PARA AS + próxima hora</div>
+<div class="tip am"><b>Adicione:</b> da manhã · da tarde · da noite · em ponto · quase · mais ou menos</div>
+</div>
+<div class="sec" id="s-rotina"><div class="stit">📅 Rotina Diária</div>
+<div class="tip vd"><b>Verbos de rotina:</b> acordar · tomar banho · tomar café · trabalhar · almoçar · estudar · jantar · dormir</div>
+<div class="vgrid">
+<div class="vc" data-spk="acordar"><div class="vpt">acordar</div><div class="ves">despertarse</div></div>
+<div class="vc" data-spk="tomar banho"><div class="vpt">tomar banho</div><div class="ves">bañarse</div></div>
+<div class="vc" data-spk="tomar café da manhã"><div class="vpt">tomar café</div><div class="ves">desayunar</div></div>
+<div class="vc" data-spk="trabalhar"><div class="vpt">trabalhar</div><div class="ves">trabajar</div></div>
+<div class="vc" data-spk="almoçar"><div class="vpt">almoçar</div><div class="ves">almorzar</div></div>
+<div class="vc" data-spk="estudar"><div class="vpt">estudar</div><div class="ves">estudiar</div></div>
+<div class="vc" data-spk="jantar"><div class="vpt">jantar</div><div class="ves">cenar</div></div>
+<div class="vc" data-spk="dormir"><div class="vpt">dormir</div><div class="ves">dormir</div></div>
+</div>
+<div class="tip az"><b>TODO DIA × O DIA TODO:</b> "Estudo todo dia" (todos los días) · "Estudei o dia todo" (el día entero)</div>
+</div>
+<div class="sec" id="s-freq"><div class="stit">📊 Advérbios de Frequência</div>
+<div class="freq-wrap">
+<div class="fbar" data-spk="Eu sempre acordo cedo."><span class="fword" style="color:#dc2626">SEMPRE</span><div class="ftrack"><div class="ffill" style="width:100%;background:#dc2626"></div></div><span style="font-size:12px;color:#888;min-width:30px">100%</span><span class="fex">Eu sempre acordo cedo.</span></div>
+<div class="fbar" data-spk="Eu geralmente almoço em casa."><span class="fword" style="color:#ea580c">GERALMENTE</span><div class="ftrack"><div class="ffill" style="width:75%;background:#ea580c"></div></div><span style="font-size:12px;color:#888;min-width:30px">75%</span><span class="fex">Geralmente almoço em casa.</span></div>
+<div class="fbar" data-spk="Às vezes vou ao cinema."><span class="fword" style="color:#ca8a04">ÀS VEZES</span><div class="ftrack"><div class="ffill" style="width:50%;background:#ca8a04"></div></div><span style="font-size:12px;color:#888;min-width:30px">50%</span><span class="fex">Às vezes vou ao cinema.</span></div>
+<div class="fbar" data-spk="Raramente como fast food."><span class="fword" style="color:#2563eb">RARAMENTE</span><div class="ftrack"><div class="ffill" style="width:25%;background:#2563eb"></div></div><span style="font-size:12px;color:#888;min-width:30px">25%</span><span class="fex">Raramente como fast food.</span></div>
+<div class="fbar" data-spk="Eu nunca como carne."><span class="fword" style="color:#374151">NUNCA</span><div class="ftrack"><div class="ffill" style="width:5%;background:#374151"></div></div><span style="font-size:12px;color:#888;min-width:30px">0%</span><span class="fex">Nunca como carne.</span></div>
+</div>
+<div class="tip tl"><b>Exercício:</b> Você sempre toma café da manhã? Você às vezes estuda à noite? Você nunca come doces?</div>
+</div>
+<div class="sec" id="s-tempo"><div class="stit">🕐 Advérbios de Tempo</div>
+<div class="vgrid">
+<div class="vc" data-spk="Ontem choveu muito."><div class="vpt">ONTEM</div><div class="ves">ayer</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Ontem choveu.</div></div>
+<div class="vc" data-spk="Hoje está sol."><div class="vpt">HOJE</div><div class="ves">hoy</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Hoje está sol.</div></div>
+<div class="vc" data-spk="Viajo amanhã."><div class="vpt">AMANHÃ</div><div class="ves">mañana</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Viajo amanhã.</div></div>
+<div class="vc" data-spk="Agora estou estudando."><div class="vpt">AGORA</div><div class="ves">ahora</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Agora estou estudando.</div></div>
+<div class="vc" data-spk="Acordo cedo."><div class="vpt">CEDO</div><div class="ves">temprano</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Acordo cedo.</div></div>
+<div class="vc" data-spk="Chego tarde."><div class="vpt">TARDE</div><div class="ves">tarde</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Chego tarde.</div></div>
+<div class="vc" data-spk="Depois almoço."><div class="vpt">DEPOIS</div><div class="ves">después</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Depois almoço.</div></div>
+<div class="vc" data-spk="Antes eu durmo."><div class="vpt">ANTES</div><div class="ves">antes</div><div style="font-size:10px;color:#0d3b6e;margin-top:3px;font-style:italic">Antes durmo.</div></div>
+</div>
+</div>
+<div class="sec" id="s-lugar"><div class="stit">📍 Advérbios de Lugar</div>
+<div class="comp-grid">
+<div class="comp-card" style="background:#ccfbf1;border:2px solid #1a9a8a">
+<div class="comp-title" style="color:#0d3b6e">AQUI · ALI · LÁ</div>
+<ul class="comp-ex">
+<li data-spk="Estou aqui."><b style="color:#0d3b6e">AQUI</b> — perto de mim (aquí) 🔊</li>
+<li data-spk="A casa é ali."><b style="color:#0d3b6e">ALI</b> — um pouco longe (ahí) 🔊</li>
+<li data-spk="Moro lá no Brasil."><b style="color:#0d3b6e">LÁ</b> — longe (allá) 🔊</li>
+</ul>
+</div>
+<div class="comp-card" style="background:#dbeafe;border:2px solid #0d3b6e">
+<div class="comp-title" style="color:#0d3b6e">Outros</div>
+<ul class="comp-ex">
+<li data-spk="Moro perto daqui."><b style="color:#0d3b6e">PERTO</b> (cerca) 🔊</li>
+<li data-spk="Fica longe."><b style="color:#0d3b6e">LONGE</b> (lejos) 🔊</li>
+<li data-spk="Está dentro."><b style="color:#0d3b6e">DENTRO</b> (adentro) 🔊</li>
+<li data-spk="Estou fora."><b style="color:#0d3b6e">FORA</b> (afuera) 🔊</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sec" id="s-simnao"><div class="stit">✅❌ Sim e Não</div>
+<div class="comp-grid">
+<div class="comp-card" style="background:#d1fae5;border:2px solid #059669">
+<div class="comp-title" style="color:#059669">✅ SIM</div>
+<ul class="comp-ex">
+<li data-spk="Sim, falo.">— Você fala português?<br>— <b style="color:#059669">Sim, falo.</b> 🔊</li>
+<li data-spk="Sim, gosto." style="margin-top:8px">— Você gosta de café?<br>— <b style="color:#059669">Sim, gosto.</b> 🔊</li>
+</ul>
+</div>
+<div class="comp-card" style="background:#fef2f2;border:2px solid #dc2626">
+<div class="comp-title" style="color:#dc2626">❌ NÃO</div>
+<ul class="comp-ex">
+<li data-spk="Não, não sou.">— Você é brasileiro?<br>— <b style="color:#dc2626">Não, não sou.</b> 🔊</li>
+<li style="margin-top:8px;background:#fff8e1;border-radius:6px;padding:6px;cursor:default">💡 Em PT usamos NÃO <b>duas vezes</b>:<br>"Não, não gosto." (PT) / "No, no me gusta." (ES)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sec" id="s-bemxbom"><div class="stit">BEM × BOM</div>
+<div class="tip tl"><b>Regra de ouro:</b> BOM/BOA = adjetivo (acompanha substantivo) · BEM = advérbio (acompanha verbo)</div>
+<div class="comp-grid">
+<div class="comp-card" style="background:#d1fae5;border:2px solid #059669">
+<div class="comp-title" style="color:#059669">BOM / BOA</div>
+<div class="comp-badge" style="background:#a7f3d0;color:#065f46">ADJETIVO — Como é? (bueno/a)</div>
+<ul class="comp-ex">
+<li data-spk="um bom aluno">Um <b>bom</b> aluno <span style="color:#888;font-size:.85em">· Un buen alumno</span> 🔊</li>
+<li data-spk="uma boa ideia">Uma <b>boa</b> ideia <span style="color:#888;font-size:.85em">· Una buena idea</span> 🔊</li>
+<li data-spk="Bom dia!"><b>Bom</b> dia! <span style="color:#888;font-size:.85em">· ¡Buenos días!</span> 🔊</li>
+<li data-spk="está bom assim">Está <b>bom</b> assim <span style="color:#888;font-size:.85em">· Está bien así</span> 🔊</li>
+</ul>
+</div>
+<div class="comp-card" style="background:#dbeafe;border:2px solid #0d3b6e">
+<div class="comp-title" style="color:#0d3b6e">BEM</div>
+<div class="comp-badge" style="background:#bfdbfe;color:#1e3a5f">ADVÉRBIO — Como fez? (bien)</div>
+<ul class="comp-ex">
+<li data-spk="ele fala bem">Ele fala <b>bem</b> <span style="color:#888;font-size:.85em">· Él habla bien</span> 🔊</li>
+<li data-spk="estou bem">Estou <b>bem</b> <span style="color:#888;font-size:.85em">· Estoy bien</span> 🔊</li>
+<li data-spk="fez bem">Fez <b>bem</b> <span style="color:#888;font-size:.85em">· Hizo bien</span> 🔊</li>
+<li data-spk="tudo bem?">Tudo <b>bem</b>? <span style="color:#888;font-size:.85em">· ¿Todo bien?</span> 🔊</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sec" id="s-mauxmal"><div class="stit">MAU × MAL</div>
+<div class="tip rs"><b>Truque:</b> Se dá para trocar por BOM → use MAU · Se dá para trocar por BEM → use MAL</div>
+<div class="comp-grid">
+<div class="comp-card" style="background:#fef2f2;border:2px solid #dc2626">
+<div class="comp-title" style="color:#dc2626">MAU / MÁ</div>
+<div class="comp-badge" style="background:#fecaca;color:#7f1d1d">ADJETIVO — Como é? (malo/a)</div>
+<ul class="comp-ex">
+<li data-spk="um homem mau">Um homem <b>mau</b> <span style="color:#888;font-size:.85em">· Un hombre malo</span> 🔊</li>
+<li data-spk="um mau negócio">Um <b>mau</b> negócio <span style="color:#888;font-size:.85em">· Un mal negocio</span> 🔊</li>
+<li data-spk="uma má notícia">Uma <b>má</b> notícia <span style="color:#888;font-size:.85em">· Una mala noticia</span> 🔊</li>
+<li data-spk="mau humor"><b>Mau</b> humor <span style="color:#888;font-size:.85em">· Mal humor</span> 🔊</li>
+</ul>
+</div>
+<div class="comp-card" style="background:#f5f3ff;border:2px solid #7c3aed">
+<div class="comp-title" style="color:#7c3aed">MAL</div>
+<div class="comp-badge" style="background:#ddd6fe;color:#4c1d95">ADVÉRBIO — Como fez? (mal)</div>
+<ul class="comp-ex">
+<li data-spk="ele fez mal">Ele fez <b>mal</b> <span style="color:#888;font-size:.85em">· Él hizo mal</span> 🔊</li>
+<li data-spk="falar mal">Falar <b>mal</b> <span style="color:#888;font-size:.85em">· Hablar mal</span> 🔊</li>
+<li data-spk="dormi mal">Dormi <b>mal</b> <span style="color:#888;font-size:.85em">· Dormí mal</span> 🔊</li>
+<li data-spk="se saiu mal">Se saiu <b>mal</b> <span style="color:#888;font-size:.85em">· Le fue mal</span> 🔊</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sec" id="s-todo"><div class="stit">TODO × TUDO × TODOS</div>
+<div class="tip az"><b>Regra:</b> TODO/TODA/TODOS/TODAS sempre acompanham substantivo · TUDO fica sozinho</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px">
+<div style="background:#dbeafe;border:2px solid #0d3b6e;border-radius:12px;padding:14px">
+<div style="font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:800;color:#0d3b6e;margin-bottom:4px">TODO/TODA</div>
+<div style="font-size:11px;color:#888;margin-bottom:8px">adjetivo singular<br>todo/toda + subst.</div>
+<div onclick="spk('Todo dia')" style="font-size:clamp(12px,1.7vw,15px);color:#222;padding:3px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.08)">Todo dia <span style="color:#aaa;font-size:.85em">· todos los días</span></div>
+<div onclick="spk('Toda a família')" style="font-size:clamp(12px,1.7vw,15px);color:#222;padding:3px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.08)">Toda a família <span style="color:#aaa;font-size:.85em">· toda la familia</span></div>
+</div>
+<div style="background:#ede9fe;border:2px solid #7c3aed;border-radius:12px;padding:14px">
+<div style="font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:800;color:#7c3aed;margin-bottom:4px">TODOS/TODAS</div>
+<div style="font-size:11px;color:#888;margin-bottom:8px">adjetivo plural<br>todos/todas + subst.</div>
+<div onclick="spk('Todos os alunos')" style="font-size:clamp(12px,1.7vw,15px);color:#222;padding:3px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.08)">Todos os alunos <span style="color:#aaa;font-size:.85em">· todos los alumnos</span></div>
+<div onclick="spk('Todas as pessoas')" style="font-size:clamp(12px,1.7vw,15px);color:#222;padding:3px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.08)">Todas as pessoas <span style="color:#aaa;font-size:.85em">· todas las personas</span></div>
+</div>
+<div style="background:#fff8e1;border:2px solid #b45309;border-radius:12px;padding:14px">
+<div style="font-family:'Baloo 2',sans-serif;font-size:clamp(14px,2vw,18px);font-weight:800;color:#b45309;margin-bottom:4px">TUDO</div>
+<div style="font-size:11px;color:#888;margin-bottom:8px">pronome neutro<br>sem substantivo</div>
+<div onclick="spk('Comi tudo')" style="font-size:clamp(12px,1.7vw,15px);color:#222;padding:3px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.08)">Comi tudo <span style="color:#aaa;font-size:.85em">· comí todo</span></div>
+<div onclick="spk('Tudo bem?')" style="font-size:clamp(12px,1.7vw,15px);color:#222;padding:3px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.08)">Tudo bem? <span style="color:#aaa;font-size:.85em">· ¿todo bien?</span></div>
+</div>
+</div>
+</div>
+<div class="sec" id="s-maisxmas"><div class="stit">MAIS × MAS</div>
+<div class="comp-grid">
+<div class="comp-card" style="background:#dbeafe;border:2px solid #0d3b6e">
+<div class="comp-title" style="color:#0d3b6e">MAS</div>
+<div class="comp-badge" style="background:#bfdbfe;color:#1e3a5f">CONJUNÇÃO — PERO (contraste)</div>
+<ul class="comp-ex">
+<li data-spk="Quero ir, mas estou cansado.">Quero ir, <b>mas</b> estou cansado. 🔊</li>
+<li data-spk="É simpático, mas fala muito.">É simpático, <b>mas</b> fala muito. 🔊</li>
+</ul>
+</div>
+<div class="comp-card" style="background:#ede9fe;border:2px solid #7c3aed">
+<div class="comp-title" style="color:#7c3aed">MAIS</div>
+<div class="comp-badge" style="background:#ddd6fe;color:#4c1d95">ADIÇÃO — MÁS (quantidade)</div>
+<ul class="comp-ex">
+<li data-spk="Quero mais café.">Quero <b>mais</b> café. 🔊</li>
+<li data-spk="Ela é mais alta que eu.">Ela é <b>mais</b> alta que eu. 🔊</li>
+<li data-spk="Dois mais dois é quatro.">2 <b>mais</b> 2 é 4. 🔊</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sec" id="s-a1"><div class="acard">
+<div class="atit">✏️ Atividade 1 — Como se diz?</div>
+<div class="asub">Complete com a forma correta das horas!</div>
+<div class="sbar">Pontos: <span id="sc1">0</span>/5 <span id="st1">☆☆☆☆☆</span></div>
+<div><div class="gsent">É ___ hora. (1:00) → <span class="gap" id="g0">___</span></div>
+<div class="orow" id="o0">
+<span class="opt" data-idx="0" data-ans="uma" data-val="uma">uma</span>
+<span class="opt" data-idx="0" data-ans="uma" data-val="dois">dois</span>
+<span class="opt" data-idx="0" data-ans="uma" data-val="primeiro">primeiro</span>
+</div></div>
+<div><div class="gsent">São ___ e meia. (7:30) → <span class="gap" id="g1">___</span></div>
+<div class="orow" id="o1">
+<span class="opt" data-idx="1" data-ans="sete" data-val="sete">sete</span>
+<span class="opt" data-idx="1" data-ans="sete" data-val="seis">seis</span>
+<span class="opt" data-idx="1" data-ans="sete" data-val="oito">oito</span>
+</div></div>
+<div><div class="gsent">São ___ para as três. (2:45) → <span class="gap" id="g2">___</span></div>
+<div class="orow" id="o2">
+<span class="opt" data-idx="2" data-ans="quinze" data-val="quinze">quinze</span>
+<span class="opt" data-idx="2" data-ans="quinze" data-val="vinte">vinte</span>
+<span class="opt" data-idx="2" data-ans="quinze" data-val="dez">dez</span>
+</div></div>
+<div><div class="gsent">É ___. (12:00) → <span class="gap" id="g3">___</span></div>
+<div class="orow" id="o3">
+<span class="opt" data-idx="3" data-ans="meio-dia" data-val="meio-dia">meio-dia</span>
+<span class="opt" data-idx="3" data-ans="meio-dia" data-val="doze horas">doze horas</span>
+<span class="opt" data-idx="3" data-ans="meio-dia" data-val="noon">noon</span>
+</div></div>
+<div><div class="gsent">São cinco ___ ponto. (5:00 exatas) → <span class="gap" id="g4">___</span></div>
+<div class="orow" id="o4">
+<span class="opt" data-idx="4" data-ans="em" data-val="em">em</span>
+<span class="opt" data-idx="4" data-ans="em" data-val="de">de</span>
+<span class="opt" data-idx="4" data-ans="em" data-val="a">a</span>
+</div></div>
+<button style="border:none;border-radius:9px;padding:8px 18px;background:#9ca3af;color:#fff;font-weight:700;cursor:pointer;font-family:Nunito,sans-serif;touch-action:manipulation" id="rst1">🔄 Recomeçar</button>
+</div></div>
+<div class="sec" id="s-a2"><div class="acard am">
+<div class="atit">✏️ Atividade 2 — Complete com o advérbio correto</div>
+<div class="asub">Escolha: sempre / às vezes / nunca / ontem / hoje / amanhã</div>
+<div class="sbar">Pontos: <span id="sc2">0</span>/6 <span id="st2">☆☆☆☆☆☆</span></div>
+<div><div class="gsent">Eu ___ tomo café de manhã. (todos os dias) → <span class="gap" id="h0">___</span></div>
+<div class="orow" id="ho0">
+<span class="opt" data-idx2="0" data-ans="sempre" data-val="sempre">sempre</span>
+<span class="opt" data-idx2="0" data-ans="sempre" data-val="nunca">nunca</span>
+<span class="opt" data-idx2="0" data-ans="sempre" data-val="às vezes">às vezes</span>
+</div></div>
+<div><div class="gsent">Ela ___ vai à praia. (não gosta de praia) → <span class="gap" id="h1">___</span></div>
+<div class="orow" id="ho1">
+<span class="opt" data-idx2="1" data-ans="nunca" data-val="nunca">nunca</span>
+<span class="opt" data-idx2="1" data-ans="nunca" data-val="sempre">sempre</span>
+<span class="opt" data-idx2="1" data-ans="nunca" data-val="geralmente">geralmente</span>
+</div></div>
+<div><div class="gsent">___ choveu muito. (passado) → <span class="gap" id="h2">___</span></div>
+<div class="orow" id="ho2">
+<span class="opt" data-idx2="2" data-ans="Ontem" data-val="Ontem">Ontem</span>
+<span class="opt" data-idx2="2" data-ans="Ontem" data-val="Hoje">Hoje</span>
+<span class="opt" data-idx2="2" data-ans="Ontem" data-val="Amanhã">Amanhã</span>
+</div></div>
+<div><div class="gsent">___ vou ao médico. (futuro) → <span class="gap" id="h3">___</span></div>
+<div class="orow" id="ho3">
+<span class="opt" data-idx2="3" data-ans="Amanhã" data-val="Amanhã">Amanhã</span>
+<span class="opt" data-idx2="3" data-ans="Amanhã" data-val="Ontem">Ontem</span>
+<span class="opt" data-idx2="3" data-ans="Amanhã" data-val="Hoje">Hoje</span>
+</div></div>
+<div><div class="gsent">___ está muito calor. (presente) → <span class="gap" id="h4">___</span></div>
+<div class="orow" id="ho4">
+<span class="opt" data-idx2="4" data-ans="Hoje" data-val="Hoje">Hoje</span>
+<span class="opt" data-idx2="4" data-ans="Hoje" data-val="Ontem">Ontem</span>
+<span class="opt" data-idx2="4" data-ans="Hoje" data-val="Amanhã">Amanhã</span>
+</div></div>
+<div><div class="gsent">Às ___ estudo à noite. (50%) → <span class="gap" id="h5">___</span></div>
+<div class="orow" id="ho5">
+<span class="opt" data-idx2="5" data-ans="vezes" data-val="vezes">vezes</span>
+<span class="opt" data-idx2="5" data-ans="vezes" data-val="dias">dias</span>
+<span class="opt" data-idx2="5" data-ans="vezes" data-val="horas">horas</span>
+</div></div>
+<button style="border:none;border-radius:9px;padding:8px 18px;background:#9ca3af;color:#fff;font-weight:700;cursor:pointer;font-family:Nunito,sans-serif;touch-action:manipulation" id="rst2">🔄 Recomeçar</button>
+</div></div>
+<div class="sec" id="s-a3"><div class="acard rs">
+<div class="atit">✏️ Atividade 3 — BOM ou BEM? MAU ou MAL?</div>
+<div class="asub">Escolha a palavra correta!</div>
+<div class="sbar">Pontos: <span id="sc3">0</span>/6 <span id="st3">☆☆☆☆☆☆</span></div>
+<div><div class="gsent">Ela dança ___. (advérbio → verbo) → <span class="gap" id="p0">___</span></div>
+<div class="orow" id="po0">
+<span class="opt" data-idx3="0" data-ans="bem" data-val="bem">bem</span>
+<span class="opt" data-idx3="0" data-ans="bem" data-val="bom">bom</span>
+<span class="opt" data-idx3="0" data-ans="bem" data-val="boa">boa</span>
+</div></div>
+<div><div class="gsent">É um ___ filme. (adjetivo → substantivo) → <span class="gap" id="p1">___</span></div>
+<div class="orow" id="po1">
+<span class="opt" data-idx3="1" data-ans="bom" data-val="bom">bom</span>
+<span class="opt" data-idx3="1" data-ans="bom" data-val="bem">bem</span>
+<span class="opt" data-idx3="1" data-ans="bom" data-val="bons">bons</span>
+</div></div>
+<div><div class="gsent">Ele dormiu ___. (advérbio → verbo) → <span class="gap" id="p2">___</span></div>
+<div class="orow" id="po2">
+<span class="opt" data-idx3="2" data-ans="mal" data-val="mal">mal</span>
+<span class="opt" data-idx3="2" data-ans="mal" data-val="mau">mau</span>
+<span class="opt" data-idx3="2" data-ans="mal" data-val="má">má</span>
+</div></div>
+<div><div class="gsent">Tive um ___ dia. (adjetivo → substantivo) → <span class="gap" id="p3">___</span></div>
+<div class="orow" id="po3">
+<span class="opt" data-idx3="3" data-ans="mau" data-val="mau">mau</span>
+<span class="opt" data-idx3="3" data-ans="mau" data-val="mal">mal</span>
+<span class="opt" data-idx3="3" data-ans="mau" data-val="más">más</span>
+</div></div>
+<div><div class="gsent">___ os alunos estudaram. (plural + subst.) → <span class="gap" id="p4">___</span></div>
+<div class="orow" id="po4">
+<span class="opt" data-idx3="4" data-ans="Todos" data-val="Todos">Todos</span>
+<span class="opt" data-idx3="4" data-ans="Todos" data-val="Tudo">Tudo</span>
+<span class="opt" data-idx3="4" data-ans="Todos" data-val="Todo">Todo</span>
+</div></div>
+<div><div class="gsent">Comi ___. (sem substantivo) → <span class="gap" id="p5">___</span></div>
+<div class="orow" id="po5">
+<span class="opt" data-idx3="5" data-ans="tudo" data-val="tudo">tudo</span>
+<span class="opt" data-idx3="5" data-ans="tudo" data-val="todos">todos</span>
+<span class="opt" data-idx3="5" data-ans="tudo" data-val="todo">todo</span>
+</div></div>
+<button style="border:none;border-radius:9px;padding:8px 18px;background:#9ca3af;color:#fff;font-weight:700;cursor:pointer;font-family:Nunito,sans-serif;touch-action:manipulation" id="rst3">🔄 Recomeçar</button>
+</div></div>
+<div class="sec" id="s-quiz"><div class="acard" style="border-top-color:#7c3aed">
+<div class="atit">🎮 Quiz Final — Aula 13!</div>
+<div class="asub">5 perguntas para testar tudo!</div>
+<div class="sbar">Pontos: <span id="scQ">0</span>/5 <span id="stQ">☆☆☆☆☆</span></div>
+<div style="margin-bottom:16px;">
+<div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">1. Como se diz 7:30 em português?</div>
+<button class="qopt" data-qi="0" data-oi="0" data-ci="1">A. São sete e trinta.</button>
+<button class="qopt" data-qi="0" data-oi="1" data-ci="1">B. São sete e meia.</button>
+<button class="qopt" data-qi="0" data-oi="2" data-ci="1">C. São meia e sete.</button>
+<div class="qexp" id="qe0">✅ São sete e MEIA! 30 minutos = meia — nunca trinta!</div>
+</div>
+<div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #f0f9ff;">
+<div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">2. Como se diz que você nunca come carne?</div>
+<button class="qopt" data-qi="1" data-oi="0" data-ci="1">A. Eu não como carne nunca.</button>
+<button class="qopt" data-qi="1" data-oi="1" data-ci="1">B. Nunca como carne.</button>
+<button class="qopt" data-qi="1" data-oi="2" data-ci="1">C. Não como carne às vezes.</button>
+<div class="qexp" id="qe1">✅ Nunca como carne. O advérbio NUNCA fica antes do verbo!</div>
+</div>
+<div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #f0f9ff;">
+<div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">3. "Ela fala ___." — qual é a palavra correta?</div>
+<button class="qopt" data-qi="2" data-oi="0" data-ci="2">A. bom</button>
+<button class="qopt" data-qi="2" data-oi="1" data-ci="2">B. boa</button>
+<button class="qopt" data-qi="2" data-oi="2" data-ci="2">C. bem</button>
+<div class="qexp" id="qe2">✅ BEM! Falar é verbo → usamos advérbio BEM, não adjetivo BOM!</div>
+</div>
+<div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #f0f9ff;">
+<div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">4. "___ os dias estudei." — todo, tudo ou todos?</div>
+<button class="qopt" data-qi="3" data-oi="0" data-ci="2">A. Todo</button>
+<button class="qopt" data-qi="3" data-oi="1" data-ci="2">B. Tudo</button>
+<button class="qopt" data-qi="3" data-oi="2" data-ci="2">C. Todos</button>
+<div class="qexp" id="qe3">✅ TODOS os dias — plural + substantivo DIAS!</div>
+</div>
+<div style="margin-bottom:16px;padding-top:14px;border-top:2px solid #f0f9ff;">
+<div style="font-size:clamp(14px,2vw,17px);font-weight:700;color:#1e3a5f;margin-bottom:8px">5. Quero ir à festa, ___ estou cansado.</div>
+<button class="qopt" data-qi="4" data-oi="0" data-ci="1">A. mais</button>
+<button class="qopt" data-qi="4" data-oi="1" data-ci="1">B. mas</button>
+<button class="qopt" data-qi="4" data-oi="2" data-ci="1">C. mês</button>
+<div class="qexp" id="qe4">✅ MAS = pero (contraste). MAIS = más (quantidade/adição).</div>
+</div>
+<div class="fmsg" id="fmsg"><div style="font-size:40px;margin-bottom:8px">🏆🎉</div><div style="font-family:'Baloo 2',sans-serif;font-size:clamp(18px,3vw,24px);font-weight:800">Parabéns! Aula 13 concluída!</div><div style="font-size:14px;color:rgba(255,255,255,.85);margin-top:6px">Você domina horas, rotina e advérbios em português! 🇧🇷</div></div>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+var pts=0,sc1v=0,sc2v=0,sc3v=0,scQv=0;
+var done1=Array(5).fill(false),done2=Array(6).fill(false),done3=Array(6).fill(false),doneQ={};
+
+function addPts(n){pts+=n;document.getElementById("pts").textContent=pts;}
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on");},1800);}
+function goTo(id){var el=document.getElementById(id);if(!el)return;var top=el.getBoundingClientRect().top+window.pageYOffset-115;window.scrollTo({top:top,behavior:"smooth"});}
+document.querySelectorAll(".ibtn").forEach(function(btn){btn.addEventListener("click",function(){document.querySelectorAll(".ibtn").forEach(function(b){b.classList.remove("on");});btn.classList.add("on");goTo(btn.getAttribute("data-target"));});});
+// Horas clicáveis
+document.querySelectorAll(".hc").forEach(function(el){el.addEventListener("click",function(){document.querySelectorAll(".hc").forEach(function(e){e.classList.remove("play");});el.classList.add("play");spk(el.getAttribute("data-spk"));addPts(5);toast("🔊 +5 pts");setTimeout(function(){el.classList.remove("play");},1600);});});
+// Vocab
+document.querySelectorAll(".vc").forEach(function(el){el.addEventListener("click",function(){document.querySelectorAll(".vc").forEach(function(e){e.classList.remove("play");});el.classList.add("play");spk(el.getAttribute("data-spk"));addPts(5);toast("🔊 +5 pts");setTimeout(function(){el.classList.remove("play");},1600);});});
+// Freq bars
+document.querySelectorAll(".fbar").forEach(function(el){el.addEventListener("click",function(){document.querySelectorAll(".fbar").forEach(function(e){e.classList.remove("play");});el.classList.add("play");spk(el.getAttribute("data-spk"));addPts(5);toast("🔊 +5 pts");setTimeout(function(){el.classList.remove("play");},1800);});});
+// Comp-ex
+document.querySelectorAll(".comp-ex li[data-spk]").forEach(function(el){el.addEventListener("click",function(){spk(el.getAttribute("data-spk"));addPts(5);toast("🔊 +5 pts");});});
+// A1
+document.querySelectorAll(".opt[data-idx]").forEach(function(el){el.addEventListener("click",function(){var i=parseInt(el.getAttribute("data-idx"));if(done1[i])return;var g=document.getElementById("g"+i);var v=el.getAttribute("data-val");var ans=el.getAttribute("data-ans");if(v===ans){g.textContent=v;g.className="gap ok";el.classList.add("used");done1[i]=true;sc1v++;document.getElementById("sc1").textContent=sc1v;var s="";for(var j=0;j<5;j++)s+=j<sc1v?"⭐":"☆";document.getElementById("st1").textContent=s;addPts(12);toast("✅ +12 pts");spk(v);if(sc1v===5)setTimeout(function(){toast("🏆 Perfeito!");},600);}else{g.textContent=v;g.className="gap err";setTimeout(function(){g.textContent="___";g.className="gap";},700);toast("❌ Tente de novo!");}});});
+document.getElementById("rst1").addEventListener("click",function(){sc1v=0;done1=Array(5).fill(false);document.getElementById("sc1").textContent="0";document.getElementById("st1").textContent="☆☆☆☆☆";for(var i=0;i<5;i++){var g=document.getElementById("g"+i);if(g){g.textContent="___";g.className="gap";}document.querySelectorAll(".opt[data-idx='"+i+"']").forEach(function(o){o.className="opt";});}});
+// A2
+document.querySelectorAll(".opt[data-idx2]").forEach(function(el){el.addEventListener("click",function(){var i=parseInt(el.getAttribute("data-idx2"));if(done2[i])return;var g=document.getElementById("h"+i);var v=el.getAttribute("data-val");var ans=el.getAttribute("data-ans");if(v===ans){g.textContent=v;g.className="gap ok";el.classList.add("used");done2[i]=true;sc2v++;document.getElementById("sc2").textContent=sc2v;var s="";for(var j=0;j<6;j++)s+=j<sc2v?"⭐":"☆";document.getElementById("st2").textContent=s;addPts(12);toast("✅ +12 pts");if(sc2v===6)setTimeout(function(){toast("🏆 Perfeito!");},600);}else{g.textContent=v;g.className="gap err";setTimeout(function(){g.textContent="___";g.className="gap";},700);toast("❌ Tente de novo!");}});});
+document.getElementById("rst2").addEventListener("click",function(){sc2v=0;done2=Array(6).fill(false);document.getElementById("sc2").textContent="0";document.getElementById("st2").textContent="☆☆☆☆☆☆";for(var i=0;i<6;i++){var g=document.getElementById("h"+i);if(g){g.textContent="___";g.className="gap";}document.querySelectorAll(".opt[data-idx2='"+i+"']").forEach(function(o){o.className="opt";});}});
+// A3
+document.querySelectorAll(".opt[data-idx3]").forEach(function(el){el.addEventListener("click",function(){var i=parseInt(el.getAttribute("data-idx3"));if(done3[i])return;var g=document.getElementById("p"+i);var v=el.getAttribute("data-val");var ans=el.getAttribute("data-ans");if(v===ans){g.textContent=v;g.className="gap ok";el.classList.add("used");done3[i]=true;sc3v++;document.getElementById("sc3").textContent=sc3v;var s="";for(var j=0;j<6;j++)s+=j<sc3v?"⭐":"☆";document.getElementById("st3").textContent=s;addPts(12);toast("✅ +12 pts");if(sc3v===6)setTimeout(function(){toast("🏆 Perfeito!");},600);}else{g.textContent=v;g.className="gap err";setTimeout(function(){g.textContent="___";g.className="gap";},700);toast("❌ Tente de novo!");}});});
+document.getElementById("rst3").addEventListener("click",function(){sc3v=0;done3=Array(6).fill(false);document.getElementById("sc3").textContent="0";document.getElementById("st3").textContent="☆☆☆☆☆☆";for(var i=0;i<6;i++){var g=document.getElementById("p"+i);if(g){g.textContent="___";g.className="gap";}document.querySelectorAll(".opt[data-idx3='"+i+"']").forEach(function(o){o.className="opt";});}});
+// Quiz
+document.querySelectorAll(".qopt").forEach(function(btn){btn.addEventListener("click",function(){var qi=parseInt(btn.getAttribute("data-qi"));if(doneQ[qi])return;doneQ[qi]=true;var oi=parseInt(btn.getAttribute("data-oi"));var ci=parseInt(btn.getAttribute("data-ci"));document.querySelectorAll(".qopt[data-qi='"+qi+"']").forEach(function(b){b.style.pointerEvents="none";});if(oi===ci){btn.className="qopt ok";scQv++;document.getElementById("scQ").textContent=scQv;var s="";for(var j=0;j<5;j++)s+=j<scQv?"⭐":"☆";document.getElementById("stQ").textContent=s;addPts(20);toast("✅ +20 pts");}else{btn.className="qopt err";toast("❌ Veja a explicação!");}var exp=document.getElementById("qe"+qi);if(exp)exp.style.display="block";if(scQv===5){setTimeout(function(){var fm=document.getElementById("fmsg");fm.style.display="block";fm.scrollIntoView({behavior:"smooth"});},400);}});});
+// Audio
+function getBRV(){var a=speechSynthesis.getVoices();var b=a.filter(function(x){return x.lang==="pt-BR";});return b.length?b:a.filter(function(x){return x.lang.startsWith("pt");});}
+function spk(t){if(!window.speechSynthesis)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="pt-BR";u.rate=0.85;u.pitch=1.0;var v=getBRV();if(v.length)u.voice=v[0];speechSynthesis.speak(u);}
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};}
+
+</script>
+</body>
+</html>
