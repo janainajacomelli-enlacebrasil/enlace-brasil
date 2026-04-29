@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 · Aula 7 – Opiniões, Preferências e Vocabulário</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1a6b3a;
+    --verde-claro: #e8f5ee;
+    --amarelo: #f5c842;
+    --amarelo-claro: #fffbe6;
+    --azul: #1e4d8c;
+    --azul-claro: #e8f0fb;
+    --cinza: #f2f2f0;
+    --texto: #1a1a1a;
+    --borda: #d0d0cc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #faf9f6;
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: var(--verde);
+    color: white;
+    padding: 28px 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .header-left h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .header-left .subtitulo {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .badge {
+    background: var(--amarelo);
+    color: var(--verde);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  .main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+
+  /* Seções */
+  .secao {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--borda);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .secao-header {
+    padding: 16px 24px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--borda);
+  }
+
+  .secao-header.verde { background: var(--verde-claro); }
+  .secao-header.azul  { background: var(--azul-claro); }
+  .secao-header.amarelo { background: var(--amarelo-claro); }
+
+  .secao-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .verde .secao-num { background: var(--verde); color: white; }
+  .azul  .secao-num { background: var(--azul);  color: white; }
+  .amarelo .secao-num { background: var(--amarelo); color: var(--verde); }
+
+  .secao-titulo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .secao-body { padding: 22px 24px; }
+
+  /* Tabelas de estruturas */
+  table.estrutura {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin-top: 8px;
+  }
+  table.estrutura th {
+    background: var(--cinza);
+    text-align: left;
+    padding: 9px 14px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #555;
+    border-bottom: 2px solid var(--borda);
+  }
+  table.estrutura td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--borda);
+    vertical-align: top;
+  }
+  table.estrutura tr:last-child td { border-bottom: none; }
+  table.estrutura .destaque {
+    font-weight: 600;
+    color: var(--verde);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+
+  /* Cards de vocabulário */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .vocab-card {
+    background: var(--cinza);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--verde);
+  }
+  .vocab-card .pt { font-weight: 600; font-size: 1rem; color: var(--verde); }
+  .vocab-card .es { font-size: 0.85rem; color: #666; margin-top: 2px; }
+
+  /* Par sinônimo/antônimo */
+  .par-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .par-box {
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .par-box.sinonimo {
+    background: var(--azul-claro);
+    border: 1px solid #b8ccee;
+  }
+  .par-box.antonimo {
+    background: #fef0f0;
+    border: 1px solid #f0b8b8;
+  }
+
+  .par-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .sinonimo .par-label { color: var(--azul); }
+  .antonimo .par-label { color: #c0392b; }
+
+  .par-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+  }
+  .par-item:last-child { margin-bottom: 0; }
+  .par-item .seta { color: #aaa; font-size: 0.8rem; }
+  .par-item strong { color: var(--texto); }
+  .par-item span { color: #666; font-style: italic; font-size: 0.82rem; }
+
+  /* Exercícios interativos */
+  .exercicio {
+    margin-bottom: 20px;
+  }
+  .exercicio-titulo {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--verde);
+    margin-bottom: 10px;
+  }
+
+  .opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opcao-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--borda);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .opcao-btn:hover { border-color: var(--verde); background: var(--verde-claro); }
+  .opcao-btn.certa { border-color: var(--verde); background: var(--verde); color: white; }
+  .opcao-btn.errada { border-color: #e74c3c; background: #fdecea; color: #c0392b; }
+
+  .frase-lacuna {
+    background: var(--cinza);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.8;
+  }
+  .lacuna {
+    display: inline-block;
+    min-width: 140px;
+    border-bottom: 2px solid var(--verde);
+    padding: 0 6px;
+    font-style: italic;
+    color: #888;
+  }
+  input.lacuna-input {
+    border: none;
+    border-bottom: 2px solid var(--verde);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    min-width: 140px;
+    padding: 0 4px;
+    outline: none;
+    color: var(--texto);
+  }
+
+  .btn-verificar {
+    background: var(--verde);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+  }
+  .btn-verificar:hover { background: #145a2e; }
+
+  .feedback {
+    margin-top: 8px;
+    font-size: 0.88rem;
+    padding: 8px 14px;
+    border-radius: 6px;
+    display: none;
+  }
+  .feedback.ok  { background: var(--verde-claro); color: var(--verde); display: block; }
+  .feedback.nao { background: #fdecea; color: #c0392b; display: block; }
+
+  /* Produção oral */
+  .cartao-oral {
+    background: var(--amarelo-claro);
+    border: 1px solid #e8d870;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .cartao-oral .pergunta {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--texto);
+    margin-bottom: 8px;
+  }
+  .cartao-oral .dica {
+    font-size: 0.82rem;
+    color: #888;
+  }
+  .cartao-oral .dica strong { color: var(--verde); }
+
+  /* Rodapé */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: #aaa;
+    border-top: 1px solid var(--borda);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="data:image/png;base64,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" alt="Enlace Brasil" style="width:70px;height:70px;border-radius:50%;flex-shrink:0;">
+  <div class="header-left">
+    <div class="subtitulo">Enlace Brasil · Intermediário B1</div>
+    <h1>Aula 7 — Opiniões, Preferências<br>e Vocabulário</h1>
+  </div>
+  <div class="badge">Material do Aluno</div>
+</header>
+
+<div class="main">
+
+  <!-- SEÇÃO 1: Estruturas de opinião -->
+  <div class="secao">
+    <div class="secao-header verde">
+      <div class="secao-num">1</div>
+      <div class="secao-titulo">Expressando opiniões e preferências</div>
+    </div>
+    <div class="secao-body">
+      <p style="margin-bottom:14px; color:#555;">Observe as estruturas abaixo e compare com o espanhol.</p>
+      <table class="estrutura">
+        <thead>
+          <tr><th>Estrutura em português</th><th>Exemplo</th><th>Em espanhol</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="destaque">Acho que…</td>
+            <td>Acho que essa ideia é ótima.</td>
+            <td><em>Creo que…</em></td>
+          </tr>
+          <tr>
+            <td class="destaque">Na minha opinião…</td>
+            <td>Na minha opinião, a música é essencial.</td>
+            <td><em>En mi opinión…</em></td>
+          </tr>
+          <tr>
+            <td class="destaque">Prefiro… a…</td>
+            <td>Prefiro café a chá.</td>
+            <td><em>Prefiero… a/que…</em></td>
+          </tr>
+          <tr>
+            <td class="destaque">Gosto mais de…</td>
+            <td>Gosto mais de cinema do que de teatro.</td>
+            <td><em>Me gusta más…</em></td>
+          </tr>
+          <tr>
+            <td class="destaque">Para mim…</td>
+            <td>Para mim, o trabalho em equipe é fundamental.</td>
+            <td><em>Para mí…</em></td>
+          </tr>
+          <tr>
+            <td class="destaque">Não acho que…</td>
+            <td>Não acho que seja uma boa ideia.</td>
+            <td><em>No creo que…</em></td>
+          </tr>
+          <tr>
+            <td class="destaque">Concordo / Discordo com…</td>
+            <td>Concordo com você nesse ponto.</td>
+            <td><em>Estoy de acuerdo / No estoy de acuerdo…</em></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:20px;">
+        <div class="exercicio-titulo">🎯 Exercício 1 — Escolha a estrutura correta</div>
+        <p style="font-size:0.9rem; color:#555; margin-bottom:12px;">Clique na opção que completa a frase corretamente.</p>
+
+        <div id="ex1" style="margin-bottom:16px;">
+          <div class="frase-lacuna">________ o trabalho remoto tem muitas vantagens.</div>
+          <div class="opcoes">
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex1','Acho que','certa')">Acho que</button>
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex1','Prefiro','errada')">Prefiro</button>
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex1','Concordo','errada')">Concordo</button>
+          </div>
+          <div class="feedback" id="fb-ex1"></div>
+        </div>
+
+        <div id="ex2" style="margin-bottom:16px;">
+          <div class="frase-lacuna">________ teatro ________ cinema porque gosto de atores ao vivo.</div>
+          <div class="opcoes">
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex2','Prefiro… a','certa')">Prefiro… a</button>
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex2','Acho que… a','errada')">Acho que… a</button>
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex2','Para mim… a','errada')">Para mim… a</button>
+          </div>
+          <div class="feedback" id="fb-ex2"></div>
+        </div>
+
+        <div id="ex3">
+          <div class="frase-lacuna">________, a tecnologia mudou muito as relações humanas.</div>
+          <div class="opcoes">
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex3','Na minha opinião','certa')">Na minha opinião</button>
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex3','Discordo','errada')">Discordo</button>
+            <button class="opcao-btn" onclick="verificarOpcao(this,'ex3','Gosto mais de','errada')">Gosto mais de</button>
+          </div>
+          <div class="feedback" id="fb-ex3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: Vocabulário de opiniões -->
+  <div class="secao">
+    <div class="secao-header azul">
+      <div class="secao-num">2</div>
+      <div class="secao-titulo">Vocabulário de avaliação e sentimento</div>
+    </div>
+    <div class="secao-body">
+      <p style="margin-bottom:14px; color:#555;">Palavras úteis para expressar opiniões com precisão.</p>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="pt">ótimo / excelente</div><div class="es">excelente</div></div>
+        <div class="vocab-card"><div class="pt">péssimo / terrível</div><div class="es">pésimo / terrible</div></div>
+        <div class="vocab-card"><div class="pt">interessante</div><div class="es">interesante</div></div>
+        <div class="vocab-card"><div class="pt">chato / entediante</div><div class="es">aburrido</div></div>
+        <div class="vocab-card"><div class="pt">importante</div><div class="es">importante</div></div>
+        <div class="vocab-card"><div class="pt">inútil</div><div class="es">inútil</div></div>
+        <div class="vocab-card"><div class="pt">necessário</div><div class="es">necesario</div></div>
+        <div class="vocab-card"><div class="pt">desnecessário</div><div class="es">innecesario</div></div>
+        <div class="vocab-card"><div class="pt">surpreendente</div><div class="es">sorprendente</div></div>
+        <div class="vocab-card"><div class="pt">esperado</div><div class="es">esperado</div></div>
+        <div class="vocab-card"><div class="pt">justo / injusto</div><div class="es">justo / injusto</div></div>
+        <div class="vocab-card"><div class="pt">claro / confuso</div><div class="es">claro / confuso</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: Sinônimos e antônimos -->
+  <div class="secao">
+    <div class="secao-header amarelo">
+      <div class="secao-num">3</div>
+      <div class="secao-titulo">Sinônimos e antônimos</div>
+    </div>
+    <div class="secao-body">
+      <p style="margin-bottom:16px; color:#555;">Ampliar o vocabulário com sinônimos e antônimos permite expressar opiniões com mais variedade e precisão.</p>
+
+      <div class="par-grid">
+        <div class="par-box sinonimo">
+          <div class="par-label">🔵 Sinônimos (palavras de sentido semelhante)</div>
+          <div class="par-item"><strong>gostar</strong> <span class="seta">→</span> <strong>apreciar</strong></div>
+          <div class="par-item"><strong>achar</strong> <span class="seta">→</span> <strong>considerar, pensar</strong></div>
+          <div class="par-item"><strong>ótimo</strong> <span class="seta">→</span> <strong>excelente, incrível</strong></div>
+          <div class="par-item"><strong>importante</strong> <span class="seta">→</span> <strong>essencial, fundamental</strong></div>
+          <div class="par-item"><strong>concordar</strong> <span class="seta">→</span> <strong>estar de acordo</strong></div>
+          <div class="par-item"><strong>ruim</strong> <span class="seta">→</span> <strong>péssimo, terrível</strong></div>
+        </div>
+        <div class="par-box antonimo">
+          <div class="par-label">🔴 Antônimos (palavras de sentido oposto)</div>
+          <div class="par-item"><strong>gostar</strong> <span class="seta">↔</span> <strong>detestar, odiar</strong></div>
+          <div class="par-item"><strong>concordar</strong> <span class="seta">↔</span> <strong>discordar</strong></div>
+          <div class="par-item"><strong>ótimo</strong> <span class="seta">↔</span> <strong>péssimo</strong></div>
+          <div class="par-item"><strong>importante</strong> <span class="seta">↔</span> <strong>inútil, irrelevante</strong></div>
+          <div class="par-item"><strong>interessante</strong> <span class="seta">↔</span> <strong>chato, entediante</strong></div>
+          <div class="par-item"><strong>necessário</strong> <span class="seta">↔</span> <strong>desnecessário</strong></div>
+        </div>
+      </div>
+
+      <div style="margin-top:22px;">
+        <div class="exercicio-titulo">🎯 Exercício 2 — Sinônimo ou antônimo?</div>
+        <p style="font-size:0.9rem; color:#555; margin-bottom:14px;">Leia a frase e reescreva usando a palavra indicada, mantendo o sentido.</p>
+
+        <div style="margin-bottom:16px;">
+          <div class="frase-lacuna">
+            "Acho que o curso é muito bom." → Substitua <strong>bom</strong> por um sinônimo:<br>
+            <input class="lacuna-input" id="sin1" placeholder="escreva aqui..." size="20">
+          </div>
+          <button class="btn-verificar" onclick="verificarSinonimo('sin1',['ótimo','excelente','incrível','fantástico'],'fb-sin1')">Verificar</button>
+          <div class="feedback" id="fb-sin1"></div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div class="frase-lacuna">
+            "Não gosto de reuniões longas." → Substitua <strong>não gosto</strong> pelo antônimo de <em>gostar</em>:<br>
+            <input class="lacuna-input" id="sin2" placeholder="escreva aqui..." size="20">
+          </div>
+          <button class="btn-verificar" onclick="verificarSinonimo('sin2',['detesto','odeio','detesto reuniões','odeio reuniões'],'fb-sin2')">Verificar</button>
+          <div class="feedback" id="fb-sin2"></div>
+        </div>
+
+        <div>
+          <div class="frase-lacuna">
+            "Na minha opinião, isso é importante." → Substitua <strong>importante</strong> por outro sinônimo:<br>
+            <input class="lacuna-input" id="sin3" placeholder="escreva aqui..." size="20">
+          </div>
+          <button class="btn-verificar" onclick="verificarSinonimo('sin3',['essencial','fundamental','necessário','indispensável'],'fb-sin3')">Verificar</button>
+          <div class="feedback" id="fb-sin3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: Produção oral -->
+  <div class="secao">
+    <div class="secao-header verde">
+      <div class="secao-num">4</div>
+      <div class="secao-titulo">Prática oral — Fale sobre você</div>
+    </div>
+    <div class="secao-body">
+      <p style="margin-bottom:16px; color:#555;">Responda em voz alta usando as estruturas e o vocabulário da aula.</p>
+
+      <div class="cartao-oral">
+        <div class="pergunta">"Você prefere trabalhar sozinho ou em equipe? Por quê?"</div>
+        <div class="dica">Use: <strong>Prefiro… porque…</strong> / <strong>Acho que… é mais…</strong></div>
+      </div>
+      <div class="cartao-oral">
+        <div class="pergunta">"Qual é a sua opinião sobre aprender idiomas?"</div>
+        <div class="dica">Use: <strong>Na minha opinião…</strong> / <strong>Para mim…</strong></div>
+      </div>
+      <div class="cartao-oral">
+        <div class="pergunta">"Você concorda que a tecnologia facilita o aprendizado?"</div>
+        <div class="dica">Use: <strong>Concordo / Discordo porque…</strong> + sinônimos de <em>bom / ruim</em></div>
+      </div>
+      <div class="cartao-oral">
+        <div class="pergunta">"O que você acha do português comparado ao espanhol?"</div>
+        <div class="dica">Use: <strong>Acho que…</strong> / <strong>Gosto mais de…</strong> + antônimos para contrastar</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Enlace Brasil · Instituto de Lengua y Cultura Brasileña · Ciudad de México · 📱 5573217496
+</footer>
+
+<script>
+function verificarOpcao(btn, grupo, resposta, tipo) {
+  const btns = document.querySelectorAll(`#${grupo} .opcao-btn`);
+  btns.forEach(b => { b.classList.remove('certa','errada'); b.disabled = false; });
+  btn.classList.add(tipo);
+  btns.forEach(b => b.disabled = true);
+  const fb = document.getElementById(`fb-${grupo}`);
+  if (tipo === 'certa') {
+    fb.textContent = '✅ Correto! Muito bem!';
+    fb.className = 'feedback ok';
+  } else {
+    fb.textContent = '❌ Não é a melhor opção. Tente novamente!';
+    fb.className = 'feedback nao';
+    btn.disabled = true;
+    btns.forEach(b => b.disabled = false);
+    btn.disabled = true;
+  }
+}
+
+function verificarSinonimo(inputId, respostasValidas, fbId) {
+  const val = document.getElementById(inputId).value.trim().toLowerCase();
+  const fb = document.getElementById(fbId);
+  const ok = respostasValidas.some(r => val.includes(r.toLowerCase()) || r.toLowerCase().includes(val));
+  if (ok) {
+    fb.textContent = '✅ Ótimo! Essa é uma boa opção!';
+    fb.className = 'feedback ok';
+  } else {
+    fb.textContent = `❌ Tente outra palavra. Sugestões: ${respostasValidas.slice(0,2).join(', ')}`;
+    fb.className = 'feedback nao';
+  }
+}
+
+// ── ÁUDIO / PRONÚNCIA ─────────────────────────────────
+let vozPT = null;
+let veloc = 0.75;
+let btnAtivoAluno = null;
+
+function carregarVoz() {
+  return new Promise(res => {
+    const vozes = window.speechSynthesis.getVoices();
+    res(vozes.find(v => v.lang.startsWith('pt-BR')) ||
+        vozes.find(v => v.lang.startsWith('pt')) ||
+        vozes[0]);
+  });
+}
+window.speechSynthesis.onvoiceschanged = async () => { vozPT = await carregarVoz(); };
+
+async function falar(texto, btnEl) {
+  if (!vozPT) vozPT = await carregarVoz();
+  window.speechSynthesis.cancel();
+  if (btnAtivoAluno) { btnAtivoAluno.textContent = '🔊'; btnAtivoAluno.style.background = ''; }
+  const u = new SpeechSynthesisUtterance(texto);
+  u.voice = vozPT; u.lang = 'pt-BR'; u.rate = veloc; u.pitch = 1.05;
+  if (btnEl) {
+    btnAtivoAluno = btnEl;
+    btnEl.textContent = '⏸'; btnEl.style.background = 'var(--verde)'; btnEl.style.color = 'white';
+  }
+  u.onend = () => {
+    if (btnEl) { btnEl.textContent = '🔊'; btnEl.style.background = ''; btnEl.style.color = ''; }
+    btnAtivoAluno = null;
+  };
+  window.speechSynthesis.speak(u);
+}
+
+// Adicionar botões 🔊 em todas as palavras PT das tabelas e cards
+document.addEventListener('DOMContentLoaded', () => {
+  // vocab cards
+  document.querySelectorAll('.vocab-card .pt').forEach(el => {
+    const texto = el.textContent.split('/')[0].trim();
+    const btn = criarBtnAudio(texto);
+    el.appendChild(btn);
+  });
+  // pares sinônimos/antônimos
+  document.querySelectorAll('.par-item strong').forEach(el => {
+    const texto = el.textContent.trim();
+    if (texto.length > 1 && !texto.includes('→') && !texto.includes('↔')) {
+      const btn = criarBtnAudio(texto);
+      el.after(btn);
+    }
+  });
+  // frases da tabela de estruturas (destaque)
+  document.querySelectorAll('table.estrutura .destaque').forEach(el => {
+    const texto = el.textContent.replace(/…/g,'').trim();
+    if (texto.length > 2) {
+      const btn = criarBtnAudio(texto);
+      el.appendChild(btn);
+    }
+  });
+  // cartões de produção oral
+  document.querySelectorAll('.cartao-oral .pergunta').forEach(el => {
+    const texto = el.textContent.replace(/[""]/g,'').trim();
+    const btn = criarBtnAudio(texto);
+    btn.style.marginLeft = '8px';
+    el.appendChild(btn);
+  });
+});
+
+function criarBtnAudio(texto) {
+  const btn = document.createElement('button');
+  btn.textContent = '🔊';
+  btn.title = 'Ouvir pronúncia';
+  btn.style.cssText = `
+    display:inline-flex; align-items:center; margin-left:6px;
+    background:var(--verde-claro); border:1px solid #a8d8be;
+    color:var(--verde); padding:2px 7px; border-radius:10px;
+    font-size:0.72rem; cursor:pointer; vertical-align:middle;
+    font-family:'DM Sans',sans-serif; transition:all 0.15s;
+  `;
+  btn.onclick = (e) => { e.stopPropagation(); falar(texto, btn); };
+  return btn;
+}
+</script>
+</body>
+</html>
