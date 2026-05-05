@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pronomes Demonstrativos e Advérbios de Lugar – B2 | BTG Pactual</title>
+<style>
+  :root {
+    --azul: #0d3b6e;
+    --azul-medio: #1a5fa8;
+    --teal: #1a9a8a;
+    --teal-claro: #22bfac;
+    --dourado: #f5c842;
+    --branco: #ffffff;
+    --cinza-claro: #f4f6f9;
+    --cinza-texto: #4a5568;
+    --sombra: 0 4px 24px rgba(13,59,110,0.13);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #e8edf4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* HEADER */
+  .header {
+    width: 100%;
+    max-width: 900px;
+    background: var(--azul);
+    border-radius: 14px 14px 0 0;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--sombra);
+  }
+  .header-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--branco);
+    letter-spacing: 0.5px;
+  }
+  .header-logo span { color: var(--dourado); }
+  .header-info {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .header-info strong { color: var(--dourado); font-size: 0.85rem; }
+
+  /* CONTAINER SLIDE */
+  .slide-container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SLIDES */
+  .slide {
+    display: none;
+    padding: 40px 48px 32px;
+    min-height: 480px;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeIn 0.35s ease;
+  }
+  .slide.active { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SLIDE CAPA */
+  .slide-capa {
+    background: linear-gradient(135deg, var(--azul) 0%, #1a5fa8 60%, var(--teal) 100%);
+    color: var(--branco);
+    align-items: center;
+    text-align: center;
+    padding: 60px 48px;
+  }
+  .slide-capa .tag {
+    background: rgba(245,200,66,0.2);
+    border: 1.5px solid var(--dourado);
+    color: var(--dourado);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    display: inline-block;
+  }
+  .slide-capa h1 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .slide-capa h1 span { color: var(--dourado); }
+  .slide-capa p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .slide-capa .objetivos {
+    margin-top: 28px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .slide-capa .obj-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--branco);
+    font-size: 0.8rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+
+  /* TÍTULOS DOS SLIDES */
+  .slide-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--azul);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .slide-title .num {
+    background: var(--teal);
+    color: white;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .slide-subtitle {
+    font-size: 0.9rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding-left: 40px;
+  }
+
+  /* TABELA DE PRONOMES */
+  .table-demo {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    margin-bottom: 16px;
+  }
+  .table-demo thead th {
+    background: var(--azul);
+    color: var(--branco);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 10px 16px;
+    text-align: left;
+  }
+  .table-demo thead th:first-child { border-radius: 8px 0 0 8px; }
+  .table-demo thead th:last-child { border-radius: 0 8px 8px 0; }
+  .table-demo tbody tr { transition: background 0.2s; }
+  .table-demo tbody tr:hover td { background: #f0f7ff; }
+  .table-demo tbody td {
+    background: var(--cinza-claro);
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    color: var(--cinza-texto);
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .table-demo tbody td:first-child {
+    border-left: 3px solid var(--teal);
+    border-radius: 6px 0 0 6px;
+    font-weight: 700;
+    color: var(--azul);
+  }
+  .table-demo tbody td:last-child { border-radius: 0 6px 6px 0; }
+  .tag-perto { color: var(--teal); font-weight: 700; }
+  .tag-medio { color: var(--azul-medio); font-weight: 700; }
+  .tag-longe { color: #c0392b; font-weight: 700; }
+
+  /* GRID DUPLO */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .card {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 4px solid var(--teal);
+  }
+  .card.azul { border-left-color: var(--azul); }
+  .card.dourado { border-left-color: var(--dourado); }
+  .card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--azul);
+    margin-bottom: 10px;
+  }
+  .card ul { list-style: none; }
+  .card ul li {
+    font-size: 0.88rem;
+    color: var(--cinza-texto);
+    padding: 4px 0;
+    border-bottom: 1px dashed #d1d9e6;
+    line-height: 1.4;
+  }
+  .card ul li:last-child { border-bottom: none; }
+  .card ul li strong { color: var(--azul); }
+  .card ul li em { color: var(--teal); font-style: normal; font-weight: 600; }
+
+  /* DIÁLOGO */
+  .dialogo {
+    background: #f8faff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    border: 1px solid #d0ddf0;
+    margin-bottom: 10px;
+  }
+  .dialogo .linha {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .dialogo .linha:last-child { margin-bottom: 0; }
+  .dialogo .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+  }
+  .avatar.a { background: var(--azul); }
+  .avatar.b { background: var(--teal); }
+  .dialogo .fala {
+    background: white;
+    border-radius: 0 10px 10px 10px;
+    padding: 8px 14px;
+    font-size: 0.88rem;
+    color: var(--cinza-texto);
+    border: 1px solid #e2e8f0;
+    line-height: 1.5;
+    flex: 1;
+  }
+  .dialogo .fala strong { color: var(--azul); }
+  .dialogo .fala em { color: #c0392b; font-style: normal; font-weight: 600; }
+
+  /* LACUNAS */
+  .lacuna {
+    display: inline-block;
+    border-bottom: 2px solid var(--azul);
+    min-width: 70px;
+    height: 20px;
+    margin: 0 4px;
+    vertical-align: bottom;
+  }
+
+  /* NOTA PEDAGÓGICA */
+  .nota {
+    background: linear-gradient(90deg, #fff8e1, #fffdf0);
+    border-left: 4px solid var(--dourado);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: #7a6010;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+  .nota::before { content: "📌 Nota para o professor: "; font-weight: 700; }
+
+  /* CAIXA DESTAQUE */
+  .destaque {
+    background: var(--azul);
+    color: white;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .destaque strong { color: var(--dourado); }
+
+  /* EXERCÍCIO */
+  .exercicio-box {
+    background: #f0fff8;
+    border: 1.5px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+  .exercicio-box h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .exercicio-box ol {
+    padding-left: 18px;
+  }
+  .exercicio-box ol li {
+    font-size: 0.88rem;
+    color: var(--cinza-texto);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  /* SLIDE MAPA VISUAL */
+  .mapa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .mapa-item {
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .mapa-item.perto { background: #e8f8f5; border: 2px solid var(--teal); }
+  .mapa-item.medio { background: #eaf2ff; border: 2px solid var(--azul-medio); }
+  .mapa-item.longe { background: #fdecea; border: 2px solid #e74c3c; }
+  .mapa-item .icone { font-size: 1.8rem; margin-bottom: 6px; }
+  .mapa-item h5 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .mapa-item.perto h5 { color: var(--teal); }
+  .mapa-item.medio h5 { color: var(--azul-medio); }
+  .mapa-item.longe h5 { color: #e74c3c; }
+  .mapa-item ul { list-style: none; }
+  .mapa-item ul li { font-size: 0.82rem; color: var(--cinza-texto); padding: 2px 0; }
+  .mapa-item ul li strong { font-size: 0.88rem; color: #222; }
+
+  /* SLIDE SÍNTESE */
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .sintese-col h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .sintese-col.teal h4 { background: var(--teal); color: white; }
+  .sintese-col.azul h4 { background: var(--azul); color: white; }
+  .sintese-col ul { list-style: none; }
+  .sintese-col ul li {
+    font-size: 0.85rem;
+    color: var(--cinza-texto);
+    padding: 5px 10px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.4;
+  }
+  .sintese-col ul li strong { color: var(--azul); }
+
+  /* RODAPÉ */
+  .footer {
+    width: 100%;
+    max-width: 900px;
+    background: var(--azul);
+    border-radius: 0 0 14px 14px;
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--sombra);
+  }
+  .footer .slide-num {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer .slide-num strong { color: var(--dourado); }
+  .nav-btns { display: flex; gap: 8px; }
+  .btn-nav {
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 7px 20px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-nav:hover { background: rgba(255,255,255,0.22); }
+  .btn-nav:disabled { opacity: 0.35; cursor: default; }
+  .btn-nav.primario {
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+  .btn-nav.primario:hover { background: var(--teal-claro); }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    width: 100%;
+    max-width: 900px;
+    height: 4px;
+    background: rgba(13,59,110,0.15);
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--dourado));
+    transition: width 0.4s ease;
+    border-radius: 2px;
+  }
+
+  /* RESPONSIVO */
+  @media (max-width: 600px) {
+    .slide { padding: 24px 20px; }
+    .grid-2, .mapa-grid, .sintese-grid { grid-template-columns: 1fr; }
+    .slide-capa h1 { font-size: 1.5rem; }
+    .header { padding: 14px 20px; }
+    .footer { padding: 10px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">Enlace<span>Brasil</span></div>
+  <div class="header-info">
+    <strong>BTG Pactual · Grupo B2</strong><br>
+    Pronomes Demonstrativos &amp; Advérbios de Lugar
+  </div>
+</div>
+
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill" style="width:9.09%"></div>
+</div>
+
+<div class="slide-container">
+
+  <!-- SLIDE 1: CAPA -->
+  <div class="slide slide-capa active" id="slide-1">
+    <div class="tag">Nível B2 · BTG Pactual</div>
+    <h1>Pronomes Demonstrativos<br>&amp; <span>Advérbios de Lugar</span></h1>
+    <p>Como usar <em>este, esse, aquele</em> e <em>aqui, aí, lá</em> com precisão em contextos profissionais e cotidianos.</p>
+    <div class="objetivos">
+      <span class="obj-chip">🎯 Distinguir este / esse / aquele</span>
+      <span class="obj-chip">📍 Usar aqui / aí / lá com coerência</span>
+      <span class="obj-chip">💬 Aplicar em situações reais</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: COMPARATIVO PT vs ES -->
+  <div class="slide" id="slide-2">
+    <div class="slide-title"><div class="num">★</div> Português × Espanhol: Comparativo</div>
+    <div class="slide-subtitle">O que muda — e o que parece igual mas não é</div>
+
+    <table class="table-demo" style="margin-bottom:12px;">
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>🇧🇷 Português</th>
+          <th>🇲🇽 Espanhol</th>
+          <th>⚠️ Diferença-chave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Perto de quem fala</td>
+          <td><span class="tag-perto">este / esta / isto</span></td>
+          <td><span class="tag-perto">este / esta / esto</span></td>
+          <td>Formas idênticas — mas o uso é mais rígido em PT</td>
+        </tr>
+        <tr>
+          <td>Perto de quem ouve</td>
+          <td><span class="tag-medio">esse / essa / isso</span></td>
+          <td><span class="tag-medio">ese / esa / eso</span></td>
+          <td>Muito confundido! "Eso" → <strong>isso</strong> (neutro), não "esto"</td>
+        </tr>
+        <tr>
+          <td>Longe dos dois</td>
+          <td><span class="tag-longe">aquele / aquela / aquilo</span></td>
+          <td><span class="tag-longe">aquel / aquella / aquello</span></td>
+          <td>PT tem <strong>aquilo</strong> (neutro) — ES tem <strong>aquello</strong></td>
+        </tr>
+        <tr>
+          <td>Lugar de quem fala</td>
+          <td><span class="tag-perto">aqui</span></td>
+          <td><span class="tag-perto">aquí</span></td>
+          <td>Idêntico — sem armadilha</td>
+        </tr>
+        <tr>
+          <td>Lugar de quem ouve</td>
+          <td><span class="tag-medio">aí</span></td>
+          <td><span class="tag-medio">ahí</span></td>
+          <td>PT: <strong>aí</strong> (sem h) — muito usado em videochamadas</td>
+        </tr>
+        <tr>
+          <td>Lugar próximo / visível</td>
+          <td><span class="tag-longe">ali</span></td>
+          <td><span class="tag-longe">allí / allá (próx.)</span></td>
+          <td>PT separa <strong>ali</strong> (perto-visível) de <strong>lá</strong> (distante)</td>
+        </tr>
+        <tr>
+          <td>Lugar distante</td>
+          <td><span class="tag-longe">lá</span></td>
+          <td><span class="tag-longe">allá</span></td>
+          <td>PT usa <strong>lá</strong> também de forma figurada: "lá no fundo…"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="margin-top:0">
+      <div class="card">
+        <h4>🟡 Falsos cognatos de uso</h4>
+        <ul>
+          <li><strong>ES "eso"</strong> → PT <strong>isso</strong> ✅ (não "esto")</li>
+          <li><strong>ES "aquello"</strong> → PT <strong>aquilo</strong> ✅</li>
+          <li><strong>ES "allí"</strong> → PT <strong>ali</strong> ✅ (não "alli")</li>
+          <li><strong>ES "allá"</strong> → PT <strong>lá</strong> ✅ (não "allá")</li>
+        </ul>
+      </div>
+      <div class="card azul">
+        <h4>🔵 O que ES não tem (mas PT tem)</h4>
+        <ul>
+          <li>Distinção rígida <strong>este vs esse</strong> na fala culta formal</li>
+          <li><strong>Aí</strong> como marcador de lugar do interlocutor remoto</li>
+          <li>Neutros invariáveis: <strong>isto / isso / aquilo</strong> (mais usados que em ES)</li>
+          <li>Uso de <strong>lá</strong> no sentido figurado/atitudinal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nota">Peça aos alunos que olhem a tabela e identifiquem o que já sabiam intuitivamente. A maioria vai reconhecer "aqui / aí / ali / lá" facilmente — o desafio real é este vs esse na perspectiva discursiva.</div>
+  </div>
+
+  <!-- SLIDE 3: WARM-UP -->
+  <div class="slide" id="slide-3">
+    <div class="slide-title"><div class="num">1</div> Ponto de Partida</div>
+    <div class="slide-subtitle">Discussão inicial — ative o que você já sabe</div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>🗣️ Discuta com um colega</h4>
+        <ul>
+          <li>Você já usou <strong>este</strong> ou <strong>esse</strong> e sentiu que algo estava errado?</li>
+          <li>Em espanhol, existe diferença entre <strong>este</strong> e <strong>ese</strong>? Como funciona?</li>
+          <li>O que muda quando você diz <strong>"aqui"</strong> vs <strong>"lá"</strong> em português?</li>
+        </ul>
+      </div>
+      <div class="card azul">
+        <h4>🧭 O que vamos descobrir</h4>
+        <ul>
+          <li>Em português, a distância é <strong>tripla</strong>: perto, médio, longe</li>
+          <li>Os demonstrativos <strong>concordam</strong> com o substantivo (gênero e número)</li>
+          <li>Os advérbios de lugar NÃO variam — mas o uso é <strong>muito preciso</strong></li>
+          <li>Falantes nativos percebem erros <em>imediatamente</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nota">Explore a diferença entre espanhol e português aqui: em espanhol existe "aquí / ahí / allá", mas em contextos coloquiais os falantes muitas vezes simplificam. Em português, a distinção é mais rígida no registro formal.</div>
+  </div>
+
+  <!-- SLIDE 4: SISTEMA DOS DEMONSTRATIVOS -->
+  <div class="slide" id="slide-4">
+    <div class="slide-title"><div class="num">2</div> O Sistema dos Três: Pronomes Demonstrativos</div>
+    <div class="slide-subtitle">Distância em relação a quem fala e a quem ouve</div>
+    <table class="table-demo">
+      <thead>
+        <tr>
+          <th>Pronome</th>
+          <th>Masc. Sing.</th>
+          <th>Fem. Sing.</th>
+          <th>Masc. Pl.</th>
+          <th>Fem. Pl.</th>
+          <th>Neutro</th>
+          <th>Posição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag-perto">ESTE</span></td>
+          <td>este</td><td>esta</td><td>estes</td><td>estas</td><td>isto</td>
+          <td>Perto de quem <strong>fala</strong></td>
+        </tr>
+        <tr>
+          <td><span class="tag-medio">ESSE</span></td>
+          <td>esse</td><td>essa</td><td>esses</td><td>essas</td><td>isso</td>
+          <td>Perto de quem <strong>ouve</strong></td>
+        </tr>
+        <tr>
+          <td><span class="tag-longe">AQUELE</span></td>
+          <td>aquele</td><td>aquela</td><td>aqueles</td><td>aquelas</td><td>aquilo</td>
+          <td>Longe de <strong>ambos</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="nota">No registro coloquial brasileiro, "esse/essa" está substituindo progressivamente "este/esta". Para o contexto BTG (reuniões, e-mails, apresentações), vale usar a distinção formal — soa mais preciso e profissional.</div>
+  </div>
+
+  <!-- SLIDE 5: MAPA VISUAL -->
+  <div class="slide" id="slide-5">
+    <div class="slide-title"><div class="num">3</div> Mapa Visual: Distância Física &amp; Discursiva</div>
+    <div class="slide-subtitle">Duas funções: localizar no espaço e referir no discurso</div>
+    <div class="mapa-grid">
+      <div class="mapa-item perto">
+        <div class="icone">🟢</div>
+        <h5>Este / Esta / Isto</h5>
+        <ul>
+          <li><strong>Espaço:</strong> aqui, perto de mim</li>
+          <li><strong>Discurso:</strong> o que vou dizer</li>
+          <li><strong>Tempo:</strong> este mês, esta semana</li>
+        </ul>
+      </div>
+      <div class="mapa-item medio">
+        <div class="icone">🔵</div>
+        <h5>Esse / Essa / Isso</h5>
+        <ul>
+          <li><strong>Espaço:</strong> aí, perto de você</li>
+          <li><strong>Discurso:</strong> o que você disse</li>
+          <li><strong>Tempo:</strong> esse ano (distância média)</li>
+        </ul>
+      </div>
+      <div class="mapa-item longe">
+        <div class="icone">🔴</div>
+        <h5>Aquele / Aquela / Aquilo</h5>
+        <ul>
+          <li><strong>Espaço:</strong> lá, longe dos dois</li>
+          <li><strong>Discurso:</strong> o que já foi mencionado</li>
+          <li><strong>Tempo:</strong> aquele projeto de 2022</li>
+        </ul>
+      </div>
+    </div>
+    <div class="destaque">
+      💼 <strong>Uso discursivo em reuniões:</strong> "Como eu disse no início da apresentação, <strong>este</strong> dado é central." (vou mostrar agora) · "Voltando àquilo que discutimos na semana passada..." (já foi dito antes)
+    </div>
+  </div>
+
+  <!-- SLIDE 6: ADVÉRBIOS DE LUGAR -->
+  <div class="slide" id="slide-6">
+    <div class="slide-title"><div class="num">4</div> Advérbios de Lugar: Aqui · Aí · Ali · Lá</div>
+    <div class="slide-subtitle">Invariáveis, mas com uso muito preciso</div>
+    <table class="table-demo">
+      <thead>
+        <tr>
+          <th>Advérbio</th>
+          <th>Corresponde a...</th>
+          <th>Uso principal</th>
+          <th>Exemplo profissional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag-perto">aqui</span></td>
+          <td>este / esta / isto</td>
+          <td>Lugar de quem fala</td>
+          <td>"Aqui no escritório de SP fazemos assim."</td>
+        </tr>
+        <tr>
+          <td><span class="tag-medio">aí</span></td>
+          <td>esse / essa / isso</td>
+          <td>Lugar de quem ouve</td>
+          <td>"Como está a situação aí no Rio?"</td>
+        </tr>
+        <tr>
+          <td><span class="tag-longe">ali</span></td>
+          <td>aquele (próximo, visível)</td>
+          <td>Perto, mas não de nenhum dos dois</td>
+          <td>"A sala de reunião é ali no corredor."</td>
+        </tr>
+        <tr>
+          <td><span class="tag-longe">lá</span></td>
+          <td>aquele (longe)</td>
+          <td>Longe, às vezes abstrato</td>
+          <td>"Lá fora a reunião já terminou." · "lá no Brasil"</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="nota">Atenção ao telefone / videoconferência: "aí" é muito usado para se referir ao lugar do interlocutor remoto. "Como está o clima aí em Brasília?" é totalmente natural e esperado.</div>
+  </div>
+
+  <!-- SLIDE 7: DIÁLOGO MODELO -->
+  <div class="slide" id="slide-7">
+    <div class="slide-title"><div class="num">5</div> Diálogo Modelo: Reunião de Equipe</div>
+    <div class="slide-subtitle">Observe o uso em contexto real — identifique as referências</div>
+    <div class="dialogo">
+      <div class="linha">
+        <div class="avatar a">RV</div>
+        <div class="fala">Bom dia a todos. <strong>Este</strong> relatório que vou apresentar hoje traz os resultados do terceiro trimestre. <strong>Aqueles</strong> problemas de fluxo de caixa que discutimos em agosto finalmente foram resolvidos.</div>
+      </div>
+      <div class="linha">
+        <div class="avatar b">CM</div>
+        <div class="fala">Ótimo! <em>Essa</em> notícia é muito boa. E o projeto do Rio — como está <em>isso</em> andando?</div>
+      </div>
+      <div class="linha">
+        <div class="avatar a">RV</div>
+        <div class="fala"><strong>Esse</strong> projeto está bem avançado. A equipe <strong>aí</strong> no Rio já assinou o contrato. <strong>Aqui</strong> em SP ainda estamos finalizando os documentos.</div>
+      </div>
+      <div class="linha">
+        <div class="avatar b">CM</div>
+        <div class="fala">Perfeito. <strong>Aquilo</strong> que o Carlos sugeriu na última reunião — usar o sistema novo — faz todo sentido agora.</div>
+      </div>
+    </div>
+    <div class="nota">Peça aos alunos que identifiquem e classifiquem cada demonstrativo e advérbio sublinhado. Depois, peçam que reescrevam duas falas com outros demonstrativos e expliquem a mudança de sentido.</div>
+  </div>
+
+  <!-- SLIDE 8: ARMADILHAS -->
+  <div class="slide" id="slide-8">
+    <div class="slide-title"><div class="num">6</div> Armadilhas Frequentes para Hispanofalantes</div>
+    <div class="slide-subtitle">Onde o espanhol interfere — e como corrigir</div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>❌ Erros comuns</h4>
+        <ul>
+          <li><em>*Este relatório que você enviou</em> → <strong>Esse</strong> relatório que você enviou (perto do ouvinte)</li>
+          <li><em>*Eso não funciona</em> → <strong>Isso</strong> não funciona (neutro em pt.)</li>
+          <li><em>*Allí</em> → <strong>Ali</strong> (não existe "alli" em pt.)</li>
+          <li><em>*Aquello foi difícil</em> → <strong>Aquilo</strong> foi difícil</li>
+        </ul>
+      </div>
+      <div class="card dourado">
+        <h4>✅ Como pensar em português</h4>
+        <ul>
+          <li>Pergunte sempre: <strong>quem tem o objeto/ideia mais perto?</strong></li>
+          <li>Se é algo que você falará agora → <strong>este/esta</strong></li>
+          <li>Se é algo que o outro disse → <strong>esse/essa</strong></li>
+          <li>Se é abstrato ou distante no tempo → <strong>aquilo / aquele</strong></li>
+          <li><strong>Dica sonora:</strong> "aqu<u>i</u>" → eu · "a<u>í</u>" → você · "l<u>á</u>" → longe</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nota">A interferência do espanhol "eso" leva hispanofalantes a dizer "isso" corretamente no neutro, mas a confundir "este" e "ese" por não perceberem a distinção de perspectiva. Explore isso com exemplos ao vivo.</div>
+  </div>
+
+  <!-- SLIDE 9: PRÁTICA ORAL -->
+  <div class="slide" id="slide-9">
+    <div class="slide-title"><div class="num">7</div> Prática Oral: Roleplay Executivo</div>
+    <div class="slide-subtitle">Em duplas — 5 a 7 minutos por situação</div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>🏢 Situação A — Videoconferência</h4>
+        <ul>
+          <li>Aluno A: está em São Paulo, referindo-se a documentos na sua mesa</li>
+          <li>Aluno B: está em Monterrey, referindo-se ao escritório do interlocutor</li>
+          <li>Tema: revisar um contrato juntos</li>
+          <li><em>Alvo:</em> usar <strong>aqui / aí</strong> e <strong>este / esse</strong> corretamente</li>
+        </ul>
+      </div>
+      <div class="card azul">
+        <h4>☕ Situação B — Almoço de negócios</h4>
+        <ul>
+          <li>Aluno A: aponta para pratos e lugares no restaurante</li>
+          <li>Aluno B: retoma assuntos da última reunião</li>
+          <li>Tema: fechar uma parceria</li>
+          <li><em>Alvo:</em> usar <strong>este / esse / aquele</strong> e <strong>ali / lá</strong> no contexto</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exercicio-box" style="margin-top:14px">
+      <h4>🎯 Após o roleplay — reflita</h4>
+      <ol>
+        <li>Em quais momentos foi mais difícil escolher entre <strong>esse</strong> e <strong>este</strong>?</li>
+        <li>Houve alguma situação em que você recorreu ao espanhol internamente?</li>
+        <li>Como você descreveria a regra com suas próprias palavras agora?</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: SÍNTESE -->
+  <div class="slide" id="slide-10">
+    <div class="slide-title"><div class="num">8</div> Síntese: O Que Fixar</div>
+    <div class="slide-subtitle">Resumo dos pontos essenciais da aula</div>
+    <div class="sintese-grid">
+      <div class="sintese-col teal">
+        <h4>📌 Pronomes Demonstrativos</h4>
+        <ul>
+          <li><strong>Este/Esta/Isto</strong> → perto de mim, agora, o que direi</li>
+          <li><strong>Esse/Essa/Isso</strong> → perto de você, o que você disse</li>
+          <li><strong>Aquele/Aquela/Aquilo</strong> → longe dos dois, passado distante</li>
+          <li>Concordam em gênero e número com o substantivo</li>
+          <li>Neutros (isto, isso, aquilo) para ideias abstratas</li>
+        </ul>
+      </div>
+      <div class="sintese-col azul">
+        <h4>📌 Advérbios de Lugar</h4>
+        <ul>
+          <li><strong>Aqui</strong> → meu espaço / meu ponto de vista</li>
+          <li><strong>Aí</strong> → seu espaço / onde você está</li>
+          <li><strong>Ali</strong> → perto, visível, mas não de nenhum dos dois</li>
+          <li><strong>Lá</strong> → longe, às vezes abstrato ou figurado</li>
+          <li>Não variam — mas o uso é culturalmente marcado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="destaque" style="margin-top:14px">
+      💡 <strong>Regra de ouro:</strong> pergunte sempre a perspectiva — <strong>quem está mais perto do objeto ou da ideia?</strong> A resposta determina qual demonstrativo ou advérbio usar.
+    </div>
+  </div>
+
+  <!-- SLIDE 11: ATIVIDADE DE ENCERRAMENTO -->
+  <div class="slide" id="slide-11">
+    <div class="slide-title"><div class="num">10</div> Atividade de Encerramento — Produção Escrita</div>
+    <div class="slide-subtitle">Individual — 7 minutos</div>
+
+    <div class="destaque" style="margin-bottom:18px;">
+      ✍️ Escreva <strong>4 a 6 frases</strong> sobre algo que aconteceu <strong>hoje</strong> no trabalho ou na semana.<br>
+      Use pelo menos <strong>3 demonstrativos ou advérbios de lugar diferentes</strong>. Sublinhe cada um e identifique a categoria.
+    </div>
+
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div class="card">
+        <h4>💡 Exemplos de ponto de partida</h4>
+        <ul>
+          <li>Uma reunião que aconteceu <em>hoje</em> ou esta semana</li>
+          <li>Um projeto em andamento <em>aqui</em> no escritório</li>
+          <li>Um resultado ou decisão de semanas atrás</li>
+          <li>Uma troca com um colega de outra cidade</li>
+        </ul>
+      </div>
+      <div class="card azul">
+        <h4>📋 Checklist antes de entregar</h4>
+        <ul>
+          <li>Usei pelo menos <strong>3</strong> demonstrativos / advérbios?</li>
+          <li>Sublinhei e identifiquei cada um?</li>
+          <li>Os demonstrativos estão concordando em gênero e número?</li>
+          <li>A perspectiva (quem fala / quem ouve) está correta?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercicio-box">
+      <h4>💬 Reflexão final — 3 min</h4>
+      <ol>
+        <li>Qual dos três demonstrativos você acha que vai usar mais no BTG? Por quê?</li>
+        <li>Dê um exemplo espontâneo usando <strong>aqui</strong> ou <strong>aí</strong> — sem pensar muito.</li>
+      </ol>
+    </div>
+
+    <div class="nota">A produção escrita pode ser recolhida para correção individual e devolvida na próxima aula com feedback anotado. A reflexão final pode ser feita oralmente, com 1 ou 2 alunos compartilhando — não precisa ser toda a turma.</div>
+  </div>
+
+  <!-- SLIDE 12: MÚSICA — AQUELE ABRAÇO -->
+  <div class="slide" id="slide-12">
+    <div class="slide-title"><div class="num">★</div> Música de Encerramento: "Aquele Abraço" – Gilberto Gil</div>
+    <div class="slide-subtitle">Leia o contexto para a turma antes de tocar a música</div>
+
+    <!-- RESUMO HISTÓRICO — PARA LER EM VOZ ALTA -->
+    <div style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0d3b6e); border-radius:12px; padding:20px 24px; margin-bottom:14px; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; right:0; width:80px; height:80px; background:rgba(245,200,66,0.08); border-radius:0 12px 0 80px;"></div>
+      <div style="font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:2px; color:var(--dourado); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+        <span>📖</span> Leia para a turma — contexto histórico
+      </div>
+      <div style="font-size:0.88rem; color:rgba(255,255,255,0.92); line-height:1.85;">
+        <p style="margin-bottom:10px;">
+          Em <strong style="color:var(--dourado)">dezembro de 1968</strong>, o Brasil vivia sob uma ditadura militar que havia chegado ao poder em 1964. Naquele mês, o governo decretou o <strong style="color:var(--dourado)">AI-5</strong> — o ato mais repressivo do regime, que suspendia direitos, instituía a censura e permitia prisões sem justificativa.
+        </p>
+        <p style="margin-bottom:10px;">
+          Apenas <strong style="color:var(--dourado)">14 dias depois</strong>, Gilberto Gil e Caetano Veloso — líderes do movimento cultural Tropicália — foram presos em São Paulo e levados ao Rio de Janeiro. O motivo oficial era uma denúncia <em>falsa</em> de que teriam desrespeitado o hino nacional num show. O motivo real era que suas músicas e seu comportamento incomodavam o regime.
+        </p>
+        <p style="margin-bottom:10px;">
+          Ficaram <strong style="color:var(--dourado)">dois meses detidos</strong> num quartel militar. Os soldados os cumprimentavam ironicamente todos os dias com uma expressão popular da época: <strong style="color:var(--dourado)">"Aquele abraço, Gil!"</strong>
+        </p>
+        <p style="margin-bottom:0;">
+          Quando saiu da prisão — numa <strong style="color:var(--dourado)">Quarta-feira de Cinzas de 1969</strong> — Gil viu o Rio ainda decorado de Carnaval. No avião de volta pra Bahia, escreveu a música num guardanapo. Meses depois, ele e Caetano foram exilados em <strong style="color:var(--dourado)">Londres</strong>. Gil partiu sem nem saber que a música havia se tornado número 1 no Brasil.
+        </p>
+      </div>
+      <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.12); font-size:0.8rem; color:rgba(255,255,255,0.6); font-style:italic;">
+        💡 Por isso ele disse <strong style="color:var(--dourado)">"aquele"</strong> abraço — e não "esse" ou "este". É distância. É ironia. É saudade de um Brasil que estava deixando para trás.
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <div class="destaque" style="flex:1; margin-bottom:0;">
+        🎵 Agora ouça a música e <strong>anote</strong> cada demonstrativo ou advérbio de lugar que ouvir.
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; flex-shrink:0;">
+        <a href="https://www.youtube.com/watch?v=HB8vbB5ILUU" target="_blank"
+           style="display:flex; align-items:center; gap:8px; background:#FF0000; color:white; text-decoration:none;
+                  padding:9px 16px; border-radius:8px; font-size:0.8rem; font-weight:700; white-space:nowrap;
+                  box-shadow:0 2px 8px rgba(255,0,0,0.3);">
+          ▶ Ouvir a música
+        </a>
+        <a href="https://www.youtube.com/watch?v=ohh-A7JLU3w" target="_blank"
+           style="display:flex; align-items:center; gap:8px; background:#1a5fa8; color:white; text-decoration:none;
+                  padding:9px 16px; border-radius:8px; font-size:0.8rem; font-weight:700; white-space:nowrap;
+                  box-shadow:0 2px 8px rgba(13,59,110,0.3);">
+          🎬 Por trás da letra <span style="font-size:0.7rem; opacity:0.85;">(CC disponível)</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div style="background:var(--cinza-claro); border-radius:10px; padding:16px 18px; border-left:4px solid var(--teal);">
+        <h4 style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:10px;">📋 Trecho para análise</h4>
+        <div style="font-size:0.88rem; color:var(--cinza-texto); line-height:1.9; font-style:italic;">
+          "O Rio de Janeiro continua lindo<br>
+          O Rio de Janeiro continua sendo<br>
+          O Rio de Janeiro, fevereiro e março<br>
+          Alô, alô, Realengo — <strong style="color:var(--azul)">aquele</strong> abraço!<br>
+          Meu caminho pelo mundo eu mesmo traço<br>
+          A Bahia já me deu régua e compasso<br>
+          Pra você que me esqueceu — <strong style="color:var(--azul)">aquele</strong> abraço!"
+        </div>
+      </div>
+      <div style="background:var(--cinza-claro); border-radius:10px; padding:16px 18px; border-left:4px solid var(--dourado);">
+        <h4 style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; color:#a07800; margin-bottom:10px;">🧠 Perguntas para discussão</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.85rem; color:var(--cinza-texto); padding:5px 0; border-bottom:1px dashed #d1d9e6; line-height:1.4;">Por que <strong>"aquele"</strong> abraço e não <strong>"esse"</strong> ou <strong>"este"</strong>?</li>
+          <li style="font-size:0.85rem; color:var(--cinza-texto); padding:5px 0; border-bottom:1px dashed #d1d9e6; line-height:1.4;">O que o demonstrativo comunica sobre o sentimento de Gil ao partir para o exílio?</li>
+          <li style="font-size:0.85rem; color:var(--cinza-texto); padding:5px 0; border-bottom:1px dashed #d1d9e6; line-height:1.4;">Como você traduziria "aquele abraço" para o espanhol — perde alguma coisa?</li>
+          <li style="font-size:0.85rem; color:var(--cinza-texto); padding:5px 0; line-height:1.4;">Você usaria <strong>"aquele"</strong> em alguma situação no BTG? Qual?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--azul),var(--teal)); border-radius:10px; padding:16px 22px; display:flex; align-items:center; gap:18px;">
+      <div style="font-size:2.5rem; flex-shrink:0;">🎙️</div>
+      <div>
+        <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--dourado); margin-bottom:4px;">Contexto histórico — para compartilhar com os alunos</div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.88); line-height:1.5;">Gil compôs a música num guardanapo, dentro de um avião, no dia em que saía da prisão rumo ao exílio em Londres (1969). "Aquele abraço" era o jeito irônico como os soldados o cumprimentavam. Na música, ele transforma essa ironia em afeto e despedida. O demonstrativo <strong style="color:var(--dourado)">aquele</strong> carrega tudo isso: distância, saudade, tempo que passou.</div>
+      </div>
+    </div>
+
+    <div class="nota">Toque a música nos últimos minutos da aula. Os alunos do BTG vão lembrar desta aula pelo demonstrativo que mais carrega emoção — aquele.</div>
+  </div>
+
+</div><!-- fim slide-container -->
+
+<div class="footer">
+  <div class="slide-num">Slide <strong id="numAtual">1</strong> de <strong>12</strong></div>
+  <div class="nav-btns">
+    <button class="btn-nav" id="btnAnterior" onclick="mudarSlide(-1)" disabled>← Anterior</button>
+    <button class="btn-nav primario" id="btnProximo" onclick="mudarSlide(1)">Próximo →</button>
+  </div>
+</div>
+
+<script>
+  let atual = 1;
+  const total = 12;
+
+  function mudarSlide(dir) {
+    document.getElementById('slide-' + atual).classList.remove('active');
+    atual += dir;
+    document.getElementById('slide-' + atual).classList.add('active');
+    document.getElementById('numAtual').textContent = atual;
+    document.getElementById('btnAnterior').disabled = atual === 1;
+    document.getElementById('btnProximo').disabled = atual === total;
+    document.getElementById('progressFill').style.width = ((atual / total) * 100) + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' && atual < total) mudarSlide(1);
+    if (e.key === 'ArrowLeft' && atual > 1) mudarSlide(-1);
+  });
+</script>
+</body>
+</html>
