@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 23 – Compreensão Auditiva | Aluno | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d3b6e;
+    --teal: #1a9a8a;
+    --gold: #f5c842;
+    --cream: #fdf6e3;
+    --dark: #1a1a2e;
+    --light-teal: #e8f7f5;
+    --light-gold: #fffbe6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f4f1ea; font-family: 'Source Serif 4', Georgia, serif; color: var(--dark); }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 30px 20px 60px; }
+  header { background: var(--navy); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 22px; }
+  .hdr-pre { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  h1.hdr-h1 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 6px; }
+  .hdr-sub { font-size: 13px; color: rgba(255,255,255,.75); }
+  .badge { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 11px; padding: 4px 10px; border-radius: 20px; margin-top: 10px; }
+
+  .secao { background: #fff; border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+  .sec-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sec-num { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .sec-tit { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--navy); }
+  .fase-tag { display: inline-block; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--teal); font-weight: 700; margin-bottom: 8px; }
+
+  .pod-box { background: var(--light-teal); border-left: 4px solid var(--teal); border-radius: 0 8px 8px 0; padding: 14px 18px; font-size: 14px; }
+  .pod-box a { color: var(--navy); font-weight: 700; }
+
+  .vocab-guess { display: flex; flex-direction: column; gap: 8px; }
+  .vg-item { display: flex; align-items: center; gap: 10px; background: var(--light-gold); border-radius: 8px; padding: 9px 13px; font-size: 14px; }
+  .vg-item .pt { font-weight: 700; color: var(--navy); min-width: 140px; }
+  .vg-item input { flex: 1; border: none; border-bottom: 1.5px solid #ccc; background: transparent; padding: 3px 4px; font-family: inherit; font-size: 13px; }
+
+  .vf-list { display: flex; flex-direction: column; gap: 8px; }
+  .vf-row { display: flex; align-items: center; gap: 12px; background: #f7f9ff; border-radius: 8px; padding: 10px 14px; font-size: 14px; }
+  .vf-row .num { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vf-row .txt { flex: 1; }
+  .vf-btns { display: flex; gap: 6px; }
+  .vf-btns button { border: 1.5px solid #ccc; background: #fff; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; font-family: inherit; }
+  .vf-btns button.sel-v { background: var(--teal); color: #fff; border-color: var(--teal); }
+  .vf-btns button.sel-f { background: #c0392b; color: #fff; border-color: #c0392b; }
+
+  .complete-item { background: #f7f9ff; border-radius: 8px; padding: 10px 14px; font-size: 14px; margin-bottom: 8px; line-height: 1.8; }
+  .complete-item input { border: none; border-bottom: 1.5px solid var(--teal); background: transparent; padding: 2px 6px; font-family: inherit; font-size: 14px; width: 140px; text-align: center; }
+
+  .vocab-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .vcard { background: var(--light-gold); border-radius: 8px; padding: 12px 14px; }
+  .vcard.teal { background: var(--light-teal); }
+  .vcard .word { font-weight: 700; color: var(--navy); font-size: 15px; }
+  .vcard .transl { font-size: 12px; color: #888; font-style: italic; margin-bottom: 6px; }
+  .vcard .example { font-size: 12px; color: #555; }
+
+  .prod-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .prod-box { background: #f7f9ff; border-radius: 8px; padding: 14px; }
+  .prod-box h4 { font-size: 13px; color: var(--navy); margin-bottom: 8px; }
+  .prod-box ol { padding-left: 18px; font-size: 13px; line-height: 1.9; }
+
+  .escrita-card { border-radius: 8px; padding: 14px; margin-bottom: 10px; }
+  .escrita-card.a1 { background: var(--light-teal); }
+  .escrita-card.a2 { background: var(--light-gold); }
+  .escrita-card .nivel { display: inline-block; background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; margin-bottom: 6px; }
+  .escrita-card h4 { font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+  .escrita-card p { font-size: 13px; color: #555; line-height: 1.6; }
+
+  .area { width: 100%; border: 1.5px solid #ddd; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: 13px; resize: vertical; }
+
+  footer { text-align: center; font-size: 11px; color: #999; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="hdr-pre">Enlace Brasil · A1/A2 · Aula 23</div>
+  <h1 class="hdr-h1">Compreensão Auditiva — Brasil & México</h1>
+  <div class="hdr-sub">Podcast Cinco Minutos de Português Brasileiro — Ep. 09</div>
+  <span class="badge">Material do Aluno</span>
+</header>
+
+<!-- PODCAST -->
+<div class="secao">
+  <div class="sec-hdr"><div class="sec-num">🎙️</div><div class="sec-tit">O Podcast</div></div>
+  <div class="pod-box">
+    <strong>Cinco Minutos de Português Brasileiro</strong> — Melissa Barbosa · Episódio 09, "Brasil e México"<br>
+    Áudio curto (≈5 min), fala clara e pausada. Escute no Spotify: <a href="https://open.spotify.com/episode/6CxjEk1pFcRFT1hZoXv3cz" target="_blank">Ep. 09 — Brasil e México</a>
+  </div>
+</div>
+
+<!-- PRÉ-ESCUTA -->
+<div class="secao">
+  <div class="fase-tag">⏱️ Fase 1 — Pré-escuta</div>
+  <div class="sec-hdr"><div class="sec-num">1</div><div class="sec-tit">Antes de ouvir: o que significa?</div></div>
+  <p style="font-size:13px;color:#666;margin-bottom:10px">Tente adivinhar o significado destas palavras antes de ouvir o áudio (em espanhol ou com um desenho):</p>
+  <div class="vocab-guess">
+    <div class="vg-item"><span class="pt">programa humorístico</span><input placeholder="seu palpite..."></div>
+    <div class="vg-item"><span class="pt">TV aberta</span><input placeholder="seu palpite..."></div>
+    <div class="vg-item"><span class="pt">novela</span><input placeholder="seu palpite..."></div>
+    <div class="vg-item"><span class="pt">viúvo/a</span><input placeholder="seu palpite..."></div>
+    <div class="vg-item"><span class="pt">aluguel</span><input placeholder="seu palpite..."></div>
+    <div class="vg-item"><span class="pt">vingança</span><input placeholder="seu palpite..."></div>
+  </div>
+</div>
+
+<!-- 1a ESCUTA -->
+<div class="secao">
+  <div class="fase-tag">🔊 Fase 2 — 1ª Escuta</div>
+  <div class="sec-hdr"><div class="sec-num">2</div><div class="sec-tit">Verdadeiro ou Falso?</div></div>
+  <p style="font-size:13px;color:#666;margin-bottom:10px">Ouça o episódio completo e marque V (verdadeiro) ou F (falso).</p>
+  <div class="vf-list">
+    <div class="vf-row"><div class="num">1</div><div class="txt">O Brasil fica na América do Norte.</div><div class="vf-btns"><button onclick="marcar(this,'v')">V</button><button onclick="marcar(this,'f')">F</button></div></div>
+    <div class="vf-row"><div class="num">2</div><div class="txt">Chaves é um programa humorístico mexicano.</div><div class="vf-btns"><button onclick="marcar(this,'v')">V</button><button onclick="marcar(this,'f')">F</button></div></div>
+    <div class="vf-row"><div class="num">3</div><div class="txt">Seu Madruga é a filha do Chaves.</div><div class="vf-btns"><button onclick="marcar(this,'v')">V</button><button onclick="marcar(this,'f')">F</button></div></div>
+    <div class="vf-row"><div class="num">4</div><div class="txt">O programa Chaves estreou no SBT em 1984.</div><div class="vf-btns"><button onclick="marcar(this,'v')">V</button><button onclick="marcar(this,'f')">F</button></div></div>
+    <div class="vf-row"><div class="num">5</div><div class="txt">A novela Rebelde era voltada ao público jovem.</div><div class="vf-btns"><button onclick="marcar(this,'v')">V</button><button onclick="marcar(this,'f')">F</button></div></div>
+    <div class="vf-row"><div class="num">6</div><div class="txt">O RBD fez shows no Brasil em 2023.</div><div class="vf-btns"><button onclick="marcar(this,'v')">V</button><button onclick="marcar(this,'f')">F</button></div></div>
+  </div>
+</div>
+
+<!-- 2a ESCUTA -->
+<div class="secao">
+  <div class="fase-tag">🔊 Fase 3 — 2ª Escuta</div>
+  <div class="sec-hdr"><div class="sec-num">3</div><div class="sec-tit">Complete as frases</div></div>
+  <p style="font-size:13px;color:#666;margin-bottom:10px">Ouça novamente e complete com as palavras do vocabulário.</p>
+  <div class="complete-item">1. Chaves ficou por mais de três décadas na programação da <input placeholder="..."> brasileira.</div>
+  <div class="complete-item">2. Seu Madruga é um <input placeholder="..."> que cria sozinho a sua filha, Chiquinha.</div>
+  <div class="complete-item">3. Ele está sempre devendo 18 meses de <input placeholder="...">.</div>
+  <div class="complete-item">4. A frase "A <input placeholder="..."> nunca é plena" é de Seu Madruga.</div>
+  <div class="complete-item">5. A <input placeholder="..."> Rebelde estreou no Brasil em 2005 no canal SBT.</div>
+</div>
+
+<!-- VOCABULÁRIO -->
+<div class="secao">
+  <div class="fase-tag">📖 Fase 4 — Vocabulário</div>
+  <div class="sec-hdr"><div class="sec-num">4</div><div class="sec-tit">Palavras do Episódio</div></div>
+  <div class="vocab-cards">
+    <div class="vcard"><div class="word">novela</div><div class="transl">telenovela</div><div class="example">"A novela Rebelde fez um sucesso imenso."</div></div>
+    <div class="vcard teal"><div class="word">aluguel</div><div class="transl">renta / alquiler</div><div class="example">"Ele está devendo 18 meses de aluguel."</div></div>
+    <div class="vcard"><div class="word">viúvo/a</div><div class="transl">viudo/a</div><div class="example">"Seu Madruga é um viúvo que cria a filha."</div></div>
+    <div class="vcard teal"><div class="word">TV aberta</div><div class="transl">televisión abierta</div><div class="example">"O programa ficou na TV aberta até 2020."</div></div>
+    <div class="vcard"><div class="word">vingança</div><div class="transl">venganza</div><div class="example">"A vingança nunca é plena." – Seu Madruga</div></div>
+    <div class="vcard teal"><div class="word">turnê</div><div class="transl">gira / tour</div><div class="example">"O RBD foi em turnê pela América Latina."</div></div>
+  </div>
+</div>
+
+<!-- PRODUÇÃO ORAL -->
+<div class="secao">
+  <div class="fase-tag">🗣️ Fase 5 — Produção Oral</div>
+  <div class="sec-hdr"><div class="sec-num">5</div><div class="sec-tit">Conversação em Duplas</div></div>
+  <div class="prod-cols">
+    <div class="prod-box">
+      <h4>🔵 NÍVEL A1</h4>
+      <ol>
+        <li>Você assiste o Chaves?</li>
+        <li>Qual é o seu personagem favorito?</li>
+        <li>Você gosta de novelas?</li>
+        <li>Você conhece o RBD?</li>
+      </ol>
+    </div>
+    <div class="prod-box">
+      <h4>🟢 NÍVEL A2</h4>
+      <ol>
+        <li>Por que o Chaves fez tanto sucesso no Brasil?</li>
+        <li>Você concorda com a frase de Seu Madruga?</li>
+        <li>Que séries mexicanas você conhece?</li>
+        <li>Como a cultura de um país entra em outro país?</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUÇÃO ESCRITA -->
+<div class="secao">
+  <div class="fase-tag">✍️ Fase 6 — Produção Escrita (tarefa de casa)</div>
+  <div class="sec-hdr"><div class="sec-num">6</div><div class="sec-tit">Escreva</div></div>
+  <div class="escrita-card a1">
+    <span class="nivel">A1</span>
+    <h4>Minha série favorita</h4>
+    <p>Escreva 5–6 frases sobre uma série ou programa de TV que você gosta. Responda: Qual é o nome? Onde passa? Quem são os personagens? Por que você gosta?</p>
+  </div>
+  <textarea class="area" rows="4" placeholder="Escreva aqui (A1)..."></textarea>
+  <div style="height:12px"></div>
+  <div class="escrita-card a2">
+    <span class="nivel" style="background:var(--gold);color:var(--navy)">A2</span>
+    <h4>Cultura que atravessa fronteiras</h4>
+    <p>Escreva um parágrafo (8–10 frases) sobre um produto cultural do México que faz sucesso em outro país, ou vice-versa. Use: programa humorístico, novela, fazer sucesso, cultura.</p>
+  </div>
+  <textarea class="area" rows="6" placeholder="Escreva aqui (A2)..."></textarea>
+</div>
+
+<footer>Enlace Brasil · Instituto de Língua e Cultura Brasileira · Ciudad de México</footer>
+</div>
+
+<script>
+function marcar(btn, val){
+  const parent = btn.parentElement;
+  parent.querySelectorAll('button').forEach(b=>b.classList.remove('sel-v','sel-f'));
+  btn.classList.add(val==='v'?'sel-v':'sel-f');
+}
+</script>
+</body>
+</html>

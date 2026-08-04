@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 23 – Compreensão Auditiva | Enlace Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d3b6e;
+    --teal: #1a9a8a;
+    --gold: #f5c842;
+    --cream: #fdf6e3;
+    --dark: #1a1a2e;
+    --light-teal: #e8f7f5;
+    --light-gold: #fffbe6;
+    --red-br: #009c3b;
+    --slide-w: 900px;
+    --slide-h: 560px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a1a;
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  /* HEADER */
+  .header {
+    width: var(--slide-w);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 16px;
+    color: #aaa;
+    font-size: 13px;
+    letter-spacing: .05em;
+  }
+  .header span:first-child { color: var(--gold); font-weight: 600; }
+
+  /* SLIDE CONTAINER */
+  .slide-wrap {
+    position: relative;
+    width: var(--slide-w);
+  }
+
+  .slide {
+    display: none !important;
+    width: var(--slide-w);
+    min-height: var(--slide-h);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0,0,0,.7);
+    animation: fadeIn .35s ease;
+  }
+  .slide.active { display: flex !important; flex-direction: column; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    width: var(--slide-w);
+    justify-content: center;
+  }
+  .nav button {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background .2s;
+    letter-spacing: .04em;
+  }
+  .nav button:hover { background: var(--teal); }
+  .nav button:disabled { background: #333; color: #666; cursor: default; }
+  .counter {
+    color: #aaa;
+    font-size: 13px;
+    min-width: 70px;
+    text-align: center;
+  }
+
+  /* SLIDE NOTES */
+  .notes-box {
+    width: var(--slide-w);
+    margin-top: 14px;
+    background: #111;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.7;
+    display: none;
+  }
+  .notes-box.visible { display: block; }
+  .notes-box strong { color: var(--gold); }
+
+  .toggle-notes {
+    width: var(--slide-w);
+    text-align: right;
+    margin-top: 8px;
+  }
+  .toggle-notes button {
+    background: none;
+    border: 1px solid #444;
+    color: #888;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .toggle-notes button:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── SLIDE STYLES ─── */
+
+  /* S0 – CAPA */
+  .s-capa {
+    background: var(--navy);
+    justify-content: center;
+    align-items: flex-start;
+    padding: 56px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .s-capa::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(26,154,138,.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(245,200,66,.08) 0%, transparent 50%);
+  }
+  .s-capa .tag {
+    background: var(--teal);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    position: relative;
+  }
+  .s-capa h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 46px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .s-capa h1 em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .s-capa .subtitle {
+    color: rgba(255,255,255,.65);
+    font-size: 17px;
+    position: relative;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+  .s-capa .flags {
+    font-size: 40px;
+    position: relative;
+  }
+  .s-capa .meta {
+    position: absolute;
+    bottom: 28px; right: 36px;
+    font-size: 12px;
+    color: rgba(255,255,255,.4);
+    text-align: right;
+  }
+  .s-capa .wave {
+    position: absolute;
+    bottom: -2px; right: -30px;
+    width: 340px;
+    opacity: .07;
+  }
+
+  /* S1 – OBJETIVOS */
+  .s-obj {
+    background: var(--cream);
+    padding: 44px 60px;
+    position: relative;
+  }
+  .s-obj::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: var(--teal);
+    border-radius: 6px 0 0 6px;
+  }
+  .s-obj h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 26px;
+  }
+  .obj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .obj-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .obj-item p { font-size: 15px; line-height: 1.5; color: #333; }
+  .obj-item strong { color: var(--navy); }
+  .time-bar {
+    margin-top: 22px;
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    gap: 0;
+  }
+  .time-seg {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    border-right: 1px solid rgba(255,255,255,.15);
+    padding: 0 6px;
+  }
+  .time-seg:last-child { border: none; }
+  .time-seg strong { display: block; font-size: 15px; color: var(--gold); }
+
+  /* S2 – APRESENTAÇÃO PODCAST */
+  .s-pod {
+    background: var(--dark);
+    padding: 44px 60px;
+    position: relative;
+  }
+  .s-pod h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  .pod-card {
+    background: linear-gradient(135deg, var(--navy), #1a2a4a);
+    border: 1px solid rgba(26,154,138,.4);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .pod-icon {
+    font-size: 54px;
+    flex-shrink: 0;
+  }
+  .pod-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .pod-info p {
+    color: rgba(255,255,255,.75);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .pod-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .pod-tag {
+    background: rgba(26,154,138,.2);
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    font-size: 11px;
+    letter-spacing: .08em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+  .pod-link {
+    background: var(--teal);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* S3 – PRÉ-ESCUTA */
+  .s-pre {
+    background: var(--light-gold);
+    padding: 44px 60px;
+  }
+  .s-pre h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .s-pre .fase {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .ativacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .perguntas-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--gold);
+  }
+  .perguntas-box h4 {
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .perguntas-box ol {
+    padding-left: 18px;
+    font-size: 15px;
+    line-height: 2;
+    color: #444;
+  }
+  .vocab-pre {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 18px 20px;
+    color: #fff;
+  }
+  .vocab-pre h4 {
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .vocab-pre ul {
+    list-style: none;
+    font-size: 14px;
+    line-height: 2.1;
+  }
+  .vocab-pre li::before { content: '▸ '; color: var(--teal); }
+  .vocab-pre em { color: rgba(255,255,255,.55); font-style: normal; font-size: 12px; }
+
+  /* S4 – DURANTE: 1ª ESCUTA */
+  .s-esc1 {
+    background: #fff;
+    padding: 44px 60px;
+    border-top: 8px solid var(--teal);
+  }
+  .s-esc1 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .s-esc1 .fase { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--teal); font-weight: 600; margin-bottom: 20px; }
+  .instrucao {
+    background: var(--light-teal);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #333;
+    border-left: 4px solid var(--teal);
+  }
+  .instrucao strong { color: var(--navy); }
+  .vf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .vf-item {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .vf-item .num {
+    background: var(--navy);
+    color: #fff;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  /* S5 – GABARITO 1ª ESCUTA */
+  .s-gab1 {
+    background: var(--navy);
+    padding: 44px 60px;
+    color: #fff;
+  }
+  .s-gab1 h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .gab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .gab-item {
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .gab-item.v { background: rgba(26,154,138,.2); border: 1px solid var(--teal); }
+  .gab-item.f { background: rgba(220,53,69,.15); border: 1px solid rgba(220,53,69,.5); }
+  .gab-icon { font-size: 18px; flex-shrink: 0; }
+  .gab-item p { color: rgba(255,255,255,.85); }
+  .discussao {
+    background: rgba(245,200,66,.1);
+    border: 1px solid rgba(245,200,66,.3);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.65;
+  }
+  .discussao strong { color: var(--gold); display: block; margin-bottom: 4px; }
+
+  /* S6 – 2ª ESCUTA */
+  .s-esc2 {
+    background: var(--cream);
+    padding: 44px 60px;
+    border-top: 8px solid var(--navy);
+  }
+  .s-esc2 h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 4px; }
+  .s-esc2 .fase { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--navy); font-weight: 600; margin-bottom: 20px; }
+  .complete-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .complete-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 13px 18px;
+    font-size: 15px;
+    color: #333;
+    border-left: 4px solid var(--navy);
+    line-height: 1.6;
+  }
+  .complete-item .blank {
+    display: inline-block;
+    border-bottom: 2px solid var(--teal);
+    min-width: 100px;
+    margin: 0 4px;
+    color: transparent;
+    user-select: none;
+  }
+
+  /* S7 – GABARITO 2ª ESCUTA */
+  .s-gab2 {
+    background: var(--teal);
+    padding: 44px 60px;
+    color: #fff;
+  }
+  .s-gab2 h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: #fff; margin-bottom: 20px; }
+  .gab2-list { display: flex; flex-direction: column; gap: 10px; }
+  .gab2-item {
+    background: rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-left: 4px solid rgba(255,255,255,.5);
+  }
+  .gab2-item span {
+    background: rgba(255,255,255,.25);
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* S8 – PÓS-ESCUTA: VOCABULÁRIO */
+  .s-vocab {
+    background: #fff;
+    padding: 44px 60px;
+  }
+  .s-vocab h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 4px; }
+  .s-vocab .fase { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .vocab-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .vocab-card {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: #fff;
+    text-align: center;
+  }
+  .vocab-card .word { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--gold); margin-bottom: 4px; }
+  .vocab-card .transl { font-size: 12px; color: rgba(255,255,255,.55); font-style: italic; margin-bottom: 6px; }
+  .vocab-card .example { font-size: 12px; color: rgba(255,255,255,.8); line-height: 1.5; border-top: 1px solid rgba(255,255,255,.1); padding-top: 6px; }
+  .vocab-card.teal { background: var(--teal); }
+  .frase-destaque {
+    background: var(--light-gold);
+    border-left: 5px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--navy);
+  }
+  .frase-destaque span { display: block; font-size: 12px; color: #888; font-style: normal; margin-top: 4px; }
+
+  /* S9 – PRODUÇÃO ORAL */
+  .s-prod {
+    background: var(--dark);
+    padding: 44px 60px;
+    color: #fff;
+  }
+  .s-prod h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold); margin-bottom: 4px; }
+  .s-prod .fase { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: #aaa; font-weight: 600; margin-bottom: 20px; }
+  .prod-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .prod-box {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .prod-box h4 { color: var(--teal); font-size: 14px; margin-bottom: 12px; letter-spacing: .05em; }
+  .prod-box ol { padding-left: 18px; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,.8); }
+  .prod-box ul { list-style: none; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,.8); }
+  .prod-box ul li::before { content: '→ '; color: var(--gold); }
+  .mini-dial {
+    margin-top: 14px;
+    background: rgba(26,154,138,.15);
+    border: 1px solid var(--teal);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .mini-dial strong { color: var(--teal); }
+
+  /* S10 – PRODUÇÃO ESCRITA */
+  .s-escrita {
+    background: var(--light-teal);
+    padding: 44px 60px;
+  }
+  .s-escrita h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 4px; }
+  .s-escrita .fase { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--teal); font-weight: 600; margin-bottom: 20px; }
+  .escrita-opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .escrita-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-top: 4px solid var(--navy);
+  }
+  .escrita-card h4 { color: var(--navy); font-size: 15px; margin-bottom: 8px; }
+  .escrita-card p { font-size: 14px; color: #555; line-height: 1.6; }
+  .escrita-card .nivel {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .escrita-card.gold { border-top-color: var(--gold); }
+
+  /* S11 – ENCERRAMENTO */
+  .s-fim {
+    background: var(--navy);
+    padding: 44px 60px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: var(--slide-h);
+    position: relative;
+    overflow: hidden;
+  }
+  .s-fim::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(26,154,138,.3) 0%, transparent 60%);
+  }
+  .s-fim h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .s-fim h2 em { color: var(--gold); font-style: normal; }
+  .s-fim p { font-size: 16px; color: rgba(255,255,255,.65); position: relative; margin-bottom: 24px; }
+  .s-fim .resumo {
+    display: flex;
+    gap: 20px;
+    position: relative;
+  }
+  .s-fim .resumo-item {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: rgba(255,255,255,.75);
+  }
+  .s-fim .resumo-item strong { display: block; color: var(--gold); font-size: 20px; }
+
+  @media (max-width: 960px) {
+    :root { --slide-w: 96vw; --slide-h: auto; }
+    .obj-grid, .ativacao, .vf-grid, .gab-grid, .vocab-cards,
+    .prod-cols, .escrita-opcoes { grid-template-columns: 1fr; }
+    .gab-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span>ENLACE BRASIL</span>
+  <span>Aula 23 · Nível A1/A2 · Compreensão Auditiva · 1h</span>
+</div>
+
+<div class="slide-wrap">
+
+  <!-- SLIDE 0: CAPA -->
+  <div class="slide s-capa active" id="s0">
+    <div class="tag">🎙️ Compreensão Auditiva</div>
+    <h1>Aula 23<br><em>Brasil & México</em></h1>
+    <p class="subtitle">Podcast Cinco Minutos de Português Brasileiro — Ep. 09</p>
+    <div class="flags">🇧🇷 🇲🇽</div>
+    <div class="meta">Enlace Brasil · A1/A2 · 2026</div>
+    <svg class="wave" viewBox="0 0 300 200" fill="none">
+      <path d="M0,100 C50,20 100,180 150,100 C200,20 250,180 300,100" stroke="white" stroke-width="3" fill="none"/>
+      <path d="M0,130 C50,50 100,210 150,130 C200,50 250,210 300,130" stroke="white" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- SLIDE 1: OBJETIVOS -->
+  <div class="slide s-obj" id="s1">
+    <h2>Objetivos da Aula</h2>
+    <div class="obj-grid">
+      <div class="obj-item">
+        <div class="obj-icon">👂</div>
+        <p><strong>Desenvolver</strong> a compreensão auditiva com áudio autêntico em velocidade natural reduzida</p>
+      </div>
+      <div class="obj-item">
+        <div class="obj-icon">📝</div>
+        <p><strong>Reconhecer</strong> vocabulário cotidiano: programa humorístico, TV aberta, novela, aluguel, vingança</p>
+      </div>
+      <div class="obj-item">
+        <div class="obj-icon">🗣️</div>
+        <p><strong>Praticar</strong> produção oral com perguntas de opinião sobre cultura Brasil–México</p>
+      </div>
+      <div class="obj-item">
+        <div class="obj-icon">✍️</div>
+        <p><strong>Produzir</strong> texto curto (A1) ou parágrafo opinativo (A2) sobre série/programa favorito</p>
+      </div>
+    </div>
+    <div class="time-bar">
+      <div class="time-seg"><strong>10 min</strong>Pré-escuta</div>
+      <div class="time-seg"><strong>10 min</strong>1ª Escuta</div>
+      <div class="time-seg"><strong>5 min</strong>Gabarito</div>
+      <div class="time-seg"><strong>10 min</strong>2ª Escuta</div>
+      <div class="time-seg"><strong>10 min</strong>Vocabulário</div>
+      <div class="time-seg"><strong>15 min</strong>Produção</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: PODCAST -->
+  <div class="slide s-pod" id="s2">
+    <h2>🎙️ O Podcast</h2>
+    <div class="pod-card">
+      <div class="pod-icon">🎧</div>
+      <div class="pod-info">
+        <h3>Cinco Minutos de Português Brasileiro</h3>
+        <p>Podcast da professora Melissa Barbosa: áudios curtos (≈ 5 min) com fala clara e pausada sobre cultura brasileira.</p>
+        <div class="pod-tags">
+          <span class="pod-tag">5 minutos</span>
+          <span class="pod-tag">Fala pausada</span>
+          <span class="pod-tag">Spotify</span>
+        </div>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,.6); font-size:14px; margin-bottom:12px;">📌 Episódio de hoje: <strong style="color:var(--gold)">Ep. 09 – "Brasil e México"</strong></p>
+    <a class="pod-link" href="https://open.spotify.com/episode/6CxjEk1pFcRFT1hZoXv3cz" target="_blank">🎵 Abrir no Spotify</a>
+  </div>
+
+  <!-- SLIDE 3: PRÉ-ESCUTA -->
+  <div class="slide s-pre" id="s3">
+    <div class="fase">⏱️ Fase 1 — Pré-escuta · 10 min</div>
+    <h2>Ativação de Conhecimento</h2>
+    <div class="ativacao">
+      <div class="perguntas-box">
+        <h4>🗣️ Perguntas para a turma</h4>
+        <ol>
+          <li>Vocês conhecem o Chaves?</li>
+          <li>Assistiam quando eram crianças?</li>
+          <li>Conhecem o personagem Seu Madruga?</li>
+          <li>E o RBD / Rebelde? Quem acompanhou?</li>
+        </ol>
+      </div>
+      <div class="vocab-pre">
+        <h4>📖 Vocabulário antes de ouvir</h4>
+        <ul>
+          <li>programa humorístico <em>→ programa cómico</em></li>
+          <li>TV aberta <em>→ televisión abierta</em></li>
+          <li>novela <em>→ telenovela</em></li>
+          <li>viúvo/a <em>→ viudo/a</em></li>
+          <li>aluguel <em>→ renta / alquiler</em></li>
+          <li>vingança <em>→ venganza</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="instrucao">
+      💡 <strong>Dica para o professor:</strong> Escreva as 6 palavras no quadro sem tradução e peça aos alunos que adivinhem o significado pelo contexto. Eles vão confirmar quando ouvirem o áudio.
+    </div>
+  </div>
+
+  <!-- SLIDE 4: 1ª ESCUTA -->
+  <div class="slide s-esc1" id="s4">
+    <div class="fase">🔊 Fase 2 — 1ª Escuta · 10 min</div>
+    <h2>Compreensão Geral</h2>
+    <div class="instrucao">
+      <strong>Instrução:</strong> Ouça o episódio completo (≈ 5 min). Marque <strong>V</strong> (verdadeiro) ou <strong>F</strong> (falso) para cada afirmação.
+    </div>
+    <div class="vf-grid">
+      <div class="vf-item"><div class="num">1</div>O Brasil fica na América do Norte.</div>
+      <div class="vf-item"><div class="num">2</div>Chaves é um programa humorístico mexicano.</div>
+      <div class="vf-item"><div class="num">3</div>Seu Madruga é a filha do Chaves.</div>
+      <div class="vf-item"><div class="num">4</div>O programa Chaves estreou no SBT em 1984.</div>
+      <div class="vf-item"><div class="num">5</div>A novela Rebelde era voltada ao público jovem.</div>
+      <div class="vf-item"><div class="num">6</div>O RBD fez shows no Brasil em 2023.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: GABARITO 1ª ESCUTA -->
+  <div class="slide s-gab1" id="s5">
+    <h2>✅ Gabarito — 1ª Escuta</h2>
+    <div class="gab-grid">
+      <div class="gab-item f"><div class="gab-icon">❌</div><p><strong>1. FALSO</strong><br>O Brasil fica na América do Sul.</p></div>
+      <div class="gab-item v"><div class="gab-icon">✅</div><p><strong>2. VERDADEIRO</strong><br>Programa criado por Roberto Bolaños.</p></div>
+      <div class="gab-item f"><div class="gab-icon">❌</div><p><strong>3. FALSO</strong><br>Seu Madruga é pai de Chiquinha.</p></div>
+      <div class="gab-item v"><div class="gab-icon">✅</div><p><strong>4. VERDADEIRO</strong><br>Canal SBT, estreia em 1984.</p></div>
+      <div class="gab-item v"><div class="gab-icon">✅</div><p><strong>5. VERDADEIRO</strong><br>Voltada especialmente ao público jovem.</p></div>
+      <div class="gab-item v"><div class="gab-icon">✅</div><p><strong>6. VERDADEIRO</strong><br>2 shows no RJ e 6 em SP.</p></div>
+    </div>
+    <div class="discussao">
+      <strong>💬 Pergunta para discussão rápida (2 min):</strong>
+      "Alguma informação foi surpresa pra vocês? O que já sabiam sobre o Chaves no Brasil?"
+    </div>
+  </div>
+
+  <!-- SLIDE 6: 2ª ESCUTA -->
+  <div class="slide s-esc2" id="s6">
+    <div class="fase">🔊 Fase 3 — 2ª Escuta · 10 min</div>
+    <h2>Compreensão Detalhada</h2>
+    <div class="instrucao" style="background:rgba(13,59,110,.08); border-color:var(--navy);">
+      <strong>Instrução:</strong> Ouça novamente e complete as frases. Use as palavras do vocabulário visto.
+    </div>
+    <div class="complete-list">
+      <div class="complete-item">1. Chaves ficou por mais de três décadas na programação da <span class="blank">____________</span> brasileira.</div>
+      <div class="complete-item">2. Seu Madruga é um <span class="blank">____________</span> que cria sozinho a sua filha, Chiquinha.</div>
+      <div class="complete-item">3. Ele está sempre devendo 18 meses de <span class="blank">____________</span>.</div>
+      <div class="complete-item">4. A frase "A <span class="blank">____________</span> nunca é plena" é de Seu Madruga.</div>
+      <div class="complete-item">5. A <span class="blank">____________</span> Rebelde estreou no Brasil em 2005 no canal SBT.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: GABARITO 2ª ESCUTA -->
+  <div class="slide s-gab2" id="s7">
+    <h2>✅ Gabarito — 2ª Escuta</h2>
+    <div class="gab2-list">
+      <div class="gab2-item">1. Chaves ficou por mais de três décadas na programação da <span>TV aberta</span> brasileira.</div>
+      <div class="gab2-item">2. Seu Madruga é um <span>viúvo</span> que cria sozinho a sua filha, Chiquinha.</div>
+      <div class="gab2-item">3. Ele está sempre devendo 18 meses de <span>aluguel</span>.</div>
+      <div class="gab2-item">4. A frase "A <span>vingança</span> nunca é plena" é de Seu Madruga.</div>
+      <div class="gab2-item">5. A <span>novela</span> Rebelde estreou no Brasil em 2005 no canal SBT.</div>
+    </div>
+    <div class="discussao" style="background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.3); margin-top:14px;">
+      <strong>💡 Nota cultural para o professor:</strong>
+      A frase de Seu Madruga é amplamente conhecida no Brasil e aparece em camisetas, memes e tatuagens. Pode explorar com a turma: "Vocês concordam com essa filosofia?"
+    </div>
+  </div>
+
+  <!-- SLIDE 8: VOCABULÁRIO -->
+  <div class="slide s-vocab" id="s8">
+    <div class="fase">📖 Fase 4 — Vocabulário · 10 min</div>
+    <h2>Palavras do Episódio</h2>
+    <div class="vocab-cards">
+      <div class="vocab-card">
+        <div class="word">novela</div>
+        <div class="transl">telenovela</div>
+        <div class="example">"A novela Rebelde fez um sucesso imenso."</div>
+      </div>
+      <div class="vocab-card teal">
+        <div class="word">aluguel</div>
+        <div class="transl">renta / alquiler</div>
+        <div class="example">"Ele está devendo 18 meses de aluguel."</div>
+      </div>
+      <div class="vocab-card">
+        <div class="word">viúvo/a</div>
+        <div class="transl">viudo/a</div>
+        <div class="example">"Seu Madruga é um viúvo que cria a filha."</div>
+      </div>
+      <div class="vocab-card teal">
+        <div class="word">TV aberta</div>
+        <div class="transl">televisión abierta</div>
+        <div class="example">"O programa ficou na TV aberta até 2020."</div>
+      </div>
+      <div class="vocab-card">
+        <div class="word">vingança</div>
+        <div class="transl">venganza</div>
+        <div class="example">"A vingança nunca é plena." – Seu Madruga</div>
+      </div>
+      <div class="vocab-card teal">
+        <div class="word">turnê</div>
+        <div class="transl">gira / tour</div>
+        <div class="example">"O RBD foi em turnê pela América Latina."</div>
+      </div>
+    </div>
+    <div class="frase-destaque">
+      "A vingança nunca é plena, mata a alma e envenena."
+      <span>— Seu Madruga (Chaves) · Frase cultural muito conhecida no Brasil 🇧🇷</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: PRODUÇÃO ORAL -->
+  <div class="slide s-prod" id="s9">
+    <div class="fase">🗣️ Fase 5 — Produção Oral · 15 min</div>
+    <h2>Conversação em Duplas</h2>
+    <div class="prod-cols">
+      <div class="prod-box">
+        <h4>🔵 NÍVEL A1 — Perguntas simples</h4>
+        <ol>
+          <li>Você assiste o Chaves?</li>
+          <li>Qual é o seu personagem favorito?</li>
+          <li>Você gosta de novelas?</li>
+          <li>Você conhece o RBD?</li>
+        </ol>
+      </div>
+      <div class="prod-box">
+        <h4>🟢 NÍVEL A2 — Perguntas elaboradas</h4>
+        <ol>
+          <li>Por que o Chaves fez tanto sucesso no Brasil?</li>
+          <li>Você concorda com a frase de Seu Madruga?</li>
+          <li>Que séries mexicanas você conhece?</li>
+          <li>Como a cultura de um país entra em outro país?</li>
+        </ol>
+      </div>
+    </div>
+    <div class="mini-dial">
+      <strong>💬 Modelo de mini-diálogo (A1):</strong><br>
+      — Você assiste o Chaves?<br>
+      — Sim, eu assisto. É muito engraçado! / Não, eu não assisto, mas eu conheço.<br>
+      — Qual é o seu personagem favorito?<br>
+      — O meu favorito é o Seu Madruga / a Chiquinha / o Chaves.
+    </div>
+  </div>
+
+  <!-- SLIDE 10: PRODUÇÃO ESCRITA -->
+  <div class="slide s-escrita" id="s10">
+    <div class="fase">✍️ Fase 6 — Produção Escrita · 10 min</div>
+    <h2>Tarefa de Casa</h2>
+    <div class="escrita-opcoes">
+      <div class="escrita-card">
+        <span class="nivel">A1</span>
+        <h4>Minha série favorita</h4>
+        <p>Escreva 5–6 frases sobre uma série ou programa de TV que você gosta. Responda: Qual é o nome? Onde passa? Quem são os personagens? Por que você gosta?</p>
+      </div>
+      <div class="escrita-card gold">
+        <span class="nivel" style="background:var(--gold); color:var(--navy);">A2</span>
+        <h4>Cultura que atravessa fronteiras</h4>
+        <p>Escreva um parágrafo (8–10 frases) sobre um produto cultural do México que faz sucesso em outro país, ou vice-versa. Use palavras do episódio: <em>programa humorístico, novela, fazer sucesso, cultura</em>.</p>
+      </div>
+    </div>
+    <div class="instrucao" style="background:#fff; border-color:var(--teal);">
+      🔗 <strong>Para ouvir de novo em casa:</strong> Spotify – "Cinco Minutos de Português Brasileiro" – Ep. 09 "Brasil e México"
+    </div>
+  </div>
+
+  <!-- SLIDE 11: ENCERRAMENTO -->
+  <div class="slide s-fim" id="s11">
+    <h2>Até a próxima aula! 🎙️<br><em>Parabéns, turma!</em></h2>
+    <p>Hoje vocês praticaram compreensão auditiva real em português brasileiro.</p>
+    <div class="resumo">
+      <div class="resumo-item"><strong>6</strong>palavras novas</div>
+      <div class="resumo-item"><strong>2</strong>escutas completas</div>
+      <div class="resumo-item"><strong>1</strong>frase cultural</div>
+      <div class="resumo-item"><strong>🇧🇷🇲🇽</strong>Brasil & México</div>
+    </div>
+  </div>
+
+</div><!-- slide-wrap -->
+
+<div class="toggle-notes">
+  <button onclick="toggleNotes()">📋 Notas do professor</button>
+</div>
+
+<div class="notes-box" id="notesBox">
+  <div id="noteContent"></div>
+</div>
+
+<div class="nav">
+  <button id="btnPrev" onclick="changeSlide(-1)" disabled>◀ Anterior</button>
+  <span class="counter" id="counter">1 / 12</span>
+  <button id="btnNext" onclick="changeSlide(1)">Próximo ▶</button>
+</div>
+
+<script>
+  const notes = [
+    "<strong>Capa:</strong> Apresente o tema. Pergunte quem conhece o Chaves e o RBD antes de abrir os objetivos.",
+    "<strong>Objetivos:</strong> Mostre a linha do tempo dos 60 min. Diga que a tarefa de escrita é para casa.",
+    "<strong>O Podcast:</strong> Abra o Spotify ou o link da transcrição. Toque os primeiros 10 segundos para que os alunos se familiarizem com a voz da Melissa.",
+    "<strong>Pré-escuta:</strong> Pergunte sobre Chaves/RBD. Escreva as 6 palavras no quadro sem tradução. Deixe os alunos adivinhar. Reserve 3 min para isso.",
+    "<strong>1ª Escuta:</strong> Toque o áudio completo (~5 min). Peça que NÃO leiam a transcrição ainda. As 6 afirmações ficam visíveis durante a escuta.",
+    "<strong>Gabarito 1ª Escuta:</strong> Corrija junto. Use a pergunta de discussão para criar conversa espontânea.",
+    "<strong>2ª Escuta:</strong> Desta vez os alunos podem anotar palavras. Toque o áudio novamente. As lacunas correspondem ao vocabulário do slide 3.",
+    "<strong>Gabarito 2ª Escuta:</strong> Explore a frase de Seu Madruga culturalmente — mencione que é meme, aparece em camisetas e tatuagens.",
+    "<strong>Vocabulário:</strong> Peça que cada aluno crie UMA frase nova com uma das 6 palavras. Corrija em voz alta.",
+    "<strong>Produção Oral:</strong> Organize em duplas. A1 usa as perguntas azuis, A2 as verdes. Circule e tome nota de erros frequentes para correção coletiva ao final.",
+    "<strong>Tarefa:</strong> Lembre que a transcrição é gratuita no site. Incentive ouvir mais episódios em casa.",
+    "<strong>Encerramento:</strong> Parabenize a turma. Revise as 6 palavras rapidamente com quiz oral: você fala a tradução, eles falam o português."
+  ];
+
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  function changeSlide(dir) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(total - 1, current + dir));
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+    document.getElementById('btnPrev').disabled = current === 0;
+    document.getElementById('btnNext').disabled = current === total - 1;
+    document.getElementById('noteContent').innerHTML = notes[current];
+  }
+
+  document.getElementById('noteContent').innerHTML = notes[0];
+
+  let notesVisible = false;
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    const box = document.getElementById('notesBox');
+    box.classList.toggle('visible', notesVisible);
+  }
+</script>
+</body>
+</html>
